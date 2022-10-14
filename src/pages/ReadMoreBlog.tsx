@@ -10,6 +10,7 @@ const ReadMoreBlog = () => {
         OnClick={() => {}}
         logo={backAero}
         text="Back"
+        logoStyle="h-3"
         className="text-white"
       />
       <Divider className="mt-6" />

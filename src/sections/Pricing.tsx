@@ -81,7 +81,7 @@ const Pricing = () => {
         </span>
       </div>
       <Divider className="h-16" />
-      <div className="hidden md:flex gap-3 lg:gap-8 w-[96%] lg:w-[90%] mx-auto">
+      <div className="hidden justify-center items-center md:flex gap-3 lg:gap-8 w-[96%] lg:w-[90%] mx-auto">
         {pricingCardData.map((item, i) => (
           <PricingCard key={i} {...item} />
         ))}
@@ -110,9 +110,10 @@ const Pricing = () => {
           />
         ))}
         <div className="flex justify-center items-center absolute bottom-0 gap-2">
-          {translatePosition.map((item) => {
+          {translatePosition.map((item, i) => {
             return (
               <div
+                key={i}
                 className={`rounded-full w-2 h-2 ${
                   item === 0 ? "bg-white" : "bg-main-light_white"
                 }`}

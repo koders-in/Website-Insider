@@ -10,7 +10,7 @@ const Navbar = () => {
     navigate("/");
   }
   return (
-    <div className="z-50 flex w-full bg-main-black-700 px-8 justify-between align-middle md:px-10 text-white py-6 fixed top-0 backdrop-blur-md">
+    <div className="z-50 flex h-[10vh] w-full bg-main-black-700 px-8 justify-between items-center md:px-10 text-white py-6 fixed top-0 backdrop-blur-md">
       <div className="w-fit">
         <img
           src={logo}
@@ -40,20 +40,20 @@ const Navbar = () => {
           />
         </div>
       )}
-      <div className="flex justify-end align-middle w-fit">
+      <div className="flex justify-end items-center w-fit">
         <Button
           OnClick={() => {}}
           logo={discordSvg}
           hoverLogo={discordWhite}
           text="Join Discord"
-          className="hidden sm:flex font-miligramMedium mr-6 border-2 bg-main-blueOpt-200 border-main-blueOpt-1000 text-main-blueOpt-1000 px-5  rounded-lg hover:bg-main-blueOpt-1000 hover:text-white"
+          className="hidden sm:flex font-miligramMedium mr-6 border-2 bg-main-blueOpt-200 border-main-blueOpt-1000 text-main-blueOpt-1000 px-5 py-2  rounded-lg hover:bg-main-blueOpt-1000 hover:text-white"
         />
         <Button
           OnClick={() => {
             navigate("start-project");
           }}
           text="Get Started"
-          className="font-miligramMedium bg-main-greenOpt-200 border-2 border-main-greenOpt-1000 text-main-greenOpt-1000 px-3 sm:px-10 rounded-lg hover:bg-main-greenOpt-1000 hover:text-white"
+          className="font-miligramMedium bg-main-greenOpt-200 border-2 border-main-greenOpt-1000 text-main-greenOpt-1000 px-3 py-2 sm:px-10 rounded-lg hover:bg-main-greenOpt-1000 hover:text-white"
         />
       </div>
     </div>

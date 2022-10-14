@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const { screens } = require("tailwindcss/defaultTheme");
+
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
@@ -93,10 +95,15 @@ module.exports = {
         battambangMedium: ["BATTAMBANG MEDIUM"],
         battambangBold: ["BATTAMBANG BOLD"],
       },
-      screens: {
-        xsm: "300px",
-        msm: "340px",
-      },
+    },
+    screens: {
+      xsm: "300px",
+      msm: "340px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+      xxl: "1536px",
     },
   },
   plugins: [],

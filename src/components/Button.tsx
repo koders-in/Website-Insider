@@ -6,8 +6,16 @@ interface Props {
   logo?: string;
   hoverLogo?: string;
   OnClick: () => void;
+  logoStyle?: string;
 }
-const Button = ({ className, text, logo, OnClick, hoverLogo }: Props) => {
+const Button = ({
+  className,
+  text,
+  logo,
+  OnClick,
+  hoverLogo,
+  logoStyle,
+}: Props) => {
   const [iconStyle, setIconStyle] = useState("");
   return (
     <button
@@ -18,12 +26,12 @@ const Button = ({ className, text, logo, OnClick, hoverLogo }: Props) => {
     >
       {logo ? (
         iconStyle && hoverLogo ? (
-          <img src={hoverLogo} className={`h-5 mr-2`} alt="icon" />
+          <img src={hoverLogo} className={`h-5 mr-2 ${logoStyle}`} alt="icon" />
         ) : (
           <img
             src={logo}
             alt="icon"
-            className={`h-5 mr-2 hover:brightness-75 ${iconStyle}`}
+            className={`h-5 mr-2 hover:brightness-75 ${iconStyle} ${logoStyle}`}
           />
         )
       ) : null}

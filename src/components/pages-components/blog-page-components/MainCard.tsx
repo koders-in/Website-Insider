@@ -12,7 +12,7 @@ const MainCard = () => {
       <div className="w-full lg:w-[60%] py-2">
         <img src={blogMain} alt="blogMain" className="w-full h-full" />
       </div>
-      <div className="w-full lg:w-[40%]">
+      <div className="w-full lg:w-[40%] mt-2 sm:mt-0">
         <h1
           className="text-white text-[20px] cursor-pointer font-miligrambold"
           onClick={() => navigate(`${currentPath}/read-more`)}

@@ -60,7 +60,7 @@ const WhyKoders = () => {
     handleSlider("whyKoders", handleLeftSlide, handleRightSlide);
   });
   return (
-    <div className="py-16 bg-main-secondary">
+    <div className="py-16 bg-main-secondary h-[90vh] xxl:h-auto">
       <h1 className="w-[90%] mx-auto sm:w-full text-[1.2rem] sm:text-[2rem] text-center font-medium text-white font-miligrambold">
         Why trust&nbsp;
         <span
@@ -80,7 +80,7 @@ const WhyKoders = () => {
         your business?
       </h1>
 
-      <div className="hidden md:flex gap-2 mt-10 w-[95%] lg:w-[85%] mx-auto">
+      <div className="hidden md:flex gap-2 mt-16 w-[95%] lg:w-[85%] mx-auto">
         {whyWe.map((item, i) => (
           <Info
             className={item.class}
@@ -128,9 +128,10 @@ const WhyKoders = () => {
         ))}
       </div>
       <div className="flex md:hidden justify-center items-center gap-2 mt-2">
-        {translatePosition.map((item) => {
+        {translatePosition.map((item, i) => {
           return (
             <div
+              key={i}
               className={`rounded-full w-2 h-2 ${
                 item === 0 ? "bg-white" : "bg-main-light_white"
               }`}

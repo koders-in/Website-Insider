@@ -20,7 +20,12 @@ const Footer = () => {
     <>
       <div className="sm:flex justify-center pl-4 xsm:px-6 sm:px-20 py-10 bg-main-secondary">
         <div className="w-full sm:w-1/4 sm:font-miligramMedium font-miligramLight">
-          <img src={logo} alt="logo" className="h-10" onClick={navToHome} />
+          <img
+            src={logo}
+            alt="logo"
+            className="h-10 cursor-pointer"
+            onClick={navToHome}
+          />
           <div className="flex items-center my-3">
             {[linkedin, github, twitter, discord].map((item, i) => (
               <img

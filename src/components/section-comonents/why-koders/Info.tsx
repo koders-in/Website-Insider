@@ -35,10 +35,10 @@ const Info = ({
         className="text-[10rem] text-center leading-[135px] bg-gradient-to-r from-white via-main-lightTeal to-main-teal font-battambangMedium"
         text={stat}
       />
-      <p className="text-center text-white text-[15px] lg:text-[22px] my-1 font-battambangMedium">
+      <p className="text-center text-white text-[15px] lg:text-[22px] my-1 lg:mt-8  font-battambangMedium">
         {title}
       </p>
-      <div dangerouslySetInnerHTML={{ __html: html }}></div>
+      <div className="mt-2" dangerouslySetInnerHTML={{ __html: html }}></div>
     </div>
   );
 };
