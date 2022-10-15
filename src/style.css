@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "MILIGRAM BOLD";
+  src: url("./assets/font/Milligram/Milligram-Bold.ttf");
+}
+
+@font-face {
+  font-family: "MILIGRAM LIGHT";
+  src: url("./assets/font/Milligram/Milligram-Light.ttf");
+}
+
+@font-face {
+  font-family: "MILIGRAM MEDIUM";
+  src: url("./assets/font/Milligram/Milligram-Medium.ttf");
+}
+
+@font-face {
+  font-family: "BATTAMBANG BOLD";
+  src: url("./assets/font/Battambang/Battambang-Bold.ttf");
+}
+
+@font-face {
+  font-family: "BATTAMBANG MEDIUM";
+  src: url("./assets/font/Battambang/Battambang-Regular.ttf");
+}
