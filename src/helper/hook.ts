@@ -53,12 +53,12 @@ export const useUpdateSlide = () => {
     }
   }
 
-  function onSlide(id: string) {
+  function onSwipe(id: string) {
     handleSlider(id, handleLeftSlide, handleRightSlide);
   }
 
   return {
-    onSlide,
+    onSwipe,
     handleLeftSlide,
     handleRightSlide,
     getIndexOfActiveSlide,

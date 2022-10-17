@@ -89,7 +89,7 @@ const ReadMoreBlog = () => {
             setShowMore(true);
           }}
           text="Read More"
-          className="border-2 mt-3 border-main-teal bg-main-greenOpt-200 text-main-greenOpt-1000 block mx-auto px-6 py-2 rounded-lg hover:bg-main-greenOpt-1000 hover:text-white"
+          className="border-2 mt-3 border-main-greenOpt-1000 text-main-greenOpt-1000 bg-main-greenOpt-200 block mx-auto px-6 py-2 rounded-lg hover:bg-main-greenOpt-1000 hover:text-white"
         />
       )}
     </div>

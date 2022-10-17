@@ -29,7 +29,7 @@ const Card = ({ className }: { className?: string }) => {
             create a loyal customer base.A website consists of web pages which
             are easy to share and most browsers have a...
           </p>
-          <button className="border-b-2 border-main-teal text-main-teal cursor-pointer text-[13px]  font-miligramMedium">
+          <button className="border-b-2 border-main-greenOpt-1000 text-main-greenOpt-1000 cursor-pointer text-[13px]  font-miligramMedium">
             Read More
           </button>
           <div className="flex mt-14 justify-between items-center">

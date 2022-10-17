@@ -29,7 +29,7 @@ const MainCard = () => {
           After jeopardizing NASA and the US Military, he was sentenced to
           prison for 70...
         </p>
-        <button className="border-b-2 border-main-teal text-main-teal cursor-pointer text-[13px] sm:font-miligramMedium font-miligramLight">
+        <button className="border-b-2 border-main-greenOpt-1000 text-main-greenOpt-1000 cursor-pointer text-[13px] sm:font-miligramMedium font-miligramLight">
           Read More
         </button>
         <div className="flex mt-14 justify-between items-center">

@@ -13,13 +13,13 @@ const Pricing = () => {
   }
 
   React.useEffect(() => {
-    handleSliding.onSlide("pricing");
+    handleSliding.onSwipe("pricing");
   });
 
   return (
     <div className="py-16 bg-main-secondary">
       <GradientText
-        className="w-[90%] mx-auto sm:w-fit text-[1.2rem] sm:text-[2rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
+        className="w-[90%] mx-auto sm:w-fit text-[1.6rem] sm:text-[2rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
         text="Pricing that suits your needs."
       />
       <p className="text-[0.8rem] sm:text-[1rem] w-[80%] sm:w-1/2  lg:w-1/3 mx-auto text-center text-main-light_white py-5 font-miligramMedium">

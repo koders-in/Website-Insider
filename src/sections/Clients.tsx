@@ -35,32 +35,32 @@ const Clients = () => {
     <div className="py-16 overflow-hidden">
       <GradientText
         text="Trusted by the"
-        className="text-[1.2rem] sm:text-[2rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
+        className="text-[1.6rem] sm:text-[2rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
       />
       {count === 0 && (
         <h2
-          className={`text-center text-[1.2rem] sm:text-[2rem]  font-miligrambold text-white font-medium animate-leftIn ${leftOutStyle}`}
+          className={`text-center text-[1.6rem] sm:text-[2rem]  font-miligrambold text-white font-medium animate-leftIn ${leftOutStyle}`}
         >
           Google
         </h2>
       )}
       {count === 1 && (
         <h2
-          className={`text-center text-[1.2rem] sm:text-[2rem]  font-miligrambold text-white font-medium animate-rightIn ${rightOutStyle}`}
+          className={`text-center text-[1.6rem] sm:text-[2rem]  font-miligrambold text-white font-medium animate-rightIn ${rightOutStyle}`}
         >
           Microsoft
         </h2>
       )}
       {count === 2 && (
         <h2
-          className={`text-center text-[1.2rem] sm:text-[2rem]  font-miligrambold text-white font-medium animate-leftIn ${leftOutStyle}`}
+          className={`text-center text-[1.6rem] sm:text-[2rem]  font-miligrambold text-white font-medium animate-leftIn ${leftOutStyle}`}
         >
           Facebook
         </h2>
       )}
       {count === 3 && (
         <h2
-          className={`text-center text-[1.2rem] sm:text-[2rem]  font-miligrambold text-white font-medium animate-rightIn ${rightOutStyle}`}
+          className={`text-center text-[1.6rem] sm:text-[2rem]  font-miligrambold text-white font-medium animate-rightIn ${rightOutStyle}`}
         >
           Amazone
         </h2>

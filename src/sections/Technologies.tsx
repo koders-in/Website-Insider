@@ -14,11 +14,11 @@ const Technologies = () => {
     }
   }
   return (
-    <div className="bg-main-secondary overflow-hidden h-[235px] sm:h-[300px] md:h-[350px] lg:h-[90vh] xl:h-[90vh]  relative flex justify-center items-center">
+    <div className="bg-main-secondary overflow-hidden h-[90vh] sm:h-[300px] md:h-[60vh] lg:h-[90vh] xl:h-[90vh] xxl:h-[60vh]  relative flex justify-center items-center">
       <div className="absolute w-full h-full flex justify-center items-center">
-        <div className="p-4 z-10 bg-main-secondary w-full">
+        <div className="p-4 z-10 bg-main-secondary w-full mt-4">
           <GradientText
-            className="w-[90%] mt-4 mx-auto sm:w-fit text-[1.2rem] sm:text-[2rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
+            className="w-[90%] mx-auto sm:w-fit text-[1.6rem] sm:text-[2rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
             text="Technologies that make sense"
           />
           <p className="text-[0.8rem] sm:text-[1rem] mx-auto text-center text-main-light_white font-miligramMedium">

@@ -9,11 +9,11 @@ import { useUpdateSlide } from "../helper/hook";
 const WhyKoders = () => {
   const handleSliding = useUpdateSlide();
   React.useEffect(() => {
-    handleSliding.onSlide("whyKoders");
+    handleSliding.onSwipe("whyKoders");
   });
   return (
-    <div className="py-16 bg-main-secondary h-[90vh] xxl:h-auto">
-      <h1 className="w-[90%] mx-auto sm:w-full text-[1.2rem] sm:text-[2rem] text-center font-medium text-white font-miligrambold">
+    <div className="py-16 bg-main-secondary h-[90vh] sm:h-auto lg:h-[90vh] xxl:h-auto">
+      <h1 className="w-[90%] mx-auto sm:w-full text-[1.6rem] sm:text-[2rem] text-center font-medium text-white font-miligrambold">
         Why trust&nbsp;
         <span className="bg-gradient-to-r from-white to-main-teal bg-clip-text text-transparent">
           Koders
@@ -26,7 +26,7 @@ const WhyKoders = () => {
         your business?
       </h1>
 
-      <div className="hidden md:flex gap-2 mt-16 w-[95%] lg:w-[85%] mx-auto">
+      <div className="hidden lg:flex gap-2 mt-16 w-[95%] lg:w-[85%] mx-auto">
         {whyWe.map((item, i) => (
           <Info
             className={item.class}
@@ -38,7 +38,7 @@ const WhyKoders = () => {
         ))}
       </div>
       <div
-        className="flex bg-main-white-500 py-4 px-3 rounded-xl w-[90%] md:hidden relative mt-10 justify-center items-center mx-auto overflow-x-clip h-[300px]"
+        className="flex bg-main-white-500 py-4 px-3 rounded-xl w-[90%] lg:hidden relative mt-10 justify-center items-center mx-auto overflow-x-clip h-[300px]"
         id="whyKoders"
       >
         {!(handleSliding.activeIndex <= 0) && (
