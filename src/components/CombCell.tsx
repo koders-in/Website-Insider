@@ -6,9 +6,10 @@ interface Props {
   x?: string;
   y?: string;
   className?: string;
+  id?: string;
 }
 
-const CombCell = ({ logo, className, x, y }: Props) => {
+const CombCell = ({ logo, className, x, y, id }: Props) => {
   const [iconStyle, setIconStyle] = React.useState("");
   return (
     <div
@@ -20,10 +21,9 @@ const CombCell = ({ logo, className, x, y }: Props) => {
         style={{ ...hex }}
       >
         <div
-          className="absolute bg-main-secondary top-[4px] left-[4px] w-[82px] h-[72px] hover:bg-white flex justify-center items-center"
+          className="absolute bg-main-secondary top-[4px] left-[4px] w-[82px] h-[72px] flex justify-center items-center"
           style={{ ...hexBg }}
-          onMouseEnter={() => setIconStyle("invert")}
-          onMouseLeave={() => setIconStyle("")}
+          id={id}
         >
           <img src={logo} className={"-rotate-90 h-8" + " " + iconStyle} />
         </div>
