@@ -1,4 +1,5 @@
 import React from "react";
+import { hex, hexBg } from "../helper/style";
 
 interface Props {
   logo?: string;
@@ -32,13 +33,3 @@ const CombCell = ({ logo, className, x, y }: Props) => {
 };
 
 export default CombCell;
-
-const hex: any = {
-  WebkitClipPath: "polygon(0% 50%,25% 0%,75% 0%,100% 50%,75% 100%,25% 100%)",
-};
-
-const hexBg: any = {
-  WebkitClipPath: "polygon(0% 50%,25% 0%,75% 0%,100% 50%,75% 100%,25% 100%)",
-};
-// -moz-clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
-// -moz-clip-path: "polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%)",

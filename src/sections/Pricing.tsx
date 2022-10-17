@@ -2,55 +2,18 @@ import React, { useEffect, useState } from "react";
 import { Divider, GradientText, PricingCard, Toogler } from "../components";
 import { handleSlider } from "../helper";
 import { pricingCardData } from "../helper/constant";
+import { useUpdateSlide } from "../helper/hook";
 
 const Pricing = () => {
-  const [translatePosition, setTranslatePosition] = useState([
-    -233, 0, 233, 466,
-  ]);
+  const handleSliding = useUpdateSlide();
   const [toggle, setToggle] = useState(true);
 
   function handleToogle(data: boolean) {
     setToggle(data);
   }
 
-  function handleRightSlide() {
-    if (!(translatePosition[3] === 699)) {
-      const newArr = translatePosition.map((item, i) => {
-        switch (i) {
-          case 0:
-            return item < 0 ? item + 233 : item;
-          case 1:
-            return item < 233 ? item + 233 : item;
-          case 2:
-            return item < 466 ? item + 233 : item;
-          default:
-            return item < 699 ? item + 233 : item;
-        }
-      });
-      setTranslatePosition(newArr);
-    }
-  }
-
-  function handleLeftSlide() {
-    if (!(translatePosition[3] === 0)) {
-      const newArr = translatePosition.map((item, i) => {
-        switch (i) {
-          case 0:
-            return item > -699 ? item - 233 : item;
-          case 1:
-            return item > -466 ? item - 233 : item;
-          case 2:
-            return item > -233 ? item - 233 : item;
-          default:
-            return item > 0 ? item - 233 : item;
-        }
-      });
-      setTranslatePosition(newArr);
-    }
-  }
-
-  useEffect(() => {
-    handleSlider("pricing", handleLeftSlide, handleRightSlide);
+  React.useEffect(() => {
+    handleSliding.onSlide("pricing");
   });
 
   return (
@@ -92,17 +55,17 @@ const Pricing = () => {
       >
         <div
           className="absolute h-full hidden xsm:block w-[15%] msm:w-[27%] md:w-[30%] left-0 z-20"
-          onClick={handleRightSlide}
+          onClick={handleSliding.handleRightSlide}
         ></div>
         <div
           className="absolute h-full hidden xsm:block w-[15%] msm:w-[27%] md:w-[30%] right-0 z-20"
-          onClick={handleLeftSlide}
+          onClick={handleSliding.handleLeftSlide}
         ></div>
         {pricingCardData.map((item, i) => (
           <PricingCard
-            translateX={translatePosition[i]}
+            translateX={handleSliding.translatePosition[i]}
             className={`absolute top-10 w-[200px] transition-all duration-500 ${
-              translatePosition[i] === 0 ? "z-10" : ""
+              handleSliding.translatePosition[i] === 0 ? "z-10" : ""
             }`}
             key={i}
             isMobile={true}
@@ -110,7 +73,7 @@ const Pricing = () => {
           />
         ))}
         <div className="flex justify-center items-center absolute bottom-0 gap-2">
-          {translatePosition.map((item, i) => {
+          {handleSliding.translatePosition.map((item, i) => {
             return (
               <div
                 key={i}

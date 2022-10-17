@@ -106,5 +106,5 @@ module.exports = {
       xxl: "1536px",
     },
   },
-  plugins: [],
+  plugins: [require("autoprefixer")],
 };

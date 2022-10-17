@@ -26,10 +26,6 @@ const StartProject = () => {
       />
       <Divider className="mt-10" />
       <ButtonsGroup buttonsArray={[...typeOfProjects]} />
-      {/* <Divider className="mt-6" />
-      <ButtonsGroup
-        buttonsArray={[...typeOfProjects.slice(5, typeOfProjects?.length)]}
-      /> */}
       <Divider className="mt-10" />
       <Form />
       <Divider className="mt-10" />
