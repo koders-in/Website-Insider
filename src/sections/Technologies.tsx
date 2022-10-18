@@ -43,10 +43,7 @@ const Technologies = () => {
         const id = ("tech" + item).toString();
         const comb = document.getElementById(id);
         if (comb)
-          comb.style.animation = `fading ${getRandomInt(
-            3,
-            5
-          )}s ease-in-out ${getRandomInt(1, 5)}s infinite reverse`;
+          comb.style.animation = `fading 2s ease-in-out 2s infinite reverse`;
       });
 
       await sleep(getRandomInt(3000, 6000));

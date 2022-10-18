@@ -11,14 +11,14 @@ const ButtonsGroup = ({ buttonsArray }: Props) => {
     console.log(type);
   };
   return (
-    <div className="flex gap-2 flex-wrap justify-around font-miligramMedium">
+    <div className="flex gap-2 xl:gap-6 xxl:gap-16 flex-wrap justify-around lg:justify-start font-miligramMedium">
       {buttonsArray.map((item, i) => (
         <Button
           key={i}
           OnClick={() => handleClick(item)}
           text={item}
           logo={add}
-          className="text-white border-2 border-main-teal rounded-lg py-2 px-4"
+          className="text-white border-2 border-main-teal rounded-lg py-2 px-4 xl:px-6 xxl:w-[15%]"
         />
       ))}
     </div>

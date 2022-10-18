@@ -20,13 +20,13 @@ const Button = ({
   return (
     <button
       onClick={OnClick}
-      className={`hover:text-gray-400 cursor-pointer text-[12px] sm:text-[15px] flex items-center justify-center ${className}`}
+      className={`hover:text-gray-400 cursor-pointer text-[12px] flex items-center justify-center ${className}`}
       onMouseEnter={() => setIconStyle("brightness-50")}
       onMouseLeave={() => setIconStyle("")}
     >
       {logo ? (
         iconStyle && hoverLogo ? (
-          <img src={hoverLogo} className={`h-5 mr-2 ${logoStyle}`} alt="icon" />
+          <img src={hoverLogo} className={`h-5 mr-1 ${logoStyle}`} alt="icon" />
         ) : (
           <img
             src={logo}

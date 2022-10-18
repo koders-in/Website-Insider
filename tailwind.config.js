@@ -38,6 +38,7 @@ module.exports = {
         rightIn: "rightIn 0.6s ease forwards",
         rightOut: "rightOut 0.6s ease forwards",
         blink: "blink 3s ease-in-out infinite alternate",
+        fadeOut: "fadeOut 0.15s ease-in forwards",
       },
       keyframes: {
         leftIn: {
@@ -94,6 +95,19 @@ module.exports = {
           },
           "100%": {
             filter: "invert(1)",
+          },
+        },
+        fadeOut: {
+          "0%": {
+            opacity: "0",
+          },
+          "90%": {
+            transform: "scale(1.05)",
+            opacity: "0.8",
+          },
+          "100%": {
+            transform: "scale(1)",
+            opacity: "1",
           },
         },
       },

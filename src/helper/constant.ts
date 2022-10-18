@@ -4,6 +4,7 @@ export interface TestmonialData {
   description: string;
   logo: string;
   title: string;
+  animationStyle?: string;
 }
 export const testmonialLogo: Array<TestmonialData> = [
   {
@@ -161,24 +162,24 @@ export const whyWe = [
     class: "text-center border-r-2  border-main-teal",
     title: "Company",
     state: "01",
-    html: '<p class="font-battambangMedium px-2 md:px-3 lg:px-6 mt-2 text-main-light_white text-[16px]">Rest assured. Unlike freelancers,<span class="text-main-teal">  we are sticking till completion</span>.</p>',
+    html: '<p class="font-miligramMedium px-2 md:px-3 lg:px-6 mt-2 text-main-light_white text-[16px]">Rest assured. Unlike freelancers,<span class="text-main-teal">  we are sticking till completion</span>.</p>',
   },
   {
     class: "text-center border-r-2  border-main-teal",
     title: "One Stop Solution",
     state: "02",
-    html: ' <p class="font-battambangMedium px-2 md:px-3 lg:px-6 mt-2 text-main-light_white text-[16px]">Design+Frontend+Backend +Testing+QnA+Docs?<span class="text-main-teal"> We do it all</span>.</p>',
+    html: ' <p class="font-miligramMedium px-2 md:px-3 lg:px-6 mt-2 text-main-light_white text-[16px]">Design+Frontend+Backend +Testing+QnA+Docs?<span class="text-main-teal"> We do it all</span>.</p>',
   },
   {
     class: "text-center border-r-2  border-main-teal",
     title: "Quality + Satisfaction",
     state: "03",
-    html: '<p class="font-battambangMedium px-2 md:px-3 lg:px-6 mt-2 text-main-light_white text-[16px]"><span class="text-main-teal">Quality </span>delivery with 100%<span class="text-main-teal"> Satisfaction </span>or 100%refund.</p>',
+    html: '<p class="font-miligramMedium px-2 md:px-3 lg:px-6 mt-2 text-main-light_white text-[16px]"><span class="text-main-teal">Quality </span>delivery with 100%<span class="text-main-teal"> Satisfaction </span>or 100%refund.</p>',
   },
   {
     class: "text-center",
     title: "Your Code, Not Ours.",
     state: "04",
-    html: ' <p class="font-battambangMedium px-2 md:px-3 lg:px-6 mt-2 text-main-light_white text-[16px]">We’re giving <span class="text-main-teal">IPR rights</span>, notjust the source code.</p>',
+    html: ' <p class="font-miligramMedium px-2 md:px-3 lg:px-6 mt-2 text-main-light_white text-[16px]">We’re giving <span class="text-main-teal">IPR rights</span>, notjust the source code.</p>',
   },
 ];

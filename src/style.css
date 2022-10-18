@@ -29,8 +29,10 @@
 
 /* div{
   animation: name duration timing-function delay iteration-count direction fill-mode;
-  animation: fading 2s ease-in-out 2s infinite reverse;
+  animation: fadeOut 1s ease-in-out forwards;
 } */
+
+/* Keyframe for honey comb cell in technologies section */
 @keyframes fading {
   0% {
     filter: invert(0);

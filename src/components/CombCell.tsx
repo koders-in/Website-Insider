@@ -21,7 +21,7 @@ const CombCell = ({ logo, className, x, y, id }: Props) => {
         style={{ ...hex }}
       >
         <div
-          className="absolute bg-main-secondary top-[4px] left-[4px] w-[82px] h-[72px] flex justify-center items-center"
+          className="absolute bg-main-secondary top-[4px] left-[4px] w-[82px] h-[72px] flex justify-center items-center transition-all duration-700"
           style={{ ...hexBg }}
           id={id}
         >

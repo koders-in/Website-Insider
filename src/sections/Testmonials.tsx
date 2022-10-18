@@ -43,14 +43,21 @@ const Testmonials = () => {
           logo: currentItem.logo,
           description: currentItem.description,
           title: currentItem.title,
+          animationStyle: "animate-fadeOut",
+          testmonialLogo: testmonialLogo,
         }}
       />
-      <div className="w-[60%] sm:w-1/4 mx-auto flex items-center gap-3  sm:gap-2 justify-center  mt-7 sm:mt-0">
+      <div className="w-[60%] sm:w-1/4 mx-auto flex items-center gap-3  sm:gap-7 justify-center  mt-7 sm:mt-0">
         {testmonialLogo.map((item, i) => (
           <div
             onClick={() => setCurrentItem(item)}
             key={i}
-            className="w-8 h-8 sm:w-12 sm:h-12"
+            className="w-8 h-8 sm:w-12 sm:h-12 rounded-full"
+            style={
+              currentItem.title === item.title
+                ? { boxShadow: "0px 0px 11px 2px white" }
+                : {}
+            }
           >
             <img
               src={item.logo}
