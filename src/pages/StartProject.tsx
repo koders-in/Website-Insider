@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   ButtonsGroup,
@@ -7,11 +7,22 @@ import {
   Form,
   GradientText,
 } from "../components";
-import { typeOfProjects } from "../helper/constant";
+import { faq, typeOfProjects } from "../helper/constant";
+
+export interface FormState {
+  technologies: Array<string>;
+}
 
 const StartProject = () => {
-  const handleClick = (type: string) => {
-    console.log(type);
+  const [formState, setFormState] = useState<FormState>({
+    technologies: ["Web Development", "UI/UX"]
+  });
+  const [isExpand, setIsExpand] = useState("");
+
+
+  const handleExpand = (question: string) => {
+    if (isExpand === question) setIsExpand("")
+    else setIsExpand(question)
   };
   React.useEffect(() => {
     window.scrollTo({
@@ -21,48 +32,30 @@ const StartProject = () => {
   return (
     <div className="py-28 w-[85%] mx-auto">
       <GradientText
-        className="text-[2rem] sm:text-[3rem] w-fit mx-auto text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
+        className="text-[2rem] sm:text-[2.8rem] w-fit mx-auto text-center mt-9 bg-gradient-to-r from-white to-main-teal font-miligrambold"
         text="Start your project"
       />
-      <Divider className="mt-10" />
-      <ButtonsGroup buttonsArray={[...typeOfProjects]} />
-      <Divider className="mt-10" />
+      <Divider className="mt-16 py-2" />
+      <ButtonsGroup formState={formState} setFormState={setFormState} buttonsArray={[...typeOfProjects]} />
+      <Divider className="mt-16" />
       <Form />
-      <Divider className="mt-10" />
+      <Divider className="mt-12 xxl:mt-16" />
       <GradientText
-        className="text-[2rem] sm:text-[3rem]  w-fit mx-auto text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
+        className="text-[2rem] sm:text-[2.8rem]  w-fit mx-auto text-center bg-gradient-to-r from-white to-main-teal font-miligrambold pt-"
         text="Frequently Asked Questions"
       />
-      <Divider className="mt-8" />
-      <Faq
-        question="  How long will it take to get a new website?"
-        answer="  How long will it take to get a new website?"
-      />
-      <Divider className="mt-8" />
-      <Faq
-        question="  How long will it take to get a new website?"
-        answer="  How long will it take to get a new website?"
-      />
-      <Divider className="mt-8" />
-      <Faq
-        question="  How long will it take to get a new website?"
-        answer="  How long will it take to get a new website?"
-      />
-      <Divider className="mt-8" />
-      <Faq
-        question="  How long will it take to get a new website?"
-        answer="  How long will it take to get a new website?"
-      />
-      <Divider className="mt-8" />
-      <Faq
-        question="  How long will it take to get a new website?"
-        answer="  How long will it take to get a new website?"
-      />
-      <Divider className="mt-8" />
-      <Faq
-        question="  How long will it take to get a new website?"
-        answer="  How long will it take to get a new website?"
-      />
+      <Divider className="mt-8 xxl:mt-16 xxl:pt-3" />
+      {
+        faq.map((item, i) =>
+          <Faq
+            answer={item.answer}
+            question={item.question}
+            onClick={handleExpand}
+            show={item.question === isExpand}
+            key={i}
+          />
+        )
+      }
     </div>
   );
 };

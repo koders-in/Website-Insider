@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, GradientText, ReviewBox } from "../components";
+import { Button, Divider, GradientText, ReviewBox } from "../components";
 import { sleep } from "../helper";
 import { TestmonialData, testmonialLogo } from "../helper/constant";
 
@@ -29,12 +29,13 @@ const Testmonials = () => {
     }
   });
   return (
-    <div className="py-16">
+    <div className="py-16 xxl:py-[10rem]">
+            <Divider className="mt-5" />
       <GradientText
-        className="w-[90%] mx-auto sm:w-fit text-[1.6rem] sm:text-[2rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
+        className="w-[90%] mx-auto sm:w-fit text-[1.6rem] sm:text-[2.6rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
         text="Don’t just take our word for it."
       />
-      <p className="text-[0.8rem] sm:text-[1rem] w-[80%] sm:w-1/2  lg:w-1/3 mx-auto text-center text-main-light_white py-5 font-miligramMedium">
+      <p className="text-[0.8rem] leading-none m-1 sm:text-[1.3rem] w-[80%] sm:w-1/2  lg:w-1/3 mx-auto text-center text-main-light_white font-miligramText400">
         Take a look at what a few of our most successful customers have to say
         about Koders.
       </p>
@@ -47,7 +48,7 @@ const Testmonials = () => {
           testmonialLogo: testmonialLogo,
         }}
       />
-      <div className="w-[60%] sm:w-1/4 mx-auto flex items-center gap-3  sm:gap-7 justify-center  mt-7 sm:mt-0">
+      <div className="w-[60%] sm:w-1/4 mx-auto flex items-center gap-3  sm:gap-7 xxl:gap-9 justify-center  mt-7 sm:mt-0">
         {testmonialLogo.map((item, i) => (
           <div
             onClick={() => setCurrentItem(item)}
@@ -55,7 +56,7 @@ const Testmonials = () => {
             className="w-8 h-8 sm:w-12 sm:h-12 rounded-full"
             style={
               currentItem.title === item.title
-                ? { boxShadow: "0px 0px 11px 2px white" }
+                ? { boxShadow: "0px 0px 11px 2px #38D8CC" }
                 : {}
             }
           >
@@ -70,8 +71,8 @@ const Testmonials = () => {
       </div>
       <Button
         OnClick={handleClick}
-        text="Read more"
-        className="mx-auto block mt-8 sm:mt-10 bg-main-greenOpt-200 font-miligramMedium text-main-greenOpt-1000 py-2 px-8 rounded-lg border-2 border-main-greenOpt-1000 hover:bg-main-greenOpt-1000 hover:text-white"
+        text="Read More"
+        className="mx-auto block mt-8 sm:mt-10 bg-main-greenOpt-200 font-miligramMedium text-main-lightTeal py-[10px] px-9 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
       />
     </div>
   );

@@ -14,7 +14,6 @@ module.exports = {
           light_white: "rgba(255, 255, 255, 0.5)",
           greenOpt: {
             200: "rgba(0, 169, 157, 0.2)",
-            1000: "#00A99D",
           },
           blueOpt: {
             200: "rgba(114, 137, 218, 0.2)",
@@ -25,8 +24,9 @@ module.exports = {
           },
           white: {
             500: "rgba(255, 255, 255, 0.05)",
+            700: "#A1A1AA"
           },
-          lightTeal: "#b9f3ef",
+          lightTeal: "#38D8CC",
         },
       },
       boxShadow: {
@@ -39,6 +39,8 @@ module.exports = {
         rightOut: "rightOut 0.6s ease forwards",
         blink: "blink 3s ease-in-out infinite alternate",
         fadeOut: "fadeOut 0.15s ease-in forwards",
+        show: "show 1s ease forwards",
+        hide: "hide 0.5s ease-in forwards"
       },
       keyframes: {
         leftIn: {
@@ -110,6 +112,24 @@ module.exports = {
             opacity: "1",
           },
         },
+        show: {
+          "0%": {
+            opacity: "0",
+            height: "0"
+          },
+          "100%": {
+            opacity: "1",
+            height: "auto"
+          },
+        },
+        hide: {
+          "0%": {
+            opacity: "1",
+          },
+          "100%": {
+            opacity: "0",
+          },
+        },
       },
       fontFamily: {
         miligrambold: ["MILIGRAM BOLD"],
@@ -117,7 +137,13 @@ module.exports = {
         miligramMedium: ["MILIGRAM MEDIUM"],
         battambangMedium: ["BATTAMBANG MEDIUM"],
         battambangBold: ["BATTAMBANG BOLD"],
+        miligramText400: ["MILIGRAM TEXT NORMAL"],
+        miligramTextBook: ["MILIGRAM TEXT BOOK"],
+        miligramTextMedium: ["MILIGRAM TEXT MEDIUM"],
       },
+      boxShadow: {
+        client: "-1px 0px 73px -20px #00a99d"
+      }
     },
     screens: {
       xsm: "300px",

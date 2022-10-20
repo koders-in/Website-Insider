@@ -23,30 +23,30 @@ const PricingCard = ({
             }
           : {}
       }
-      className={`shadow-lg shadow-black py-5 px-6 rounded-xl bg-main-lightBg hover:bg-black hover:shadow-main-teal cursor-pointer ${className}`}
+      className={`shadow-lg shadow-black py-5 px-6 rounded-xl bg-main-lightBg hover:bg-black hover:shadow-main-teal ${className}`}
     >
-      <div className="w-[75%] text-center text-[13px] lg:text-[15px] font-miligrambold mx-auto  py-2 text-black bg-main-teal rounded-lg -translate-y-7">
+      <div className="w-[80%] text-center text-[13px] lg:text-[0.9rem] font-miligrambold mx-auto  py-[6px] text-black bg-main-teal rounded-lg -translate-y-8">
         {title}
       </div>
-      <p className="text-center text-[12px] lg:text-[15px] text-white font-miligramMedium">
+      <p className="text-center text-[0.8rem] lg:w-[75%] lg:mx-auto text-white font-miligramLight">
         {description}
       </p>
-      <div className="py-2 lg:py-3 text-main-light_white text-center font-miligramMedium text-[0.8rem] border-b-2 border-main-teal">
-        <span className="text-[1.5rem] lg:text-[2rem] text-white">
+      <div className="py-2 lg:py-3 text-main-light_white text-center font-miligramLight text-[0.7rem] border-b-[1px] border-main-teal">
+        <span className="text-[1rem] lg:text-[1.5rem] text-white font-miligramMedium">
           {price}&nbsp;
         </span>
-        /month
+        / month
       </div>
       <Button
         OnClick={() => {}}
         text="Get Started"
-        className="mx-auto text-[12px] lg:text-[14px] w-full block mt-3 sm:mt-5 bg-main-greenOpt-200 font-miligramMedium text-main-greenOpt-1000 py-2 px-8 rounded-lg border-2 border-main-greenOpt-1000 hover:text-main-teal"
+        className="mx-auto text-[0.8rem] w-full block mt-3 sm:mt-5 bg-main-greenOpt-200 font-miligramLight text-main-lightTeal py-[6px] px-8 rounded-lg border-[1px] border-main-lightTeal hover:text-main-teal"
       />
-      <ul className="mt-3 lg:mt-4">
+      <ul className="mt-3 lg:mt-4 lg:w-[80%] mx-auto">
         {services.map((item, i) => (
           <li
             key={i}
-            className="text-white flex text-[12px] lg:text-[15px] items-center mt-1 lg:mt-2"
+            className="text-white flex text-[0.8rem] items-center mt-1 lg:mt-2"
           >
             <img src={check} alt="checked" className="h-2 mr-2" /> {item}
           </li>

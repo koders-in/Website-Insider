@@ -46,9 +46,9 @@ export const footerButtons = [
     title: "Quick Links",
     buttons: [
       { title: "Blogs", route: "blog", target: false },
-      { title: "Portfolio", route: "", target: false },
+      { title: "Portfolio", route: "https://portfolio.koders.in/", target: true },
       { title: "Pricing", route: "", target: false },
-      { title: "Payments", route: "", target: false },
+      { title: "Payments", route: "https://payments.koders.in/", target: true },
     ],
   },
   {
@@ -63,8 +63,9 @@ export const footerButtons = [
   {
     title: "Support",
     buttons: [
-      { title: "GitHub", route: "", target: false },
+      { title: "GitHub", route: "https://github.com/koders-in", target: true },
       { title: "Help", route: "", target: false },
+      { title: "Join Discord", route: "https://dsc.gg/koders", target: true },
     ],
   },
 ];
@@ -87,7 +88,7 @@ export const typeOfProjects = [
   "Desktop App",
   "Toolbots",
   "Integration",
-  "UI?UX",
+  "UI/UX",
   "Backend Development",
   "Web Scraper",
   "Discord Bots",
@@ -162,24 +163,57 @@ export const whyWe = [
     class: "text-center border-r-2  border-main-teal",
     title: "Company",
     state: "01",
-    html: '<p class="font-miligramMedium px-2 md:px-3 lg:px-6 mt-2 text-main-light_white text-[16px]">Rest assured. Unlike freelancers,<span class="text-main-teal">  we are sticking till completion</span>.</p>',
+    html: '<p class="font-miligramText400  leading-[1.3rem] px-2 md:px-3 lg:px-6 mt-2 text-main-light_white text-[1.2rem]">Rest assured. Unlike freelancers,<span class="text-main-lightTeal">  we are sticking till completion</span>.</p>',
   },
   {
     class: "text-center border-r-2  border-main-teal",
     title: "One Stop Solution",
     state: "02",
-    html: ' <p class="font-miligramMedium px-2 md:px-3 lg:px-6 mt-2 text-main-light_white text-[16px]">Design+Frontend+Backend +Testing+QnA+Docs?<span class="text-main-teal"> We do it all</span>.</p>',
+    html: ' <p class="font-miligramText400  leading-[1.3rem] px-2 md:px-3 lg:px-6 mt-2 text-main-light_white text-[1.2rem]">Design+Frontend+Backend +Testing+QnA+Docs?<span class="text-main-lightTeal"> We do it all.</span></p>',
   },
   {
     class: "text-center border-r-2  border-main-teal",
     title: "Quality + Satisfaction",
     state: "03",
-    html: '<p class="font-miligramMedium px-2 md:px-3 lg:px-6 mt-2 text-main-light_white text-[16px]"><span class="text-main-teal">Quality </span>delivery with 100%<span class="text-main-teal"> Satisfaction </span>or 100%refund.</p>',
+    html: '<p class="font-miligramText400  leading-[1.3rem] px-2 md:px-3 lg:px-6 mt-2 text-main-light_white text-[1.2rem]"><span class="text-main-lightTeal">Quality </span>delivery with 100%<span class="text-main-lightTeal"> Satisfaction </span>or 100% refund.</p>',
   },
   {
     class: "text-center",
-    title: "Your Code, Not Ours.",
+    title: "Your Code, Not Ours",
     state: "04",
-    html: ' <p class="font-miligramMedium px-2 md:px-3 lg:px-6 mt-2 text-main-light_white text-[16px]">We’re giving <span class="text-main-teal">IPR rights</span>, notjust the source code.</p>',
+    html: ' <p class="font-miligramText400  leading-[1.3rem] px-2 md:px-3 lg:px-6 mt-2 text-main-light_white text-[1.2rem]">We’re giving <span class="text-main-lightTeal">IPR rights</span>, not just the source code.</p>',
   },
 ];
+
+
+export const faq = [
+  {
+    question: "How long will it take to get a new website?",
+    answer: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet laboriosam nihil natus soluta porro ratione quaerat eligendi non, modi aut accusantium? Laborum at, ullam recusandae voluptates repudiandae cum nihil nisi voluptatibus saepe!"
+  },
+  {
+    question: "How long will it take to get a new mobile app?",
+    answer: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet laboriosam nihil natus soluta porro ratione quaerat eligendi non, modi aut accusantium? Laborum at, ullam recusandae voluptates repudiandae cum nihil nisi voluptatibus saepe!"
+  },
+  {
+    question: "How long will it take to get a new ui/ux?",
+    answer: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet laboriosam nihil natus soluta porro ratione quaerat eligendi non, modi aut accusantium? Laborum at, ullam recusandae voluptates repudiandae cum nihil nisi voluptatibus saepe!"
+  },
+  {
+    question: "How long will it take to get a new discord bot?",
+    answer: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet laboriosam nihil natus soluta porro ratione quaerat eligendi non, modi aut accusantium? Laborum at, ullam recusandae voluptates repudiandae cum nihil nisi voluptatibus saepe!"
+  },
+  {
+    question: "How long will it take to get a new desktop app?",
+    answer: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet laboriosam nihil natus soluta porro ratione quaerat eligendi non, modi aut accusantium? Laborum at, ullam recusandae voluptates repudiandae cum nihil nisi voluptatibus saepe!"
+  },
+  {
+    question: "How long will it take to get a new backend?",
+    answer: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eveniet laboriosam nihil natus soluta porro ratione quaerat eligendi non, modi aut accusantium? Laborum at, ullam recusandae voluptates repudiandae cum nihil nisi voluptatibus saepe!"
+  }
+]
+
+
+export const pricingList = ["14,000$","28,000$","45,000$","62,000$","70,000$"]
+export const timeLineList = ["Less than one week","Less than one month","Less than one year","More than one year"]
+

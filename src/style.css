@@ -27,9 +27,24 @@
   src: url("./assets/font/Battambang/Battambang-Regular.ttf");
 }
 
+@font-face {
+  font-family: "MILIGRAM TEXT NORMAL";
+  src: url("./assets/font/Milligram/MilligramText-Regular.ttf");
+}
+
+@font-face {
+  font-family: "MILIGRAM TEXT BOOK";
+  src: url("./assets/font/Milligram/MilligramText-Book.ttf");
+}
+
+@font-face {
+  font-family: "MILIGRAM TEXT MEDIUM";
+  src: url("./assets/font/Milligram/MilligramText-Medium.ttf");
+}
+
 /* div{
   animation: name duration timing-function delay iteration-count direction fill-mode;
-  animation: fadeOut 1s ease-in-out forwards;
+  animation: hide 1s ease-in-out forwards;
 } */
 
 /* Keyframe for honey comb cell in technologies section */
@@ -37,6 +52,7 @@
   0% {
     filter: invert(0);
   }
+
   100% {
     background-color: transparent;
     filter: invert(1);

@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Info } from "../components";
+import { Divider, Info } from "../components";
 import { rightAero } from "../assets";
 import { whyWe } from "../helper/constant";
 
@@ -12,8 +12,9 @@ const WhyKoders = () => {
     handleSliding.onSwipe("whyKoders");
   });
   return (
-    <div className="py-16 bg-main-secondary h-[90vh] sm:h-auto lg:h-[90vh] xxl:h-auto">
-      <h1 className="w-[90%] mx-auto sm:w-full text-[1.6rem] sm:text-[2rem] text-center font-medium text-white font-miligrambold">
+    <div className="py-16 bg-main-secondary h-[90vh] sm:h-auto lg:h-[90vh] xxl:h-auto xxl:py-[10rem]">
+      <Divider className="mt-5" />
+      <h1 className="leading-none w-[90%] mx-auto sm:w-full text-[1.6rem] sm:text-[2.6rem] text-center font-medium text-white font-miligrambold">
         Why trust&nbsp;
         <span className="bg-gradient-to-r from-white to-main-teal bg-clip-text text-transparent">
           Koders
@@ -26,7 +27,7 @@ const WhyKoders = () => {
         your business?
       </h1>
 
-      <div className="hidden lg:flex gap-2 mt-16 w-[95%] lg:w-[85%] mx-auto">
+      <div className="hidden lg:flex gap-2 mt-16 w-[95%] lg:w-[95%] mx-auto">
         {whyWe.map((item, i) => (
           <Info
             className={item.class}

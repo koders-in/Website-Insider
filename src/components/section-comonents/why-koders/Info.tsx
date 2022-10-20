@@ -32,10 +32,10 @@ const Info = ({
       }
     >
       <GradientText
-        className="text-[10rem] text-center leading-[135px] bg-gradient-to-r from-white via-main-lightTeal to-main-teal font-battambangMedium"
+        className="text-[14rem] text-center leading-[14rem] bg-gradient-to-r from-white via-main-lightTeal to-main-teal font-battambangMedium"
         text={stat}
       />
-      <p className="text-center text-white text-[15px] lg:text-[22px] my-1 lg:mt-8  font-miligramMedium">
+      <p className="text-center text-white text-[15px] lg:text-[1.8rem] my-1 lg:mt-5  font-miligramMedium">
         {title}
       </p>
       <div className="mt-2" dangerouslySetInnerHTML={{ __html: html }}></div>

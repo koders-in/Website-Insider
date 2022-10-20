@@ -10,11 +10,11 @@ const PrivacyPolicy = () => {
   return (
     <div className="pb-10 pt-28 w-[90%] sm:w-[95%] mx-auto">
       <GradientText
-        className="text-[1.8rem] sm:text-[2.5rem] md:text-[3rem] mx-auto w-fit bg-gradient-to-r from-white to-main-teal font-miligrambold"
+        className="text-[1.8rem] sm:text-[2.5rem] md:text-[2.8rem] mx-auto w-fit bg-gradient-to-r from-white to-main-teal font-miligrambold mt-16"
         text="Privacy Policy"
       />
       <br />
-      <p className="font-miligramLight text-[18px] text-main-light_white">
+      <p className="font-miligramLight text-[1.05rem] text-main-white-700 w-[96%] mx-auto">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque a
         tristique sem vitae. Phasellus in nunc, suspendisse viverra sapien. Eget
         donec suspendisse mauris non. Lobortis turpis eu amet facilisis.

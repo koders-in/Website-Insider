@@ -7,6 +7,8 @@ interface Props {
   hoverLogo?: string;
   OnClick: () => void;
   logoStyle?: string;
+  hoveLogoStyle?: string;
+  isSelect?: string;
 }
 const Button = ({
   className,
@@ -15,18 +17,20 @@ const Button = ({
   OnClick,
   hoverLogo,
   logoStyle,
+  hoveLogoStyle,
+  isSelect
 }: Props) => {
   const [iconStyle, setIconStyle] = useState("");
   return (
     <button
       onClick={OnClick}
-      className={`hover:text-gray-400 cursor-pointer text-[12px] flex items-center justify-center ${className}`}
+      className={`hover:text-gray-400 cursor-pointer flex items-center justify-center ${className} ${isSelect ? "bg-main-teal text-black scale-110" : ""} `}
       onMouseEnter={() => setIconStyle("brightness-50")}
       onMouseLeave={() => setIconStyle("")}
     >
       {logo ? (
-        iconStyle && hoverLogo ? (
-          <img src={hoverLogo} className={`h-5 mr-1 ${logoStyle}`} alt="icon" />
+        iconStyle && hoverLogo || isSelect ? (
+          <img src={hoverLogo} className={`h-5 mr-2 ${hoveLogoStyle}`} alt="icon" />
         ) : (
           <img
             src={logo}

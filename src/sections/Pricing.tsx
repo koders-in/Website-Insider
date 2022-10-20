@@ -17,18 +17,19 @@ const Pricing = () => {
   });
 
   return (
-    <div className="py-16 bg-main-secondary">
+    <div className="py-16 bg-main-secondary xxl:py-[10rem]">
+            <Divider className="mt-5" />
       <GradientText
-        className="w-[90%] mx-auto sm:w-fit text-[1.6rem] sm:text-[2rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
+        className="w-[90%] mx-auto sm:w-fit text-[1.6rem] sm:text-[2.6rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
         text="Pricing that suits your needs."
       />
-      <p className="text-[0.8rem] sm:text-[1rem] w-[80%] sm:w-1/2  lg:w-1/3 mx-auto text-center text-main-light_white py-5 font-miligramMedium">
+      <p className="text-[0.8rem] sm:text-[1.3rem] w-[80%] leading-none sm:w-1/2  lg:w-1/3 mx-auto text-center text-main-light_white pb-5 mt-2 font-miligramText400">
         Choose your best plan, pay monthly or yearly and change or cancel any
         time.
       </p>
-      <div className="flex gap-4 w-fit mx-auto text-main-light_white font-miligramMedium">
+      <div className="flex items-center gap-4 w-fit mx-auto text-main-light_white font-miligramLight">
         <span
-          className={`text-[0.8rem] sm:text-[1rem] ${
+          className={`text-[0.75rem] ${
             toggle ? "text-white" : ""
           }`}
         >
@@ -36,7 +37,7 @@ const Pricing = () => {
         </span>
         <Toogler handleToogle={handleToogle} />
         <span
-          className={`text-[0.8rem] sm:text-[1rem] ${
+          className={`text-[0.75rem] ${
             !toggle ? "text-white" : ""
           }`}
         >
@@ -44,7 +45,7 @@ const Pricing = () => {
         </span>
       </div>
       <Divider className="h-16" />
-      <div className="hidden justify-center items-center md:flex gap-3 lg:gap-8 w-[96%] lg:w-[90%] mx-auto">
+      <div className="hidden justify-center items-center md:flex gap-3 lg:gap-14 w-[96%] lg:w-[90%] xl:w-[85%] xxl:w-[80%] mx-auto">
         {pricingCardData.map((item, i) => (
           <PricingCard key={i} {...item} />
         ))}
@@ -85,6 +86,7 @@ const Pricing = () => {
           })}
         </div>
       </div>
+      <Divider className="mt-9" />
     </div>
   );
 };

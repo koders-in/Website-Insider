@@ -5,17 +5,26 @@ interface Props {
   handleChange: (data: any) => void;
   value: string;
   name: string;
+  type: string;
+  styling?: string;
 }
 
-const InputBox = ({ handleChange, name, placeholder, value }: Props) => {
+const InputBox = ({
+  handleChange,
+  name,
+  placeholder,
+  value,
+  styling,
+  type,
+}: Props) => {
   return (
     <input
-      type="text"
+      type={type}
       value={value}
       name={name}
-      onChange={handleChange}
+      onChange={(e) => handleChange(e.target)}
       placeholder={placeholder}
-      className="px-1 bg-transparent border-b-2 outline-none border-main-light_white text-main-light_white w-full"
+      className={`px-1 text-[1.2rem] text-main-light_white mt-5 pb-3 bg-transparent placeholder:tracking-[2px] border-b-2 outline-none border-main-light_white placeholder:text-main-light_white w-full ${styling}`}
     />
   );
 };

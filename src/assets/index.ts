@@ -31,6 +31,8 @@ import phone from "./images/phone.svg";
 import check from "./images/check-teal.svg";
 import tech from "./images/tech.svg";
 import rightAero from "./images/right-aero.svg";
+import tag from "./images/tag.svg";
+import tick from "./images/tick.svg";
 
 // Assets for technologies components
 
@@ -167,6 +169,8 @@ export {
   check,
   tech,
   rightAero,
+  tag,
+  tick
 };
 
 // export const technologiesIconsData: Array<{ src: string; position: Object }> = [

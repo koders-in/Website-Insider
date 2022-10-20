@@ -8,9 +8,10 @@ const Blog = () => {
     });
   }, []);
   return (
-    <div className="pb-10 pt-28 w-[90%] mx-auto">
+    <div className="pb-10 pt-28 w-[88%] mx-auto">
+      <Divider className="mt-10" />
       <GradientText
-        className="w-fit mx-auto text-[2rem] xsm:text-[2.5rem] sm:text-[4rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
+        className="w-fit mx-auto text-[2rem] xsm:text-[2.5rem] sm:text-[2.8rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
         text="Blogs"
       />
       <MainCard />
@@ -21,10 +22,10 @@ const Blog = () => {
       </div>
       <Divider className="mt-20" />
       <GradientText
-        className="text-[1.2rem] sm:text-[2rem] w-fit mx-auto text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
+        className="text-[1.2rem] sm:text-[2.8rem] w-fit mx-auto text-center bg-gradient-to-r from-white to-main-teal font-miligrambold xxl:pt-10"
         text="Wish your blog was here too?"
       />
-      <p className="text-[0.8rem] sm:text-[1rem] text-main-light_white text-center sm:font-miligramMedium font-miligramLight">
+      <p className="text-[0.8rem] sm:text-[1.3rem] text-main-light_white text-center font-miligramLight xxl:pb-10">
         Submit your blog. Write to us at&nbsp;
         <span
           onClick={() => {
