@@ -12,6 +12,7 @@ module.exports = {
           teal: "#00A99D",
           lightBg: "#151823",
           light_white: "rgba(255, 255, 255, 0.5)",
+          whiteVar1:"#D9D9D9",
           greenOpt: {
             200: "rgba(0, 169, 157, 0.2)",
           },
@@ -33,10 +34,10 @@ module.exports = {
         "3xl": "0 2px 38px -1px rgba(0, 0, 0, 0.3)",
       },
       animation: {
-        leftIn: "leftIn 0.6s ease forwards",
-        leftOut: "leftOut 0.6s ease forwards",
-        rightIn: "rightIn 0.6s ease forwards",
-        rightOut: "rightOut 0.6s ease forwards",
+        leftIn: "leftIn 0.35s ease-out forwards",
+        leftOut: "leftOut 0.3s ease-in forwards",
+        rightIn: "rightIn 0.35s ease-out forwards",
+        rightOut: "rightOut 0.3s ease-in forwards",
         blink: "blink 3s ease-in-out infinite alternate",
         fadeOut: "fadeOut 0.15s ease-in forwards",
         show: "show 1s ease forwards",
