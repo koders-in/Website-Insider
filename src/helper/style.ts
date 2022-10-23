@@ -1,10 +1,15 @@
-export const gradientStleObj = {
-  WebkitTextFillColor: "transparent",
-  WebkitBackgroundClip: "text",
+export const hex: any = {
+  WebkitClipPath: "polygon(0% 50%,25% 0%,75% 0%,100% 50%,75% 100%,25% 100%)",
 };
 
-export const polygonStyle = {
-  WebkitClipPath: "polygon(0 0, 100% 35%, 100% 65%, 0% 100%)",
-  clipPath: "polygon(0 0, 100% 35%, 100% 65%, 0% 100%)",
-  background: "#E0E6E5",
+export const hexBg: any = {
+  WebkitClipPath: "polygon(0% 50%,25% 0%,75% 0%,100% 50%,75% 100%,25% 100%)",
 };
+
+// -moz-clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
+// -moz-clip-path: "polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%)",
+
+export const techIconsKeyframs = [
+  { background: "black" },
+  { background: "white" },
+];

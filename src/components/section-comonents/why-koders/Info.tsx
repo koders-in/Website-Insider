@@ -1,4 +1,5 @@
 import React, { ReactNode } from "react";
+import Divider from "../../Divider";
 import GradientText from "../../GradientText";
 
 interface Props {
@@ -20,7 +21,7 @@ const Info = ({
 }: Props) => {
   return (
     <div
-      className={`md:w-1/4 ${className}`}
+      className={`w-full md:w-1/4 ${className}`}
       style={
         isMobile
           ? {
@@ -32,12 +33,13 @@ const Info = ({
       }
     >
       <GradientText
-        className="text-[10rem] text-center leading-[135px] bg-gradient-to-r from-white via-main-lightTeal to-main-teal font-battambangMedium"
+        className="text-[10rem] leading-none xl:text-[14rem] text-center xl:leading-[14rem] bg-gradient-to-r from-white via-main-lightTeal to-main-teal font-battambangMedium"
         text={stat}
       />
-      <p className="text-center text-white text-[15px] lg:text-[22px] my-1 lg:mt-8  font-battambangMedium">
+      <p className="text-center text-white text-[1.5rem] leading-none xl:text-[1.8rem] my-1 lg:mt-5  font-miligramMedium">
         {title}
       </p>
+      <Divider className="mt-3 md:hidden" />
       <div className="mt-2" dangerouslySetInnerHTML={{ __html: html }}></div>
     </div>
   );

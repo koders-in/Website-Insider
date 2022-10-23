@@ -1,5 +1,6 @@
 // ********** ---| GLOBAL COMPONENTS |--- *********
 export { default as Faq } from "./Faq";
+export { default as Tag } from "./Tag";
 export { default as Navbar } from "./Navbar";
 export { default as Footer } from "./Footer";
 export { default as Button } from "./Button";
@@ -11,6 +12,7 @@ export { default as SelectBox } from "./SelectBox";
 export { default as ReviewBox } from "./ReviewBox";
 export { default as GradientText } from "./GradientText";
 export { default as TestmonialCard } from "./TestmonialCard";
+export { default as AnimatedBorder } from "./TestmonialCard";
 
 // ********** ---| PAGES COMPONENTS |--- *********
 // BLLOG PAGE COMPONENTS
@@ -19,6 +21,11 @@ export { default as MainCard } from "./pages-components/blog-page-components/Mai
 // PROJECT PAGE COMPONENTS
 export { default as Form } from "./pages-components/project-page-components/Form";
 export { default as ButtonsGroup } from "./pages-components/project-page-components/ButtonsGroup";
+// JOB PAGE COMPONENTS 
+export { default as Job } from "./pages-components/jobs/Job";
+export { default as JobModal } from "./pages-components/jobs/Modal";
+export { default as JobAlert } from "./pages-components/jobs/JobAlert";
+export { default as LandingSection } from "./pages-components/jobs/LandingSection";
 
 // ********** ---| SECTIONS COMPONENTS |--- *********
 // WHY KODERS SECTION COMPONENTS

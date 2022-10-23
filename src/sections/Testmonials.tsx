@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, GradientText, ReviewBox } from "../components";
+import { Button, Divider, GradientText, ReviewBox } from "../components";
 import { sleep } from "../helper";
 import { TestmonialData, testmonialLogo } from "../helper/constant";
 
+let COUNTER = 0;
 const Testmonials = () => {
   const isRunning = useRef(false);
   const [currentItem, setCurrentItem] = useState<TestmonialData>(
@@ -17,10 +18,14 @@ const Testmonials = () => {
 
   useEffect(() => {
     const startAnimation = async () => {
-      for (let i = 0; i < testmonialLogo.length; i++) {
-        setCurrentItem(testmonialLogo[i]);
-        await sleep(5000);
+      if (COUNTER < testmonialLogo.length - 1) {
+        COUNTER += 1;
+        setCurrentItem(testmonialLogo[COUNTER]);
+      } else {
+        COUNTER = 0;
+        setCurrentItem(testmonialLogo[0]);
       }
+      await sleep(5000);
       startAnimation();
     };
     if (!isRunning.current) {
@@ -29,33 +34,47 @@ const Testmonials = () => {
     }
   });
   return (
-    <div className="py-16">
+    <div className="py-16 xxl:py-[10rem]">
+      <Divider className="mt-5 xl:my-10" />
       <GradientText
-        className="w-[90%] mx-auto sm:w-fit text-[1.2rem] sm:text-[2rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
+        className="w-[90%]  leading-none mb-3 md:mb-0 md:leading-normal mx-auto sm:w-fit text-[2rem] sm:text-[2.6rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
         text="Don’t just take our word for it."
       />
-      <p className="text-[0.8rem] sm:text-[1rem] w-[80%] sm:w-1/2  lg:w-1/3 mx-auto text-center text-main-light_white py-5 font-miligramMedium">
+      <p className="text-[0.8rem] leading-none m-1 sm:text-[1.3rem] w-[80%] sm:w-1/2  lg:w-1/3 mx-auto text-center text-main-light_white font-miligramText400">
         Take a look at what a few of our most successful customers have to say
         about Koders.
       </p>
+      <Divider className="mt-7 md:mt-0" />
       <ReviewBox
         {...{
-          logo: currentItem.logo,
-          description: currentItem.description,
-          title: currentItem.title,
+          logo: currentItem?.logo,
+          description: currentItem?.description,
+          title: currentItem?.title,
+          animationStyle: "animate-fadeOut",
+          testmonialLogo: testmonialLogo,
         }}
       />
-      <div className="w-[60%] sm:w-1/4 mx-auto flex items-center gap-3  sm:gap-2 justify-center  mt-7 sm:mt-0">
+      <div className="w-[60%] sm:w-1/4 mx-auto flex items-center gap-4  sm:gap-7 xxl:gap-9 justify-center  mt-7 sm:mt-0">
         {testmonialLogo.map((item, i) => (
           <div
-            onClick={() => setCurrentItem(item)}
+            onClick={() => {
+              COUNTER = i;
+              setCurrentItem(item);
+            }}
             key={i}
-            className="w-8 h-8 sm:w-12 sm:h-12"
+            className="w-8 h-8 sm:w-12 sm:h-12 rounded-full cursor-pointer"
+            style={
+              currentItem?.title === item.title
+                ? { boxShadow: "0px 0px 11px 2px #38D8CC" }
+                : {}
+            }
           >
             <img
               src={item.logo}
               alt="logo"
-              style={{ opacity: item.title === currentItem.title ? "0,.5" : 1 }}
+              style={{
+                opacity: item.title === currentItem?.title ? "0,.5" : 1,
+              }}
               className={`w-full h-full`}
             />
           </div>
@@ -63,9 +82,10 @@ const Testmonials = () => {
       </div>
       <Button
         OnClick={handleClick}
-        text="Read more"
-        className="mx-auto block mt-8 sm:mt-10 bg-main-greenOpt-200 font-miligramMedium text-main-greenOpt-1000 py-2 px-8 rounded-lg border-2 border-main-greenOpt-1000 hover:bg-main-greenOpt-1000 hover:text-white"
+        text="Read More"
+        className="mx-auto block mt-8 sm:mt-10 bg-main-greenOpt-200 font-miligramMedium text-main-lightTeal py-[10px] px-9 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
       />
+      <Divider className="xl:my-10" />
     </div>
   );
 };

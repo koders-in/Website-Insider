@@ -1,13 +1,15 @@
 import React from "react";
+import { hex, hexBg } from "../helper/style";
 
 interface Props {
   logo?: string;
   x?: string;
   y?: string;
   className?: string;
+  id?: string;
 }
 
-const CombCell = ({ logo, className, x, y }: Props) => {
+const CombCell = ({ logo, className, x, y, id }: Props) => {
   const [iconStyle, setIconStyle] = React.useState("");
   return (
     <div
@@ -19,10 +21,9 @@ const CombCell = ({ logo, className, x, y }: Props) => {
         style={{ ...hex }}
       >
         <div
-          className="absolute bg-main-secondary top-[4px] left-[4px] w-[82px] h-[72px] hover:bg-white flex justify-center items-center"
+          className="absolute bg-main-secondary top-[4px] left-[4px] w-[82px] h-[72px] flex justify-center items-center transition-all duration-700"
           style={{ ...hexBg }}
-          onMouseEnter={() => setIconStyle("invert")}
-          onMouseLeave={() => setIconStyle("")}
+          id={id}
         >
           <img src={logo} className={"-rotate-90 h-8" + " " + iconStyle} />
         </div>
@@ -32,13 +33,3 @@ const CombCell = ({ logo, className, x, y }: Props) => {
 };
 
 export default CombCell;
-
-const hex: any = {
-  WebkitClipPath: "polygon(0% 50%,25% 0%,75% 0%,100% 50%,75% 100%,25% 100%)",
-};
-
-const hexBg: any = {
-  WebkitClipPath: "polygon(0% 50%,25% 0%,75% 0%,100% 50%,75% 100%,25% 100%)",
-};
-// -moz-clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
-// -moz-clip-path: "polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%)",
