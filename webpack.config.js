@@ -74,6 +74,7 @@ module.exports = {
       title: "Koders",
       template: "./src/index.html",
       filename: "./index.html",
+      favicon: "./src/assets/images/favicon.webp",
     }),
   ],
 };
