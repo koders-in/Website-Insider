@@ -7,9 +7,14 @@ module.exports = {
   entry: {
     javascript: "./src/index.tsx",
   },
+  performance: {
+    hints: false,
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000,
+  },
   output: {
     publicPath: "/",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "build"),
     filename: "main.js",
   },
   //   loader
