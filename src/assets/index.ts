@@ -13,9 +13,6 @@ import indianFlag from "./images/india.svg";
 import googleLogo from "./images/google.svg";
 import githubLogo from "./images/github.svg";
 import instaLogo from "./images/insta.svg";
-import img1 from "./images/img1.webp";
-import img2 from "./images/img2.webp";
-import img3 from "./images/img3.webp";
 import aeroUp from "./images/aeroUp.svg";
 import add from "./images/add.svg";
 import doubletick from "./images/doubletick.svg";
@@ -154,9 +151,6 @@ export {
   googleLogo,
   githubLogo,
   instaLogo,
-  img1,
-  img2,
-  img3,
   aeroUp,
   add,
   doubletick,
@@ -176,7 +170,7 @@ export {
   tick,
   work,
   search,
-  locationTeal
+  locationTeal,
 };
 
 // export const technologiesIconsData: Array<{ src: string; position: Object }> = [

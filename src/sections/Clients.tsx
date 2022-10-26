@@ -1,5 +1,5 @@
 import React from "react";
-import { img1, img2, img3, projectOne } from "../assets";
+import { projectOne, blogCard } from "../assets";
 import { Divider, GradientText } from "../components";
 import { sleep } from "../helper";
 
@@ -71,13 +71,13 @@ const Clients = () => {
           <img src={projectOne} alt="project" className="w-full h-full" />
         )}
         {count === 1 && (
-          <img src={img1} alt="project" className="w-full h-full" />
+          <img src={blogCard} alt="project" className="w-full h-full" />
         )}
         {count === 2 && (
-          <img src={img2} alt="project" className="w-full h-full" />
+          <img src={projectOne} alt="project" className="w-full h-full" />
         )}
         {count === 3 && (
-          <img src={img3} alt="project" className="w-full h-full" />
+          <img src={blogCard} alt="project" className="w-full h-full" />
         )}
       </div>
       <Divider className="xl:my-10" />
