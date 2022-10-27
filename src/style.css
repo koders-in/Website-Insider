@@ -50,14 +50,13 @@
 /* Keyframe for honey comb cell in technologies section */
 @keyframes fading {
   0% {
-    filter: invert(1);
+    filter: invert(0);
   }
-  60%{
-  filter: invert(0);
-
-}
+  50% {
+    filter: invert(0.5);
+  }
   100% {
-    background-color: transparent;
     filter: invert(1);
+    background-color: transparent;
   }
 }

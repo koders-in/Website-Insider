@@ -42,11 +42,10 @@ const Technologies = () => {
       index.forEach(async (item) => {
         const comb = document.getElementById(arrOfIds[item]);
         if (comb) {
-          comb.style.transform = "transition all 1s";
           comb.style.animation = `fading 2s ease-in-out 2s infinite reverse`;
         }
         // await sleep(getRandomInt());
-        await sleep(getRandomInt(4000, 6000));
+        await sleep(getRandomInt(6000, 7000));
         if (comb) comb.style.animation = "none";
       });
       await sleep(getRandomInt(500, 1500));
