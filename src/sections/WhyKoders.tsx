@@ -14,7 +14,7 @@ const WhyKoders = () => {
   return (
     <div className="py-16 bg-main-secondary sm:h-auto lg:h-auto xxl:py-[10rem]">
       <Divider className="mt-5 xl:my-10" />
-      <h1 className="leading-none w-[90%] mx-auto sm:w-full text-[2rem] sm:text-[2.6rem] text-center font-medium text-white font-miligrambold">
+      <h1 className="leading-none w-[90%] mx-auto sm:w-full text-[2rem] sm:text-[3rem] text-center font-medium text-white font-miligrambold">
         Why trust&nbsp;
         <span className="bg-gradient-to-r from-white to-main-teal bg-clip-text text-transparent">
           Koders
@@ -69,7 +69,7 @@ const WhyKoders = () => {
         {whyWe.map((item, i) => (
           <Info
             className={
-              "text-center absolute w-[230px] md:w-[80%] transition-all duration-500"
+              "text-center absolute w-[230px] sm:w-[230px] md:w-[330px] transition-all duration-500"
             }
             stat={item.state}
             title={item.title}

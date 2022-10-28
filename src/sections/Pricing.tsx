@@ -23,7 +23,7 @@ const Pricing = () => {
     >
       <Divider className="mt-5 xl:my-10" />
       <GradientText
-        className="w-[90%] leading-none mb-3 md:mb-0 md:leading-normal mx-auto sm:w-fit text-[2rem] sm:text-[2.6rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
+        className="w-[90%] leading-none mb-3 md:mb-0 md:leading-normal mx-auto sm:w-fit text-[2rem] sm:text-[3rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
         text="Pricing that suits your needs."
       />
       <p className="text-[0.8rem] sm:text-[1.3rem] w-[80%] leading-none sm:w-1/2  lg:w-1/3 mx-auto text-center text-main-light_white pb-5 mt-2 font-miligramText400">
@@ -31,11 +31,11 @@ const Pricing = () => {
         time.
       </p>
       <div className="flex items-center gap-4 w-fit mx-auto text-main-light_white font-miligramLight">
-        <span className={`text-[0.75rem] ${toggle ? "text-white" : ""}`}>
+        <span className={`text-[0.9rem] ${toggle ? "text-white" : ""}`}>
           Billed Monthly
         </span>
         <Toogler handleToogle={handleToogle} />
-        <span className={`text-[0.75rem] ${!toggle ? "text-white" : ""}`}>
+        <span className={`text-[0.9rem] ${!toggle ? "text-white" : ""}`}>
           Billed Yearly
         </span>
       </div>
@@ -46,7 +46,7 @@ const Pricing = () => {
         ))}
       </div>
       <div
-        className="flex md:hidden gap-8 w-[100%] justify-center items-center overflow-hidden mx-auto relative h-[420px] overflow-x-clip"
+        className="flex md:hidden gap-8 w-[100%] justify-center items-center overflow-hidden mx-auto relative h-[440px] overflow-x-clip"
         id="pricing"
       >
         <div

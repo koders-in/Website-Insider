@@ -36,32 +36,32 @@ const Clients = () => {
       <Divider className="mt-5 xl:my-10" />
       <GradientText
         text="Trusted by the"
-        className="text-[2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[2.6rem] w-fit mx-auto text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
+        className="text-[2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[3rem] w-fit mx-auto text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
       />
       {count === 0 && (
         <h2
-          className={`text-center text-[2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[2.6rem]  font-miligrambold text-white font-medium animate-leftIn ${leftOutStyle}`}
+          className={`text-center text-[2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[3rem]  font-miligrambold text-white font-medium animate-leftIn ${leftOutStyle}`}
         >
           Google
         </h2>
       )}
       {count === 1 && (
         <h2
-          className={`text-center text-[2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[2.6rem]  font-miligrambold text-white font-medium animate-rightIn ${rightOutStyle}`}
+          className={`text-center text-[2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[3rem]  font-miligrambold text-white font-medium animate-rightIn ${rightOutStyle}`}
         >
           Microsoft
         </h2>
       )}
       {count === 2 && (
         <h2
-          className={`text-center text-[2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[2.6rem]  font-miligrambold text-white font-medium animate-leftIn ${leftOutStyle}`}
+          className={`text-center text-[2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[3rem]  font-miligrambold text-white font-medium animate-leftIn ${leftOutStyle}`}
         >
           Facebook
         </h2>
       )}
       {count === 3 && (
         <h2
-          className={`text-center text-[2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[2.6rem]  font-miligrambold text-white font-medium animate-rightIn ${rightOutStyle}`}
+          className={`text-center text-[2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[3rem]  font-miligrambold text-white font-medium animate-rightIn ${rightOutStyle}`}
         >
           Amazon
         </h2>
