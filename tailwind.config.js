@@ -1,8 +1,9 @@
-/** @type {import('tailwindcss').Config} */
-const { screens } = require("tailwindcss/defaultTheme");
-
 module.exports = {
-  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  content: [
+    "./pages/*.{html,js,jsx,ts,tsx}",
+    "./sections/*.{html,js,jsx,ts,tsx}",
+    "./components/**/**/*.{html,js,jsx,ts,tsx}",
+  ],
   theme: {
     extend: {
       colors: {
@@ -12,7 +13,7 @@ module.exports = {
           teal: "#00A99D",
           lightBg: "#151823",
           light_white: "rgba(255, 255, 255, 0.5)",
-          whiteVar1:"#D9D9D9",
+          whiteVar1: "#D9D9D9",
           greenOpt: {
             200: "rgba(0, 169, 157, 0.2)",
           },
@@ -25,7 +26,7 @@ module.exports = {
           },
           white: {
             500: "rgba(255, 255, 255, 0.05)",
-            700: "#A1A1AA"
+            700: "#A1A1AA",
           },
           lightTeal: "#38D8CC",
         },
@@ -41,7 +42,7 @@ module.exports = {
         blink: "blink 3s ease-in-out infinite alternate",
         fadeOut: "fadeOut 0.15s ease-in forwards",
         show: "show 1s ease forwards",
-        hide: "hide 0.5s ease-in forwards"
+        hide: "hide 0.5s ease-in forwards",
       },
       keyframes: {
         leftIn: {
@@ -116,11 +117,11 @@ module.exports = {
         show: {
           "0%": {
             opacity: "0",
-            height: "0"
+            height: "0",
           },
           "100%": {
             opacity: "1",
-            height: "auto"
+            height: "auto",
           },
         },
         hide: {
@@ -143,8 +144,8 @@ module.exports = {
         miligramTextMedium: ["MILIGRAM TEXT MEDIUM"],
       },
       boxShadow: {
-        client: "-1px 0px 73px -20px #00a99d"
-      }
+        client: "-1px 0px 73px -20px #00a99d",
+      },
     },
     screens: {
       xsm: "300px",
