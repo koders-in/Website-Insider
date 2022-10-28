@@ -64,7 +64,7 @@ const Technologies = () => {
       <div className="absolute w-full h-full flex justify-center items-center">
         <div className="p-10 z-10 bg-main-secondary w-full mt-4">
           <GradientText
-            className="w-[90%] leading-none mb-3 md:mb-0 md:leading-normal mx-auto sm:w-fit text-[2rem] sm:text-[2.6rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
+            className="w-[90%] leading-none mb-3 md:mb-0 md:leading-normal mx-auto sm:w-fit text-[2rem] sm:text-[3rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
             text="Technologies that make sense"
           />
           <p className="text-[0.8rem] sm:text-[1.3rem] mx-auto text-center text-main-light_white font-miligramText400">

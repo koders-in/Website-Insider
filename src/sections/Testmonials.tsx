@@ -37,7 +37,7 @@ const Testmonials = () => {
     <div className="py-16 xxl:py-[10rem]">
       <Divider className="mt-5 xl:my-10" />
       <GradientText
-        className="w-[90%]  leading-none mb-3 md:mb-0 md:leading-normal mx-auto sm:w-fit text-[2rem] sm:text-[2.6rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
+        className="w-[90%]  leading-none mb-3 md:mb-0 md:leading-normal mx-auto sm:w-fit text-[2rem] sm:text-[3rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
         text="Don’t just take our word for it."
       />
       <p className="text-[0.8rem] leading-none m-1 sm:text-[1.3rem] w-[80%] sm:w-1/2  lg:w-1/3 mx-auto text-center text-main-light_white font-miligramText400">

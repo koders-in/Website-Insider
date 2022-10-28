@@ -7,7 +7,7 @@ const Newsletter = () => {
     <div className="py-16 mb-2 xxl:py-[6rem]">
       <Divider className="mt-5" />
       <GradientText
-        className="w-[90%] sm:w-fit mx-auto leading-none mb-3 md:mb-0 md:leading-normal text-[2rem] sm:text-[2.6rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
+        className="w-[90%] sm:w-fit mx-auto leading-none mb-3 md:mb-0 md:leading-normal text-[2rem] sm:text-[3rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
         text="Subscribe to our Newsletter!"
       />
       <p className="mt-2 text-[0.8rem] sm:text-[1.3rem] w-[80%] sm:w-1/2 lg:w-1/3 mx-auto text-center text-main-light_white pb-2 font-miligramText400 leading-none">

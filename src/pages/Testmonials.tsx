@@ -1,8 +1,13 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button, Divider, GradientText, TestmonialCard } from "../components";
 import { reviews } from "../helper/constant";
 
 const Testmonials = () => {
+  const navigate = useNavigate();
+  function navToHome() {
+    navigate("/start-project");
+  }
   useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -59,7 +64,7 @@ const Testmonials = () => {
         </div>
       </div>
       <Button
-        OnClick={() => {}}
+        OnClick={navToHome}
         text="Get Started"
         className="mx-auto block mt-14 bg-main-greenOpt-200 font-miligramMedium text-main-lightTeal py-[10px] px-9 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
       />
