@@ -20,34 +20,24 @@ const Technologies = () => {
   }
   useEffect(() => {
     const startAnimation = async () => {
-      const index = [
-        getRandomInt(0, arrOfIds?.length),
-        getRandomInt(0, arrOfIds?.length),
-        getRandomInt(0, arrOfIds?.length),
-        getRandomInt(0, arrOfIds?.length),
-        getRandomInt(0, arrOfIds?.length),
-        getRandomInt(0, arrOfIds?.length),
-        getRandomInt(0, arrOfIds?.length),
-        getRandomInt(0, arrOfIds?.length),
-        getRandomInt(0, arrOfIds?.length),
-        getRandomInt(0, arrOfIds?.length),
-        getRandomInt(0, arrOfIds?.length),
-        getRandomInt(0, arrOfIds?.length),
-        getRandomInt(0, arrOfIds?.length),
-        getRandomInt(0, arrOfIds?.length),
-        getRandomInt(0, arrOfIds?.length),
-        getRandomInt(0, arrOfIds?.length),
-        getRandomInt(0, arrOfIds?.length),
+      const parallelAnimatedComb = [
+        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 9, 10, 11, 12, 13,
+        14, 15,
       ];
-      index.forEach(async (item) => {
+      for (let i = 0; i < parallelAnimatedComb.length; i++) {
+        const item = getRandomInt(0, arrOfIds?.length);
         const comb = document.getElementById(arrOfIds[item]);
         if (comb) {
-          comb.style.animation = `fading 2s ease-in-out 2s infinite reverse`;
+          comb.style.animation = `fading 4s ease-in-out infinite reverse`;
         }
-        // await sleep(getRandomInt());
-        await sleep(getRandomInt(6000, 7000));
-        if (comb) comb.style.animation = "none";
-      });
+      }
+      for (let i = 0; i < parallelAnimatedComb.length; i++) {
+        const item = getRandomInt(0, arrOfIds?.length);
+        const comb = document.getElementById(arrOfIds[item]);
+        if (comb) {
+          comb.style.animation = `none`;
+        }
+      }
       await sleep(getRandomInt(500, 1500));
       startAnimation();
     };
