@@ -62,7 +62,7 @@ const Testmonials = () => {
               setCurrentItem(item);
             }}
             key={i}
-            className="w-8 h-8 sm:w-12 sm:h-12 rounded-full cursor-pointer"
+            className="w-8 sm:w-12 rounded-full cursor-pointer"
             style={
               currentItem?.title === item.title
                 ? { boxShadow: "0px 0px 11px 2px #38D8CC" }

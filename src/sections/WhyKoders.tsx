@@ -69,7 +69,7 @@ const WhyKoders = () => {
         {whyWe.map((item, i) => (
           <Info
             className={
-              "text-center absolute w-[230px] md:w-[80%] transition-all duration-500"
+              "text-center absolute w-[230px] sm:w-[230px] md:w-[330px] transition-all duration-500"
             }
             stat={item.state}
             title={item.title}

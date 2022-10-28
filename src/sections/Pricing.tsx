@@ -46,7 +46,7 @@ const Pricing = () => {
         ))}
       </div>
       <div
-        className="flex md:hidden gap-8 w-[100%] justify-center items-center overflow-hidden mx-auto relative h-[420px] overflow-x-clip"
+        className="flex md:hidden gap-8 w-[100%] justify-center items-center overflow-hidden mx-auto relative h-[440px] overflow-x-clip"
         id="pricing"
       >
         <div

@@ -56,7 +56,7 @@
     filter: invert(0.2);
   }
   100% {
-    filter: invert(0.4);
+    filter: invert(0.8);
     background-color: transparent;
   }
 }
