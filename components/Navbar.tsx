@@ -1,10 +1,11 @@
 import React from "react";
-import { discordSvg, discordWhite, logo } from "../assets/index";
-import AnimatedBorder from "./AnimatedBorder";
-import Button from "./Button";
-import { useRouter } from "next/router";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/router";
+
+import Button from "./Button";
+import AnimatedBorder from "./AnimatedBorder";
+import { discordSvg, discordWhite, logo } from "../assets/index";
 
 const Navbar = () => {
   const router = useRouter();
@@ -29,16 +30,12 @@ const Navbar = () => {
               Pricing
               <AnimatedBorder />
             </Link>
-            {/* <HashLink to="/#pricingSec">
-              Pricing
-              <AnimatedBorder />
-            </HashLink> */}
           </button>
           <Button
             OnClick={() => {
-              handleNavigate("/blog");
+              handleNavigate("/Blogs");
             }}
-            text="Blog"
+            text="Blogs"
             isBorder={true}
             className="lg:mx-11 md:mx-5 font-miligramMedium h-fit text-main-white-700 hover:text-white text-[16.5px]"
           />
@@ -65,7 +62,7 @@ const Navbar = () => {
         />
         <Button
           OnClick={() => {
-            handleNavigate("StartProject");
+            handleNavigate("/StartProject");
           }}
           text="Get Started"
           className="font-miligramMedium text-[0.8rem] xxl:text-[1rem] bg-main-greenOpt-200 border-[1px] border-main-lightTeal text-main-lightTeal px-4 py-[0.4rem] sm:py-[0.55rem] sm:px-8 rounded-lg hover:bg-main-lightTeal hover:text-white"

@@ -1,11 +1,17 @@
-import Image from "next/image";
 import React, { useState } from "react";
+import Image from "next/image";
+
 import { JobModal } from "../..";
-import { locationTeal, work } from "../../../assets";
 import Button from "../../Button";
 import { Divider, InputBox } from "../../index";
+import { locationTeal, work } from "../../../assets";
 
-const Job = () => {
+interface Props {
+  candidateDetails: any;
+  setCandidateDetails: (data: any) => void;
+}
+
+const Job = ({ candidateDetails, setCandidateDetails }: Props) => {
   const [showModal, setShowModal] = useState({
     viewDetails: false,
     apply: false,
@@ -31,6 +37,17 @@ const Job = () => {
     toogleDetailModal();
     toogleApplyModal();
   };
+
+  const handleChange = (target) => {
+    const { name, value } = target;
+    setCandidateDetails((prev) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
+  };
+
   return (
     <div className="w-full border-2 rounded-xl mt-8 border-main-teal md:flex items-center px-[5%] py-[4%] md:py-[1%] bg-main-secondary">
       {showModal.viewDetails && (
@@ -104,7 +121,11 @@ const Job = () => {
           <div className="p-8 border-dashed  border-2 border-main-teal rounded-xl relative">
             <input
               type="file"
-              // onChange={showFile}
+              onChange={(e) =>
+                setCandidateDetails((pre) => {
+                  return { ...pre, resume: e.target.files[0] };
+                })
+              }
               className="absolute w-full h-full opacity-0"
             />
             <p className="text-main-teal text-[1rem] text-center">
@@ -118,34 +139,34 @@ const Job = () => {
           <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">
             <InputBox
               type="text"
-              value={""}
+              value={candidateDetails?.fname}
               placeholder="First Name *"
               name="fname"
-              handleChange={() => {}}
+              handleChange={handleChange}
             />
             <InputBox
               type="text"
-              value={""}
+              value={candidateDetails?.lname}
               placeholder="Last Name *"
               name="lname"
-              handleChange={() => {}}
+              handleChange={handleChange}
             />
           </div>
           <Divider className="mt-8" />
           <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">
             <InputBox
               type="text"
-              value={""}
+              value={candidateDetails?.email}
               placeholder="Email Address *"
               name="email"
-              handleChange={() => {}}
+              handleChange={handleChange}
             />
             <InputBox
               type="text"
-              value={""}
+              value={candidateDetails?.mob}
               placeholder="Mobile *"
               name="mob"
-              handleChange={() => {}}
+              handleChange={handleChange}
             />
           </div>
           <Divider className="mt-10" />

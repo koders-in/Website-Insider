@@ -1,10 +1,13 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState, useRef } from "react";
-// import { useNavigate } from "react-router-dom";
-import { Button, Divider, GradientText, ReviewBox } from "../components";
+import AOS from "aos";
+
+import "aos/dist/aos.css";
+
 import { sleep } from "../helper";
 import { TestmonialData, testmonialLogo } from "../helper/constant";
+import { Button, Divider, GradientText, ReviewBox } from "../components";
 
 let COUNTER = 0;
 const Testmonials = () => {
@@ -34,14 +37,25 @@ const Testmonials = () => {
       startAnimation();
     }
   });
+  useEffect(() => {
+    AOS.init({
+      easing: "ease-out",
+      once: true,
+      duration: 600,
+    });
+  }, []);
   return (
     <div className="py-16 xxl:py-[10rem]">
       <Divider className="mt-5 xl:my-10" />
       <GradientText
+        aos="slide-right"
         className="w-[90%]  leading-none mb-3 md:mb-0 md:leading-normal mx-auto sm:w-fit text-[2rem] sm:text-[3rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
         text="Don’t just take our word for it."
       />
-      <p className="text-[0.8rem] leading-none m-1 sm:text-[1.3rem] w-[80%] sm:w-1/2  lg:w-1/3 mx-auto text-center text-main-light_white font-miligramText400">
+      <p
+        data-aos="slide-left"
+        className="text-[0.8rem] leading-none m-1 sm:text-[1.3rem] w-[80%] sm:w-1/2  lg:w-1/3 mx-auto text-center text-main-light_white font-miligramText400"
+      >
         Take a look at what a few of our most successful customers have to say
         about Koders.
       </p>
@@ -82,7 +96,7 @@ const Testmonials = () => {
         ))}
       </div>
       <Button
-        OnClick={() => handleNavigate("Testmonials")}
+        OnClick={() => handleNavigate("Testmonials/#footer")}
         text="Read More"
         className="mx-auto block mt-8 sm:mt-10 bg-main-greenOpt-200 font-miligramMedium text-main-lightTeal py-[10px] px-9 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
       />

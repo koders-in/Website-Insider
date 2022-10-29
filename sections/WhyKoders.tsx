@@ -1,19 +1,34 @@
 import React from "react";
+import Image from "next/image";
+import AOS from "aos";
 
-import { Divider, Info } from "../components";
+import "aos/dist/aos.css";
+
 import { rightAero } from "../assets";
 import { whyWe } from "../helper/constant";
-
+import { Divider, Info } from "../components";
 import { useUpdateSlide } from "../helper/hook";
-import Image from "next/image";
 
 const WhyKoders = () => {
   const handleSliding = useUpdateSlide();
   React.useEffect(() => {
     handleSliding.onSwipe("whyKoders");
   });
+
+  React.useEffect(() => {
+    AOS.init({
+      easing: "ease-out-cubic",
+      once: true,
+      offset: 50,
+      duration: 2000,
+    });
+  }, []);
+
   return (
-    <div className="py-16 bg-main-secondary sm:h-auto lg:h-auto xxl:py-[10rem]">
+    <div
+      data-aos="fade-up"
+      className="py-16 bg-main-secondary sm:h-auto lg:h-auto xxl:py-[10rem]"
+    >
       <Divider className="mt-5 xl:my-10" />
       <h1 className="leading-none w-[90%] mx-auto sm:w-full text-[2rem] sm:text-[3rem] text-center font-medium text-white font-miligrambold">
         Why trust&nbsp;

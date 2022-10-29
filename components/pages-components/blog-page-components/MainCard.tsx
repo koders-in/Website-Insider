@@ -1,14 +1,11 @@
+import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React from "react";
-// import { useLocation, useNavigate } from "react-router-dom";
-import { blogMain, blogProfile } from "../../../assets";
+
 import Tag from "../../Tag";
+import { blogMain, blogProfile } from "../../../assets";
 
 const MainCard = () => {
-  // const navigate = useNavigate();
-  // const location = useLocation();
-
   const router = useRouter();
   const handleNavigate = (href: string) => {
     router.push(href);
@@ -17,10 +14,13 @@ const MainCard = () => {
 
   return (
     <div className="lg:flex mt-16 gap-9">
-      <div className="w-full lg:w-[68%] py-2">
+      <div data-aos="fade-right" className="w-full lg:w-[68%] py-2">
         <Image src={blogMain} alt="blogMain" className="w-full h-full" />
       </div>
-      <div className="w-full lg:w-[32%] mt-2 sm:mt-0 relative pb-14 lg:pb-0">
+      <div
+        data-aos="fade-left"
+        className="w-full lg:w-[32%] mt-2 sm:mt-0 relative pb-14 lg:pb-0"
+      >
         <h1 className="text-white text-[1.4rem] leading-[1.4rem] mt-2  cursor-pointer font-miligrambold">
           Hacking Humans is easier than hacking Computers
         </h1>

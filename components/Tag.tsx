@@ -1,5 +1,6 @@
-import Image from "next/image";
 import React from "react";
+import Image from "next/image";
+
 import { tag } from "../assets";
 
 const Tag = ({ text, className }: { text: string; className?: string }) => {

@@ -1,6 +1,6 @@
-import Image from "next/image";
 import React from "react";
-import { indianFlag } from "../assets";
+import Image from "next/image";
+
 import { TestmonialData } from "../helper/constant";
 
 interface Props {

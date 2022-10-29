@@ -1,19 +1,19 @@
-import Image from "next/image";
 import React from "react";
-import { search, work } from "../../../assets";
+import Image from "next/image";
+
 import Divider from "../../Divider";
-import GradientText from "../../GradientText";
 import SelectBox from "../../SelectBox";
+import GradientText from "../../GradientText";
+import { search, work } from "../../../assets";
 
 interface Props {
-  selectedFile: any;
-  setSelectedFile: (data: any) => void;
+  filterDetaile: any;
+  setFilterDetaile: (data: any) => void;
 }
-
-const LandingSection = ({ selectedFile, setSelectedFile }: Props) => {
+const LandingSection = ({ filterDetaile, setFilterDetaile }: Props) => {
   const handleChange = (e: any) => {
     const { name, value } = e.target;
-    setSelectedFile((p) => {
+    setFilterDetaile((p) => {
       return {
         ...p,
         [name]: value,
@@ -22,7 +22,7 @@ const LandingSection = ({ selectedFile, setSelectedFile }: Props) => {
   };
   const handleSelect = (data: any) => {
     const { name, value } = data;
-    setSelectedFile((p) => {
+    setFilterDetaile((p) => {
       return {
         ...p,
         [name]: value,
@@ -49,7 +49,7 @@ const LandingSection = ({ selectedFile, setSelectedFile }: Props) => {
             placeholder="Job Title"
             name="jobTitle"
             onChange={handleChange}
-            value={selectedFile?.jobTitle}
+            value={filterDetaile?.jobTitle}
           />
         </div>
         <div className="w-14 h-10 bg-main-greenOpt-200 flex justify-center items-center p-4">
@@ -69,7 +69,7 @@ const LandingSection = ({ selectedFile, setSelectedFile }: Props) => {
           list={["UK", "UP", "BR", "HR", "MP", "RJ"]}
           name="location"
           placeholder="Location"
-          value={selectedFile?.location}
+          value={filterDetaile?.location}
           innelStyle="p-0"
           mainStyle="cursor-pointer bg-main-secondary w-full md:w-[30%] rounded-xl px-2 text-[0.9rem] z-30 flex items-center justify-between relative py-[3px]"
         />
@@ -78,7 +78,7 @@ const LandingSection = ({ selectedFile, setSelectedFile }: Props) => {
           list={["A", "B", "C", "D"]}
           name="categories"
           placeholder="Categories"
-          value={selectedFile?.categories}
+          value={filterDetaile?.categories}
           innelStyle="p-0"
           mainStyle="cursor-pointer bg-main-secondary w-full md:w-[30%] rounded-xl px-2 text-[0.9rem] z-30 flex items-center justify-between relative py-[3px]"
         />

@@ -1,8 +1,9 @@
-import Image from "next/image";
 import React from "react";
+import Image from "next/image";
+
+import Button from "../../Button";
 import { check } from "../../../assets";
 import { CardObject } from "../../../helper/constant";
-import Button from "../../Button";
 
 const PricingCard = ({
   description,
@@ -12,9 +13,11 @@ const PricingCard = ({
   isMobile,
   translateX,
   className,
+  aos,
 }: CardObject) => {
   return (
     <div
+      data-aos={aos}
       style={
         isMobile
           ? {

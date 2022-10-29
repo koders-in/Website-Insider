@@ -1,6 +1,8 @@
+import React, { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+
 import {
   discord,
   github,
@@ -10,13 +12,11 @@ import {
   phone,
   twitter,
 } from "../assets";
-import { footerButtons } from "../helper/constant";
-import { useRedirectToPricing } from "../helper/hook";
 import AnimatedBorder from "./AnimatedBorder";
+import { footerButtons } from "../helper/constant";
 
 const Footer = () => {
   const [onHover, setOnHover] = useState(false);
-  const redirectToPricing = useRedirectToPricing();
   const [hoverOnMob, setHoverOnMob] = useState(false);
 
   const router = useRouter();
@@ -24,13 +24,14 @@ const Footer = () => {
     router.push(href);
   };
 
-  useEffect(() => {
-    redirectToPricing();
-  });
+  console.log(router.pathname);
 
   return (
     <>
-      <div className="sm:flex justify-center pl-4 xsm:px-6 sm:pl-20 py-10 bg-main-secondary">
+      <div
+        id="footer"
+        className="sm:flex justify-center pl-4 xsm:px-6 sm:pl-20 py-10 bg-main-secondary"
+      >
         <div className="w-full sm:w-1/4  font-miligramText400">
           <Image
             src={logo}
@@ -113,7 +114,11 @@ const Footer = () => {
                     className="relative group text-[0.9rem] sm:text-[1.2rem] text-main-light_white mt-3 cursor-pointer font-miligramText400  hover:text-white w-fit"
                     onClick={() => {
                       if (item.title === "Pricing") {
-                        // redirectToPricing();
+                        if (
+                          router.pathname !== "/" &&
+                          router.pathname !== "pricingSec"
+                        )
+                          router.push("/#pricingSec");
                         return;
                       }
                       if (item.target) window.open(item?.route, "_blank");
@@ -122,7 +127,16 @@ const Footer = () => {
                       }
                     }}
                   >
-                    {item.title === "Pricing" ? "Pricing" : item.title}
+                    {item.title === "Pricing" ? (
+                      router.pathname === "/" ||
+                      router.pathname === "pricingSec" ? (
+                        <Link href="#pricingSec">Pricing</Link>
+                      ) : (
+                        "Pricing"
+                      )
+                    ) : (
+                      item.title
+                    )}
                     <AnimatedBorder />
                   </p>
                 ))}

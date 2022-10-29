@@ -1,4 +1,5 @@
-import React, { ReactNode } from "react";
+import React from "react";
+
 import Divider from "../../Divider";
 import GradientText from "../../GradientText";
 

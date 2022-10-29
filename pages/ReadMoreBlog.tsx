@@ -1,6 +1,8 @@
+import Head from "next/head";
 import Image from "next/image";
 import React, { useState } from "react";
-import { backAero, blogMain, blogProfile, wideBlog } from "../assets";
+
+import { blogProfile, wideBlog } from "../assets";
 import { Button, Divider, Tag } from "../components";
 
 const ReadMoreBlog = () => {
@@ -12,6 +14,9 @@ const ReadMoreBlog = () => {
   }, []);
   return (
     <div className="py-16 mt-10 w-[91%] mx-auto">
+      <Head>
+        <title>Blogs</title>
+      </Head>
       <Divider className="mt-16" />
       <Divider className="mt-6" />
       <div className="flex justify-between items-center">

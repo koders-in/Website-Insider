@@ -3,10 +3,14 @@ import React from "react";
 interface Props {
   className?: string;
   text: string;
+  aos?: string;
 }
-const GradientText = ({ className, text }: Props) => {
+const GradientText = ({ className, text, aos }: Props) => {
   return (
-    <h1 className={`${className} font-medium bg-clip-text text-transparent`}>
+    <h1
+      data-aos={aos}
+      className={`${className} font-medium bg-clip-text text-transparent`}
+    >
       {text}
     </h1>
   );

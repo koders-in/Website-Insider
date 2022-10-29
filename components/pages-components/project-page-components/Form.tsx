@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { pricingList, timeLineList } from "../../../helper/constant";
-import Button from "../../Button";
+
 import Divider from "../../Divider";
 import InputBox from "../../InputBox";
 import SelectBox from "../../SelectBox";
+import { pricingList, timeLineList } from "../../../helper/constant";
 
 interface Form {
   [key: string]: string;

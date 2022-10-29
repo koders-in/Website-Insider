@@ -1,8 +1,9 @@
-import Image from "next/image";
 import React from "react";
-import { add, locationTeal, work } from "../../../assets";
+import Image from "next/image";
+
 import Button from "../../Button";
 import GradientText from "../../GradientText";
+import { add, locationTeal, work } from "../../../assets";
 
 interface Props {
   children: React.ReactNode;

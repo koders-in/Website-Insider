@@ -1,23 +1,19 @@
-import React, { SyntheticEvent, useState } from "react";
+import Head from "next/head";
+import React, { useState } from "react";
+
 import {
   Divider,
   Footer,
-  InputBox,
   Job,
   JobAlert,
-  JobModal,
   LandingSection,
   Navbar,
 } from "../components";
 
 const Jobs = () => {
-  const [selectedFile, setSelectedFile] = useState<any>();
+  const [filterDetaile, setFilterDetaile] = useState<any>();
+  const [candidateDetails, setCandidateDetails] = useState<any>();
 
-  const showFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    setSelectedFile(e.target.files[0]);
-    console.log("file is: ", e.target.files[0]);
-  };
   React.useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -25,16 +21,19 @@ const Jobs = () => {
   }, []);
   const handleSubmit = () => {
     // send "selectedFile" state to server in a accepted format
-    console.log("file", selectedFile);
+    console.log("state", filterDetaile, candidateDetails);
   };
   return (
     <div className="bg-main-primary overflow-hidden relative">
+      <Head>
+        <title>Jobs</title>
+      </Head>
       <Navbar />
       <div className="py-28 w-[85%] mx-auto">
-        <LandingSection {...{ selectedFile, setSelectedFile }} />
+        <LandingSection {...{ filterDetaile, setFilterDetaile }} />
         <Divider className="mt-16" />
-        <Job />
-        <Job />
+        <Job {...{ candidateDetails, setCandidateDetails }} />
+        <Job {...{ candidateDetails, setCandidateDetails }} />
         <Divider className="mt-16" />
         <JobAlert />
       </div>

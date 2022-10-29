@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import AnimatedBorder from "./AnimatedBorder";
 import Image from "next/image";
+
+import AnimatedBorder from "./AnimatedBorder";
 
 interface Props {
   className?: string;

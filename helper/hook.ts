@@ -74,18 +74,18 @@ export const useRedirectToPricing = () => {
   const redirectOnPricingSection = () => {
     console.log("working");
     const pricingBtn = document.getElementById("Pricing");
-    pricingBtn.addEventListener("click", () => {
-      router.push("/");
-      const pricingSec = document.getElementById("pricingSec");
-      console.log(pricingSec, "pricingSec");
-      if (pricingSec) {
-        const fromTop = pricingSec.offsetTop;
-        window.scrollTo({
-          top: fromTop,
-          behavior: "smooth",
-        });
-      }
-    });
+    // pricingBtn.addEventListener("click", () => {
+    router.push("/");
+    const pricingSec = document.getElementById("pricingSec");
+    console.log(pricingSec, "pricingSec");
+    if (pricingSec) {
+      const fromTop = pricingSec.offsetTop;
+      window.scrollTo({
+        top: fromTop,
+        behavior: "smooth",
+      });
+    }
+    // });
   };
   return redirectOnPricingSection;
 };

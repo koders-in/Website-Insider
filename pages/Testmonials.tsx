@@ -1,5 +1,7 @@
+import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
+
 import {
   Button,
   Divider,
@@ -16,14 +18,19 @@ const Testmonials = () => {
     router.push(href);
   };
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    setTimeout(() => {
+      window?.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }, 100);
   }, []);
 
   return (
     <div className="bg-main-primary overflow-hidden relative">
+      <Head>
+        <title>Reviews</title>
+      </Head>
       <Navbar />
       <div className="pb-10 pt-28">
         <GradientText

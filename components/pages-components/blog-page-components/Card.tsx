@@ -1,9 +1,10 @@
+import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React from "react";
-import { blogCard, blogProfile } from "../../../assets";
-import Divider from "../../Divider";
+
 import Tag from "../../Tag";
+import Divider from "../../Divider";
+import { blogCard, blogProfile } from "../../../assets";
 
 const Card = ({ className }: { className?: string }) => {
   const router = useRouter();
@@ -13,6 +14,7 @@ const Card = ({ className }: { className?: string }) => {
   const currentPath = router?.pathname; // to get current route
   return (
     <div
+      data-aos="fade-up"
       className={`relative ${className} flex flex-wrap msm:flex-nowrap gap-3 sm:block md:w-1/3`}
     >
       <div

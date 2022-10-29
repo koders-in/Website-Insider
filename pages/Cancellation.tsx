@@ -1,4 +1,9 @@
+import Head from "next/head";
 import React from "react";
+import AOS from "aos";
+
+import "aos/dist/aos.css";
+
 import { Divider, Footer, GradientText, Navbar } from "../components";
 
 const Cancellation = () => {
@@ -7,16 +12,30 @@ const Cancellation = () => {
       top: 0,
     });
   }, []);
+  React.useEffect(() => {
+    AOS.init({
+      easing: "ease-out",
+      once: true,
+      duration: 600,
+    });
+  }, []);
   return (
     <div className="bg-main-primary overflow-hidden relative">
+      <Head>
+        <title>Cancellation</title>
+      </Head>
       <Navbar />
       <div className="py-28 w-[95%] sm:w-[90%] mx-auto">
         <GradientText
+          aos="fade-up"
           className="text-[1.8rem] sm:text-[2.5rem] md:text-[2.8rem] mx-auto w-fit bg-gradient-to-r from-white to-main-teal font-miligrambold mt-16"
           text="Cancellation and Refund Policy"
         />
         <Divider className="mt-8" />
-        <p className="font-miligramLight text-[1.05rem] text-main-white-700 w-[96%] mx-auto text-justify">
+        <p
+          data-aos="fade-up"
+          className="font-miligramLight text-[1.05rem] text-main-white-700 w-[96%] mx-auto text-justify"
+        >
           All the services provided by Koders including Web Design, Web
           Development, Mobile Application Development, Software Development,
           Website Maintenance are accepted and carried out after a thorough
@@ -43,7 +62,10 @@ const Cancellation = () => {
           then we will act only refund or cancel services according to the
           following guidelines:
         </p>
-        <ul className="font-miligramLight text-[1.05rem] text-main-white-700 w-[96%] mx-auto text-justify list-disc pl-10 mt-3">
+        <ul
+          data-aos="fade-up"
+          className="font-miligramLight text-[1.05rem] text-main-white-700 w-[96%] mx-auto text-justify list-disc pl-10 mt-3"
+        >
           <li>
             Koders will refund you, in full, if a project has not started within
             30 days of making payment.
@@ -78,7 +100,10 @@ const Cancellation = () => {
             causes any loss to Koders.
           </li>
         </ul>
-        <p className="font-miligramLight text-[1.05rem] text-main-white-700 w-[96%] mx-auto text-justify mt-10">
+        <p
+          data-aos="fade-up"
+          className="font-miligramLight text-[1.05rem] text-main-white-700 w-[96%] mx-auto text-justify mt-10"
+        >
           We are eager to collaborate with you, and once we receive confirmation
           from you, we immediately take action and send your work in progress.
           As a result, if you alter your steps after confirmation, the amount

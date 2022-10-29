@@ -1,4 +1,9 @@
+import Head from "next/head";
 import React from "react";
+import AOS from "aos";
+
+import "aos/dist/aos.css";
+
 import { Footer, GradientText, Navbar } from "../components";
 
 const PrivacyPolicy = () => {
@@ -7,16 +12,30 @@ const PrivacyPolicy = () => {
       top: 0,
     });
   }, []);
+  React.useEffect(() => {
+    AOS.init({
+      easing: "ease-out",
+      once: true,
+      duration: 600,
+    });
+  }, []);
   return (
     <div className="bg-main-primary overflow-hidden relative">
+      <Head>
+        <title>Privacy Policy</title>
+      </Head>
       <Navbar />
       <div className="pb-10 pt-28 w-[95%] sm:w-[90%] mx-auto">
         <GradientText
+          aos="fade-up"
           className="text-[2.2rem] leading-none mb-3 md:mb-0 md:leading-normal  sm:text-[2.5rem] md:text-[2.8rem] mx-auto w-fit bg-gradient-to-r from-white to-main-teal font-miligrambold mt-16"
           text="Privacy Policy"
         />
         <br />
-        <p className="font-miligramLight text-[1.05rem] text-main-white-700 w-[96%] mx-auto text-justify">
+        <p
+          data-aos="fade-up"
+          className="font-miligramLight text-[1.05rem] text-main-white-700 w-[96%] mx-auto text-justify"
+        >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
           a tristique sem vitae. Phasellus in nunc, suspendisse viverra sapien.
           Eget donec suspendisse mauris non. Lobortis turpis eu amet facilisis.
