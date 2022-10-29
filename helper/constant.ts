@@ -45,7 +45,7 @@ export const footerButtons = [
   {
     title: "Quick Links",
     buttons: [
-      { title: "Blogs", route: "Blog", target: false },
+      { title: "Blogs", route: "Blogs", target: false },
       {
         title: "Portfolio",
         route: "https://portfolio.koders.in/",

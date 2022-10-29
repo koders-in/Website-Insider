@@ -30,16 +30,12 @@ const Navbar = () => {
               Pricing
               <AnimatedBorder />
             </Link>
-            {/* <HashLink to="/#pricingSec">
-              Pricing
-              <AnimatedBorder />
-            </HashLink> */}
           </button>
           <Button
             OnClick={() => {
-              handleNavigate("/blog");
+              handleNavigate("/Blogs");
             }}
-            text="Blog"
+            text="Blogs"
             isBorder={true}
             className="lg:mx-11 md:mx-5 font-miligramMedium h-fit text-main-white-700 hover:text-white text-[16.5px]"
           />

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import React, { useState } from "react";
 
 import {
@@ -32,6 +33,9 @@ const StartProject = () => {
   }, []);
   return (
     <div className="bg-main-primary overflow-hidden relative">
+      <Head>
+        <title>Start Project</title>
+      </Head>
       <Navbar />
       <div className="py-20 sm:py-28 w-[90%] md:w-[85%] mx-auto">
         <GradientText

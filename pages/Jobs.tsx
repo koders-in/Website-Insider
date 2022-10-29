@@ -1,3 +1,4 @@
+import Head from "next/head";
 import React, { useState } from "react";
 
 import {
@@ -24,6 +25,9 @@ const Jobs = () => {
   };
   return (
     <div className="bg-main-primary overflow-hidden relative">
+      <Head>
+        <title>Jobs</title>
+      </Head>
       <Navbar />
       <div className="py-28 w-[85%] mx-auto">
         <LandingSection {...{ filterDetaile, setFilterDetaile }} />

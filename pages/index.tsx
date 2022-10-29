@@ -1,3 +1,4 @@
+import Head from "next/head";
 import { Footer, Navbar } from "../components";
 import {
   Clients,
@@ -12,6 +13,9 @@ import {
 export default function Home() {
   return (
     <div className="bg-main-primary overflow-hidden relative">
+      <Head>
+        <title>Koders</title>
+      </Head>
       <Navbar />
       <Hero />
       <WhyKoders />

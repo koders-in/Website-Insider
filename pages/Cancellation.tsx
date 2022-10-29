@@ -1,3 +1,4 @@
+import Head from "next/head";
 import React from "react";
 import { Divider, Footer, GradientText, Navbar } from "../components";
 
@@ -9,6 +10,9 @@ const Cancellation = () => {
   }, []);
   return (
     <div className="bg-main-primary overflow-hidden relative">
+      <Head>
+        <title>Cancellation</title>
+      </Head>
       <Navbar />
       <div className="py-28 w-[95%] sm:w-[90%] mx-auto">
         <GradientText

@@ -1,3 +1,4 @@
+import Head from "next/head";
 import React from "react";
 import {
   Card,
@@ -15,21 +16,24 @@ const Blog = () => {
     });
   }, []);
   return (
-    <div className="bg-main-primary overflow-hidden relative">
-      <Navbar />
-      <div className="pb-10 pt-28 w-[88%] mx-auto relative">
+    <div className="bg-main-primary px-[6%] overflow-hidden">
+      <Head>
+        <title>Blogs</title>
+      </Head>
+      <div className="pb-10 pt-28 w-[91%] mx-auto relative">
+        <Navbar />
         <Divider className="mt-10" />
         <GradientText
           className="w-fit mx-auto text-[2.2rem] leading-none mb-3 md:mb-0 md:leading-normal  sm:text-[2.8rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
           text="Blogs"
         />
         <MainCard />
-        <div className="flex flex-wrap md:flex-nowrap gap-6 sm:gap-10 my-10">
+        <div className="flex flex-wrap md:flex-nowrap gap-5 sm:gap-9 mt-10">
           {[1, 2, 3].map((item) => (
             <Card key={item} />
           ))}
         </div>
-        <Divider className="mt-20" />
+        <Divider className="h-20" />
         <GradientText
           className="w-fit mx-auto text-[2.2rem] leading-none mb-3 md:mb-0 md:leading-normal  sm:text-[2.8rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold xxl:pt-10"
           text="Wish your blog was here too?"

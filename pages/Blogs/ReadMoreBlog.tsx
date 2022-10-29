@@ -1,3 +1,4 @@
+import Head from "next/head";
 import Image from "next/image";
 import React, { useState } from "react";
 import { backAero, blogMain, blogProfile, wideBlog } from "../../assets";
@@ -12,6 +13,9 @@ const ReadMoreBlog = () => {
   }, []);
   return (
     <div className="bg-main-primary overflow-hidden relative">
+      <Head>
+        <title>Blogs</title>
+      </Head>
       <Navbar />
       <div className="py-16 mt-10 w-[91%] mx-auto">
         <Divider className="mt-16" />

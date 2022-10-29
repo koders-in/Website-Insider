@@ -1,3 +1,4 @@
+import Head from "next/head";
 import React from "react";
 
 import { Footer, GradientText, Navbar } from "../components";
@@ -10,6 +11,9 @@ const PrivacyPolicy = () => {
   }, []);
   return (
     <div className="bg-main-primary overflow-hidden relative">
+      <Head>
+        <title>Privacy Policy</title>
+      </Head>
       <Navbar />
       <div className="pb-10 pt-28 w-[95%] sm:w-[90%] mx-auto">
         <GradientText
