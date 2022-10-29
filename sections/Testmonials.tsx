@@ -82,7 +82,7 @@ const Testmonials = () => {
         ))}
       </div>
       <Button
-        OnClick={() => handleNavigate("Testmonials")}
+        OnClick={() => handleNavigate("Testmonials/#footer")}
         text="Read More"
         className="mx-auto block mt-8 sm:mt-10 bg-main-greenOpt-200 font-miligramMedium text-main-lightTeal py-[10px] px-9 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
       />

@@ -16,10 +16,12 @@ const Testmonials = () => {
     router.push(href);
   };
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
+    setTimeout(() => {
+      window?.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    }, 100);
   }, []);
 
   return (
