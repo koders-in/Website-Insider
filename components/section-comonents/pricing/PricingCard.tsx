@@ -1,8 +1,9 @@
-import Image from "next/image";
 import React from "react";
+import Image from "next/image";
+
+import Button from "../../Button";
 import { check } from "../../../assets";
 import { CardObject } from "../../../helper/constant";
-import Button from "../../Button";
 
 const PricingCard = ({
   description,

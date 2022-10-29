@@ -1,11 +1,10 @@
 import React from "react";
+import Image from "next/image";
 
-import { Divider, Info } from "../components";
 import { rightAero } from "../assets";
 import { whyWe } from "../helper/constant";
-
+import { Divider, Info } from "../components";
 import { useUpdateSlide } from "../helper/hook";
-import Image from "next/image";
 
 const WhyKoders = () => {
   const handleSliding = useUpdateSlide();

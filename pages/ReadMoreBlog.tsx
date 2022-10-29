@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React, { useState } from "react";
-import { backAero, blogMain, blogProfile, wideBlog } from "../assets";
+
+import { blogProfile, wideBlog } from "../assets";
 import { Button, Divider, Tag } from "../components";
 
 const ReadMoreBlog = () => {

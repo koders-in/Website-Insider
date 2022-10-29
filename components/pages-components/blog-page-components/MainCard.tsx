@@ -1,14 +1,11 @@
+import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React from "react";
-// import { useLocation, useNavigate } from "react-router-dom";
-import { blogMain, blogProfile } from "../../../assets";
+
 import Tag from "../../Tag";
+import { blogMain, blogProfile } from "../../../assets";
 
 const MainCard = () => {
-  // const navigate = useNavigate();
-  // const location = useLocation();
-
   const router = useRouter();
   const handleNavigate = (href: string) => {
     router.push(href);

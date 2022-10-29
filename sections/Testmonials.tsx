@@ -1,10 +1,10 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState, useRef } from "react";
-// import { useNavigate } from "react-router-dom";
-import { Button, Divider, GradientText, ReviewBox } from "../components";
+
 import { sleep } from "../helper";
 import { TestmonialData, testmonialLogo } from "../helper/constant";
+import { Button, Divider, GradientText, ReviewBox } from "../components";
 
 let COUNTER = 0;
 const Testmonials = () => {

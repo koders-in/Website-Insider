@@ -1,4 +1,5 @@
 import React from "react";
+
 import { Divider, Footer, GradientText, Navbar } from "../components";
 
 const TermsOfServic = () => {

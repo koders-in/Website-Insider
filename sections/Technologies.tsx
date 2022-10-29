@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
-import { toolsAndtechLogo } from "../assets";
-import { CombCell, GradientText } from "../components";
-import { getRandomInt, sleep } from "../helper";
 const { v4 } = require("uuid");
 
-let COUNTER = 0;
+import { toolsAndtechLogo } from "../assets";
+import { getRandomInt, sleep } from "../helper";
+import { CombCell, GradientText } from "../components";
+
 let arrOfIds: any = [];
 const Technologies = () => {
   const isAnimationStart = useRef(false);
@@ -88,7 +88,6 @@ const Technologies = () => {
           let left = 0;
           if (i % 2 === 0) left = 76 * j - 30;
           else left = 76 * j - 68;
-          COUNTER += 1;
           const ii = v4();
           arrOfIds.push(ii);
           return (

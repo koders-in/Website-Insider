@@ -1,9 +1,10 @@
+import React from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React from "react";
-import { blogCard, blogProfile } from "../../../assets";
-import Divider from "../../Divider";
+
 import Tag from "../../Tag";
+import Divider from "../../Divider";
+import { blogCard, blogProfile } from "../../../assets";
 
 const Card = ({ className }: { className?: string }) => {
   const router = useRouter();

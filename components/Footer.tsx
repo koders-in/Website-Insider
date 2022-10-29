@@ -1,7 +1,8 @@
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/router";
 import React, { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/router";
+
 import {
   discord,
   github,
@@ -11,8 +12,8 @@ import {
   phone,
   twitter,
 } from "../assets";
-import { footerButtons } from "../helper/constant";
 import AnimatedBorder from "./AnimatedBorder";
+import { footerButtons } from "../helper/constant";
 
 const Footer = () => {
   const [onHover, setOnHover] = useState(false);

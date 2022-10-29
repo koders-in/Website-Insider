@@ -1,5 +1,6 @@
-import Image from "next/image";
 import React from "react";
+import Image from "next/image";
+
 import { homeBg, homeBgBottom } from "../assets";
 import { Divider, GradientText } from "../components";
 

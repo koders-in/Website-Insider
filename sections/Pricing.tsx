@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Divider, GradientText, PricingCard, Toogler } from "../components";
-import { handleSlider } from "../helper";
-import { pricingCardData } from "../helper/constant";
+import React, { useState } from "react";
+
 import { useUpdateSlide } from "../helper/hook";
+import { pricingCardData } from "../helper/constant";
+import { Divider, GradientText, PricingCard, Toogler } from "../components";
 
 const Pricing = () => {
   const handleSliding = useUpdateSlide();

@@ -1,5 +1,6 @@
+import React from "react";
 import Image from "next/image";
-import React, { useState } from "react";
+
 import { add } from "../assets";
 
 interface Props {

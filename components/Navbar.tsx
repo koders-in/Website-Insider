@@ -1,10 +1,11 @@
 import React from "react";
-import { discordSvg, discordWhite, logo } from "../assets/index";
-import AnimatedBorder from "./AnimatedBorder";
-import Button from "./Button";
-import { useRouter } from "next/router";
-import Image from "next/image";
 import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/router";
+
+import Button from "./Button";
+import AnimatedBorder from "./AnimatedBorder";
+import { discordSvg, discordWhite, logo } from "../assets/index";
 
 const Navbar = () => {
   const router = useRouter();

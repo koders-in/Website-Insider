@@ -1,9 +1,10 @@
-import Image from "next/image";
 import React, { useState } from "react";
+import Image from "next/image";
+
 import { JobModal } from "../..";
-import { locationTeal, work } from "../../../assets";
 import Button from "../../Button";
 import { Divider, InputBox } from "../../index";
+import { locationTeal, work } from "../../../assets";
 
 interface Props {
   candidateDetails: any;

@@ -1,8 +1,9 @@
-import Image from "next/image";
 import React from "react";
-import { img1, img2, img3, projectOne } from "../assets";
-import { Divider, GradientText } from "../components";
+import Image from "next/image";
+
 import { sleep } from "../helper";
+import { Divider, GradientText } from "../components";
+import { img1, img2, img3, projectOne } from "../assets";
 
 let TEMP_COUNT = 0;
 

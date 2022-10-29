@@ -1,7 +1,8 @@
-import Image from "next/image";
 import React from "react";
-import { aeroUp } from "../../../assets";
+import Image from "next/image";
+
 import Divider from "../../Divider";
+import { aeroUp } from "../../../assets";
 import GradientText from "../../GradientText";
 
 const JobAlert = () => {

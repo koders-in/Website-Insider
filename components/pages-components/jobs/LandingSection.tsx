@@ -1,9 +1,10 @@
-import Image from "next/image";
 import React from "react";
-import { search, work } from "../../../assets";
+import Image from "next/image";
+
 import Divider from "../../Divider";
-import GradientText from "../../GradientText";
 import SelectBox from "../../SelectBox";
+import GradientText from "../../GradientText";
+import { search, work } from "../../../assets";
 
 interface Props {
   filterDetaile: any;
