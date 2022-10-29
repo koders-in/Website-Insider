@@ -1,6 +1,10 @@
 import Head from "next/head";
 import Image from "next/image";
 import React, { useState } from "react";
+import AOS from "aos";
+
+import "aos/dist/aos.css";
+
 import { backAero, blogMain, blogProfile, wideBlog } from "../../assets";
 import { Button, Divider, Footer, Navbar, Tag } from "../../components";
 
@@ -9,6 +13,14 @@ const ReadMoreBlog = () => {
   React.useEffect(() => {
     window.scrollTo({
       top: 0,
+    });
+  }, []);
+
+  React.useEffect(() => {
+    AOS.init({
+      easing: "ease-out",
+      once: true,
+      duration: 600,
     });
   }, []);
   return (
@@ -20,27 +32,39 @@ const ReadMoreBlog = () => {
       <div className="py-16 mt-10 w-[91%] mx-auto">
         <Divider className="mt-16" />
         <Divider className="mt-6" />
-        <div className="flex justify-between items-center">
+        <div data-aos="fade-up" className="flex justify-between items-center">
           <span className="text-[1rem] text-main-light_white font-miligramTextMedium">
             SEP 22, 2022
           </span>
         </div>
-        <h1 className="text-white mt-4 text-[1.9rem] font-miligrambold">
+        <h1
+          data-aos="fade-up"
+          className="text-white mt-4 text-[1.9rem] font-miligrambold"
+        >
           Hacking Humans is easier than hacking Computers
         </h1>
-        <div className="flex items-center justify-start gap-3 mt-5">
+        <div
+          data-aos="fade-up"
+          className="flex items-center justify-start gap-3 mt-5"
+        >
           <Tag className="" text="Ethical Hacking" />
           <Tag className="" text="Cyber Security" />
         </div>
         <Divider className="mt-6" />
-        <div className="flex items-center">
+        <div data-aos="fade-up" className="flex items-center">
           <Image src={blogProfile} alt="profile" className="mr-3 h-9" />
           <span className="text-white font-miligramMedium">John Doe</span>
         </div>
         <Divider className="mt-11" />
-        <Image src={wideBlog} alt="blog img" className="w-full md:h-96" />
+        <Image
+          data-aos="fade-up"
+          src={wideBlog}
+          alt="blog img"
+          className="w-full md:h-96"
+        />
         <Divider className="mt-6" />
         <p
+          data-aos="fade-up"
           className="text-main-light_white mt-11 font-miligramTextBook"
           style={
             showMore

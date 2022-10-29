@@ -1,5 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 const { v4 } = require("uuid");
+import AOS from "aos";
+
+import "aos/dist/aos.css";
 
 import { toolsAndtechLogo } from "../assets";
 import { getRandomInt, sleep } from "../helper";
@@ -68,15 +71,27 @@ const Technologies = () => {
     }
   });
 
+  useEffect(() => {
+    AOS.init({
+      easing: "ease-out",
+      once: true,
+      duration: 600,
+    });
+  }, []);
+
   return (
     <div className="bg-main-secondary overflow-hidden h-[90vh] md:h-[60vh] lg:h-[90vh] xl:h-[90vh] xxl:h-[90vh]  relative flex justify-center items-center">
       <div className="absolute w-full h-full flex justify-center items-center">
         <div className="p-10 z-10 bg-main-secondary w-full mt-4">
           <GradientText
+            aos="slide-left"
             className="w-[90%] leading-none mb-3 md:mb-0 md:leading-normal mx-auto sm:w-fit text-[2rem] sm:text-[3rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
             text="Technologies that make sense"
           />
-          <p className="text-[0.8rem] sm:text-[1.3rem] mx-auto text-center text-main-light_white font-miligramText400">
+          <p
+            data-aos="slide-right"
+            className="text-[0.8rem] sm:text-[1.3rem] mx-auto text-center text-main-light_white font-miligramText400"
+          >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
             dolor sit amet, consectetur adipiscing elit.
           </p>

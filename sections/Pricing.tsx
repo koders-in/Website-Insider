@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import AOS from "aos";
+
+import "aos/dist/aos.css";
 
 import { useUpdateSlide } from "../helper/hook";
 import { pricingCardData } from "../helper/constant";
@@ -16,6 +19,14 @@ const Pricing = () => {
     handleSliding.onSwipe("pricing");
   });
 
+  React.useEffect(() => {
+    AOS.init({
+      easing: "ease-out",
+      once: true,
+      duration: 600,
+    });
+  }, []);
+
   return (
     <div
       id="pricingSec"
@@ -23,10 +34,14 @@ const Pricing = () => {
     >
       <Divider className="mt-5 xl:my-10" />
       <GradientText
+        aos="slide-left"
         className="w-[90%] leading-none mb-3 md:mb-0 md:leading-normal mx-auto sm:w-fit text-[2rem] sm:text-[3rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
         text="Pricing that suits your needs."
       />
-      <p className="text-[0.8rem] sm:text-[1.3rem] w-[80%] leading-none sm:w-1/2  lg:w-1/3 mx-auto text-center text-main-light_white pb-5 mt-2 font-miligramText400">
+      <p
+        data-aos="slide-right"
+        className="text-[0.8rem] sm:text-[1.3rem] w-[80%] leading-none sm:w-1/2  lg:w-1/3 mx-auto text-center text-main-light_white pb-5 mt-2 font-miligramText400"
+      >
         Choose your best plan, pay monthly or yearly and change or cancel any
         time.
       </p>
@@ -42,7 +57,7 @@ const Pricing = () => {
       <Divider className="mt-10 md:h-16" />
       <div className="hidden justify-center items-center md:flex gap-7 xl:gap-12 w-[96%] lg:w-[90%] mx-auto">
         {pricingCardData.map((item, i) => (
-          <PricingCard key={i} {...item} />
+          <PricingCard aos="fade-up" key={i} {...item} />
         ))}
       </div>
       <div

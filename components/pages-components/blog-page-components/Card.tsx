@@ -14,6 +14,7 @@ const Card = ({ className }: { className?: string }) => {
   const currentPath = router?.pathname; // to get current route
   return (
     <div
+      data-aos="fade-up"
       className={`relative ${className} flex flex-wrap msm:flex-nowrap gap-3 sm:block md:w-1/3`}
     >
       <div

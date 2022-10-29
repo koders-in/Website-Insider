@@ -106,6 +106,7 @@ export interface CardObject {
   description: string;
   price: string;
   services: Array<string>;
+  aos?: string;
 }
 export const pricingCardData: Array<CardObject> = [
   {

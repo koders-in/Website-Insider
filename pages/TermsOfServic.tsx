@@ -1,9 +1,19 @@
 import Head from "next/head";
 import React from "react";
+import AOS from "aos";
+
+import "aos/dist/aos.css";
 
 import { Divider, Footer, GradientText, Navbar } from "../components";
 
 const TermsOfServic = () => {
+  React.useEffect(() => {
+    AOS.init({
+      easing: "ease-out",
+      once: true,
+      duration: 600,
+    });
+  }, []);
   return (
     <div className="bg-main-primary overflow-hidden relative">
       <Head>
@@ -12,14 +22,21 @@ const TermsOfServic = () => {
       <Navbar />
       <div className="py-28 w-[95%] sm:w-[90%] mx-auto">
         <GradientText
+          aos="fade-up"
           className="text-[1.8rem] sm:text-[2.5rem] md:text-[2.8rem] mx-auto w-fit bg-gradient-to-r from-white to-main-teal font-miligrambold mt-16"
           text="Terms Of Services"
         />
         <Divider className="mt-8" />
-        <h3 className="font-miligrambold text-[2rem] text-white">
+        <h3
+          data-aos="fade-up"
+          className="font-miligrambold text-[2rem] text-white"
+        >
           Acceptance of Terms
         </h3>
-        <p className="font-miligramLight text-[1.05rem] text-main-white-700 text-justify">
+        <p
+          data-aos="fade-up"
+          className="font-miligramLight text-[1.05rem] text-main-white-700 text-justify"
+        >
           The Terms of Service set out below govern your use of and purchases
           made through the Koders website (including all web pages, sub-domains,
           and sub-parts contained within, the "website") and any services
@@ -38,20 +55,32 @@ const TermsOfServic = () => {
           not agree to any of these terms.
         </p>
         <Divider className="mt-10" />
-        <h3 className="font-miligrambold text-[2rem] text-white">
+        <h3
+          data-aos="fade-up"
+          className="font-miligrambold text-[2rem] text-white"
+        >
           Conditions to use
         </h3>
-        <p className="font-miligramLight text-[1.05rem] text-main-white-700 text-justify">
+        <p
+          data-aos="fade-up"
+          className="font-miligramLight text-[1.05rem] text-main-white-700 text-justify"
+        >
           Koders has the right, in its sole discretion, to deny anybody access
           to the software or services it provides, at any time and for any
           reason, including but not limited to a violation of these terms of
           use, in which case you must discontinue usage of Koders.
         </p>
         <Divider className="mt-10" />
-        <h3 className="font-miligrambold text-[2rem] text-white">
+        <h3
+          data-aos="fade-up"
+          className="font-miligrambold text-[2rem] text-white"
+        >
           License Grants
         </h3>
-        <p className="font-miligramLight text-[1.05rem] text-main-white-700 text-justify">
+        <p
+          data-aos="fade-up"
+          className="font-miligramLight text-[1.05rem] text-main-white-700 text-justify"
+        >
           Koders grants you a non-exclusive, non-transferable license for the
           term to use the services we provide for the specific purpose specified
           in this agreement. This is only in order to provide software services,
@@ -60,10 +89,16 @@ const TermsOfServic = () => {
         </p>
 
         <Divider className="mt-10" />
-        <h3 className="font-miligrambold text-[2rem] text-white">
+        <h3
+          data-aos="fade-up"
+          className="font-miligrambold text-[2rem] text-white"
+        >
           Lawful and / or prohibited use of the website
         </h3>
-        <p className="font-miligramLight text-[1.05rem] text-main-white-700 text-justify">
+        <p
+          data-aos="fade-up"
+          className="font-miligramLight text-[1.05rem] text-main-white-700 text-justify"
+        >
           As a condition of your use of the website, you shall not use the
           website for any purpose(s) that is unlawful or prohibited by the TOS.
           You shall not use the website in any manner that could damage,
@@ -83,10 +118,16 @@ const TermsOfServic = () => {
         </p>
 
         <Divider className="mt-10" />
-        <h3 className="font-miligrambold text-[2rem] text-white">
+        <h3
+          data-aos="fade-up"
+          className="font-miligrambold text-[2rem] text-white"
+        >
           Termination
         </h3>
-        <p className="font-miligramLight text-[1.05rem] text-main-white-700 text-justify">
+        <p
+          data-aos="fade-up"
+          className="font-miligramLight text-[1.05rem] text-main-white-700 text-justify"
+        >
           Koders may terminate your account and/or your right to use the
           services, as well as remove and discard any and all of your content
           within the services, at any time for any or no reason, including,
@@ -106,10 +147,16 @@ const TermsOfServic = () => {
         </p>
 
         <Divider className="mt-10" />
-        <h3 className="font-miligrambold text-[2rem] text-white">
+        <h3
+          data-aos="fade-up"
+          className="font-miligrambold text-[2rem] text-white"
+        >
           Trademark Information
         </h3>
-        <p className="font-miligramLight text-[1.05rem] text-main-white-700 text-justify">
+        <p
+          data-aos="fade-up"
+          className="font-miligramLight text-[1.05rem] text-main-white-700 text-justify"
+        >
           Koders' trademarks, service marks, and logos used and displayed in
           connection with the services are Koders' registered and/or
           unregistered trademarks or service marks. The trademarks may not be
@@ -122,8 +169,16 @@ const TermsOfServic = () => {
           trademark shall benefit Koders.
         </p>
         <Divider className="mt-10" />
-        <h3 className="font-miligrambold text-[2rem] text-white">Notices</h3>
-        <p className="font-miligramLight text-[1.05rem] text-main-white-700 text-justify">
+        <h3
+          data-aos="fade-up"
+          className="font-miligrambold text-[2rem] text-white"
+        >
+          Notices
+        </h3>
+        <p
+          data-aos="fade-up"
+          className="font-miligramLight text-[1.05rem] text-main-white-700 text-justify"
+        >
           Notices will be sent to the email address registered by the user of
           the service to familiarize them with this TOS. You consent to
           receiving the notices by email. The services may also give notices of
@@ -133,10 +188,16 @@ const TermsOfServic = () => {
           (ADDRESS)[1] [2] .
         </p>
         <Divider className="mt-10" />
-        <h3 className="font-miligrambold text-[2rem] text-white">
+        <h3
+          data-aos="fade-up"
+          className="font-miligrambold text-[2rem] text-white"
+        >
           Legal disputes
         </h3>
-        <p className="font-miligramLight text-[1.05rem] text-main-white-700 text-justify">
+        <p
+          data-aos="fade-up"
+          className="font-miligramLight text-[1.05rem] text-main-white-700 text-justify"
+        >
           Please read this section carefully. It affects your rights and will
           have a substantial impact on how claims or disputes between you and
           Koders have against each other are resolved. You and Koders agree that
@@ -149,7 +210,7 @@ const TermsOfServic = () => {
           accordance with the provisions of this section.
         </p>
 
-        <div className="ml-10">
+        <div data-aos="fade-up" className="ml-10">
           <Divider className="mt-6" />
           <h4 className="font-miligrambold text-[1.6rem] text-white">
             Agreement to Arbitrate
@@ -196,10 +257,13 @@ const TermsOfServic = () => {
         </div>
 
         <Divider className="mt-10" />
-        <h3 className="font-miligrambold text-[2rem] text-white">
+        <h3
+          data-aos="fade-up"
+          className="font-miligrambold text-[2rem] text-white"
+        >
           Acceptance of Terms
         </h3>
-        <div className="ml-10">
+        <div data-aos="fade-up" className="ml-10">
           <h4 className="font-miligrambold text-[1.6rem] text-white mt-6">
             Entire Agreement
           </h4>

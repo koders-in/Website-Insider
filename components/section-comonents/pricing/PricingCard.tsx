@@ -13,9 +13,11 @@ const PricingCard = ({
   isMobile,
   translateX,
   className,
+  aos,
 }: CardObject) => {
   return (
     <div
+      data-aos={aos}
       style={
         isMobile
           ? {

@@ -62,7 +62,7 @@ const Navbar = () => {
         />
         <Button
           OnClick={() => {
-            handleNavigate("StartProject");
+            handleNavigate("/StartProject");
           }}
           text="Get Started"
           className="font-miligramMedium text-[0.8rem] xxl:text-[1rem] bg-main-greenOpt-200 border-[1px] border-main-lightTeal text-main-lightTeal px-4 py-[0.4rem] sm:py-[0.55rem] sm:px-8 rounded-lg hover:bg-main-lightTeal hover:text-white"

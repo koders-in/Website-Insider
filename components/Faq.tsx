@@ -12,7 +12,7 @@ interface Props {
 
 const Faq = ({ answer, question, onClick, show }: Props) => {
   return (
-    <div>
+    <div data-aos="fade-up">
       <div className="border-b-[1px] pt-2 pb-1 sm:pb-4 mt-3 w-[97%] mx-auto border-b-main-light_white flex justify-between items-center">
         <p className="w-[90%] text-main-white-700 font-miligramLight sm:font-miligramMedium text-[0.8rem] sm:text-[1.4rem]">
           {question}
