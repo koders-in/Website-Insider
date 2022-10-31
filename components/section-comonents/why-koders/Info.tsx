@@ -10,6 +10,7 @@ interface Props {
   className: string;
   isMobile?: boolean;
   translateX?: number;
+  aos?: string;
 }
 
 const Info = ({
@@ -19,9 +20,12 @@ const Info = ({
   className,
   isMobile,
   translateX,
+  aos,
 }: Props) => {
   return (
     <div
+      data-aos={aos}
+      data-aos-anchor-placement="top-center"
       className={`${className} w-full md:w-1/4`}
       style={
         isMobile

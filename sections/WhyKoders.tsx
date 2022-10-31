@@ -19,18 +19,17 @@ const WhyKoders = () => {
     AOS.init({
       easing: "ease-out-cubic",
       once: true,
-      offset: 50,
-      duration: 2000,
+      duration: 1500,
     });
   }, []);
 
   return (
-    <div
-      data-aos="fade-up"
-      className="py-16 bg-main-secondary sm:h-auto lg:h-auto xxl:py-[10rem]"
-    >
+    <div className="py-16 bg-main-secondary sm:h-auto lg:h-auto xxl:py-[10rem]">
       <Divider className="mt-5 xl:my-10" />
-      <h1 className="leading-none w-[90%] mx-auto sm:w-full text-[2rem] sm:text-[3rem] text-center font-medium text-white font-miligrambold">
+      <h1
+        data-aos="fade-up"
+        className="leading-none w-[90%] mx-auto sm:w-full text-[2rem] sm:text-[3rem] text-center font-medium text-white font-miligrambold"
+      >
         Why trust&nbsp;
         <span className="bg-gradient-to-r from-white to-main-teal bg-clip-text text-transparent">
           Koders
@@ -46,6 +45,7 @@ const WhyKoders = () => {
       <div className="hidden lg:flex gap-2 mt-16 w-[95%] xxl:w-[90%] mx-auto">
         {whyWe.map((item, i) => {
           const css = i < 3 ? " border-r-2" : "";
+          const aos = i === 0 ? "fade-right" : i < 3 ? "fade-up" : "fade-left";
           return (
             <Info
               className={item.class + css}
@@ -53,6 +53,7 @@ const WhyKoders = () => {
               title={item.title}
               html={item.html}
               key={i}
+              aos={aos}
             />
           );
         })}

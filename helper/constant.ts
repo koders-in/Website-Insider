@@ -1,4 +1,13 @@
-import { githubLogo, googleLogo, indianFlag, instaLogo } from "../assets";
+import {
+  discordWhiteLogo,
+  githubLogo,
+  githubWhite,
+  googleLogo,
+  indianFlag,
+  instaLogo,
+  linkedinWhite,
+  twitterWhite,
+} from "../assets";
 
 export interface TestmonialData {
   description: string;

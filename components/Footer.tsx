@@ -4,13 +4,13 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 
 import {
-  discord,
-  github,
-  linkedin,
+  discordWhiteLogo,
+  githubWhite,
+  linkedinWhite,
   location,
   logo,
   phone,
-  twitter,
+  twitterWhite,
 } from "../assets";
 import AnimatedBorder from "./AnimatedBorder";
 import { footerButtons } from "../helper/constant";
@@ -23,8 +23,6 @@ const Footer = () => {
   const handleNavigate = (href: string) => {
     router.push(href);
   };
-
-  console.log(router.pathname);
 
   return (
     <>
@@ -40,14 +38,16 @@ const Footer = () => {
             onClick={() => handleNavigate("/")}
           />
           <div className="flex items-center my-3 gap-2">
-            {[linkedin, github, twitter, discord].map((item, i) => (
-              <Image
-                src={item}
-                alt={item}
-                key={i}
-                className="h-7 cursor-pointer hover:transition-all transition transform hover:-translate-y-1 motion-reduce:transition-none motion-reduce:hover:transform-none"
-              />
-            ))}
+            {[linkedinWhite, githubWhite, twitterWhite, discordWhiteLogo].map(
+              (item, i) => (
+                <Image
+                  src={item}
+                  alt={item}
+                  key={i}
+                  className="h-7 cursor-pointer brightness-50 hover:brightness-100"
+                />
+              )
+            )}
           </div>
           <div className="flex justify-start items-start  mt-4 text-[0.9rem] sm:text-[1rem] ml-2">
             <Image
@@ -116,9 +116,9 @@ const Footer = () => {
                       if (item.title === "Pricing") {
                         if (
                           router.pathname !== "/" &&
-                          router.pathname !== "pricingSec"
+                          router.pathname !== "pricing"
                         )
-                          router.push("/#pricingSec");
+                          router.push("/#pricing");
                         return;
                       }
                       if (item.target) window.open(item?.route, "_blank");
@@ -129,8 +129,8 @@ const Footer = () => {
                   >
                     {item.title === "Pricing" ? (
                       router.pathname === "/" ||
-                      router.pathname === "pricingSec" ? (
-                        <Link href="#pricingSec">Pricing</Link>
+                      router.pathname === "pricing" ? (
+                        <Link href="#pricing">Pricing</Link>
                       ) : (
                         "Pricing"
                       )

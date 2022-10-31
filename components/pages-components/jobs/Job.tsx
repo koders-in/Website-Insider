@@ -179,20 +179,20 @@ const Job = ({ candidateDetails, setCandidateDetails }: Props) => {
       />
       <div className=" md:flex justify-between items-center mx-auto w-[90%]">
         <div className="text-main-light_white w-full my-4 md:my-0 md:mr-[4%]">
-          <h1 className="text-white text-[1.2rem] text-center md:text-left">
+          <h1 className="text-white text-[1.2rem] text-center md:text-left font-miligrambold">
             Fresher UI/UX Designer
           </h1>
-          <div className="flex text-white mx-auto w-fit md:w-full">
-            <div className="flex items-center justify-between text-[0.8rem] mr-3">
+          <div className="flex text-white mx-auto w-fit md:w-full font-miligramText400">
+            <div className="flex items-center justify-between text-[0.85rem] mr-3">
               <Image src={locationTeal} alt="" className="mr-2 h-3" />
               Dehradun, Uttrakhand
             </div>
-            <div className="flex items-center justify-between text-[0.8rem]">
+            <div className="flex items-center justify-between text-[0.85rem]">
               <Image src={work} alt="" className="mr-2 h-3" />
               Full Time
             </div>
           </div>
-          <p className="text-[0.8rem] text-whiteVar1  text-center md:text-left">
+          <p className="text-[0.7rem] text-whiteVar1  text-center md:text-left  font-miligramText400">
             Posted 2 weeks ago
           </p>
         </div>
@@ -200,12 +200,12 @@ const Job = ({ candidateDetails, setCandidateDetails }: Props) => {
           <Button
             OnClick={toogleApplyModal}
             text="Apply"
-            className=" bg-main-greenOpt-200  font-miligramMedium w-fit text-[0.8rem] lg:text-[1rem] text-main-lightTeal py-[4px] md:py-[10px] px-8 lg:px-14 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+            className=" bg-main-greenOpt-200  font-miligramMedium w-fit text-[0.8rem] lg:text-[0.9rem] text-main-lightTeal py-[4px] md:py-[10px] px-8 lg:px-14 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
           />
           <Button
             OnClick={toogleDetailModal}
             text="View Details"
-            className=" bg-main-greenOpt-200 font-miligramMedium w-fit text-[0.8rem] lg:text-[1rem] text-main-lightTeal py-[4px] md:py-[10px] px-3 lg:px-7 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+            className=" bg-main-greenOpt-200 font-miligramMedium w-fit text-[0.8rem] lg:text-[0.9rem] text-main-lightTeal py-[4px] md:py-[10px] px-3 lg:px-7 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
           />
         </div>
       </div>

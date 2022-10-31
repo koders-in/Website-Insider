@@ -13,17 +13,19 @@ interface Props {
 const Faq = ({ answer, question, onClick, show }: Props) => {
   return (
     <div data-aos="fade-up">
-      <div className="border-b-[1px] pt-2 pb-1 sm:pb-4 mt-3 w-[97%] mx-auto border-b-main-light_white flex justify-between items-center">
+      <div
+        onClick={() => onClick(question)}
+        className="cursor-pointer border-b-[1px] pt-2 pb-1 sm:pb-4 mt-3 w-[97%] mx-auto border-b-main-light_white flex justify-between items-center"
+      >
         <p className="w-[90%] text-main-white-700 font-miligramLight sm:font-miligramMedium text-[0.8rem] sm:text-[1.4rem]">
           {question}
         </p>
         <Image
           src={add}
           alt=""
-          className={`h-4 sm:h-6 cursor-pointer hover:brightness-75 transition-all duration-300 ${
+          className={`h-4 sm:h-6 hover:brightness-75 transition-all duration-300 ${
             show ? " rotate-45" : ""
           }`}
-          onClick={() => onClick(question)}
         />
       </div>
       <div

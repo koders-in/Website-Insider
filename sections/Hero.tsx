@@ -18,14 +18,24 @@ const Hero = () => {
         alt=""
         className="absolute -bottom-10 right-0 w-[70%] md:w-[28%]"
       />
-      <h1 className="leading-[38px] sm:leading-[60px] text-[1.5rem] xsm:text-[2.5rem] sm:text-[4rem] text-white text-center m-0 p-0 font-medium font-miligrambold">
+      <h1
+        data-aos="fade-zoom-in"
+        data-aos-easing="ease-in-back"
+        className="leading-[38px] sm:leading-[60px] text-[1.5rem] xsm:text-[2.5rem] sm:text-[4rem] text-white text-center m-0 p-0 font-medium font-miligrambold"
+      >
         Infrastructure for
       </h1>
       <GradientText
+        aos="fade-zoom-in"
+        dataEasing="ease-in-back"
         className="leading-[28px] w-fit xsm:leading-[38px] sm:leading-[70px] sm:mt-3 mx-auto text-[1.5rem] xsm:text-[2.5rem] sm:text-[4rem] text-center bg-gradient-to-r from-white via-main-lightTeal to-main-teal font-miligrambold"
         text="High Quality Applications"
       />
-      <p className="w-[90%] sm:w-fit mx-auto text-center text-[0.9rem] sm:text-[1.8rem] text-main-light_white pt-6 md:pt-10 pb-28 font-miligramLight">
+      <p
+        data-aos="fade-zoom-in"
+        data-aos-easing="ease-in-back"
+        className="w-[90%] sm:w-fit mx-auto text-center text-[0.9rem] sm:text-[1.8rem] text-main-light_white pt-6 md:pt-10 pb-28 font-miligramLight"
+      >
         WEBSITES | MOBILE APPS | TOOLBOTS | <br className="visible sm:hidden" />
         MONITORS | UI/UX
       </p>

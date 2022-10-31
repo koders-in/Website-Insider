@@ -103,7 +103,7 @@ const ReadMoreBlog = () => {
               setShowMore(true);
             }}
             text="Read More"
-            className="border-2 mt-3 border-main-lightTeal text-main-lightTeal bg-main-greenOpt-200 block mx-auto px-6 py-2 rounded-lg hover:bg-main-lightTeal hover:text-white font-miligramMedium"
+            className="border-[1px] mt-3 border-main-lightTeal text-main-lightTeal bg-main-greenOpt-200 block mx-auto px-6 py-[8px] sm:py-2 text-[0.8rem] xxl:text-[1rem] rounded-lg hover:bg-main-lightTeal hover:text-white font-miligramMedium"
           />
         )}
         <div
