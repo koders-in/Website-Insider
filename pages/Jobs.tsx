@@ -20,7 +20,6 @@ const Jobs = () => {
     });
   }, []);
   const handleSubmit = () => {
-    // send "selectedFile" state to server in a accepted format
     console.log("state", filterDetaile, candidateDetails);
   };
   return (

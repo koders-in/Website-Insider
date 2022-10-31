@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 
 import Divider from "../../Divider";
@@ -11,6 +11,7 @@ interface Props {
   setFilterDetaile: (data: any) => void;
 }
 const LandingSection = ({ filterDetaile, setFilterDetaile }: Props) => {
+  const [isHover, setIsHover] = useState(false);
   const handleChange = (e: any) => {
     const { name, value } = e.target;
     setFilterDetaile((p) => {
@@ -52,16 +53,20 @@ const LandingSection = ({ filterDetaile, setFilterDetaile }: Props) => {
             value={filterDetaile?.jobTitle}
           />
         </div>
-        <div className="w-14 h-10 bg-main-greenOpt-200 flex justify-center items-center p-4">
+        <div
+          className="w-14 h-10 bg-main-greenOpt-200 flex justify-center items-center p-4 cursor-pointer"
+          onMouseEnter={() => setIsHover(true)}
+          onMouseLeave={() => setIsHover(false)}
+        >
           <Image
             src={search}
             alt="aero"
-            className="scale-90 hover:scale-100  cursor-pointer"
+            className={`${isHover ? "scale-110" : "scale-90"}`}
           />
         </div>
       </div>
-      <div className="w-[90%] flex-wrap md:flex-nowrap md:w-[60%] lg:w-[40%] xl:w-[35%]  mx-auto gap-3 mt-8 flex items-center justify-between text-main-light_white ">
-        <span className="text-[0.9rem] w-full block text-center md:inline md:w-fit mr-3">
+      <div className="w-[90%] flex-wrap md:flex-nowrap md:w-[60%] lg:w-[40%] xl:w-[35%]  mx-auto gap-3 mt-8 flex items-center justify-between text-main-light_white">
+        <span className="text-[0.9rem] w-full block text-center text-main-filter md:inline md:w-[20%] mr-3 font-miligramMedium">
           FILTER BY:
         </span>
         <SelectBox
@@ -71,7 +76,8 @@ const LandingSection = ({ filterDetaile, setFilterDetaile }: Props) => {
           placeholder="Location"
           value={filterDetaile?.location}
           innelStyle="p-0"
-          mainStyle="cursor-pointer bg-main-secondary w-full md:w-[30%] rounded-xl px-2 text-[0.9rem] z-30 flex items-center justify-between relative py-[3px]"
+          mainStyle="font-miligramTextMedium cursor-pointer bg-main-secondary w-full md:w-[40%] rounded-xl px-2 text-[0.9rem] z-30 flex items-center justify-between relative py-[3px]  text-main-filterDropDown"
+          dropdownStyle="font-miligramTextMedium w-full z-50 rounded-md absolute top-8 left-0 transition-all duration-500 bg-main-secondary text-main-light_white overflow-hidden"
         />
         <SelectBox
           handleSelect={handleSelect}
@@ -80,7 +86,8 @@ const LandingSection = ({ filterDetaile, setFilterDetaile }: Props) => {
           placeholder="Categories"
           value={filterDetaile?.categories}
           innelStyle="p-0"
-          mainStyle="cursor-pointer bg-main-secondary w-full md:w-[30%] rounded-xl px-2 text-[0.9rem] z-30 flex items-center justify-between relative py-[3px]"
+          mainStyle="font-miligramTextMedium cursor-pointer bg-main-secondary w-full md:w-[40%] rounded-xl px-2 text-[0.9rem] z-30 flex items-center justify-between relative py-[3px] text-main-filterDropDown"
+          dropdownStyle="font-miligramTextMedium w-full z-50 rounded-md absolute top-8 left-0 transition-all duration-500 bg-main-secondary text-main-light_white overflow-hidden"
         />
       </div>
     </div>

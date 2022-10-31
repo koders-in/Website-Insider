@@ -21,7 +21,10 @@ const MainCard = () => {
         data-aos="fade-left"
         className="w-full lg:w-[32%] mt-2 sm:mt-0 relative pb-14 lg:pb-0"
       >
-        <h1 className="text-white text-[1.4rem] leading-[1.4rem] mt-2  cursor-pointer font-miligrambold">
+        <h1
+          onClick={() => handleNavigate(`${currentPath}/ReadMoreBlog`)}
+          className="text-white text-[1.4rem] leading-[1.4rem] mt-2  cursor-pointer font-miligrambold"
+        >
           Hacking Humans is easier than hacking Computers
         </h1>
         <div className="flex items-center justify-start gap-3 mt-5">

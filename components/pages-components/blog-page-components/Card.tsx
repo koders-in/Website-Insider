@@ -17,10 +17,6 @@ const Card = ({ className }: { className?: string }) => {
       data-aos="fade-up"
       className={`relative ${className} flex flex-wrap msm:flex-nowrap gap-3 sm:block md:w-1/3`}
     >
-      <div
-        onClick={() => handleNavigate(`${currentPath}/ReadMoreBlog`)}
-        className="absolute top-0 left-0 w-full h-full bg-transparent z-50"
-      ></div>
       <Image
         src={blogCard}
         alt="card"
@@ -31,7 +27,10 @@ const Card = ({ className }: { className?: string }) => {
           SEP 6, 2022
         </span>
         <Divider className="hidden sm:block mt-6" />
-        <h1 className="text-white font-miligrambold text-[12px] sm:text-[1.3rem] leading-none">
+        <h1
+          onClick={() => handleNavigate(`${currentPath}/ReadMoreBlog`)}
+          className="text-white font-miligrambold text-[12px] sm:text-[1.3rem] leading-none cursor-pointer"
+        >
           What to know before taking your business online?
         </h1>
         <div className="flex items-center justify-start gap-3 my-2 sm:my-5 md:block lg:flex">
@@ -45,7 +44,10 @@ const Card = ({ className }: { className?: string }) => {
             need an online presence for your business to increase marketing and
             create a loyal customer base.A website consists of web pages which
             are easy to share and most browsers have a...
-            <button className="border-b-2 border-transparent hover:border-main-lightTeal text-main-lightTeal cursor-pointer text-[1rem] leading-none font-miligramTextBook hover:font-miligramTextMedium">
+            <button
+              onClick={() => handleNavigate(`${currentPath}/ReadMoreBlog`)}
+              className="border-b-2 border-transparent hover:border-main-lightTeal text-main-lightTeal cursor-pointer text-[1rem] leading-none font-miligramTextBook hover:font-miligramTextMedium"
+            >
               Read More
             </button>
           </p>

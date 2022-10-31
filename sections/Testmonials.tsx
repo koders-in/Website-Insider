@@ -9,7 +9,8 @@ import { sleep } from "../helper";
 import { TestmonialData, testmonialLogo } from "../helper/constant";
 import { Button, Divider, GradientText, ReviewBox } from "../components";
 
-let COUNTER = 0;
+let timer = 0;
+let index = 0;
 const Testmonials = () => {
   const isRunning = useRef(false);
   const [currentItem, setCurrentItem] = useState<TestmonialData>(
@@ -22,14 +23,17 @@ const Testmonials = () => {
 
   useEffect(() => {
     const startAnimation = async () => {
-      if (COUNTER < testmonialLogo.length - 1) {
-        COUNTER += 1;
-        setCurrentItem(testmonialLogo[COUNTER]);
+      if (timer < 5) {
+        timer += 1;
       } else {
-        COUNTER = 0;
-        setCurrentItem(testmonialLogo[0]);
+        timer = 0;
+        if (!(index < testmonialLogo.length)) {
+          index = 0;
+        }
+        setCurrentItem(testmonialLogo[index]);
+        index += 1;
       }
-      await sleep(5000);
+      await sleep(1000);
       startAnimation();
     };
     if (!isRunning.current) {
@@ -37,13 +41,15 @@ const Testmonials = () => {
       startAnimation();
     }
   });
+
   useEffect(() => {
     AOS.init({
       easing: "ease-out",
       once: true,
-      duration: 600,
+      duration: 1000,
     });
   }, []);
+
   return (
     <div className="py-16 xxl:py-[10rem]">
       <Divider className="mt-5 xl:my-10" />
@@ -73,7 +79,8 @@ const Testmonials = () => {
         {testmonialLogo.map((item, i) => (
           <div
             onClick={() => {
-              COUNTER = i;
+              timer = 0;
+              index = i;
               setCurrentItem(item);
             }}
             key={i}
@@ -98,7 +105,7 @@ const Testmonials = () => {
       <Button
         OnClick={() => handleNavigate("Testmonials/#footer")}
         text="Read More"
-        className="mx-auto block mt-8 sm:mt-10 bg-main-greenOpt-200 font-miligramMedium text-main-lightTeal py-[10px] px-9 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+        className="text-[0.8rem] xxl:text-[1rem] mx-auto block mt-8 sm:mt-10 bg-main-greenOpt-200 font-miligramMedium text-main-lightTeal py-[8px] sm:py-[10px] px-6 sm:px-9 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
       />
       <Divider className="xl:my-10" />
     </div>

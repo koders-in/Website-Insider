@@ -16,7 +16,7 @@ const Pricing = () => {
   }
 
   React.useEffect(() => {
-    handleSliding.onSwipe("pricing");
+    handleSliding.onSwipe("pricingSec");
   });
 
   React.useEffect(() => {
@@ -29,7 +29,7 @@ const Pricing = () => {
 
   return (
     <div
-      id="pricingSec"
+      id="pricing"
       className="py-16 bg-main-secondary xxl:py-[10rem] relative"
     >
       <Divider className="mt-5 xl:my-10" />
@@ -62,7 +62,7 @@ const Pricing = () => {
       </div>
       <div
         className="flex md:hidden gap-8 w-[100%] justify-center items-center overflow-hidden mx-auto relative h-[430px] overflow-x-clip"
-        id="pricing"
+        id="pricingSec"
       >
         <div
           className="absolute h-full hidden xsm:block w-[15%] msm:w-[27%] md:w-[30%] left-0 z-20"

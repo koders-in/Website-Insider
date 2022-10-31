@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import AOS from "aos";
 
@@ -8,6 +8,8 @@ import { aeroUp } from "../assets";
 import { Divider, GradientText } from "../components";
 
 const Newsletter = () => {
+  const [isHover, setIsHover] = useState(false);
+
   React.useEffect(() => {
     AOS.init({
       easing: "ease-out",
@@ -39,11 +41,15 @@ const Newsletter = () => {
           className="w-full px-4 py-1 outline-none border-none text-main-light_white placeholder:tracking-[2px] bg-transparent placeholder:text-main-light_white lett font-miligramMedium"
           placeholder="Your Email Address"
         />
-        <div className="w-14 h-10 bg-main-teal flex justify-center items-center p-4">
+        <div
+          className="w-14 h-10 bg-main-teal flex justify-center items-center p-4 cursor-pointer"
+          onMouseEnter={() => setIsHover(true)}
+          onMouseLeave={() => setIsHover(false)}
+        >
           <Image
             src={aeroUp}
             alt="aero"
-            className="hover:scale-110  cursor-pointer"
+            className={`${isHover ? "scale-110" : "scale-90"}`}
           />
         </div>
       </div>

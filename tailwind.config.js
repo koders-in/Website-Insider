@@ -29,6 +29,8 @@ module.exports = {
             700: "#A1A1AA",
           },
           lightTeal: "#38D8CC",
+          filter: "#D4D4D4",
+          filterDropDown: "#E0E0E0",
         },
       },
       boxShadow: {

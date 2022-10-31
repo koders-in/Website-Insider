@@ -110,7 +110,7 @@ const Form = () => {
       <Divider className="mt-12" />
       <button
         type="submit"
-        className="mx-auto text-[1.2rem] block mt-16 bg-main-greenOpt-200 font-miligramMedium text-main-lightTeal w-[13.5rem] py-4 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+        className="mx-auto text-[0.8rem] xxl:text-[1rem] py-[0.4rem] sm:py-[0.6rem] w-[7.3rem] sm:w-[9.5rem] block mt-16 bg-main-greenOpt-200 font-miligramMedium text-main-lightTeal  rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
       >
         Submit
       </button>

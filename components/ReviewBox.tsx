@@ -18,6 +18,7 @@ const ReviewBox = ({
       {testmonialLogo.map((item, i) => {
         return (
           <div
+            data-aos="fade-up"
             key={i}
             className={`border-4 font-miligramMedium border-main-teal rounded-2xl w-[90%] sm:w-2/3 mx-auto lg:flex items-center justify-start sm:my-10 my-3 p-6 lg:p-12 bg-main-secondary transition-all duration-200 animate-fadeOut xxl:w-[60%]`}
             style={item.title === title ? {} : { display: "none" }}
