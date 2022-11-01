@@ -54,7 +54,7 @@ jobs:
       uses: fifsky/ssh-action@master
       with:
         command: |
-          docker run -d -p 9444:80 --name koders-website-insider ${{ secrets.DOCKER_HUB_USERNAME }}/koders-website-insider
+          docker run -d -p 9444:3000 --name koders-website-insider ${{ secrets.DOCKER_HUB_USERNAME }}/koders-website-insider
         host: ${{ secrets.HOST }}
         user: ${{ secrets.USERNAME }}
         pass: ${{ secrets.PASSWORD}}
