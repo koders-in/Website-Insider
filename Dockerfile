@@ -1,14 +1,13 @@
 FROM ubuntu:latest as build-stage
-RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y nodejs npm libgl1-mesa-dev
-# ENV NODE_OPTIONS=--openssl-legacy-provider
+RUN apt-get update 
+RUN apt-get install -y curl
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get update 
+RUN apt-get install -y nodejs libgl1-mesa-dev
 WORKDIR /app
 COPY package.json ./
 COPY package-lock.json ./
 COPY . .
-RUN npm i --force
-RUN npm run build
-FROM nginx:stable-alpine
-COPY --from=build-stage /app/build/ /usr/share/nginx/html
-EXPOSE 80
-CMD ["nginx", "-g", "daemon off;"]
+RUN npm install
+RUN npm install pm2 -g  # For installing pm2 globally
+CMD ["/bin/sh", "-c", "pm2-runtime 'npm start'"]
