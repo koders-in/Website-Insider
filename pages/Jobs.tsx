@@ -1,5 +1,8 @@
-import Head from "next/head";
 import React, { useState } from "react";
+import Head from "next/head";
+import AOS from "aos";
+
+import "aos/dist/aos.css";
 
 import {
   Divider,
@@ -19,6 +22,15 @@ const Jobs = () => {
       top: 0,
     });
   }, []);
+
+  React.useEffect(() => {
+    AOS.init({
+      easing: "ease-out",
+      once: true,
+      duration: 600,
+    });
+  }, []);
+
   const handleSubmit = () => {
     console.log("state", filterDetaile, candidateDetails);
   };
@@ -29,6 +41,7 @@ const Jobs = () => {
       </Head>
       <Navbar />
       <div className="py-28 w-[85%] mx-auto">
+        <Divider className="mt-9" />
         <LandingSection {...{ filterDetaile, setFilterDetaile }} />
         <Divider className="mt-16" />
         <Job {...{ candidateDetails, setCandidateDetails }} />

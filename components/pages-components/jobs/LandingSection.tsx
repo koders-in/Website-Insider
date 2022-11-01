@@ -33,10 +33,14 @@ const LandingSection = ({ filterDetaile, setFilterDetaile }: Props) => {
   return (
     <div className="">
       <GradientText
+        aos="slide-left"
         text="Work at Koders"
         className="w-[90%] mx-auto sm:w-fit text-[2.2rem] leading-none mb-3 md:mb-0 md:leading-normal  sm:text-[2.8rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
       />
-      <p className="mx-auto text-[0.8rem] leading-none m-1 xl:w-[60%] sm:text-[1.3rem] text-center text-main-light_white font-miligramText400">
+      <p
+        data-aos="slide-right"
+        className="mx-auto text-[0.8rem] leading-none m-1 xl:w-[60%] sm:text-[1.3rem] text-center text-main-light_white font-miligramText400"
+      >
         At Koders we build softwares with new dimensions by utilizing the full
         potential of our team to bring out the best for our customers.
       </p>

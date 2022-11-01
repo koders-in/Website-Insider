@@ -33,7 +33,7 @@ const Blog = () => {
       </Head>
       <Navbar />
       <div className="pb-10 pt-28 w-[91%] mx-auto relative">
-        <Divider className="mt-10" />
+        <Divider className="mt-9" />
         <GradientText
           aos="fade-up"
           className="w-fit mx-auto text-[2.2rem] leading-none mb-3 md:mb-0 md:leading-normal  sm:text-[2.8rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
