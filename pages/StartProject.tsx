@@ -15,12 +15,16 @@ import {
 } from "../components";
 import { faq, typeOfProjects } from "../helper/constant";
 
+interface FormData {
+  [key: string]: string;
+}
 export interface FormState {
   technologies: Array<string>;
 }
 
 const StartProject = () => {
-  const [formState, setFormState] = useState<FormState>({
+  const [formData, setFormData] = useState();
+  const [projectData, setProjectData] = useState<FormState>({
     technologies: ["Web Development", "UI/UX"],
   });
   const [isExpand, setIsExpand] = useState("");
@@ -29,11 +33,19 @@ const StartProject = () => {
     if (isExpand === question) setIsExpand("");
     else setIsExpand(question);
   };
+
+  const handleSubmitForm = (e) => {
+    e.preventDefault();
+    window.alert(JSON.stringify(formData));
+    console.log(formData, projectData);
+  };
+
   React.useEffect(() => {
     window.scrollTo({
       top: 0,
     });
   }, []);
+
   React.useEffect(() => {
     AOS.init({
       easing: "ease-out",
@@ -41,6 +53,7 @@ const StartProject = () => {
       duration: 600,
     });
   }, []);
+
   return (
     <div className="bg-main-primary overflow-hidden relative">
       <Head>
@@ -57,12 +70,14 @@ const StartProject = () => {
         />
         <Divider className="mt-16 md:py-2" />
         <ButtonsGroup
-          formState={formState}
-          setFormState={setFormState}
-          buttonsArray={[...typeOfProjects]}
+          {...{
+            projectData,
+            setProjectData,
+            buttonsArray: [...typeOfProjects],
+          }}
         />
         <Divider className="mt-16" />
-        <Form />
+        <Form {...{ formData, setFormData, handleSubmitForm }} />
         <Divider className="mt-12 xxl:mt-16" />
         <GradientText
           aos="fade-up"
