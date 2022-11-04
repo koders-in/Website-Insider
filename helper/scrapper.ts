@@ -24,7 +24,7 @@ async function scrollPage(page, scrollContainer) {
 
 async function getReviewsFromPage(page) {
   const reviews = await page.evaluate(() => {
-    return Array.from(document.querySelectorAll(".jftiEf")).map((el) => {
+    return Array.from(document.querySelectorAll(".jftiEf")).map((el: any) => {
       return {
         user: {
           name: el.querySelector(".d4r55")?.textContent.trim(),
@@ -50,13 +50,12 @@ async function getReviewsFromPage(page) {
           el.querySelector(".GBkF3d:nth-child(2)")?.getAttribute("aria-label")
         ),
         images: Array.from(el.querySelectorAll(".KtCyie button")).length
-          ? Array.from(el.querySelectorAll(".KtCyie button")).map((el) => {
+          ? Array.from(el.querySelectorAll(".KtCyie button")).map((el: any) => {
               return {
                 thumbnail: getComputedStyle(el).backgroundImage.slice(5, -2),
               };
             })
           : undefined,
-        date: el.querySelector(".rsqaWe")?.textContent.trim(),
       };
     });
   });
@@ -114,10 +113,6 @@ async function getLocalPlaceReviews() {
     console.warn(error);
   }
 }
-
-// getLocalPlaceReviews().then((result) => {
-//   console.dir(result, { depth: null });
-// });
 
 let reviewData = null;
 
