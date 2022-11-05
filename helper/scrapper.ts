@@ -11,7 +11,7 @@ async function scrollPage(page, scrollContainer) {
     await page.evaluate(
       `document.querySelector("${scrollContainer}").scrollTo(0, document.querySelector("${scrollContainer}").scrollHeight)`
     );
-    await page.waitForTimeout(2000);
+    await page.waitForTimeout(3000);
     let newHeight = await page.evaluate(
       `document.querySelector("${scrollContainer}").scrollHeight`
     );

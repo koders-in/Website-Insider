@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { getReviewList } from "../helper/scrapper";
 
@@ -12,16 +12,17 @@ import {
   Navbar,
   TestmonialCard,
 } from "../components";
-import { reviews } from "../helper/constant";
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async (context) => {
   const res: object = await getReviewList();
   return {
-    props: { reviewsData: JSON.parse(JSON.stringify(res)) },
+    props: { reviewsArray: JSON.parse(JSON.stringify(res)) },
   };
 };
 
-const Testmonials = ({ reviewsData }) => {
+const Testmonials = ({ reviewsArray }) => {
+  const [reviewsData, setReviewsData] = useState<any>(reviewsArray);
+
   const cardInaColumn = Math.round(reviewsData?.reviews?.length / 3);
   const rowOne = reviewsData?.reviews?.slice(0, cardInaColumn - 2);
 
