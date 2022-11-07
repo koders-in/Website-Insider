@@ -63,48 +63,58 @@ const Testmonials = ({ reviewsArray }) => {
         </p>
         <Divider className="mt-4 md:mt-14" />
         <div className=" w-[90%] lg:w-[85%] xl:w-[80%] mx-auto flex justify-center flex-wrap md:flex-nowrap gap-5 xl:gap-7 bg-main-primary pt-4 pb-8 xxl:w-[63%]">
-          <div className="w-full md:w-1/3">
-            {rowOne?.map((item, i) => (
-              <TestmonialCard
-                key={i}
-                {...{
-                  description: item.snippet,
-                  logo: item.user.thumbnail,
-                  title: item.user.name,
-                  rating: item.rating,
-                  link: item.user.link,
-                }}
-              />
-            ))}
-          </div>
-          <div className="w-full md:w-1/3">
-            {rowTwo?.map((item, i) => (
-              <TestmonialCard
-                key={i}
-                {...{
-                  description: item.snippet,
-                  logo: item.user.thumbnail,
-                  title: item.user.name,
-                  rating: item.rating,
-                  link: item.user.link,
-                }}
-              />
-            ))}
-          </div>
-          <div className="w-full md:w-1/3">
-            {rowThree?.map((item, i) => (
-              <TestmonialCard
-                key={i}
-                {...{
-                  description: item.snippet,
-                  logo: item.user.thumbnail,
-                  title: item.user.name,
-                  rating: item.rating,
-                  link: item.user.link,
-                }}
-              />
-            ))}
-          </div>
+          {!reviewsData?.reviews.length ? (
+            <div>
+              <p className="text-white text-lg">
+                Unable to load data please refresh the page.
+              </p>
+            </div>
+          ) : (
+            <>
+              <div className="w-full md:w-1/3">
+                {rowOne?.map((item, i) => (
+                  <TestmonialCard
+                    key={i}
+                    {...{
+                      description: item.snippet,
+                      logo: item.user.thumbnail,
+                      title: item.user.name,
+                      rating: item.rating,
+                      link: item.user.link,
+                    }}
+                  />
+                ))}
+              </div>
+              <div className="w-full md:w-1/3">
+                {rowTwo?.map((item, i) => (
+                  <TestmonialCard
+                    key={i}
+                    {...{
+                      description: item.snippet,
+                      logo: item.user.thumbnail,
+                      title: item.user.name,
+                      rating: item.rating,
+                      link: item.user.link,
+                    }}
+                  />
+                ))}
+              </div>
+              <div className="w-full md:w-1/3">
+                {rowThree?.map((item, i) => (
+                  <TestmonialCard
+                    key={i}
+                    {...{
+                      description: item.snippet,
+                      logo: item.user.thumbnail,
+                      title: item.user.name,
+                      rating: item.rating,
+                      link: item.user.link,
+                    }}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
         <Button
           OnClick={() => handleNavigate("StartProject")}
