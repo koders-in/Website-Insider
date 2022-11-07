@@ -1,11 +1,12 @@
 import Image from "next/image";
 import Router, { useRouter } from "next/router";
 import React, { useEffect, useState, useRef } from "react";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import AOS from "aos";
 
 import "aos/dist/aos.css";
 
-import { sleep } from "../helper";
+import { disableScroll, enableScroll, sleep } from "../helper";
 import { TestmonialData, testmonialLogo } from "../helper/constant";
 import {
   Button,
@@ -22,9 +23,11 @@ const Testmonials = () => {
 
   Router.events.on("routeChangeStart", () => {
     setLoading(true);
+    disableBodyScroll(document);
   });
   Router.events.on("routeChangeComplete", () => {
     setLoading(false);
+    enableBodyScroll(document);
   });
 
   const isRunning = useRef(false);

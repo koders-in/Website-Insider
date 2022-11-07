@@ -45,6 +45,7 @@ module.exports = {
         fadeOut: "fadeOut 0.15s ease-in forwards",
         show: "show 1s ease forwards",
         hide: "hide 0.5s ease-in forwards",
+        spin: "spin 2s linear infinite",
       },
       keyframes: {
         leftIn: {
@@ -133,6 +134,10 @@ module.exports = {
           "100%": {
             opacity: "0",
           },
+        },
+        spin: {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
         },
       },
       fontFamily: {

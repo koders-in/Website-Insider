@@ -10,9 +10,12 @@
   },
   "dependencies": {
     "aos": "^2.3.4",
+    "body-scroll-lock": "^4.0.0-beta.0",
+    "i": "^0.3.7",
     "next": "13.0.0",
     "next-compose-plugins": "^2.2.1",
     "next-optimized-images": "^2.6.2",
+    "npm": "^8.19.3",
     "puppeteer": "^19.2.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
