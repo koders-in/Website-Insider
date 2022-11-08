@@ -79,7 +79,6 @@ export const useRedirectToPricing = () => {
     const pricingBtn = document.getElementById("Pricing");
     router.push("/");
     const pricingSec = document.getElementById("pricingSec");
-    console.log(pricingSec, "pricingSec");
     if (pricingSec) {
       const fromTop = pricingSec.offsetTop;
       window.scrollTo({

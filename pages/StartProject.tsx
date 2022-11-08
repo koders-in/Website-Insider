@@ -37,7 +37,6 @@ const StartProject = () => {
   const handleSubmitForm = (e) => {
     e.preventDefault();
     window.alert(JSON.stringify(formData));
-    console.log(formData, projectData);
   };
 
   React.useEffect(() => {

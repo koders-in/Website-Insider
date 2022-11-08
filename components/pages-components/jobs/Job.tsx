@@ -61,7 +61,6 @@ const Job = () => {
       return;
     }
     setIsShowLoader(true);
-    console.log(value, resume);
 
     const formdata = new FormData();
     formdata.append("file", resume);

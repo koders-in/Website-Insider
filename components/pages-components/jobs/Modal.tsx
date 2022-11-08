@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { HashLoader } from "react-spinners";
+import { FadeLoader } from "react-spinners";
 
 import Button from "../../Button";
 import GradientText from "../../GradientText";
@@ -36,7 +36,7 @@ const Modal = ({
         {/* ------- Loader-------- */}
         {showLoader && (
           <div className="absolute top-0 left-0 h-full w-full backdrop-blur-sm z-40 flex items-center justify-center">
-            <HashLoader
+            <FadeLoader
               color="#00A99D"
               loading={showLoader}
               // cssOverride={override}

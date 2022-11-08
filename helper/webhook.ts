@@ -40,8 +40,5 @@ export const sendCandidateDetails = async (data) => {
       },
     ],
   };
-  console.log("first");
-  const res = await axios.post(webhook, embed);
-  console.log(res);
-  return res;
+  return await axios.post(webhook, embed);
 };
