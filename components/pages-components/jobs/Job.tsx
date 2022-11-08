@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Formik, FormikHelpers } from "formik";
 
 import Button from "../../Button";
-import { JobModal } from "../..";
+import { JobModal, GradientText } from "../..";
 import { Divider, InputBox } from "../../index";
 import { locationTeal, work } from "../../../assets";
 import { jobValidationSchema } from "../../../helper/validate";
@@ -82,6 +82,7 @@ const Job = () => {
         ...value,
         downloadLink: result,
       });
+      setResume(null);
       setIsShowLoader(false);
       toogleApplyModal();
     } catch (error: any) {
@@ -179,6 +180,35 @@ const Job = () => {
           >
             {({ handleChange, handleSubmit, handleBlur, errors, values }) => (
               <React.Fragment>
+                <div className="lg:flex justify-between items-center">
+                  <div className="w-full lg:w-[80%]">
+                    <GradientText
+                      className="w-fit text-[1.6rem] bg-gradient-to-r from-white to-main-teal font-miligrambold"
+                      text="Fresher UI/UX Designer"
+                    />
+                    <div className="flex text-white">
+                      <div className="flex items-center justify-between text-[0.8rem] mr-3">
+                        <Image src={locationTeal} alt="" className="mr-2 h-3" />
+                        Dehradun, Uttrakhand
+                      </div>
+                      <div className="flex items-center justify-between text-[0.8rem]">
+                        <Image src={work} alt="" className="mr-2 h-3" />
+                        Full Time
+                      </div>
+                    </div>
+                    <p className="text-[0.8rem] text-main-whiteVar1">
+                      Posted 2 weeks ago
+                    </p>
+                  </div>
+                  <div className="w-full mt-7 lg:mt-0 lg:w-[20%]">
+                    <Button
+                      OnClick={handleSubmit}
+                      text="Apply"
+                      className=" bg-main-greenOpt-200  font-miligramMedium w-fit text-main-lightTeal py-[10px] px-12 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+                    />
+                  </div>
+                </div>
+                <div className="h-[2px] bg-white w-ful my-8"></div>
                 <div className="p-8 border-dashed  border-2 border-main-teal rounded-xl relative">
                   <input
                     type="file"
