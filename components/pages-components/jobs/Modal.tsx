@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { HashLoader } from "react-spinners";
 
 import Button from "../../Button";
 import GradientText from "../../GradientText";
@@ -9,9 +10,17 @@ interface Props {
   children: React.ReactNode;
   handleClose: () => void;
   handleClick: () => void;
+  isButtonHide?: boolean;
+  showLoader?: boolean;
 }
 
-const Modal = ({ handleClose, handleClick, children }: Props) => {
+const Modal = ({
+  handleClose,
+  handleClick,
+  children,
+  isButtonHide = false,
+  showLoader = false,
+}: Props) => {
   return (
     <div
       className="absolute top-0 left-0 w-full h-full z-50 flex justify-center backdrop-blur-sm"
@@ -22,8 +31,22 @@ const Modal = ({ handleClose, handleClick, children }: Props) => {
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="w-[95vw] lg:w-[60vw] relative h-fit bg-main-secondary py-4 px-3 lg:py-16 lg:px-10 border-2 border-main-teal rounded-xl mt-[12%]"
+        className="w-[95vw] lg:w-[60vw] relative h-fit bg-main-secondary py-7 px-6 lg:py-16 lg:px-10 border-2 border-main-teal rounded-xl mt-[12%]"
       >
+        {/* ------- Loader-------- */}
+        {showLoader && (
+          <div className="absolute top-0 left-0 h-full w-full backdrop-blur-sm z-40 flex items-center justify-center">
+            <HashLoader
+              color="#00A99D"
+              loading={showLoader}
+              // cssOverride={override}
+              size={100}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+            />
+          </div>
+        )}
+
         <Image
           src={add}
           alt=""
@@ -60,11 +83,13 @@ const Modal = ({ handleClose, handleClick, children }: Props) => {
         </div>
         <div className="h-[2px] bg-white w-ful my-8"></div>
         {children}
-        <Button
-          OnClick={handleClick}
-          text="Apply"
-          className="mt-10 block mx-auto bg-main-greenOpt-200  font-miligramMedium w-fit text-main-lightTeal py-[10px] px-12 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
-        />
+        {!isButtonHide && (
+          <Button
+            OnClick={handleClick}
+            text="Apply"
+            className="mt-10 block mx-auto bg-main-greenOpt-200  font-miligramMedium w-fit text-main-lightTeal py-[10px] px-12 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+          />
+        )}
       </div>
     </div>
   );

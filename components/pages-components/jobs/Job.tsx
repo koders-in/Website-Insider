@@ -1,15 +1,31 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import { Formik, FormikHelpers } from "formik";
 
 import Button from "../../Button";
 import { JobModal } from "../..";
 import { Divider, InputBox } from "../../index";
 import { locationTeal, work } from "../../../assets";
-import { useFormSubmitHook } from "../../../helper/hook";
+import { jobValidationSchema } from "../../../helper/validate";
+import { sendCandidateDetails } from "../../../helper/webhook";
+
+interface initialState {
+  email: string;
+  mobile: string;
+  fName: string;
+  lName: string;
+}
+
+const initialValue: initialState = {
+  email: "",
+  mobile: "",
+  fName: "",
+  lName: "",
+};
 
 const Job = () => {
-  const { onInputChange, onSubmit, candidateDetails, setFile, errorsMsg } =
-    useFormSubmitHook();
+  const [resume, setResume] = useState<any>(null);
+  const [isShowLoader, setIsShowLoader] = useState(false);
   const [showModal, setShowModal] = useState({
     viewDetails: false,
     apply: false,
@@ -36,18 +52,49 @@ const Job = () => {
     toogleApplyModal();
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    onInputChange(name, value);
+  const handleSubmit = async (
+    value: initialState,
+    helper: FormikHelpers<initialState>
+  ) => {
+    if (resume == null) {
+      window.alert("Please upload resume");
+      return;
+    }
+    setIsShowLoader(true);
+    console.log(value, resume);
+
+    const formdata = new FormData();
+    formdata.append("file", resume);
+
+    const requestOptions: any = {
+      method: "POST",
+      body: formdata,
+      redirect: "follow",
+    };
+    try {
+      const response = await fetch(
+        "http://localhost:3000/api/",
+        requestOptions
+      );
+      const data = await response.text();
+      const { result } = JSON.parse(data);
+      await sendCandidateDetails({
+        ...value,
+        downloadLink: result,
+      });
+      setIsShowLoader(false);
+      toogleApplyModal();
+    } catch (error: any) {
+      setIsShowLoader(false);
+      console.warn(error.message);
+    }
   };
 
-  const handleApplyForJob = async () => {
-    const res = await onSubmit();
-    if (res) toogleApplyModal();
-  };
-
-  const handleFileUpload = async (e: any) => {
-    setFile(e.target.files[0]);
+  const handleResumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const {
+      target: { files },
+    } = e;
+    setResume(files[0]);
   };
 
   return (
@@ -120,62 +167,85 @@ const Job = () => {
 
       {showModal.apply && (
         <JobModal
-          handleClick={handleApplyForJob}
+          isButtonHide={true}
+          handleClick={() => {}}
           handleClose={toogleApplyModal}
+          showLoader={isShowLoader}
         >
-          <div className="p-8 border-dashed  border-2 border-main-teal rounded-xl relative">
-            <input
-              type="file"
-              accept="*.pdf"
-              onChange={handleFileUpload}
-              className="absolute w-full h-full opacity-0"
-            />
-            <p className="text-main-teal text-[1rem] text-center">
-              Upload Resume
-            </p>
-            <p className="text-main-whiteVar1 text-[0.8rem] text-center">
-              Drop resume here or click to upload
-            </p>
-          </div>
-          <Divider className="mt-10" />
-          <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">
-            <InputBox
-              type="text"
-              // value={candidateDetails?.fname?.value}
-              placeholder="First Name *"
-              name="fname"
-              handleChange={handleChange}
-              errorText={errorsMsg?.fname}
-            />
-            <InputBox
-              type="text"
-              // value={candidateDetails?.lname?.value}
-              placeholder="Last Name *"
-              name="lname"
-              handleChange={handleChange}
-              errorText={errorsMsg?.lname}
-            />
-          </div>
-          <Divider className="mt-8" />
-          <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">
-            <InputBox
-              type="text"
-              // value={candidateDetails?.email?.value}
-              placeholder="Email Address *"
-              name="email"
-              handleChange={handleChange}
-              errorText={errorsMsg.email}
-            />
-            <InputBox
-              type="text"
-              // value={candidateDetails?.mob?.value}
-              placeholder="Mobile *"
-              name="mob"
-              handleChange={handleChange}
-              errorText={errorsMsg.mob}
-            />
-          </div>
-          <Divider className="mt-10" />
+          <Formik
+            validationSchema={jobValidationSchema}
+            onSubmit={handleSubmit}
+            initialValues={initialValue}
+          >
+            {({ handleChange, handleSubmit, handleBlur, errors, values }) => (
+              <React.Fragment>
+                <div className="p-8 border-dashed  border-2 border-main-teal rounded-xl relative">
+                  <input
+                    type="file"
+                    accept="*.pdf"
+                    name="resume"
+                    onChange={handleResumeChange}
+                    className="absolute w-full h-full opacity-0"
+                  />
+                  <p className="text-main-teal text-[1rem] text-center">
+                    {resume?.name ? resume?.name : "Upload Resume"}
+                  </p>
+                  <p className="text-main-whiteVar1 text-[0.8rem] text-center">
+                    Drop resume here or click to upload
+                  </p>
+                </div>
+                <Divider className="mt-10" />
+                <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">
+                  <InputBox
+                    type="text"
+                    placeholder="First Name *"
+                    name="fName"
+                    onBlur={handleBlur}
+                    value={values.fName}
+                    handleChange={handleChange}
+                    errorText={errors.fName}
+                  />
+                  <InputBox
+                    type="text"
+                    placeholder="Last Name *"
+                    name="lName"
+                    onBlur={handleBlur}
+                    value={values.lName}
+                    handleChange={handleChange}
+                    errorText={errors.lName}
+                  />
+                </div>
+                <Divider className="mt-8" />
+                <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">
+                  <InputBox
+                    type="text"
+                    placeholder="Email Address *"
+                    name="email"
+                    onBlur={handleBlur}
+                    value={values.email}
+                    handleChange={handleChange}
+                    errorText={errors.email}
+                  />
+                  <InputBox
+                    type="text"
+                    placeholder="Mobile *"
+                    name="mobile"
+                    onBlur={handleBlur}
+                    value={values.mobile}
+                    handleChange={handleChange}
+                    errorText={errors.mobile}
+                  />
+                </div>
+                <Divider className="mt-10" />
+                <Button
+                  type="submit"
+                  OnClick={handleSubmit}
+                  text="Apply"
+                  className="mt-10 block mx-auto bg-main-greenOpt-200  font-miligramMedium w-fit text-main-lightTeal py-[10px] px-12 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+                />
+              </React.Fragment>
+            )}
+          </Formik>
         </JobModal>
       )}
       <Image

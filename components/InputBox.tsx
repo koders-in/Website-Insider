@@ -8,6 +8,7 @@ interface Props {
   type: string;
   styling?: string;
   errorText?: string;
+  onBlur: (props: any) => void;
 }
 
 const InputBox = ({
@@ -18,6 +19,7 @@ const InputBox = ({
   styling,
   type,
   errorText,
+  onBlur,
 }: Props) => {
   return (
     <div className="w-full relative">
@@ -31,6 +33,7 @@ const InputBox = ({
       <input
         type={type}
         value={value}
+        onBlur={onBlur}
         name={name}
         onChange={handleChange}
         placeholder={placeholder}

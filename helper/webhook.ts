@@ -7,36 +7,33 @@ export const sendCandidateDetails = async (data) => {
   const embed = {
     embeds: [
       {
-        title: "Apply for Job",
-        // description: "title" + "\t\t\t\t\t" + "content",
+        title: "Download resume",
+        description: `${data.fName} is apply for job`,
         url: data?.downloadLink,
-        // color: "0x0099ff",
-        // footer: "Apply for job",
-        // thumbnail: "THUMBNAIL",
+        color: 3447003,
         author: {
-          name: data?.fname?.value,
-          //   url: " user.tweet_link",
+          name: data?.fName,
           //   icon_url: "user.profile_url",
         },
         fields: [
           {
             name: "First Name",
-            value: data?.fname.value,
+            value: data?.fName,
             inline: true,
           },
           {
             name: "Last Name",
-            value: data?.lname.value,
+            value: data?.lName,
             inline: true,
           },
           {
             name: "Email",
-            value: data?.email.value,
+            value: data?.email,
             inline: true,
           },
           {
             name: "Mobile Number",
-            value: data?.mob.value,
+            value: data?.mobile,
             inline: true,
           },
         ],
