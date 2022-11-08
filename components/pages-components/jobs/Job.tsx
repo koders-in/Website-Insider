@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import Image from "next/image";
 
-import { JobModal } from "../..";
 import Button from "../../Button";
+import { JobModal } from "../..";
 import { Divider, InputBox } from "../../index";
 import { locationTeal, work } from "../../../assets";
+import { useFormSubmitHook } from "../../../helper/hook";
 
-interface Props {
-  candidateDetails: any;
-  setCandidateDetails: (data: any) => void;
-}
-
-const Job = ({ candidateDetails, setCandidateDetails }: Props) => {
+const Job = () => {
+  const { onInputChange, onSubmit, candidateDetails, setFile, errorsMsg } =
+    useFormSubmitHook();
   const [showModal, setShowModal] = useState({
     viewDetails: false,
     apply: false,
@@ -33,25 +31,32 @@ const Job = ({ candidateDetails, setCandidateDetails }: Props) => {
     });
   };
 
-  const handleClick = () => {
+  const navigateDetailsToApply = () => {
     toogleDetailModal();
     toogleApplyModal();
   };
 
-  const handleChange = (target) => {
-    const { name, value } = target;
-    setCandidateDetails((prev) => {
-      return {
-        ...prev,
-        [name]: value,
-      };
-    });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    onInputChange(name, value);
+  };
+
+  const handleApplyForJob = async () => {
+    const res = await onSubmit();
+    if (res) toogleApplyModal();
+  };
+
+  const handleFileUpload = async (e: any) => {
+    setFile(e.target.files[0]);
   };
 
   return (
     <div className="w-full border-2 rounded-xl mt-8 border-main-teal md:flex items-center px-[5%] py-[4%] md:py-[1%] bg-main-secondary">
       {showModal.viewDetails && (
-        <JobModal handleClick={handleClick} handleClose={toogleDetailModal}>
+        <JobModal
+          handleClick={navigateDetailsToApply}
+          handleClose={toogleDetailModal}
+        >
           <h5 className="text-white text-[1.1rem]">About the Company</h5>
           <p className="text-white text-[0.85rem] mt-3">
             Koders isn't your normal software development firm. Koders provides
@@ -115,17 +120,14 @@ const Job = ({ candidateDetails, setCandidateDetails }: Props) => {
 
       {showModal.apply && (
         <JobModal
-          handleClick={() => toogleApplyModal()}
+          handleClick={handleApplyForJob}
           handleClose={toogleApplyModal}
         >
           <div className="p-8 border-dashed  border-2 border-main-teal rounded-xl relative">
             <input
               type="file"
-              onChange={(e) =>
-                setCandidateDetails((pre) => {
-                  return { ...pre, resume: e.target.files[0] };
-                })
-              }
+              accept="*.pdf"
+              onChange={handleFileUpload}
               className="absolute w-full h-full opacity-0"
             />
             <p className="text-main-teal text-[1rem] text-center">
@@ -139,34 +141,38 @@ const Job = ({ candidateDetails, setCandidateDetails }: Props) => {
           <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">
             <InputBox
               type="text"
-              value={candidateDetails?.fname}
+              // value={candidateDetails?.fname?.value}
               placeholder="First Name *"
               name="fname"
               handleChange={handleChange}
+              errorText={errorsMsg?.fname}
             />
             <InputBox
               type="text"
-              value={candidateDetails?.lname}
+              // value={candidateDetails?.lname?.value}
               placeholder="Last Name *"
               name="lname"
               handleChange={handleChange}
+              errorText={errorsMsg?.lname}
             />
           </div>
           <Divider className="mt-8" />
           <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">
             <InputBox
               type="text"
-              value={candidateDetails?.email}
+              // value={candidateDetails?.email?.value}
               placeholder="Email Address *"
               name="email"
               handleChange={handleChange}
+              errorText={errorsMsg.email}
             />
             <InputBox
               type="text"
-              value={candidateDetails?.mob}
+              // value={candidateDetails?.mob?.value}
               placeholder="Mobile *"
               name="mob"
               handleChange={handleChange}
+              errorText={errorsMsg.mob}
             />
           </div>
           <Divider className="mt-10" />

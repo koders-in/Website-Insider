@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Head from "next/head";
 import AOS from "aos";
+import axios from "axios";
 
 import "aos/dist/aos.css";
 
@@ -12,16 +13,10 @@ import {
   LandingSection,
   Navbar,
 } from "../components";
+import { validateApplyForJobDetails } from "../helper/validate";
 
 const Jobs = () => {
   const [filterDetaile, setFilterDetaile] = useState<any>();
-  const [candidateDetails, setCandidateDetails] = useState<any>();
-
-  React.useEffect(() => {
-    window.scrollTo({
-      top: 0,
-    });
-  }, []);
 
   React.useEffect(() => {
     AOS.init({
@@ -31,9 +26,6 @@ const Jobs = () => {
     });
   }, []);
 
-  const handleSubmit = () => {
-    console.log("state", filterDetaile, candidateDetails);
-  };
   return (
     <div className="bg-main-primary overflow-hidden relative">
       <Head>
@@ -44,8 +36,8 @@ const Jobs = () => {
         <Divider className="mt-9" />
         <LandingSection {...{ filterDetaile, setFilterDetaile }} />
         <Divider className="mt-16" />
-        <Job {...{ candidateDetails, setCandidateDetails }} />
-        <Job {...{ candidateDetails, setCandidateDetails }} />
+        <Job />
+        <Job />
         <Divider className="mt-16" />
         <JobAlert />
       </div>

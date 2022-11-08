@@ -1,7 +1,10 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import FormData from "form-data";
 // import { useNavigate } from "react-router-dom";
 import { handleSlider } from ".";
+import { validateApplyForJobDetails } from "./validate";
+import { sendCandidateDetails } from "./webhook";
 
 export const useUpdateSlide = () => {
   const [translatePosition, setTranslatePosition] = useState([
@@ -72,12 +75,9 @@ export const useUpdateSlide = () => {
 export const useRedirectToPricing = () => {
   const router = useRouter();
   const redirectOnPricingSection = () => {
-    console.log("working");
     const pricingBtn = document.getElementById("Pricing");
-    // pricingBtn.addEventListener("click", () => {
     router.push("/");
     const pricingSec = document.getElementById("pricingSec");
-    console.log(pricingSec, "pricingSec");
     if (pricingSec) {
       const fromTop = pricingSec.offsetTop;
       window.scrollTo({
@@ -85,7 +85,86 @@ export const useRedirectToPricing = () => {
         behavior: "smooth",
       });
     }
-    // });
   };
   return redirectOnPricingSection;
+};
+
+export type AllowedInputName = "fname" | "lname" | "email" | "mob" | "resume";
+export const useFormSubmitHook = () => {
+  const [isvalidate, setIsValidate] = useState(false);
+  const [errorsMsg, setErrors] = useState<any>({});
+  const [candidateDetails, setCandidateDetails] = useState<any>({
+    fname: { value: "", error: "" },
+    lname: { value: "", error: "" },
+    email: { value: "", error: "" },
+    mob: { value: "", error: "" },
+    resume: null,
+  });
+  const onInputChange = (key: any, value: any) => {
+    setCandidateDetails((prev: any) => {
+      return {
+        ...prev,
+        [key]: {
+          value,
+          error: "",
+        },
+      };
+    });
+    handleValidation();
+  };
+
+  const onSubmit = async () => {
+    const { error } = validateApplyForJobDetails(candidateDetails);
+    console.log(error || candidateDetails.resume);
+    if (error || candidateDetails.resume === null) {
+      window.alert("All fields are required");
+      return false;
+    }
+    const formdata = new FormData();
+    formdata.append("file", candidateDetails?.resume);
+
+    const requestOptions: any = {
+      method: "POST",
+      body: formdata,
+      redirect: "follow",
+    };
+    fetch("http://localhost:3000/api/", requestOptions)
+      .then((response) => response.text())
+      .then(async (res) => {
+        const { result } = JSON.parse(res);
+        if (result) {
+          await sendCandidateDetails({
+            ...candidateDetails,
+            downloadLink: result,
+          });
+        }
+      })
+      .catch((error) => false);
+    return true;
+  };
+
+  const setFile = (file: any) => {
+    setCandidateDetails((prev: any) => {
+      return {
+        ...prev,
+        resume: file,
+      };
+    });
+  };
+
+  const handleValidation = () => {
+    const res = validateApplyForJobDetails(candidateDetails);
+    const { error } = res;
+    if (error) {
+      setIsValidate(true);
+      // const { details } = error;
+      // setErrors(() => {
+      //   return {
+      //     [details[0].path[0]]: details[0].message,
+      //   };
+      // });
+    } else setIsValidate(false);
+  };
+
+  return { onInputChange, onSubmit, candidateDetails, setFile, errorsMsg };
 };
