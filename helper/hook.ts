@@ -1,7 +1,11 @@
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import FormData from "form-data";
 // import { useNavigate } from "react-router-dom";
 import { handleSlider } from ".";
+import { validateApplyForJobDetails } from "./validate";
+import { sendCandidateDetails } from "./webhook";
+import { json } from "stream/consumers";
 
 export const useUpdateSlide = () => {
   const [translatePosition, setTranslatePosition] = useState([
@@ -72,12 +76,9 @@ export const useUpdateSlide = () => {
 export const useRedirectToPricing = () => {
   const router = useRouter();
   const redirectOnPricingSection = () => {
-    console.log("working");
     const pricingBtn = document.getElementById("Pricing");
-    // pricingBtn.addEventListener("click", () => {
     router.push("/");
     const pricingSec = document.getElementById("pricingSec");
-    console.log(pricingSec, "pricingSec");
     if (pricingSec) {
       const fromTop = pricingSec.offsetTop;
       window.scrollTo({
@@ -85,7 +86,6 @@ export const useRedirectToPricing = () => {
         behavior: "smooth",
       });
     }
-    // });
   };
   return redirectOnPricingSection;
 };

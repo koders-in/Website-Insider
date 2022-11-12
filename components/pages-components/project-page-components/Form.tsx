@@ -9,9 +9,13 @@ interface Form {
   [key: string]: string;
 }
 
-const Form = () => {
-  const [formData, setFormData] = useState<Form>();
+interface Props {
+  formData: Form;
+  setFormData: (data: any) => void;
+  handleSubmitForm: (e: React.FormEvent<HTMLFormElement>) => void;
+}
 
+const Form = ({ formData, setFormData, handleSubmitForm }: Props) => {
   const handleChange = (obj: any) => {
     const { name, value } = obj;
     setFormData((prev) => {
@@ -22,15 +26,10 @@ const Form = () => {
     });
   };
 
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    window.alert(JSON.stringify(formData));
-  };
-
   return (
     <form
       className="w-[97%] mx-auto mt-10 font-miligramMedium"
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmitForm}
     >
       <textarea
         onChange={(e) => handleChange(e.target)}

@@ -1,17 +1,35 @@
 import Image from "next/image";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import React, { useEffect, useState, useRef } from "react";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import AOS from "aos";
 
 import "aos/dist/aos.css";
 
-import { sleep } from "../helper";
+import { disableScroll, enableScroll, sleep } from "../helper";
 import { TestmonialData, testmonialLogo } from "../helper/constant";
-import { Button, Divider, GradientText, ReviewBox } from "../components";
+import {
+  Button,
+  Divider,
+  GradientText,
+  Loader,
+  ReviewBox,
+} from "../components";
 
 let timer = 0;
 let index = 0;
 const Testmonials = () => {
+  const [loading, setLoading] = useState(false);
+
+  Router.events.on("routeChangeStart", () => {
+    setLoading(true);
+    disableBodyScroll(document);
+  });
+  Router.events.on("routeChangeComplete", () => {
+    setLoading(false);
+    enableBodyScroll(document);
+  });
+
   const isRunning = useRef(false);
   const [currentItem, setCurrentItem] = useState<TestmonialData>(
     testmonialLogo[0]
@@ -51,7 +69,8 @@ const Testmonials = () => {
   }, []);
 
   return (
-    <div className="py-16 xxl:py-[10rem]">
+    <div className="py-16 xxl:py-[10rem] relative">
+      {loading && <Loader />}
       <Divider className="mt-5 xl:my-10" />
       <GradientText
         aos="slide-right"

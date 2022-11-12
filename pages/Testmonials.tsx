@@ -1,6 +1,8 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+
+import { getReviewList } from "../helper/scrapper";
 
 import {
   Button,
@@ -10,9 +12,28 @@ import {
   Navbar,
   TestmonialCard,
 } from "../components";
-import { reviews } from "../helper/constant";
 
-const Testmonials = () => {
+export const getServerSideProps = async (context) => {
+  const res: object = await getReviewList();
+  return {
+    props: { reviewsArray: JSON.parse(JSON.stringify(res)) },
+  };
+};
+
+const Testmonials = ({ reviewsArray }) => {
+  const [reviewsData, setReviewsData] = useState<any>(reviewsArray);
+
+  const cardInaColumn = Math.round(reviewsData?.reviews?.length / 3);
+  const rowOne = reviewsData?.reviews?.slice(0, cardInaColumn - 2);
+
+  const rowTwo = reviewsData?.reviews?.slice(
+    cardInaColumn - 2,
+    cardInaColumn * 2 - 3
+  );
+  const rowThree = reviewsData?.reviews?.slice(
+    cardInaColumn * 2 - 3,
+    reviewsData?.reviews?.length
+  );
   const router = useRouter();
   const handleNavigate = (href: string) => {
     router.push(href);
@@ -42,42 +63,58 @@ const Testmonials = () => {
         </p>
         <Divider className="mt-4 md:mt-14" />
         <div className=" w-[90%] lg:w-[85%] xl:w-[80%] mx-auto flex justify-center flex-wrap md:flex-nowrap gap-5 xl:gap-7 bg-main-primary pt-4 pb-8 xxl:w-[63%]">
-          <div className="w-full md:w-1/3">
-            {reviews.map((item, i) => (
-              <TestmonialCard
-                key={i}
-                {...{
-                  description: item.message,
-                  logo: item.logo,
-                  title: item.title,
-                }}
-              />
-            ))}
-          </div>
-          <div className="w-full md:w-1/3">
-            {reviews.map((item, i) => (
-              <TestmonialCard
-                key={i}
-                {...{
-                  description: item.message,
-                  logo: item.logo,
-                  title: item.title,
-                }}
-              />
-            ))}
-          </div>
-          <div className="w-full md:w-1/3">
-            {reviews.map((item, i) => (
-              <TestmonialCard
-                key={i}
-                {...{
-                  description: item.message,
-                  logo: item.logo,
-                  title: item.title,
-                }}
-              />
-            ))}
-          </div>
+          {!reviewsData?.reviews.length ? (
+            <div>
+              <p className="text-white text-lg">
+                Unable to load data please refresh the page.
+              </p>
+            </div>
+          ) : (
+            <>
+              <div className="w-full md:w-1/3">
+                {rowOne?.map((item, i) => (
+                  <TestmonialCard
+                    key={i}
+                    {...{
+                      description: item.snippet,
+                      logo: item.user.thumbnail,
+                      title: item.user.name,
+                      rating: item.rating,
+                      link: item.user.link,
+                    }}
+                  />
+                ))}
+              </div>
+              <div className="w-full md:w-1/3">
+                {rowTwo?.map((item, i) => (
+                  <TestmonialCard
+                    key={i}
+                    {...{
+                      description: item.snippet,
+                      logo: item.user.thumbnail,
+                      title: item.user.name,
+                      rating: item.rating,
+                      link: item.user.link,
+                    }}
+                  />
+                ))}
+              </div>
+              <div className="w-full md:w-1/3">
+                {rowThree?.map((item, i) => (
+                  <TestmonialCard
+                    key={i}
+                    {...{
+                      description: item.snippet,
+                      logo: item.user.thumbnail,
+                      title: item.user.name,
+                      rating: item.rating,
+                      link: item.user.link,
+                    }}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
         <Button
           OnClick={() => handleNavigate("StartProject")}

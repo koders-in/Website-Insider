@@ -1,17 +1,26 @@
 import React from "react";
 import Image from "next/image";
+import { startBlank, startFill } from "../assets";
 
 interface Props {
   title: string;
   logo: string;
   description: string;
+  rating: number;
+  link: string;
 }
-const TestmonialCard = ({ title, logo, description }: Props) => {
+const TestmonialCard = ({ title, logo, description, rating, link }: Props) => {
   return (
-    <div className="border-2 border-main-teal rounded-lg p-5 bg-main-secondary mt-5">
+    <div
+      onClick={() => window.open(link, "_blank")}
+      className="border-2 border-main-teal rounded-lg p-5 bg-main-secondary mt-5 cursor-pointer"
+    >
       <div className="flex items-center mb-4">
-        <Image src={logo} alt="logo" className="h-10 w-10 mr-4" />
-        <div className="text-white text-[22px]">{title}</div>
+        <Image src={logo} alt="logo" width="50" height="50" className=" mr-4" />
+        <div className="text-white text-[20px]">
+          <span>{title}</span>
+          <div className="w-fit">{"⭐ ".repeat(rating)}</div>
+        </div>
       </div>
       <p className="text-main-light_white text-justify">{description}</p>
     </div>

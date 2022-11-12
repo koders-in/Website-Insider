@@ -19,11 +19,11 @@ const CombCell = ({ logo, className, x, y, id }: Props) => {
       style={{ top: `${x}px`, left: `${y}px` }}
     >
       <div
-        className="block my-0 mx-auto relative w-[90px] h-[80px] bg-main-teal box-border rotate-90"
+        className="combOuter block my-0 mx-auto relative w-[90px] h-[80px] bg-main-teal box-border rotate-90"
         style={{ ...hex }}
       >
         <div
-          className="absolute bg-main-secondary top-[4px] left-[4px] w-[82px] h-[72px] flex justify-center items-center transition-all duration-700"
+          className="combInner absolute bg-main-secondary top-[4px] left-[4px] w-[82px] h-[72px] flex justify-center items-center transition-all duration-700"
           style={{ ...hexBg }}
           id={id}
         >

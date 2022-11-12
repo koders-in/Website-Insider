@@ -110,3 +110,18 @@ export const redirectOnPricingSection = () => {
     });
   });
 };
+
+// Disable Scrolling
+export const disableScroll = () => {
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+  // if any scroll is attempted, set this to the previous value
+  window.onscroll = function () {
+    window.scrollTo(scrollLeft, scrollTop);
+  };
+};
+
+// Enable Scrolling
+export const enableScroll = () => {
+  window.onscroll = function () {};
+};

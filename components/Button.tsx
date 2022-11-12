@@ -14,6 +14,7 @@ interface Props {
   isSelect?: string;
   isBorder?: true;
   eleId?: string;
+  type?: "button" | "submit";
 }
 const Button = ({
   className,
@@ -26,10 +27,12 @@ const Button = ({
   isSelect,
   isBorder,
   eleId,
+  type,
 }: Props) => {
   const [iconStyle, setIconStyle] = useState("");
   return (
     <button
+      type={type}
       id={eleId}
       onClick={OnClick}
       className={`group relative cursor-pointer flex items-center justify-center  ${className} ${

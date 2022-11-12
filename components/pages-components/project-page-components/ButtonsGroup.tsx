@@ -5,22 +5,22 @@ import { add, tick } from "../../../assets";
 import { FormState } from "../../../pages/StartProject";
 
 interface Props {
+  projectData: FormState;
+  setProjectData: (data: any) => void;
   buttonsArray: Array<string>;
-  setFormState: (data: object) => void;
-  formState: FormState;
 }
 
-const ButtonsGroup = ({ buttonsArray, setFormState, formState }: Props) => {
+const ButtonsGroup = ({ buttonsArray, projectData, setProjectData }: Props) => {
   const handleClick = (item: string) => {
-    if (formState?.technologies?.find((elm) => elm === item)) {
-      setFormState((prev: FormState) => {
+    if (projectData?.technologies?.find((elm) => elm === item)) {
+      setProjectData((prev: FormState) => {
         return {
           ...prev,
           technologies: prev.technologies.filter((elm) => elm !== item),
         };
       });
     } else {
-      setFormState((prev: FormState) => {
+      setProjectData((prev: FormState) => {
         return {
           ...prev,
           technologies: [...prev.technologies, item],
@@ -39,7 +39,7 @@ const ButtonsGroup = ({ buttonsArray, setFormState, formState }: Props) => {
           hoverLogo={tick}
           hoveLogoStyle="h-[8px] md:w-[18px] md:h-[18px]"
           logoStyle="h-[8px] md:w-[18px] md:h-[18px]"
-          isSelect={formState?.technologies?.find((elm) => elm === item)}
+          isSelect={projectData?.technologies?.find((elm) => elm === item)}
           className="border-[1px] sm:border-2 text-[0.8rem] sm:text-[1.1rem] text-white border-main-teal rounded-lg px-2 py-1 sm:px-4 sm:py-3 hover:bg-main-teal hover:text-black"
         />
       ))}

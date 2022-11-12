@@ -26,7 +26,7 @@ const Navbar = () => {
       {currentRoute !== "/" && (
         <div className="hidden justify-center items-center w-full absolute left-0 top-0 h-full sm:hidden md:hidden lg:flex">
           <button className="group relative w-fit font-miligramMedium h-fit text-main-white-700 hover:text-white text-[16.5px]">
-            <Link href="/">
+            <Link href="/#pricing">
               Pricing
               <AnimatedBorder />
             </Link>

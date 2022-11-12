@@ -40,6 +40,8 @@ import linkedinWhite from "../public/images/linkedinWhite.svg";
 import githubWhite from "../public/images/githubWhite.svg";
 import twitterWhite from "../public/images/twitterWhite.svg";
 import discordWhiteLogo from "../public/images/discordWhiteLogo.svg";
+import startFill from "../public/images/star-fill.svg";
+import startBlank from "../public/images/star-blank.svg";
 
 // Assets for technologies components
 
@@ -185,4 +187,6 @@ export {
   githubWhite,
   twitterWhite,
   discordWhiteLogo,
+  startFill,
+  startBlank,
 };
