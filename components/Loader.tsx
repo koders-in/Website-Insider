@@ -8,7 +8,7 @@ const Loader = () => {
         color="#00A99D"
         loading={true}
         // cssOverride={override}
-        size={100}
+        // size={100}
         aria-label="Loading Spinner"
         data-testid="loader"
       />
