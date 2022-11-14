@@ -8,7 +8,7 @@ interface Props {
   type: string;
   styling?: string;
   errorText?: string;
-  onBlur: (props: any) => void;
+  onBlur?: (props: any) => void;
 }
 
 const InputBox = ({

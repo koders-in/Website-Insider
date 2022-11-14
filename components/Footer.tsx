@@ -13,7 +13,7 @@ import {
   twitterWhite,
 } from "../assets";
 import AnimatedBorder from "./AnimatedBorder";
-import { footerButtons } from "../helper/constant";
+import { footerButtons, socialMediaHandles } from "../helper/constant";
 
 const Footer = () => {
   const [onHover, setOnHover] = useState(false);
@@ -38,16 +38,17 @@ const Footer = () => {
             onClick={() => handleNavigate("/")}
           />
           <div className="flex items-center my-3 gap-2">
-            {[linkedinWhite, githubWhite, twitterWhite, discordWhiteLogo].map(
-              (item, i) => (
-                <Image
-                  src={item}
-                  alt={item}
-                  key={i}
-                  className="h-7 cursor-pointer brightness-50 hover:brightness-100"
-                />
-              )
-            )}
+            {socialMediaHandles.map((item, i) => (
+              <Image
+                src={item.src}
+                alt={item.src}
+                key={i}
+                className="h-7 cursor-pointer brightness-50 hover:brightness-100"
+                onClick={() => {
+                  window.open(item.url, "_blank");
+                }}
+              />
+            ))}
           </div>
           <div className="flex justify-start items-start  mt-4 text-[0.9rem] sm:text-[1rem] ml-2">
             <Image

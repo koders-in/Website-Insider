@@ -245,3 +245,22 @@ export const timeLineList = [
   "Less than one year",
   "More than one year",
 ];
+
+export const socialMediaHandles = [
+  {
+    src: linkedinWhite,
+    url: "https://www.linkedin.com/authwall?trk=bf&trkInfo=AQHkkfNKVtVB3QAAAYR0x2dA3c0i5YfwfSFl2SuYAa1O1u3Qo-Dauem_n-eeuKG0gRp9COXnLYet0RNUvrEAzdsDukF7eZB3SRKXii0KQI2nAu_xwR1gAz33Uh6Sw2J26qwLlxQ=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fcompany%2Fkoders-in",
+  },
+  {
+    src: githubWhite,
+    url: "https://github.com/koders-in",
+  },
+  {
+    src: twitterWhite,
+    url: "https://twitter.com/KodersHQ",
+  },
+  {
+    src: discordWhiteLogo,
+    url: "https://discord.com/invite/u3P2a8FpWD",
+  },
+];
