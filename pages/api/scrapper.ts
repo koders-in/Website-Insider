@@ -128,7 +128,7 @@ async function getLocalPlaceReviews() {
 
 let reviewData = null;
 
-export const getReviewList = async () => {
+export const getReview = async () => {
   if (reviewData === null) {
     reviewData = await getLocalPlaceReviews();
     return reviewData;

@@ -12,6 +12,7 @@ interface Props {
   mainStyle?: string;
   innelStyle?: string;
   dropdownStyle?: string;
+  errorText?: string;
 }
 
 const SelectBox = ({
@@ -23,6 +24,7 @@ const SelectBox = ({
   mainStyle,
   innelStyle,
   dropdownStyle,
+  errorText,
 }: Props) => {
   const [show, setShow] = useState(false);
 
@@ -45,14 +47,21 @@ const SelectBox = ({
   return (
     <div
       onClick={() => setShow(!show)}
-      className={`select ${
+      className={`select relative ${
         mainStyle
           ? mainStyle
-          : "flex gap-2 cursor-pointer items-center border-b-2 border-main-light_white w-full pb-1 sm:pb-3 text-[0.9rem] md:text-[1.2rem] sm:mt-5 relative"
+          : " flex gap-2 cursor-pointer items-center border-b-2 border-main-light_white w-full pb-1 sm:pb-3 text-[0.9rem] md:text-[1.2rem] sm:mt-5 relative"
       } `}
     >
+      <span
+        className={`absolute text-red-600 text-xs -top-6 left-0 ${
+          errorText ? "opacity-100" : "opacity-0"
+        } `}
+      >
+        {errorText}
+      </span>
       <div
-        className={`select-label px-1 text-main-light_white bg-transparent border-none outline-none tracking-[1px] sm:tracking-[2px] placeholder:text-main-light_white w-full ${innelStyle}`}
+        className={`relative select-label px-1 text-main-light_white bg-transparent border-none outline-none tracking-[1px] sm:tracking-[2px] placeholder:text-main-light_white w-full ${innelStyle}`}
       >
         {value ? value : placeholder}
       </div>

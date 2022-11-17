@@ -2,19 +2,14 @@ import Image from "next/image";
 import Router, { useRouter } from "next/router";
 import React, { useEffect, useState, useRef } from "react";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import { PropagateLoader } from "react-spinners";
 import AOS from "aos";
 
 import "aos/dist/aos.css";
 
-import { disableScroll, enableScroll, sleep } from "../helper";
+import { sleep } from "../helper";
 import { TestmonialData, testmonialLogo } from "../helper/constant";
-import {
-  Button,
-  Divider,
-  GradientText,
-  Loader,
-  ReviewBox,
-} from "../components";
+import { Button, Divider, GradientText, ReviewBox } from "../components";
 
 let timer = 0;
 let index = 0;
@@ -70,7 +65,6 @@ const Testmonials = () => {
 
   return (
     <div className="py-16 xxl:py-[10rem] relative">
-      {loading && <Loader />}
       <Divider className="mt-5 xl:my-10" />
       <GradientText
         aos="slide-right"
@@ -121,10 +115,17 @@ const Testmonials = () => {
           </div>
         ))}
       </div>
+      <PropagateLoader
+        color="#00A99D"
+        loading={loading}
+        className="w-fit block mx-auto my-6"
+        aria-label="Loading Spinner"
+        data-testid="loader"
+      />
       <Button
         OnClick={() => handleNavigate("Testmonials/#footer")}
         text="Read More"
-        className="text-[0.8rem] xxl:text-[1rem] mx-auto block mt-8 sm:mt-10 bg-main-greenOpt-200 font-miligramMedium text-main-lightTeal py-[8px] sm:py-[10px] px-6 sm:px-9 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+        className="text-[0.8rem] xxl:text-[1rem] mx-auto block mt-8 sm:mt-12 bg-main-greenOpt-200 font-miligramMedium text-main-lightTeal py-[8px] sm:py-[10px] px-6 sm:px-9 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
       />
       <Divider className="xl:my-10" />
     </div>

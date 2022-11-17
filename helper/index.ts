@@ -1,3 +1,5 @@
+import { getReviewList } from "./scrapper";
+
 /**
  * This function stop the flow of code for the given time.
  * @param time Take time as mili seconds, like:- 1000
@@ -124,4 +126,17 @@ export const disableScroll = () => {
 // Enable Scrolling
 export const enableScroll = () => {
   window.onscroll = function () {};
+};
+
+let running = false;
+
+export const testMain = async () => {
+  if (!running) {
+    running = true;
+    // getReviewList();
+    console.log("testMain");
+    setInterval(() => {
+      // getReviewList();
+    }, 10000);
+  }
 };

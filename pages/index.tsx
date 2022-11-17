@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import AOS from "aos";
 import Head from "next/head";
 
@@ -14,8 +14,11 @@ import {
   Testmonials,
   WhyKoders,
 } from "../sections";
+// import { testMain } from "../helper";
 
 export default function Home() {
+  // const isRender = useRef(false);
+
   React.useEffect(() => {
     AOS.init({
       easing: "ease-out-cubic",
@@ -23,6 +26,16 @@ export default function Home() {
       duration: 1500,
     });
   }, []);
+  // ------------
+  // React.useEffect(() => {
+  //   const ab = () => {
+  //     testMain();
+  //   };
+  //   if (!isRender.current) {
+  //     isRender.current = true;
+  //     ab();
+  //   }
+  // });
   return (
     <div className="bg-main-primary overflow-hidden relative">
       <Head>

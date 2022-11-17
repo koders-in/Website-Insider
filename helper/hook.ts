@@ -1,11 +1,6 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import FormData from "form-data";
-// import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import { handleSlider } from ".";
-import { validateApplyForJobDetails } from "./validate";
-import { sendCandidateDetails } from "./webhook";
-import { json } from "stream/consumers";
 
 export const useUpdateSlide = () => {
   const [translatePosition, setTranslatePosition] = useState([

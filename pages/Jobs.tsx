@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Head from "next/head";
 import AOS from "aos";
-import axios from "axios";
 
 import "aos/dist/aos.css";
 
@@ -13,7 +12,6 @@ import {
   LandingSection,
   Navbar,
 } from "../components";
-import { validateApplyForJobDetails } from "../helper/validate";
 
 const Jobs = () => {
   const [filterDetaile, setFilterDetaile] = useState<any>();

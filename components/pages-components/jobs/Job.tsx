@@ -39,6 +39,7 @@ const Job = () => {
     });
   };
   const toogleApplyModal = () => {
+    if (isShowLoader) return;
     setShowModal((p) => {
       return {
         ...p,

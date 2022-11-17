@@ -2,6 +2,9 @@ import multer from "multer";
 import { NextApiRequest, NextApiResponse } from "next";
 import { Storage } from "megajs";
 import fs from "fs";
+import { getReview } from "./scrapper";
+
+const reviewList = null;
 
 function runMiddleware(
   req: NextApiRequest & { [key: string]: any },
@@ -29,6 +32,26 @@ const handler = async (
   req: NextApiRequest & { [key: string]: any },
   res: NextApiResponse
 ): Promise<void> => {
+  console.log("-------->", req.body);
+  if (req.body === undefined) {
+    console.log("if------");
+    if (reviewList === null) {
+      const data = await getReview();
+      res.status(201).json(data);
+    } else res.status(201).json(reviewList);
+    // call reviews scrapping function
+  } else {
+    console.log("else------");
+    fileUploadToMega(req, res);
+  }
+};
+
+export default handler;
+
+const fileUploadToMega = async (
+  req: NextApiRequest & { [key: string]: any },
+  res: NextApiResponse
+) => {
   const multerUpload = multer({
     dest: "./public/uploads/",
     preservePath: true,
@@ -36,7 +59,7 @@ const handler = async (
   await runMiddleware(req, res, multerUpload.single("file"));
   const file = req.file;
   const handleRemove = (file: any) => {
-    if (file.path === undefined) return;
+    if (file?.path === undefined) return;
   };
   fs.readFile(file.path, async (err: NodeJS.ErrnoException, data: Buffer) => {
     if (err) {
@@ -59,5 +82,3 @@ const handler = async (
       .json({ msg: "Successfully uploaded file to Mega Storage", result: url });
   });
 };
-
-export default handler;

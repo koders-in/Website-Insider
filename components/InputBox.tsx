@@ -7,7 +7,7 @@ interface Props {
   name: string;
   type: string;
   styling?: string;
-  errorText?: string;
+  errorText?: any;
   onBlur?: (props: any) => void;
 }
 

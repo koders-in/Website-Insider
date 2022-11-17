@@ -1,5 +1,5 @@
-import Head from "next/head";
 import React, { useState } from "react";
+import Head from "next/head";
 import AOS from "aos";
 
 import "aos/dist/aos.css";
@@ -14,19 +14,17 @@ import {
   Navbar,
 } from "../components";
 import { faq, typeOfProjects } from "../helper/constant";
+import { sendClientDetails } from "../helper/webhook";
 
-interface FormData {
-  [key: string]: string;
-}
 export interface FormState {
   technologies: Array<string>;
 }
 
 const StartProject = () => {
-  const [formData, setFormData] = useState();
-  const [projectData, setProjectData] = useState<FormState>({
-    technologies: ["Web Development", "UI/UX"],
-  });
+  const [technologies, setTechnologies] = useState<Array<string>>([
+    "Web Development",
+    "UI/UX",
+  ]);
   const [isExpand, setIsExpand] = useState("");
 
   const handleExpand = (question: string) => {
@@ -34,9 +32,21 @@ const StartProject = () => {
     else setIsExpand(question);
   };
 
-  const handleSubmitForm = (e) => {
-    e.preventDefault();
-    window.alert(JSON.stringify(formData));
+  const handleSubmitData = async (data) => {
+    if (technologies.length === 0) {
+      window.alert("You need to select technologies");
+      return false;
+    } else {
+      try {
+        const res = await sendClientDetails({
+          ...data,
+          technologies: technologies,
+        });
+        return true;
+      } catch (error) {
+        return false;
+      }
+    }
   };
 
   React.useEffect(() => {
@@ -70,13 +80,13 @@ const StartProject = () => {
         <Divider className="mt-16 md:py-2" />
         <ButtonsGroup
           {...{
-            projectData,
-            setProjectData,
+            technologies,
+            setTechnologies,
             buttonsArray: [...typeOfProjects],
           }}
         />
         <Divider className="mt-16" />
-        <Form {...{ formData, setFormData, handleSubmitForm }} />
+        <Form {...{ handleSubmitData }} />
         <Divider className="mt-12 xxl:mt-16" />
         <GradientText
           aos="fade-up"
