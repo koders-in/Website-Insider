@@ -13,23 +13,10 @@ import {
   TestmonialCard,
 } from "../components";
 import axios from "axios";
+import { FadeLoader } from "react-spinners";
 
-export const getServerSideProps = async (context) => {
-  try {
-    const res = await axios.get("http://localhost:3000/api");
-    const data = res ? JSON.parse(JSON.stringify(res.data)) : null;
-    return {
-      props: { reviewsArray: data },
-    };
-  } catch (error) {
-    return {
-      props: { reviewsArray: null },
-    };
-  }
-};
-
-const Testmonials = ({ reviewsArray }) => {
-  const [reviewsData, setReviewsData] = useState<any>(reviewsArray);
+const Testmonials = () => {
+  const [reviewsData, setReviewsData] = useState<any>();
 
   const cardInaColumn = Math.round(reviewsData?.reviews?.length / 3);
   const rowOne = reviewsData?.reviews?.slice(0, cardInaColumn - 2);
@@ -46,14 +33,42 @@ const Testmonials = ({ reviewsArray }) => {
   const handleNavigate = (href: string) => {
     router.push(href);
   };
+
+  const fetchReview = async () => {
+    try {
+      const res = await axios.get("http://localhost:3000/api", {
+        headers: {
+          testmonial: true,
+        },
+      });
+      let data = null;
+      if (res) data = await JSON.parse(JSON.stringify(res.data));
+      setReviewsData(data);
+    } catch (error) {
+      setReviewsData(false);
+    }
+  };
+
   useEffect(() => {
     setTimeout(() => {
       window?.scrollTo({
         top: 0,
         behavior: "smooth",
       });
-    }, 100);
+    }, 300);
   }, []);
+
+  useEffect(() => {
+    fetchReview();
+  }, []);
+
+  useEffect(() => {
+    const tryAgain = document.getElementById("tryAgain");
+    tryAgain?.addEventListener("click", () => {
+      setReviewsData(undefined);
+      fetchReview();
+    });
+  });
 
   return (
     <div className="bg-main-primary overflow-hidden relative">
@@ -73,9 +88,29 @@ const Testmonials = ({ reviewsArray }) => {
         <div className=" w-[90%] lg:w-[85%] xl:w-[80%] mx-auto flex justify-center flex-wrap md:flex-nowrap gap-5 xl:gap-7 bg-main-primary pt-4 pb-8 xxl:w-[63%]">
           {!reviewsData?.reviews?.length ? (
             <div>
-              <p className="text-white text-lg">
-                Unable to load data please refresh the page.
-              </p>
+              {reviewsData === false ? (
+                <>
+                  <p className="w-fit mx-auto text-main-light_white">
+                    Unable to load reviews ☹️
+                  </p>
+                  <button
+                    id="tryAgain"
+                    className="mx-auto block mt-6 bg-main-greenOpt-200 font-miligramMedium text-main-lightTeal py-[6px] px-5 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+                  >
+                    Try Again
+                  </button>
+                </>
+              ) : (
+                <FadeLoader
+                  color="#00A99D"
+                  loading={true}
+                  className="w-fit block mx-auto"
+                  // cssOverride={override}
+                  // size={100}
+                  aria-label="Loading Spinner"
+                  data-testid="loader"
+                />
+              )}
             </div>
           ) : (
             <>

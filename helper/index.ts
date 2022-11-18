@@ -128,15 +128,16 @@ export const enableScroll = () => {
   window.onscroll = function () {};
 };
 
-let running = false;
+let running = null;
 
 export const testMain = async () => {
   if (!running) {
     running = true;
     // getReviewList();
     console.log("testMain");
-    setInterval(() => {
+    running = setInterval(() => {
+      console.log("testMain", running);
       // getReviewList();
-    }, 10000);
+    }, 5000);
   }
 };

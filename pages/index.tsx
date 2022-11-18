@@ -14,10 +14,11 @@ import {
   Testmonials,
   WhyKoders,
 } from "../sections";
+import axios from "axios";
 // import { testMain } from "../helper";
 
 export default function Home() {
-  // const isRender = useRef(false);
+  const isRender = useRef(false);
 
   React.useEffect(() => {
     AOS.init({
@@ -27,15 +28,16 @@ export default function Home() {
     });
   }, []);
   // ------------
-  // React.useEffect(() => {
-  //   const ab = () => {
-  //     testMain();
-  //   };
-  //   if (!isRender.current) {
-  //     isRender.current = true;
-  //     ab();
-  //   }
-  // });
+  React.useEffect(() => {
+    if (!isRender.current) {
+      isRender.current = true;
+      axios.get("http://localhost:3000/api", {
+        headers: {
+          home: true,
+        },
+      });
+    }
+  }, []);
   return (
     <div className="bg-main-primary overflow-hidden relative">
       <Head>
