@@ -8,6 +8,9 @@ import { Divider, InputBox } from "../../index";
 import { locationTeal, work } from "../../../assets";
 import { jobValidationSchema } from "../../../helper/validate";
 import { sendCandidateDetails } from "../../../helper/webhook";
+import { ObjectOfJob } from "../../../helper/constant";
+import SelectBox from "../../SelectBox";
+import TextArea from "./TextArea";
 
 interface initialState {
   email: string;
@@ -23,7 +26,7 @@ const initialValue: initialState = {
   lName: "",
 };
 
-const Job = () => {
+const Job = ({ expericence, location, title, type }: ObjectOfJob) => {
   const [resume, setResume] = useState<any>(null);
   const [isShowLoader, setIsShowLoader] = useState(false);
   const [showModal, setShowModal] = useState({
@@ -99,7 +102,38 @@ const Job = () => {
   };
 
   return (
-    <div className="w-full border-2 rounded-xl mt-8 border-main-teal md:flex items-center px-[5%] py-[4%] md:py-[1%] bg-main-secondary">
+    <div className="px-7 py-4 xl:w-[90%] mx-auto border-2 rounded-xl mt-8 border-main-teal bg-main-secondary flex flex-col lg:flex-row gap-4 xl:gap-0 justify-between items-center">
+      <div className="text-main-light_white w-[100%] lg:w-[60%]">
+        <h1 className="text-white text-[1.2rem] text-center lg:text-left font-miligrambold">
+          {title}
+        </h1>
+        <div className="flex mt-1 sm:mt-0 flex-col sm:flex-row gap-1 sm:gap-4 text-white mx-auto w-fit lg:w-full font-miligramText400">
+          <div className="flex items-center justify-start sm:justify-between text-[0.85rem]">
+            <Image src={locationTeal} alt="" className="mr-1 h-3" />
+            {location}
+          </div>
+          <div className="flex items-center justify-start sm:justify-between text-[0.85rem]">
+            <Image src={work} alt="" className="mr-1 h-3" />
+            {type}
+          </div>
+          <div className="flex items-center justify-start sm:justify-between text-[0.85rem]">
+            <Image src={work} alt="" className="mr-1 h-3" />
+            {expericence}
+          </div>
+        </div>
+      </div>
+      <div className="flex justify-center lg:justify-end w-[100%] lg:w-[40%] gap-4">
+        <Button
+          OnClick={toogleDetailModal}
+          text="View Details"
+          className=" bg-main-greenOpt-200 font-miligramMedium w-auto text-[0.8rem] lg:text-[0.9rem] text-main-lightTeal py-[4px] md:py-[10px] px-2 xxl:px-3 lg:px-7 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+        />
+        <Button
+          OnClick={toogleApplyModal}
+          text="Apply"
+          className=" bg-main-greenOpt-200  font-miligramMedium w-fit text-[0.8rem] lg:text-[0.9rem] text-main-lightTeal py-[4px] md:py-[10px] px-2 xxl:px-8 lg:px-14 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+        />
+      </div>
       {showModal.viewDetails && (
         <JobModal
           handleClick={navigateDetailsToApply}
@@ -147,6 +181,10 @@ const Job = () => {
           <p className="text-white text-[0.85rem] mt-3">
             Figma, Adobe XD, Illustrator, Prototyping, Wireframing.
           </p>
+          <h5 className="text-white text-[1.1rem] mt-4 mb-3">
+            Skills Required
+          </h5>
+          <div className="flex flex-wrap">...</div>
           <h5 className="text-white text-[1.1rem] mt-4 mb-3">
             Perks and Benefits
           </h5>
@@ -266,6 +304,42 @@ const Job = () => {
                     errorText={errors.mobile}
                   />
                 </div>
+                <Divider className="mt-8" />
+                <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">
+                  <SelectBox
+                    value=""
+                    placeholder="When can you start Working? *"
+                    list={[]}
+                    name="budget"
+                    handleSelect={(obj: any) => {}}
+                    // errorText={errors.budget}
+                  />
+                  <InputBox
+                    type="text"
+                    placeholder="LinkedIn URL *"
+                    name="linkedinURL"
+                    onBlur={handleBlur}
+                    value={values.mobile}
+                    handleChange={handleChange}
+                    errorText={errors.mobile}
+                  />
+                </div>
+                <Divider className="mt-8" />
+                <div>
+                  <InputBox
+                    type="text"
+                    placeholder="Website URL/Portfolio Link *"
+                    name="portfolio"
+                    onBlur={handleBlur}
+                    value={values.mobile}
+                    handleChange={handleChange}
+                    errorText={errors.mobile}
+                  />
+                </div>
+                <Divider className="mt-8" />
+                <TextArea title="Why should you be hired for this role?" />
+                <Divider className="mt-8" />
+                <TextArea title="Why do you want to Work at Koders?" />
                 <Divider className="mt-10" />
                 <Button
                   type="submit"
@@ -278,43 +352,6 @@ const Job = () => {
           </Formik>
         </JobModal>
       )}
-      <Image
-        src=""
-        alt=""
-        className="w-12 h-12 rounded-full md:mr-[4%] mx-auto my-2 md:my-0 md:mx-0"
-      />
-      <div className=" md:flex justify-between items-center mx-auto w-[90%]">
-        <div className="text-main-light_white w-full my-4 md:my-0 md:mr-[4%]">
-          <h1 className="text-white text-[1.2rem] text-center md:text-left font-miligrambold">
-            Fresher UI/UX Designer
-          </h1>
-          <div className="flex text-white mx-auto w-fit md:w-full font-miligramText400">
-            <div className="flex items-center justify-between text-[0.85rem] mr-3">
-              <Image src={locationTeal} alt="" className="mr-2 h-3" />
-              Dehradun, Uttrakhand
-            </div>
-            <div className="flex items-center justify-between text-[0.85rem]">
-              <Image src={work} alt="" className="mr-2 h-3" />
-              Full Time
-            </div>
-          </div>
-          <p className="text-[0.7rem] text-whiteVar1  text-center md:text-left  font-miligramText400">
-            Posted 2 weeks ago
-          </p>
-        </div>
-        <div className="flex justify-center items-center gap-4 w-fit mx-auto md:mx-0 md:w-[40rem]">
-          <Button
-            OnClick={toogleApplyModal}
-            text="Apply"
-            className=" bg-main-greenOpt-200  font-miligramMedium w-fit text-[0.8rem] lg:text-[0.9rem] text-main-lightTeal py-[4px] md:py-[10px] px-8 lg:px-14 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
-          />
-          <Button
-            OnClick={toogleDetailModal}
-            text="View Details"
-            className=" bg-main-greenOpt-200 font-miligramMedium w-fit text-[0.8rem] lg:text-[0.9rem] text-main-lightTeal py-[4px] md:py-[10px] px-3 lg:px-7 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
-          />
-        </div>
-      </div>
     </div>
   );
 };

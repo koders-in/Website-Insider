@@ -31,7 +31,7 @@ const Modal = ({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="w-[95vw] lg:w-[60vw] relative h-fit bg-main-secondary py-7 px-6 lg:py-16 lg:px-10 border-2 border-main-teal rounded-xl mt-[12%]"
+        className="w-[95vw] lg:w-[65vw] relative h-[95vh] overflow-scroll bg-main-secondary py-7 px-6 lg:py-16 lg:px-10 border-2 border-main-teal rounded-xl mt-[12%]"
       >
         {/* ------- Loader-------- */}
         {showLoader && (
@@ -39,8 +39,6 @@ const Modal = ({
             <FadeLoader
               color="#00A99D"
               loading={showLoader}
-              // cssOverride={override}
-              // size={100}
               aria-label="Loading Spinner"
               data-testid="loader"
             />

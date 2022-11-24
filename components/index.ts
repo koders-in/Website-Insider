@@ -24,7 +24,9 @@ export { default as Form } from "./pages-components/project-page-components/Form
 export { default as ButtonsGroup } from "./pages-components/project-page-components/ButtonsGroup";
 // JOB PAGE COMPONENTS
 export { default as Job } from "./pages-components/jobs/Job";
+export { default as Hiring } from "./pages-components/jobs/Hiring";
 export { default as JobModal } from "./pages-components/jobs/Modal";
+export { default as Timeline } from "./pages-components/jobs/Timeline";
 export { default as JobAlert } from "./pages-components/jobs/JobAlert";
 export { default as LandingSection } from "./pages-components/jobs/LandingSection";
 

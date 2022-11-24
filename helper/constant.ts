@@ -1,12 +1,18 @@
 import {
+  benefits,
   discordWhiteLogo,
   githubLogo,
   githubWhite,
   googleLogo,
+  impact,
   indianFlag,
   instaLogo,
+  issue,
   linkedinWhite,
+  performance,
   twitterWhite,
+  workers,
+  workspace,
 } from "../assets";
 
 export interface TestmonialData {
@@ -262,5 +268,122 @@ export const socialMediaHandles = [
   {
     src: discordWhiteLogo,
     url: "https://discord.com/invite/u3P2a8FpWD",
+  },
+];
+
+export const jobTypes = [
+  "All",
+  "Tech & Development",
+  "Design",
+  "Content Creation",
+  "Marketing",
+  "Other",
+];
+
+interface TypeOfPiont {
+  text: string;
+  position: string;
+  type: "top" | "bottom";
+}
+
+export const timelinePoints: Array<TypeOfPiont> = [
+  {
+    text: "Resume Submission",
+    position: "left-[-70px] top-[-31px]",
+    type: "bottom",
+  },
+  {
+    text: "Group Discussion",
+    position: "top-[-31px]",
+    type: "top",
+  },
+  {
+    text: "Technical Interview",
+    position: "left-[-100px] top-[-31px]",
+    type: "bottom",
+  },
+  {
+    text: "HR Interview",
+    position: "left-[-100px] top-[-31px]",
+    type: "top",
+  },
+  {
+    text: "Onbording",
+    position: "left-[-100px] top-[-31px]",
+    type: "top",
+  },
+];
+
+export const offersData = [
+  [
+    { icon: issue, text: "0 boss issues" },
+    { icon: impact, text: "Real Impact" },
+    { icon: benefits, text: "Benefits" },
+  ],
+  [
+    { icon: workers, text: "Great <br/> Co-Workers" },
+    { icon: performance, text: "Performance <br/> Awards" },
+    { icon: workspace, text: "Dynamic <br/> Workspaces" },
+  ],
+];
+
+export interface ObjectOfJob {
+  title: string;
+  location: string;
+  type: string;
+  expericence: string;
+}
+
+export const jobDetails: Array<ObjectOfJob> = [
+  {
+    title: "Fresher UI/UX Designer",
+    location: "Dehradun, Uttarakhand",
+    type: "Full Time",
+    expericence: "Exp 0-1 yrs",
+  },
+  {
+    title: "UI/UX Design Intern",
+    location: "Dehradun, Uttarakhand",
+    type: "Internship",
+    expericence: "Exp 0-2 yrs",
+  },
+  {
+    title: "UI/UX Design Intern",
+    location: "Dehradun, Uttarakhand",
+    type: "Full Time",
+    expericence: "Exp 0-4 yrs",
+  },
+  {
+    title: "Fresher UI/UX Designer",
+    location: "Dehradun, Uttarakhand",
+    type: "Full Time",
+    expericence: "Exp 0-3 yrs",
+  },
+];
+
+export const moreJobs = [
+  {
+    title: "Fresher UI/UX Designer",
+    location: "Dehradun, Uttarakhand",
+    type: "Full Time",
+    expericence: "Exp 0-1 yrs",
+  },
+  {
+    title: "UI/UX Design Intern",
+    location: "Dehradun, Uttarakhand",
+    type: "Internship",
+    expericence: "Exp 0-2 yrs",
+  },
+  {
+    title: "UI/UX Design Intern",
+    location: "Dehradun, Uttarakhand",
+    type: "Full Time",
+    expericence: "Exp 0-4 yrs",
+  },
+  {
+    title: "Fresher UI/UX Designer",
+    location: "Dehradun, Uttarakhand",
+    type: "Full Time",
+    expericence: "Exp 0-3 yrs",
   },
 ];

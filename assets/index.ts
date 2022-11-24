@@ -42,6 +42,13 @@ import twitterWhite from "../public/images/twitterWhite.svg";
 import discordWhiteLogo from "../public/images/discordWhiteLogo.svg";
 import startFill from "../public/images/star-fill.svg";
 import startBlank from "../public/images/star-blank.svg";
+import issue from "../public/images/issue.svg";
+import benefits from "../public/images/benefits.svg";
+import impact from "../public/images/impact.svg";
+import performance from "../public/images/performance.svg";
+import workers from "../public/images/workers.svg";
+import workspace from "../public/images/workspace.svg";
+import greenArrow from "../public/images/green-arrow.svg";
 
 // Assets for technologies components
 
@@ -189,4 +196,11 @@ export {
   discordWhiteLogo,
   startFill,
   startBlank,
+  issue,
+  benefits,
+  impact,
+  performance,
+  workspace,
+  workers,
+  greenArrow,
 };
