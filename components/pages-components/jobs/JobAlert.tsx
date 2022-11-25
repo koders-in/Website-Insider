@@ -4,9 +4,30 @@ import Image from "next/image";
 import Divider from "../../Divider";
 import { aeroUp } from "../../../assets";
 import GradientText from "../../GradientText";
+import { useSetDataOnServer } from "../../../helper/careerHooks";
 
 const JobAlert = () => {
   const [isHover, setIsHover] = useState(false);
+  const [email, setEmail] = useState("");
+  const getJobAlert = useSetDataOnServer();
+
+  const handleClick = async () => {
+    try {
+      const res = await getJobAlert("job-alert", { email });
+      if (res.status === 200) {
+        window.alert("Successfully register!");
+        setEmail("");
+      } else {
+        window.alert("Something is wrong");
+      }
+    } catch (error) {
+      if (error.response.data.code === "constraint-violation") {
+        window.alert("Already registered!");
+      } else {
+        window.alert("Something is wrong");
+      }
+    }
+  };
   return (
     <div>
       <Divider className="mt-8" />
@@ -20,6 +41,8 @@ const JobAlert = () => {
       </p>
       <div className="w-[90%] md:w-[80%] sm:w-1/2 lg:w-1/3 border-2 border-main-teal mx-auto rounded-lg overflow-hidden flex mt-5 md:mt-7 shadow-sm shadow-main-teal xxl:mt-14">
         <input
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
           type="text"
           className="w-full px-4 py-1 outline-none border-none text-main-light_white placeholder:tracking-[2px] bg-transparent placeholder:text-main-light_white lett font-miligramMedium"
           placeholder="Your Email Address"
@@ -28,6 +51,7 @@ const JobAlert = () => {
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}
           className="w-14 h-10 bg-main-teal flex justify-center items-center p-4 cursor-pointer"
+          onClick={handleClick}
         >
           <Image
             src={aeroUp}

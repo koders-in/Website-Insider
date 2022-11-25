@@ -331,59 +331,7 @@ export interface ObjectOfJob {
   title: string;
   location: string;
   type: string;
-  expericence: string;
+  experience: string;
+  id?: number;
+  duration?: string;
 }
-
-export const jobDetails: Array<ObjectOfJob> = [
-  {
-    title: "Fresher UI/UX Designer",
-    location: "Dehradun, Uttarakhand",
-    type: "Full Time",
-    expericence: "Exp 0-1 yrs",
-  },
-  {
-    title: "UI/UX Design Intern",
-    location: "Dehradun, Uttarakhand",
-    type: "Internship",
-    expericence: "Exp 0-2 yrs",
-  },
-  {
-    title: "UI/UX Design Intern",
-    location: "Dehradun, Uttarakhand",
-    type: "Full Time",
-    expericence: "Exp 0-4 yrs",
-  },
-  {
-    title: "Fresher UI/UX Designer",
-    location: "Dehradun, Uttarakhand",
-    type: "Full Time",
-    expericence: "Exp 0-3 yrs",
-  },
-];
-
-export const moreJobs = [
-  {
-    title: "Fresher UI/UX Designer",
-    location: "Dehradun, Uttarakhand",
-    type: "Full Time",
-    expericence: "Exp 0-1 yrs",
-  },
-  {
-    title: "UI/UX Design Intern",
-    location: "Dehradun, Uttarakhand",
-    type: "Internship",
-    expericence: "Exp 0-2 yrs",
-  },
-  {
-    title: "UI/UX Design Intern",
-    location: "Dehradun, Uttarakhand",
-    type: "Full Time",
-    expericence: "Exp 0-4 yrs",
-  },
-  {
-    title: "Fresher UI/UX Designer",
-    location: "Dehradun, Uttarakhand",
-    type: "Full Time",
-    expericence: "Exp 0-3 yrs",
-  },
-];

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import Fuse from "fuse.js";
 
 import Divider from "../../Divider";
 import SelectBox from "../../SelectBox";
@@ -9,29 +10,68 @@ import Toogler from "../../Toogler";
 import { jobTypes } from "../../../helper/constant";
 
 interface Props {
-  filterDetaile: any;
-  setFilterDetaile: (data: any) => void;
+  setPinJobs: (data: any) => void;
+  jobs: any;
+  setViewMore: (data: boolean) => void;
 }
-const LandingSection = ({ filterDetaile, setFilterDetaile }: Props) => {
+const LandingSection = ({ jobs, setPinJobs, setViewMore }: Props) => {
   const [isHover, setIsHover] = useState(false);
+  const [isRemote, setIsRemote] = useState(true);
+
   const handleChange = (e: any) => {
-    const { name, value } = e.target;
-    setFilterDetaile((p) => {
-      return {
-        ...p,
-        [name]: value,
-      };
+    setViewMore(false);
+    const { value } = e.target;
+    const fuse = new Fuse(jobs?.job_listings, {
+      location: 0,
+      shouldSort: true,
+      keys: ["job.title"],
     });
+    const pattern = value;
+    const res: any = fuse.search(pattern);
+    if (res?.length) {
+      const temp = res?.map(({ item }) => {
+        return item;
+      });
+
+      setPinJobs(temp);
+    }
   };
-  const handleSelect = (data: any) => {
-    const { name, value } = data;
-    setFilterDetaile((p) => {
-      return {
-        ...p,
-        [name]: value,
-      };
+  const handleToogle = (data: any) => {
+    setIsRemote(data);
+    setViewMore(false);
+    const fuse = new Fuse(jobs?.job_listings, {
+      location: 0,
+      shouldSort: true,
+      keys: ["location"],
     });
+    const pattern = data ? "Remote" : "Dehradun, Uttarakhand";
+    const res: any = fuse.search(pattern);
+    if (res?.length) {
+      const temp = res?.map(({ item }) => {
+        return item;
+      });
+      setPinJobs(temp);
+    }
   };
+
+  const handleClick = (data: string) => {
+    console.log(data);
+    // setViewMore(false);
+    const fuse = new Fuse(jobs?.job_listings, {
+      location: 0,
+      shouldSort: true,
+      keys: ["job.department"],
+    });
+    const pattern = data === "All" ? "" : data;
+    const res: any = fuse.search(pattern);
+    if (res?.length) {
+      const temp = res?.map(({ item }) => {
+        return item;
+      });
+      setPinJobs(temp);
+    }
+  };
+
   return (
     <div className="">
       <GradientText
@@ -58,7 +98,7 @@ const LandingSection = ({ filterDetaile, setFilterDetaile }: Props) => {
               placeholder="Job Title"
               name="jobTitle"
               onChange={handleChange}
-              value={filterDetaile?.jobTitle}
+              // value={filterDetails?.jobTitle}
             />
           </div>
           <div
@@ -73,9 +113,11 @@ const LandingSection = ({ filterDetaile, setFilterDetaile }: Props) => {
             />
           </div>
         </div>
-        <div className="w-fit flex items-center gap-3">
-          <span className="text-white font-miligramText400">Remote</span>
-          <Toogler handleToogle={() => {}} />
+        <div className="w-48 flex items-center gap-3">
+          <span className="text-white font-miligramText400">
+            {isRemote ? "Remote" : "In Office"}
+          </span>
+          <Toogler handleToogle={handleToogle} />
         </div>
       </div>
       <Divider className="h-8" />
@@ -83,6 +125,7 @@ const LandingSection = ({ filterDetaile, setFilterDetaile }: Props) => {
         {jobTypes.map((item, i) => {
           return (
             <button
+              onClick={() => handleClick(item)}
               className="border-2 border-main-teal text-white font-miligramText400 px-6 py-2 rounded-md hover:text-black hover:bg-main-teal"
               key={i}
             >

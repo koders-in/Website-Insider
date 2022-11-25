@@ -11,35 +11,55 @@ import { sendCandidateDetails } from "../../../helper/webhook";
 import { ObjectOfJob } from "../../../helper/constant";
 import SelectBox from "../../SelectBox";
 import TextArea from "./TextArea";
+import {
+  useFetchDataFromServer,
+  useSetDataOnServer,
+} from "../../../helper/careerHooks";
 
 interface initialState {
   email: string;
   mobile: string;
   fName: string;
   lName: string;
+  joiningIn: string;
+  linkedIn?: string;
+  portfolioURL?: string;
+  hiringReason?: string;
+  joiningReason?: string;
 }
 
 const initialValue: initialState = {
   email: "",
-  mobile: "",
   fName: "",
   lName: "",
+  mobile: "",
+  joiningIn: "",
+  linkedIn: "",
+  portfolioURL: "",
+  hiringReason: "",
+  joiningReason: "",
 };
 
-const Job = ({ expericence, location, title, type }: ObjectOfJob) => {
+const Job = ({ experience, location, title, type, id }: ObjectOfJob) => {
   const [resume, setResume] = useState<any>(null);
   const [isShowLoader, setIsShowLoader] = useState(false);
   const [showModal, setShowModal] = useState({
     viewDetails: false,
     apply: false,
   });
-  const toogleDetailModal = () => {
+  const [viewDetails, setViewDetails] = useState<any>(null);
+  const fetchData = useFetchDataFromServer();
+  const sendData = useSetDataOnServer();
+
+  const toogleDetailModal = async () => {
     setShowModal((p) => {
       return {
         ...p,
         viewDetails: !p.viewDetails,
       };
     });
+    if (viewDetails === null || viewDetails === undefined)
+      fetchData(`open-job-listings/${id}`, setViewDetails);
   };
   const toogleApplyModal = () => {
     if (isShowLoader) return;
@@ -60,6 +80,7 @@ const Job = ({ expericence, location, title, type }: ObjectOfJob) => {
     value: initialState,
     helper: FormikHelpers<initialState>
   ) => {
+    // return;
     if (resume == null) {
       window.alert("Please upload resume");
       return;
@@ -85,6 +106,22 @@ const Job = ({ expericence, location, title, type }: ObjectOfJob) => {
         ...value,
         downloadLink: result,
       });
+      const res = await sendData("apply", {
+        first_name: value?.fName,
+        last_name: value?.lName,
+        email: value?.email,
+        phone_number: value?.mobile,
+        resume: result,
+        job_applied: 1,
+        hiring_reason: value?.hiringReason,
+        // joining_preference: value?.joiningReason,
+        joining_reason: value?.joiningReason,
+        linkedin_url: value?.linkedIn,
+        portfolio_url: value?.portfolioURL,
+      });
+      if (res.status === 200) {
+        window.alert("Successfully applied!");
+      }
       setResume(null);
       setIsShowLoader(false);
       toogleApplyModal();
@@ -118,7 +155,7 @@ const Job = ({ expericence, location, title, type }: ObjectOfJob) => {
           </div>
           <div className="flex items-center justify-start sm:justify-between text-[0.85rem]">
             <Image src={work} alt="" className="mr-1 h-3" />
-            {expericence}
+            {experience}
           </div>
         </div>
       </div>
@@ -138,6 +175,18 @@ const Job = ({ expericence, location, title, type }: ObjectOfJob) => {
         <JobModal
           handleClick={navigateDetailsToApply}
           handleClose={toogleDetailModal}
+          {...{
+            location,
+            type,
+            experience: "Exp " + experience,
+            duration:
+              "Duration- " + viewDetails?.job_listings[0]?.job?.duration,
+            title,
+            benefits: viewDetails?.job_listings[0]?.job?.perks_and_benefits,
+            responsibility:
+              viewDetails?.job_listings[0]?.job?.roles_responsibility,
+            skills: viewDetails?.job_listings[0]?.job?.skills,
+          }}
         >
           <h5 className="text-white text-[1.1rem]">About the Company</h5>
           <p className="text-white text-[0.85rem] mt-3">
@@ -157,49 +206,27 @@ const Job = ({ expericence, location, title, type }: ObjectOfJob) => {
             Selected intern's day-to-day responsibilities include:
           </p>
           <ul className="list-decimal ml-4 text-white text-[0.85rem]">
-            <li>
-              Create design screens on Figma/any other design tool for products
-              (primarily web and mobile)
-            </li>
-            <li> Help in design modification of existing products</li>
-            <li>Design wireframes and conduct user research</li>
-            <li>Create effective prototypes</li>
-            <li>
-              Engage in creative thinking, conceptualization, and designing
-            </li>
-            <li>
-              Design marketing collateral like social media graphics, catalogs,
-              brochures, posters, advertisements, presentations, e-mailers, etc.
-            </li>
-            <li>
-              Deliver high-quality and professional output within deadlines
-            </li>
+            {viewDetails?.job_listings[0]?.job?.roles_responsibility?.map(
+              (item, i) => (
+                <li key={i}>{item}</li>
+              )
+            )}
           </ul>
-          <h5 className="text-white text-[1.1rem] mt-4 mb-3">
-            Role and Responsibility
-          </h5>
-          <p className="text-white text-[0.85rem] mt-3">
-            Figma, Adobe XD, Illustrator, Prototyping, Wireframing.
-          </p>
           <h5 className="text-white text-[1.1rem] mt-4 mb-3">
             Skills Required
           </h5>
-          <div className="flex flex-wrap">...</div>
+          <div className="text-white text-[0.85rem] mt-3">
+            {viewDetails?.job_listings[0]?.job?.skills.toString()}
+          </div>
           <h5 className="text-white text-[1.1rem] mt-4 mb-3">
             Perks and Benefits
           </h5>
           <ul className="list-decimal ml-4 text-white text-[0.85rem]">
-            <li>Certificate on successful completion of internship.</li>
-            <li> Stipend: ₹15,000 lump-sum + performance-based incentives.</li>
-            <li>Letter of Recommendation on exceptional performance.</li>
-            <li>
-              Apart from the fixed base stipend, you will be awarded an
-              additional stipend based on your performance up to ₹32,500.
-            </li>
-            <li>
-              You will be awarded a full-time opportunity at Koders after your
-              tenure if your performance meets or exceeds expectations.
-            </li>
+            {viewDetails?.job_listings[0]?.job?.perks_and_benefits?.map(
+              (item, i) => (
+                <li key={i}>{item}</li>
+              )
+            )}
           </ul>
         </JobModal>
       )}
@@ -307,39 +334,62 @@ const Job = ({ expericence, location, title, type }: ObjectOfJob) => {
                 <Divider className="mt-8" />
                 <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">
                   <SelectBox
-                    value=""
-                    placeholder="When can you start Working? *"
-                    list={[]}
-                    name="budget"
-                    handleSelect={(obj: any) => {}}
-                    // errorText={errors.budget}
+                    value={values.joiningIn || ""}
+                    placeholder="When can you start working? *"
+                    list={[
+                      "I can join immediately (within 15 days).",
+                      "I can join after a month.",
+                      "I can join after three months.",
+                    ]}
+                    name="joiningIn"
+                    handleSelect={(obj: any) => {
+                      const { name, value } = obj;
+                      handleChange("joiningIn")(value);
+                    }}
+                    errorText={errors.joiningIn}
                   />
                   <InputBox
                     type="text"
-                    placeholder="LinkedIn URL *"
-                    name="linkedinURL"
+                    placeholder="LinkedIn URL"
+                    name="linkedIn"
                     onBlur={handleBlur}
-                    value={values.mobile}
+                    value={values.linkedIn}
                     handleChange={handleChange}
-                    errorText={errors.mobile}
+                    errorText={errors.linkedIn}
                   />
                 </div>
                 <Divider className="mt-8" />
                 <div>
                   <InputBox
                     type="text"
-                    placeholder="Website URL/Portfolio Link *"
-                    name="portfolio"
+                    placeholder="Website URL/Portfolio URL"
+                    name="portfolioURL"
                     onBlur={handleBlur}
-                    value={values.mobile}
+                    value={values.portfolioURL}
                     handleChange={handleChange}
-                    errorText={errors.mobile}
+                    errorText={errors.portfolioURL}
                   />
                 </div>
                 <Divider className="mt-8" />
-                <TextArea title="Why should you be hired for this role?" />
+                <TextArea
+                  placeholder=""
+                  name="hiringReason"
+                  onBlur={handleBlur}
+                  value={values.hiringReason}
+                  handleChange={handleChange}
+                  errorText={errors.hiringReason}
+                  title="Why should you be hired for this role?"
+                />
                 <Divider className="mt-8" />
-                <TextArea title="Why do you want to Work at Koders?" />
+                <TextArea
+                  placeholder=""
+                  name="joiningReason"
+                  onBlur={handleBlur}
+                  value={values.joiningReason}
+                  handleChange={handleChange}
+                  errorText={errors.joiningReason}
+                  title="Why do you want to Work at Koders?"
+                />
                 <Divider className="mt-10" />
                 <Button
                   type="submit"
