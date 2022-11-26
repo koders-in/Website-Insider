@@ -3,7 +3,6 @@ import Image from "next/image";
 import Fuse from "fuse.js";
 
 import Divider from "../../Divider";
-import SelectBox from "../../SelectBox";
 import GradientText from "../../GradientText";
 import { search, work } from "../../../assets";
 import Toogler from "../../Toogler";
@@ -11,64 +10,102 @@ import { jobTypes } from "../../../helper/constant";
 
 interface Props {
   setPinJobs: (data: any) => void;
-  jobs: any;
-  setViewMore: (data: boolean) => void;
+  pinJobs: any;
+  tempData: any;
+  setNoMatch: (data: boolean) => void;
 }
-const LandingSection = ({ jobs, setPinJobs, setViewMore }: Props) => {
+const LandingSection = ({
+  pinJobs,
+  setPinJobs,
+  setNoMatch,
+  tempData,
+}: Props) => {
   const [isHover, setIsHover] = useState(false);
   const [isRemote, setIsRemote] = useState(true);
+  const [department, setDepartment] = useState("All");
 
-  const handleChange = (e: any) => {
-    setViewMore(false);
+  const handleChange = async (e: any) => {
     const { value } = e.target;
-    const fuse = new Fuse(jobs?.job_listings, {
-      location: 0,
-      shouldSort: true,
-      keys: ["job.title"],
-    });
-    const pattern = value;
-    const res: any = fuse.search(pattern);
-    if (res?.length) {
-      const temp = res?.map(({ item }) => {
-        return item;
+    if (!value) {
+      setPinJobs(tempData);
+      setNoMatch(false);
+      return;
+    }
+    if (tempData?.length) {
+      const fuse = new Fuse(tempData, {
+        location: 0,
+        shouldSort: true,
+        keys: ["job.title"],
       });
-
-      setPinJobs(temp);
+      let pattern = value;
+      const res: any = fuse.search(pattern);
+      if (res?.length === 0) {
+        setPinJobs([]);
+        setNoMatch(true);
+        return;
+      }
+      if (res?.length) {
+        setNoMatch(false);
+        const temp = res?.map(({ item }) => {
+          return item;
+        });
+        setPinJobs(temp);
+      }
     }
   };
   const handleToogle = (data: any) => {
     setIsRemote(data);
-    setViewMore(false);
-    const fuse = new Fuse(jobs?.job_listings, {
-      location: 0,
-      shouldSort: true,
-      keys: ["location"],
-    });
-    const pattern = data ? "Remote" : "Dehradun, Uttarakhand";
-    const res: any = fuse.search(pattern);
-    if (res?.length) {
-      const temp = res?.map(({ item }) => {
-        return item;
+    if (tempData?.length) {
+      const fuse = new Fuse(tempData, {
+        location: 0,
+        shouldSort: true,
+        keys: ["location"],
       });
-      setPinJobs(temp);
+      const pattern = data ? "Remote" : "Dehradun, Uttarakhand";
+      const res: any = fuse.search(pattern);
+      if (res?.length === 0) {
+        setPinJobs([]);
+        setNoMatch(true);
+        return;
+      }
+      if (res?.length) {
+        setNoMatch(false);
+        const temp = res?.map(({ item }) => {
+          return item;
+        });
+        setPinJobs(temp);
+      }
     }
   };
 
   const handleClick = (data: string) => {
-    console.log(data);
-    // setViewMore(false);
-    const fuse = new Fuse(jobs?.job_listings, {
-      location: 0,
-      shouldSort: true,
-      keys: ["job.department"],
-    });
-    const pattern = data === "All" ? "" : data;
-    const res: any = fuse.search(pattern);
-    if (res?.length) {
-      const temp = res?.map(({ item }) => {
-        return item;
+    setDepartment(data);
+    if (data === "All") {
+      setPinJobs(tempData);
+      setNoMatch(false);
+      return;
+    }
+    if (tempData?.length) {
+      const fuse = new Fuse(tempData, {
+        location: 0,
+        shouldSort: true,
+        keys: ["job.department"],
       });
-      setPinJobs(temp);
+      console.log(tempData);
+      const pattern = data;
+      const res: any = fuse.search(pattern);
+      if (res?.length === 0) {
+        setPinJobs([]);
+        setNoMatch(true);
+        return;
+      }
+      if (res?.length) {
+        setNoMatch(false);
+        const temp = res?.map(({ item }) => {
+          return item;
+        });
+        setPinJobs(temp);
+      }
     }
   };
 
@@ -126,7 +163,9 @@ const LandingSection = ({ jobs, setPinJobs, setViewMore }: Props) => {
           return (
             <button
               onClick={() => handleClick(item)}
-              className="border-2 border-main-teal text-white font-miligramText400 px-6 py-2 rounded-md hover:text-black hover:bg-main-teal"
+              className={`border-2 border-main-teal font-miligramText400 px-6 py-2 rounded-md hover:text-black hover:bg-main-teal ${
+                department === item ? "bg-main-teal text-black" : "text-white"
+              } `}
               key={i}
             >
               {item}

@@ -22,8 +22,9 @@ const Jobs = () => {
   const [jobs, setJobs] = useState<any>(null);
   const [viewMore, setViewMore] = useState<boolean>(true);
   const [pinJobs, setPinJobs] = useState<any>(null);
+  const [tempData, setTempData] = useState<any>(null);
+  const [noMatch, setNoMatch] = useState<boolean>(false);
   const fetchData = useFetchDataFromServer();
-  console.log("jobs", jobs);
   useEffect(() => {
     AOS.init({
       easing: "ease-out",
@@ -36,14 +37,15 @@ const Jobs = () => {
     if (jobs === null || jobs === undefined)
       fetchData("open-job-listings", setJobs);
 
-    if (jobs && pinJobs === null) {
+    if (jobs && tempData === null) {
       if (jobs?.job_listings?.length / 3 > 0) {
         setPinJobs(jobs?.job_listings?.slice(0, 2));
+        setTempData(jobs?.job_listings?.slice(0, 2));
       } else {
         setPinJobs(jobs?.job_listings);
+        setTempData(jobs?.job_listings);
       }
     }
-    // setPinJobs
   }, [jobs]);
 
   const handleTryAgain = async () => {
@@ -56,6 +58,12 @@ const Jobs = () => {
     }
   };
 
+  const handleViewMore = () => {
+    setPinJobs([...jobs?.job_listings]);
+    setTempData([...jobs?.job_listings]);
+    setViewMore(false);
+  };
+
   return (
     <div className="bg-main-primary overflow-hidden relative">
       <Head>
@@ -64,9 +72,13 @@ const Jobs = () => {
       <Navbar />
       <div className="py-28 w-[85%] mx-auto">
         <Divider className="mt-9" />
-        <LandingSection {...{ jobs, setPinJobs, setViewMore }} />
+        <LandingSection {...{ pinJobs, setPinJobs, setNoMatch, tempData }} />
         <Divider className="mt-16" />
-        {pinJobs === null ? (
+        {noMatch ? (
+          <div className="text-main-teal w-fit mx-auto text-[1.5em]">
+            No Match Found
+          </div>
+        ) : pinJobs === null ? (
           <div className="w-fit mx-auto text-white">
             Something went wrong.
             <button
@@ -101,7 +113,7 @@ const Jobs = () => {
             <Divider className="h-10" />
             {viewMore && (
               <button
-                onClick={() => setPinJobs([...jobs?.job_listings])}
+                onClick={handleViewMore}
                 className="flex text-main-teal mx-auto w-fit justify-center items-center cursor-pointer hover:scale-105"
               >
                 View more &nbsp; <Image src={greenArrow} alt={greenArrow} />
