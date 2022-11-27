@@ -25,3 +25,17 @@ export const projectDataSchema = yup.object().shape({
   company: yup.string().notRequired(),
   role: yup.string().notRequired(),
 });
+
+
+export const collabrationPageSchima = yup.object().shape({
+  name: yup.string().required("First name is required"),
+  email: yup.string().email().required("Email address is required"),
+  mobile: yup.string().length(10).required("Mobile number is Required"),
+  company: yup.string().required("Company name is required"),
+  companySize: yup.string().required("Joining time period is required"),
+  location: yup.string().optional(),
+  websiteURL: yup.string().optional(),
+  jobTitle: yup.string().required("Please enter the hiring reason"),
+  questionOne: yup.string().required("Please enter the joining reason"),
+  questionTwo: yup.string().required("Please enter the joining reason"),
+})

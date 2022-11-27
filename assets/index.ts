@@ -49,6 +49,12 @@ import performance from "../public/images/performance.svg";
 import workers from "../public/images/workers.svg";
 import workspace from "../public/images/workspace.svg";
 import greenArrow from "../public/images/green-arrow.svg";
+import quoteUp from "../public/images/quots-up.svg";
+import quoteDown from "../public/images/quots-down.svg";
+import founder from "../public/images/founder.svg";
+import mission from "../public/images/mission.svg";
+import aim from "../public/images/aim.svg";
+import map from "../public/images/map.svg";
 
 // Assets for technologies components
 
@@ -203,4 +209,10 @@ export {
   workspace,
   workers,
   greenArrow,
+  quoteUp,
+  quoteDown,
+  founder,
+  mission,
+  aim,
+  map
 };

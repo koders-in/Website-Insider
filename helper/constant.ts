@@ -52,7 +52,7 @@ export const footerButtons = [
   {
     title: "Resources",
     buttons: [
-      { title: "About", route: "", target: false },
+      { title: "About", route: "/About", target: false },
       { title: "Jobs", route: "/Jobs", target: false },
       { title: "Contact", route: "", target: false },
     ],

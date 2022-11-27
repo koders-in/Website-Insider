@@ -8,6 +8,7 @@ interface Props {
   errorText?: any;
   onBlur?: (props: any) => void;
   title: string;
+  textareaStyle?: string;
 }
 
 const TextArea = ({
@@ -18,6 +19,7 @@ const TextArea = ({
   name,
   errorText,
   onBlur,
+  textareaStyle,
 }: Props) => {
   return (
     <div className="border-2 text-[0.9rem] md:text-[1.2rem] border-main-light_white pr-1 relative  py-4  pl-2">
@@ -34,7 +36,9 @@ const TextArea = ({
       <textarea
         placeholder={placeholder}
         onBlur={onBlur}
-        className="w-full bg-main-secondary outline-none text-main-light_white"
+        className={`w-full outline-none text-main-light_white ${
+          textareaStyle ? textareaStyle : "bg-main-secondary"
+        }`}
         name={name}
         cols={30}
         rows={4}
