@@ -152,7 +152,8 @@ const LandingSection = ({
         </div>
         <div className="w-48 flex items-center gap-3">
           <span className="text-white font-miligramText400">
-            {isRemote ? "Remote" : "In Office"}
+            {/* {isRemote ? "Remote" : "In Office"} */}
+            Remote
           </span>
           <Toogler handleToogle={handleToogle} />
         </div>
