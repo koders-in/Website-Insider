@@ -16,7 +16,13 @@ const TestmonialCard = ({ title, logo, description, rating, link }: Props) => {
       className="border-2 border-main-teal rounded-lg p-5 bg-main-secondary mt-5 cursor-pointer"
     >
       <div className="flex items-center mb-4">
-        <Image src={logo} alt="logo" width="50" height="50" className=" mr-4" />
+        <Image
+          src={logo}
+          alt="logo"
+          width="50"
+          height="50"
+          className="rounded-full mr-4"
+        />
         <div className="text-white text-[20px]">
           <span>{title}</span>
           <div className="w-fit">{"⭐ ".repeat(rating)}</div>

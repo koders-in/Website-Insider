@@ -54,7 +54,7 @@ export const footerButtons = [
     buttons: [
       { title: "About", route: "/About", target: false },
       { title: "Jobs", route: "/Jobs", target: false },
-      { title: "Collabrate", route: "/Collabrate", target: false },
+      { title: "Collaborate", route: "/Collaborate", target: false },
     ],
   },
   {
@@ -73,18 +73,18 @@ export const footerButtons = [
   {
     title: "Legal",
     buttons: [
-      { title: "Privacy Policy", route: "/PrivacyPolicy", target: false },
-      { title: "Terms of Services", route: "/TermsOfServic", target: false },
       { title: "Cancellation", route: "/Cancellation", target: false },
       { title: "Refund", route: "/Cancellation", target: false },
+      { title: "Privacy Policy", route: "/PrivacyPolicy", target: false },
+      { title: "Terms of Services", route: "/TermsOfServic", target: false },
     ],
   },
   {
     title: "Support",
     buttons: [
-      { title: "GitHub", route: "https://github.com/koders-in", target: true },
-      { title: "Help", route: "", target: false },
       { title: "Join Discord", route: "https://dsc.gg/koders", target: true },
+      { title: "Help", route: "", target: false },
+      { title: "GitHub", route: "https://github.com/koders-in", target: true },
     ],
   },
 ];
@@ -308,7 +308,7 @@ export const timelinePoints: Array<TypeOfPiont> = [
     type: "top",
   },
   {
-    text: "Onbording",
+    text: "Onboarding",
     position: "left-[-100px] top-[-31px]",
     type: "top",
   },
@@ -335,3 +335,149 @@ export interface ObjectOfJob {
   id?: number;
   duration?: string;
 }
+
+// description: item.snippet,
+// logo: item.user.thumbnail,
+// title: item.user.name,
+// rating: item.rating,
+// link: item.user.link,
+
+export const discordReviews = [
+  {
+    user: {
+      name: "Camel Juno",
+      thumbnail:
+        "https://cdn.discordapp.com/avatars/340813726103896064/624497f973f4629bc2c8467614803f81.webp?size=240",
+    },
+    snippet:
+      "It's a pleasure and a relief to have Koders as a team of skilled individuals whom I can rely on when it comes to web dev. Fully recommend them and the service is totally worth its cost. Looking forward to more projects in the future!",
+    rating: 5,
+    link: "",
+  },
+  {
+    user: {
+      name: "Neo",
+      thumbnail:
+        "https://imgs.search.brave.com/gSLuDg1iooBKPci14D1Te6W3OTUSUGHUWIzTYoGYsBQ/rs:fit:1000:1080:1/g:ce/aHR0cHM6Ly9jZG4x/LnZlY3RvcnN0b2Nr/LmNvbS9pLzEwMDB4/MTAwMC8wNC8zNS9u/LWxldHRlci1sb2dv/LXRlbXBsYXRlLXZl/Y3Rvci0xMTE4MDQz/NS5qcGc",
+    },
+    snippet: "Great Experience friendly staff",
+    rating: 5,
+    link: "",
+  },
+  {
+    user: {
+      name: "SupremeCook",
+      thumbnail:
+        "https://cdn.discordapp.com/avatars/442921402279133196/2f0ba5e4d6c9f39dbacc02e49bb143cd.webp?size=240",
+    },
+    snippet: "Awesome Experience",
+    rating: 5,
+    link: "",
+  },
+  {
+    user: {
+      name: "GeorgePitlock",
+      thumbnail:
+        "https://cdn.discordapp.com/avatars/437902214413942786/3e60b26ddc05727d700b1bc592b9a3d8.webp?size=160",
+    },
+    snippet:
+      "Nice idea, good work on niche projects, very happy with work I received however communication was a little slow at time",
+    rating: 5,
+    link: "",
+  },
+  {
+    user: {
+      name: "Neo",
+      thumbnail:
+        "https://imgs.search.brave.com/gSLuDg1iooBKPci14D1Te6W3OTUSUGHUWIzTYoGYsBQ/rs:fit:1000:1080:1/g:ce/aHR0cHM6Ly9jZG4x/LnZlY3RvcnN0b2Nr/LmNvbS9pLzEwMDB4/MTAwMC8wNC8zNS9u/LWxldHRlci1sb2dv/LXRlbXBsYXRlLXZl/Y3Rvci0xMTE4MDQz/NS5qcGc",
+    },
+    snippet:
+      "Great Experience with good communication and staff! Very friendly and cooperative as well",
+    rating: 5,
+    link: "",
+  },
+  {
+    user: {
+      name: "Troy",
+      thumbnail:
+        "https://imgs.search.brave.com/gSLuDg1iooBKPci14D1Te6W3OTUSUGHUWIzTYoGYsBQ/rs:fit:1000:1080:1/g:ce/aHR0cHM6Ly9jZG4x/LnZlY3RvcnN0b2Nr/LmNvbS9pLzEwMDB4/MTAwMC8wNC8zNS9u/LWxldHRlci1sb2dv/LXRlbXBsYXRlLXZl/Y3Rvci0xMTE4MDQz/NS5qcGc",
+    },
+    snippet: "I didn't do a single thing",
+    rating: 5,
+    link: "",
+  },
+  {
+    user: {
+      name: "Enz",
+      thumbnail:
+        "https://cdn.discordapp.com/avatars/475085749440479232/6bd037d86b34fc19603d0954c80cbc50.webp?size=240",
+    },
+    snippet: " Speed and price and cleaness of code exceeded expectations",
+    rating: 5,
+    link: "",
+  },
+  {
+    user: {
+      name: "Tarun",
+      thumbnail:
+        "https://cdn.discordapp.com/avatars/475085749440479232/6bd037d86b34fc19603d0954c80cbc50.webp?size=240",
+    },
+    snippet: "Experience was grt",
+    rating: 5,
+    link: "",
+  },
+  {
+    user: {
+      name: "Bolt",
+      thumbnail:
+        "https://cdn.discordapp.com/avatars/459764269043548162/b37c2b19eed5bc2daece6aeae82c71f3.webp?size=160",
+    },
+    snippet:
+      "Amazing quality product delivered. The team is very professional. Even though it was a one of the most complicated projects, the results was great. Would definitely want to continue working with this team.",
+    rating: 5,
+    link: "",
+  },
+  {
+    user: {
+      name: "DiegoTod ",
+      thumbnail:
+        "https://cdn.discordapp.com/avatars/475085749440479232/6bd037d86b34fc19603d0954c80cbc50.webp?size=240",
+    },
+    snippet: "Best experience",
+    rating: 5,
+    link: "",
+  },
+  {
+    user: {
+      name: "Camel Juno",
+      thumbnail:
+        "https://cdn.discordapp.com/avatars/340813726103896064/624497f973f4629bc2c8467614803f81.webp?size=240",
+    },
+    snippet:
+      " My second project with Koders and again, a smooth and professional experience. I always appreciate their patience with my requirements and how understanding they are. Thanks guys and here's to more future work together 🍻",
+    rating: 5,
+    link: "",
+  },
+  {
+    user: {
+      name: "Ak456",
+      thumbnail:
+        "https://cdn.discordapp.com/avatars/654921782720987168/7f87f6d34270b4aac6f7713706bae069.webp?size=160",
+    },
+    snippet:
+      "Amzing work in super fast timings , very understanding and helps a lot thank you koders",
+    rating: 5,
+    link: "",
+  },
+  {
+    user: {
+      name: "Bilrd",
+      thumbnail:
+        "https://cdn.discordapp.com/avatars/687968347727593493/a_054de1f07ed3f87e7325ef2a1e76e8b8.webp?size=160",
+    },
+    snippet:
+      "Very professional team to work with. Delivered a high quality solution that does exactly what I was looking for.",
+    rating: 5,
+    link: "",
+  },
+];

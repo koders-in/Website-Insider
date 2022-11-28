@@ -109,7 +109,7 @@ const about = () => {
         <Divider className="h-16" />
         <div className="w-fit mx-auto">
           <div className="sm:border-b-2 flex sm:border-main-teal flex-wrap sm:flex-nowrap">
-            <div className="flex w-full sm:w-auto flex-col justify-center items-center px-4 py-3 md:px-8 md:py-5 lg:px-16 lg:py-10 sm:border-main-teal sm:border-r-2 text-[2.5em] text-white font-miligramLight">
+            <div className="flex w-[50%] sm:w-auto flex-col justify-center items-center px-4 py-3 md:px-8 md:py-5 lg:px-16 lg:py-10 sm:border-main-teal sm:border-r-2 text-[2.5em] text-white font-miligramLight">
               <div className="flex justify-center items-center">
                 10<span className="text-[0.8em] text-white">+</span>
               </div>
@@ -117,7 +117,7 @@ const about = () => {
                 Employees
               </p>
             </div>
-            <div className="flex w-full sm:w-auto flex-col justify-center items-center px-4 py-3 md:px-8 md:py-5 lg:px-16 lg:py-10 border-main-teal sm:border-r-2 text-[2.5em] text-white font-miligramLight">
+            <div className="flex w-[50%] sm:w-auto flex-col justify-center items-center px-4 py-3 md:px-8 md:py-5 lg:px-16 lg:py-10 border-main-teal sm:border-r-2 text-[2.5em] text-white font-miligramLight">
               <div className="flex justify-center items-center">
                 4<span className="text-[0.8em] text-white">+</span>
               </div>
@@ -125,7 +125,7 @@ const about = () => {
                 Years
               </p>
             </div>
-            <div className="flex w-full sm:w-auto flex-col justify-center items-center px-4 py-3 md:px-8 md:py-5 lg:px-16 lg:py-10 text-[2.5em] text-white font-miligramLight">
+            <div className="flex w-[50%] sm:w-auto flex-col justify-center items-center px-4 py-3 md:px-8 md:py-5 lg:px-16 lg:py-10 text-[2.5em] text-white font-miligramLight">
               <div className="flex justify-center items-center">
                 10<span className="text-[0.8em] text-white">+</span>
               </div>
@@ -133,9 +133,17 @@ const about = () => {
                 Countries
               </p>
             </div>
+            <div className="flex sm:hidden flex-col w-[50%] justify-center items-center px-4 py-3 text-[2.5em] text-white font-miligramLight">
+              <div className="flex justify-center items-center">
+                10<span className="text-[0.8em] text-white">+</span>
+              </div>
+              <p className="text-main-light_white w-[9rem] text-center text-[0.55em]">
+                Bots
+              </p>
+            </div>
           </div>
           <div className="flex flex-wrap sm:flex-nowrap">
-            <div className="flex flex-col w-full sm:w-auto justify-center items-center px-4 py-3 md:px-8 md:py-5 lg:px-16 lg:py-10 sm:border-main-teal sm:border-r-2 text-[2.5em] text-white font-miligramLight">
+            <div className="flex flex-col w-[50%] sm:w-auto justify-center items-center px-4 py-3 md:px-8 md:py-5 lg:px-16 lg:py-10 sm:border-main-teal sm:border-r-2 text-[2.5em] text-white font-miligramLight">
               <div className="flex justify-center items-center">
                 10<span className="text-[0.8em] text-white">+</span>
               </div>
@@ -143,7 +151,7 @@ const about = () => {
                 Mobile Apps
               </p>
             </div>
-            <div className="flex flex-col w-full sm:w-auto justify-center items-center px-4 py-3 md:px-8 md:py-5 lg:px-16 lg:py-10 sm:border-main-teal sm:border-r-2 text-[2.5em] text-white font-miligramLight">
+            <div className="flex flex-col w-[50%] sm:w-auto justify-center items-center px-4 py-3 md:px-8 md:py-5 lg:px-16 lg:py-10 sm:border-main-teal sm:border-r-2 text-[2.5em] text-white font-miligramLight">
               <div className="flex justify-center items-center">
                 10<span className="text-[0.8em] text-white">+</span>
               </div>
@@ -151,7 +159,7 @@ const about = () => {
                 Web Apps
               </p>
             </div>
-            <div className="flex flex-col w-full sm:w-auto justify-center items-center px-4 py-3 md:px-8 md:py-5 lg:px-16 lg:py-10 text-[2.5em] text-white font-miligramLight">
+            <div className="hidden sm:flex flex-col w-[50%] sm:w-auto justify-center items-center px-4 py-3 md:px-8 md:py-5 lg:px-16 lg:py-10 text-[2.5em] text-white font-miligramLight">
               <div className="flex justify-center items-center">
                 10<span className="text-[0.8em] text-white">+</span>
               </div>

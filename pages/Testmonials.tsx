@@ -2,8 +2,6 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
-import { getReviewList } from "../helper/scrapper";
-
 import {
   Button,
   Divider,
@@ -13,20 +11,33 @@ import {
   TestmonialCard,
 } from "../components";
 import axios from "axios";
-import { FadeLoader } from "react-spinners";
+// import { FadeLoader } from "react-spinners";
+import { discordReviews } from "../helper/constant";
 
 const Testmonials = () => {
   const [reviewsData, setReviewsData] = useState<any>();
+
+  const discordReviewInaColumn = Math.round(discordReviews.length / 3);
+
+  const discordRowOne = discordReviews?.slice(0, discordReviewInaColumn);
+  const discordRowTwo = discordReviews?.slice(
+    discordReviewInaColumn,
+    discordReviewInaColumn * 2
+  );
+  const discordRowThree = discordReviews?.slice(
+    discordReviewInaColumn * 2,
+    discordReviews.length
+  );
 
   const cardInaColumn = Math.round(reviewsData?.reviews?.length / 3);
   const rowOne = reviewsData?.reviews?.slice(0, cardInaColumn - 2);
 
   const rowTwo = reviewsData?.reviews?.slice(
     cardInaColumn - 2,
-    cardInaColumn * 2 - 3
+    cardInaColumn * 2 - 2
   );
   const rowThree = reviewsData?.reviews?.slice(
-    cardInaColumn * 2 - 3,
+    cardInaColumn * 2 - 2,
     reviewsData?.reviews?.length
   );
   const router = useRouter();
@@ -86,7 +97,7 @@ const Testmonials = () => {
         </p>
         <Divider className="mt-4 md:mt-14" />
         <div className=" w-[90%] lg:w-[85%] xl:w-[80%] mx-auto flex justify-center flex-wrap md:flex-nowrap gap-5 xl:gap-7 bg-main-primary pt-4 pb-8 xxl:w-[63%]">
-          {!reviewsData?.reviews?.length ? (
+          {/* {!reviewsData?.reviews?.length ? (
             <div>
               {reviewsData === false ? (
                 <>
@@ -112,52 +123,52 @@ const Testmonials = () => {
                 />
               )}
             </div>
-          ) : (
-            <>
-              <div className="w-full md:w-1/3">
-                {rowOne?.map((item, i) => (
-                  <TestmonialCard
-                    key={i}
-                    {...{
-                      description: item.snippet,
-                      logo: item.user.thumbnail,
-                      title: item.user.name,
-                      rating: item.rating,
-                      link: item.user.link,
-                    }}
-                  />
-                ))}
-              </div>
-              <div className="w-full md:w-1/3">
-                {rowTwo?.map((item, i) => (
-                  <TestmonialCard
-                    key={i}
-                    {...{
-                      description: item.snippet,
-                      logo: item.user.thumbnail,
-                      title: item.user.name,
-                      rating: item.rating,
-                      link: item.user.link,
-                    }}
-                  />
-                ))}
-              </div>
-              <div className="w-full md:w-1/3">
-                {rowThree?.map((item, i) => (
-                  <TestmonialCard
-                    key={i}
-                    {...{
-                      description: item.snippet,
-                      logo: item.user.thumbnail,
-                      title: item.user.name,
-                      rating: item.rating,
-                      link: item.user.link,
-                    }}
-                  />
-                ))}
-              </div>
-            </>
-          )}
+          ) : ( */}
+          <>
+            <div className="w-full md:w-1/3">
+              {[...discordRowOne, ...rowOne]?.map((item, i) => (
+                <TestmonialCard
+                  key={i}
+                  {...{
+                    description: item.snippet,
+                    logo: item.user.thumbnail,
+                    title: item.user.name,
+                    rating: item.rating,
+                    link: item.user.link,
+                  }}
+                />
+              ))}
+            </div>
+            <div className="w-full md:w-1/3">
+              {[...discordRowTwo, ...rowTwo]?.map((item, i) => (
+                <TestmonialCard
+                  key={i}
+                  {...{
+                    description: item.snippet,
+                    logo: item.user.thumbnail,
+                    title: item.user.name,
+                    rating: item.rating,
+                    link: item.user.link,
+                  }}
+                />
+              ))}
+            </div>
+            <div className="w-full md:w-1/3">
+              {[...discordRowThree, ...rowThree]?.map((item, i) => (
+                <TestmonialCard
+                  key={i}
+                  {...{
+                    description: item.snippet,
+                    logo: item.user.thumbnail,
+                    title: item.user.name,
+                    rating: item.rating,
+                    link: item.user.link,
+                  }}
+                />
+              ))}
+            </div>
+          </>
+          {/* )} */}
         </div>
         <Button
           OnClick={() => handleNavigate("StartProject")}

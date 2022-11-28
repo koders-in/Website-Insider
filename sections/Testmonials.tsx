@@ -115,13 +115,6 @@ const Testmonials = () => {
           </div>
         ))}
       </div>
-      <PropagateLoader
-        color="#00A99D"
-        loading={loading}
-        className="w-fit block mx-auto my-6"
-        aria-label="Loading Spinner"
-        data-testid="loader"
-      />
       <Button
         OnClick={() => handleNavigate("Testmonials/#footer")}
         text="Read More"
