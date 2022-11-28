@@ -42,10 +42,6 @@
   src: url("../assets/font/Milligram/MilligramText-Medium.ttf");
 }
 
-/* div{
-  animation: name duration timing-function delay iteration-count direction fill-mode;
-  animation: hide 1s ease-in-out forwards;
-} */
 
 /* Keyframe for honey comb cell in technologies section */
 
@@ -56,6 +52,13 @@
 .combInner {
   clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
   -moz-clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
+}
+
+::selection {
+  background: #00A99D; /* WebKit/Blink Browsers */
+}
+::-moz-selection {
+  background: #00A99D; /* Gecko Browsers */
 }
 
 @keyframes fading {

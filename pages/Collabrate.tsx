@@ -43,7 +43,27 @@ const Collabrate = () => {
     value: initialState,
     helper: FormikHelpers<initialState>
   ) => {
-    console.log(value);
+    const body = `
+    Name:${value.name}
+    Email:${value.email}
+    Mobile No:${value.mobile}
+    Company Name:${value.company}
+    Company Size:${value.companySize}
+    Location:${value.location}
+    Website URL: ${value.websiteURL}
+    Job Title: ${value.jobTitle}\n
+    Q.Describe what your company seeks to benefit from this Collaboration.
+    Ans:- ${value.questionOne}\n
+    Q.Describe what your company will bring to us in this collaboration.
+    Ans:- ${value.questionTwo}\n
+
+    Thank you
+    `;
+    const MAIL_TO = `mailto:info@koders.in?subject=Collabrate Query&body=${encodeURIComponent(
+      body
+    )}`;
+    window.open(MAIL_TO, "_blank");
+    helper.resetForm();
   };
 
   return (
@@ -215,7 +235,7 @@ const Collabrate = () => {
               <button
                 type="submit"
                 onClick={() => handleSubmit()}
-                className="bg-main-greenOpt-200 border-2 border-main-teal text-main-teal block w-fit mx-auto py-2 px-8 rounded-md hover:text-white hover:bg-main-teal"
+                className="text-[0.9em] font-miligramText400 bg-main-greenOpt-200 border-2 border-main-teal text-main-teal block w-fit mx-auto py-[0.4rem] px-8 rounded-md hover:text-white hover:bg-main-teal"
               >
                 Submit
               </button>

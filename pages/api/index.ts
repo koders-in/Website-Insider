@@ -2,10 +2,9 @@ import multer from "multer";
 import { NextApiRequest, NextApiResponse } from "next";
 import { Storage } from "megajs";
 import fs from "fs";
-import path, { resolve } from "path";
+import path from "path";
 import { getReview } from "./scrapper";
 
-const INTERVAL_TIME = 24 * 60 * 60 * 60 * 1000;
 
 function runMiddleware(
   req: NextApiRequest & { [key: string]: any },
