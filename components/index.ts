@@ -29,6 +29,8 @@ export { default as JobModal } from "./pages-components/jobs/Modal";
 export { default as Timeline } from "./pages-components/jobs/Timeline";
 export { default as JobAlert } from "./pages-components/jobs/JobAlert";
 export { default as LandingSection } from "./pages-components/jobs/LandingSection";
+// ABOUT PAGE COMPONENTS
+export { default as WorldMap } from "./pages-components/about/WorldMap";
 
 // ********** ---| SECTIONS COMPONENTS |--- *********
 // WHY KODERS SECTION COMPONENTS

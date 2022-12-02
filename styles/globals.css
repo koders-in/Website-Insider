@@ -42,6 +42,92 @@
   src: url("../assets/font/Milligram/MilligramText-Medium.ttf");
 }
 
+/* div{
+  animation: name duration timing-function delay iteration-count direction fill-mode;
+  animation: hide 1s ease-in-out 1s forwards;
+} */
+
+.typing-animation-one {
+  animation: typing 1.2s steps(40, end) forwards;
+}
+.typing-animation-two {
+  animation: typing 1.2s steps(40, end) 1.2s forwards;
+}
+.typing-animation-three {
+  animation: typing 1.2s steps(40, end) 2.4s forwards;
+}
+.typing-animation-four {
+  animation: typing 1.2s steps(40, end) 3.6s forwards;
+}
+.typing-animation-five {
+  animation: typing 1.2s steps(40, end) 4.8s forwards;
+}
+
+@keyframes first {
+  from {
+    width: 0;
+  }
+  to {
+    width: 25%;
+  }
+}
+@keyframes second {
+  from {
+    width: 25%;
+  }
+  to {
+    width: 50%;
+  }
+}
+@keyframes third {
+  from {
+    width: 50%;
+  }
+  to {
+    width: 75%;
+  }
+}
+@keyframes fourth {
+  from {
+    width: 75%;
+  }
+  to {
+    width: 100%;
+  }
+}
+@keyframes fillBg {
+  from {
+    background-color: transparent;
+  }
+  to {
+    background-color: #00a99d;
+  }
+}
+
+@keyframes typing {
+  from {
+    /* width: 0; */
+    opacity: 0;
+    transform: translateX(-180px);
+  }
+  to {
+    /* width: 100%; */
+    opacity: 1;
+    transform: translateX(0px);
+  }
+}
+
+@keyframes blink-caret {
+  0% {
+    border-right-color: transparent;
+  }
+  50% {
+    border-right-color: #00a99d;
+  }
+  100% {
+    border-right-color: transparent;
+  }
+}
 
 /* Keyframe for honey comb cell in technologies section */
 
@@ -55,10 +141,10 @@
 }
 
 ::selection {
-  background: #00A99D; /* WebKit/Blink Browsers */
+  background: #00a99d; /* WebKit/Blink Browsers */
 }
 ::-moz-selection {
-  background: #00A99D; /* Gecko Browsers */
+  background: #00a99d; /* Gecko Browsers */
 }
 
 @keyframes fading {
@@ -72,5 +158,174 @@
   100% {
     filter: invert(0);
     background-color: #00a99d;
+  }
+}
+
+/* map css */
+#line-1 {
+  stroke-dasharray: 933;
+  stroke-dashoffset: 933;
+  stroke: white;
+  animation: draw-line 2s forwards;
+}
+#line-2 {
+  stroke-dasharray: 280;
+  stroke-dashoffset: 280;
+  stroke: white;
+  animation: draw-line 2s 1s forwards;
+}
+#line-3 {
+  stroke-dasharray: 345;
+  stroke-dashoffset: 345;
+  stroke: white;
+  animation: draw-line 2s 3s forwards;
+}
+#line-4 {
+  stroke-dasharray: 310;
+  stroke-dashoffset: 310;
+  stroke: white;
+  animation: draw-line 2s 1s forwards;
+}
+#line-5 {
+  stroke-dasharray: 340;
+  stroke-dashoffset: 340;
+  stroke: white;
+  animation: draw-line 2s 4s forwards;
+}
+#line-6 {
+  stroke-dasharray: 310;
+  stroke-dashoffset: 310;
+  stroke: white;
+  animation: draw-line 2s 2s forwards;
+}
+#line-7 {
+  stroke-dasharray: 690;
+  stroke-dashoffset: 690;
+  stroke: white;
+  animation: draw-line 2s 1s forwards;
+}
+#line-8 {
+  stroke-dasharray: 800;
+  stroke-dashoffset: 800;
+  stroke: white;
+  animation: draw-line 2s 4s forwards;
+}
+#line-9 {
+  stroke-dasharray: 580;
+  stroke-dashoffset: 580;
+  stroke: white;
+  animation: draw-line 2s 1s forwards;
+}
+#line-10 {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  stroke: white;
+  animation: draw-line 2s forwards;
+}
+
+@keyframes draw-line {
+  to {
+    stroke-dashoffset: 10;
+  }
+}
+
+/*  ----------------- */
+#location-7 {
+  fill: transparent;
+  animation: show 1s 0.3s forwards;
+}
+#base-7 {
+  fill: transparent;
+  animation: show-base 1s 0.3s forwards;
+}
+
+#location-4 {
+  fill: transparent;
+  animation: show 1s 1.7s forwards;
+}
+#base-4 {
+  fill: transparent;
+  animation: show-base 1s 1.7s forwards;
+}
+
+#location-1 {
+  fill: transparent;
+  animation: show 1s 3.7s forwards;
+}
+#base-1 {
+  fill: transparent;
+  animation: show-base 1s 3.7s forwards;
+}
+
+#location-2 {
+  fill: transparent;
+  animation: show 1s 1.7s forwards;
+}
+#base-2 {
+  fill: transparent;
+  animation: show-base 1s 1.7s forwards;
+}
+
+#location-9 {
+  fill: transparent;
+  animation: show 1s 4.7s forwards;
+}
+#base-9 {
+  fill: transparent;
+  animation: show-base 1s 4.7s forwards;
+}
+#location-6 {
+  fill: transparent;
+  animation: show 1s 2.7s forwards;
+}
+#base-6 {
+  fill: transparent;
+  animation: show-base 1s 2.7s forwards;
+}
+
+#location-8 {
+  fill: transparent;
+  animation: show 1s 1.7s forwards;
+}
+#base-8 {
+  fill: transparent;
+  animation: show-base 1s 1.7s forwards;
+}
+#location-3 {
+  fill: transparent;
+  animation: show 1s 5s forwards;
+}
+#base-3 {
+  fill: transparent;
+  animation: show-base 1s 5s forwards;
+}
+
+#location-10 {
+  fill: transparent;
+  animation: show 1s 2.7s forwards;
+}
+#base-10 {
+  fill: transparent;
+  animation: show-base 1s 2.7s forwards;
+}
+
+#location-5 {
+  fill: transparent;
+  animation: show 1s 0.3s forwards;
+}
+#base-5 {
+  fill: transparent;
+  animation: show-base 1s 0.3s forwards;
+}
+
+@keyframes show-base {
+  to {
+    fill: white;
+  }
+}
+
+@keyframes show {
+  to {
+    fill: #00a99d;
   }
 }

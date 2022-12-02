@@ -5,7 +5,7 @@ import { Formik, FormikHelpers } from "formik";
 import Button from "../../Button";
 import { JobModal, GradientText } from "../..";
 import { Divider, InputBox } from "../../index";
-import { locationTeal, work } from "../../../assets";
+import { experienceIcon, locationTeal, work } from "../../../assets";
 import { jobValidationSchema } from "../../../helper/validate";
 import { sendCandidateDetails } from "../../../helper/webhook";
 import { ObjectOfJob } from "../../../helper/constant";
@@ -139,12 +139,12 @@ const Job = ({ experience, location, title, type, id }: ObjectOfJob) => {
   };
 
   return (
-    <div className="px-7 py-4 xl:w-[90%] mx-auto border-2 rounded-xl mt-8 border-main-teal bg-main-secondary flex flex-col lg:flex-row gap-4 xl:gap-0 justify-between items-center">
-      <div className="text-main-light_white w-[100%] lg:w-[60%]">
-        <h1 className="text-white text-[1.2rem] text-center lg:text-left font-miligrambold">
+    <div className="px-7 py-4 xl:w-[90%] mx-auto border-2 rounded-xl mt-8 border-main-teal bg-main-secondary flex flex-col md:flex-row gap-4 xl:gap-0 justify-between items-center">
+      <div className="text-main-light_white w-[100%] md:w-[65%] lg:w-[60%]">
+        <h1 className="text-white ml-1 sm:ml-0 text-[1.2rem] text-left sm:text-center md:text-left font-miligrambold">
           {title}
         </h1>
-        <div className="flex mt-1 sm:mt-0 flex-col sm:flex-row gap-1 sm:gap-4 text-white mx-auto w-fit lg:w-full font-miligramText400">
+        <div className="flex mt-1 sm:mt-0 flex-wrap sm:flex-nowrap gap-[0.2rem] lg:gap-4 text-white sm:mx-auto w-fit md:w-full font-miligramText400">
           <div className="flex items-center justify-start sm:justify-between text-[0.85rem]">
             <Image src={locationTeal} alt="" className="mr-1 h-3" />
             {location}
@@ -154,12 +154,12 @@ const Job = ({ experience, location, title, type, id }: ObjectOfJob) => {
             {type}
           </div>
           <div className="flex items-center justify-start sm:justify-between text-[0.85rem]">
-            <Image src={work} alt="" className="mr-1 h-3" />
+            <Image src={experienceIcon} alt="" className="mr-1 h-3" />
             {experience}
           </div>
         </div>
       </div>
-      <div className="flex justify-center lg:justify-end w-[100%] lg:w-[40%] gap-4">
+      <div className="flex justify-center md:justify-end w-[100%] md:w-[35%] lg:w-[40%] gap-4">
         <Button
           OnClick={toogleDetailModal}
           text="View Details"
@@ -168,7 +168,7 @@ const Job = ({ experience, location, title, type, id }: ObjectOfJob) => {
         <Button
           OnClick={toogleApplyModal}
           text="Apply"
-          className=" bg-main-greenOpt-200  font-miligramMedium w-fit text-[0.8rem] lg:text-[0.9rem] text-main-lightTeal py-[4px] md:py-[10px] px-2 xxl:px-8 lg:px-14 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+          className=" bg-main-greenOpt-200  font-miligramMedium w-fit text-[0.8rem] lg:text-[0.9rem] text-main-lightTeal py-[4px] md:py-[10px] px-6 xxl:px-8 lg:px-14 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
         />
       </div>
       {showModal.viewDetails && (

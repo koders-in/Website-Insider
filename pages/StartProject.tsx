@@ -49,6 +49,14 @@ const StartProject = () => {
     }
   };
 
+  const handleClick = (item: string) => {
+    if (technologies?.find((elm) => elm === item)) {
+      setTechnologies(technologies.filter((elm) => elm !== item));
+    } else {
+      setTechnologies((prev: Array<string>) => [...prev, item]);
+    }
+  };
+
   React.useEffect(() => {
     window.scrollTo({
       top: 0,
@@ -81,7 +89,7 @@ const StartProject = () => {
         <ButtonsGroup
           {...{
             technologies,
-            setTechnologies,
+            handleClick,
             buttonsArray: [...typeOfProjects],
           }}
         />

@@ -3,15 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-import {
-  discordWhiteLogo,
-  githubWhite,
-  linkedinWhite,
-  location,
-  logo,
-  phone,
-  twitterWhite,
-} from "../assets";
+import { location, logo, phone } from "../assets";
 import AnimatedBorder from "./AnimatedBorder";
 import { footerButtons, socialMediaHandles } from "../helper/constant";
 
@@ -24,13 +16,25 @@ const Footer = () => {
     router.push(href);
   };
 
+  const handleNavigteTo = (item: any) => {
+    if (item.title === "Pricing") {
+      if (router.pathname !== "/" && router.pathname !== "pricing")
+        router.push("/#pricing");
+      return;
+    }
+    if (item.target) window.open(item?.route, "_blank");
+    else {
+      handleNavigate(item.route);
+    }
+  };
+
   return (
     <>
       <div
         id="footer"
-        className="sm:flex justify-center pl-4 xsm:px-6 sm:pl-20 py-10 bg-main-secondary"
+        className="flex gap-4 md:gap-10 lg:gap-20 xl:gap-24 flex-col lg:flex-row justify-center pl-4 xsm:px-6 sm:pl-8 lg:pl-20 py-10 bg-main-secondary"
       >
-        <div className="w-full sm:w-1/4  font-miligramText400">
+        <div className="w-full lg:w-1/4  font-miligramText400">
           <Image
             src={logo}
             alt="logo"
@@ -50,14 +54,14 @@ const Footer = () => {
               />
             ))}
           </div>
-          <div className="flex justify-start items-start  mt-4 text-[0.9rem] sm:text-[1rem] ml-2">
+          <div className="flex justify-start items-center  mt-4 text-[0.9rem] sm:text-[1rem] ml-2">
             <Image
               src={location}
               alt="location"
               className={
                 onHover
-                  ? "mt-[11px] h-4 scale-125 mr-6 brightness-200"
-                  : "mt-[11px] h-4 scale-125 mr-6 brightness-50"
+                  ? "lg:mt-[11px] h-4 scale-125 mr-6 brightness-200"
+                  : "lg:mt-[11px] h-4 scale-125 mr-6 brightness-50"
               }
             />
             <div
@@ -68,15 +72,15 @@ const Footer = () => {
                 window.open("https://goo.gl/maps/H91YctE1VjYX7p9J9", "_blank")
               }
             >
-              <p className="mt-1 w-fit group-hover:text-white relative inline sm:block">
+              <p className="mt-1 w-fit group-hover:text-white relative inline lg:block">
                 111, New Mohanpur Colony,
                 <AnimatedBorder />
               </p>
-              <p className="mt-1 w-fit group-hover:text-white relative inline sm:block">
+              <p className="mt-1 w-fit group-hover:text-white relative inline lg:block">
                 Prem Nagar, Dehradun,
                 <AnimatedBorder />
               </p>
-              <p className="mt-1 w-fit group-hover:text-white relative inline sm:block">
+              <p className="mt-1 w-fit group-hover:text-white relative inline lg:block">
                 Uttarakhand - 248007
                 <AnimatedBorder />
               </p>
@@ -101,7 +105,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div className="flex justify-center flex-wrap w-full sm:w-3/4 sm:pl-[5%] lg:pl-[15%]">
+        <div className="flex justify-center flex-wrap w-full lg:w-3/4">
           {footerButtons.map((item, i) => {
             return (
               <div className="w-1/2 sm:w-1/4 mt-6 sm:mt-0" key={i}>
@@ -112,20 +116,9 @@ const Footer = () => {
                   <p
                     id={item.title}
                     key={i}
-                    className="relative group text-[0.9rem] sm:text-[1.2rem] text-main-light_white mt-3 cursor-pointer font-miligramText400  hover:text-white w-fit"
+                    className="relative group text-[0.9rem] md:text-[1.2rem] text-main-light_white mt-3 cursor-pointer font-miligramText400  hover:text-white w-fit"
                     onClick={() => {
-                      if (item.title === "Pricing") {
-                        if (
-                          router.pathname !== "/" &&
-                          router.pathname !== "pricing"
-                        )
-                          router.push("/#pricing");
-                        return;
-                      }
-                      if (item.target) window.open(item?.route, "_blank");
-                      else {
-                        handleNavigate(item.route);
-                      }
+                      handleNavigteTo(item);
                     }}
                   >
                     {item.title === "Pricing" ? (
@@ -146,7 +139,7 @@ const Footer = () => {
           })}
         </div>
       </div>
-      <p className="py-5 text-main-light_white text-[0.85rem] sm:text-[1.2rem] text-center font-miligramMedium">
+      <p className="py-5 px-2 text-main-light_white text-[0.85rem] sm:text-[1.2rem] text-center font-miligramMedium">
         Copyright ©2022 | Koders. All rights reserved.
       </p>
     </>

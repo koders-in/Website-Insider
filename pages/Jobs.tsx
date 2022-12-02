@@ -18,6 +18,17 @@ import { greenArrow } from "../assets";
 import { useFetchDataFromServer } from "../helper/careerHooks";
 import { FadeLoader } from "react-spinners";
 
+const sampleJob = [
+  {
+    id: 2,
+    location: "Dehradun, Uttrakhand",
+    job: {
+      job_level: { experience: "Exp- 1-3 yrs", level: "Intern" },
+      title: "UI/UX Designer",
+    },
+  },
+];
+
 const Jobs = () => {
   const [jobs, setJobs] = useState<any>(null);
   const [viewMore, setViewMore] = useState<boolean>(true);
@@ -34,16 +45,29 @@ const Jobs = () => {
   }, []);
 
   useEffect(() => {
-    if (jobs === null || jobs === undefined)
-      fetchData("open-job-listings", setJobs);
+    // TODO=>Uncomment below code
+    // if (jobs === null || jobs === undefined)
+    //   fetchData("open-job-listings", setJobs);
+
+    // if (jobs && tempData === null) {
+    //   if (jobs?.job_listings?.length / 3 > 0) {
+    //     setPinJobs(jobs?.job_listings?.slice(0, 2));
+    //     setTempData(jobs?.job_listings?.slice(0, 2));
+    //   } else {
+    //     setPinJobs(jobs?.job_listings);
+    //     setTempData(jobs?.job_listings);
+    //   }
+    // }
+
+    if (jobs === null || jobs === undefined) setJobs(sampleJob);
 
     if (jobs && tempData === null) {
-      if (jobs?.job_listings?.length / 3 > 0) {
-        setPinJobs(jobs?.job_listings?.slice(0, 2));
-        setTempData(jobs?.job_listings?.slice(0, 2));
+      if (jobs.length / 3 > 0) {
+        setPinJobs(sampleJob);
+        setTempData(sampleJob);
       } else {
-        setPinJobs(jobs?.job_listings);
-        setTempData(jobs?.job_listings);
+        setPinJobs(sampleJob);
+        setTempData(sampleJob);
       }
     }
   }, [jobs]);
@@ -73,7 +97,7 @@ const Jobs = () => {
       <div className="py-28 w-[85%] mx-auto">
         <Divider className="mt-9" />
         <LandingSection {...{ pinJobs, setPinJobs, setNoMatch, tempData }} />
-        <Divider className="mt-16" />
+        <Divider className="mt-12" />
         {noMatch ? (
           <div className="text-main-teal w-fit mx-auto text-[1.5em]">
             No Match Found
@@ -121,7 +145,7 @@ const Jobs = () => {
             )}
           </div>
         )}
-        <Divider className="mt-16" />
+        <Divider className="mt-20" />
         <Hiring />
         <JobAlert />
       </div>

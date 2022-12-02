@@ -55,6 +55,16 @@ import founder from "../public/images/founder.svg";
 import mission from "../public/images/mission.svg";
 import aim from "../public/images/aim.svg";
 import map from "../public/images/map.svg";
+import experienceIcon from "../public/images/experience.svg";
+import tealLocation from "../public/images/teal-location.svg";
+import tealMobile from "../public/images/teal-mobile.svg";
+import tealMessage from "../public/images/teal-message.svg";
+import tealIssue from "../public/images/teal-issue.svg";
+import tealImpact from "../public/images/teal-impact.svg";
+import tealBenefits from "../public/images/teal-benefits.svg";
+import tealWorkers from "../public/images/teal-workers.svg";
+import tealAwards from "../public/images/teal-awards.svg";
+import tealWorkspace from "../public/images/teal-workspace.svg";
 
 // Assets for technologies components
 
@@ -214,5 +224,15 @@ export {
   founder,
   mission,
   aim,
-  map
+  map,
+  experienceIcon,
+  tealLocation,
+  tealMobile,
+  tealMessage,
+  tealIssue,
+  tealImpact,
+  tealBenefits,
+  tealWorkers,
+  tealAwards,
+  tealWorkspace,
 };

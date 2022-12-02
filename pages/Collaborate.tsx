@@ -89,17 +89,13 @@ const Collabrate = () => {
         <Divider className="h-8" />
       </div>
       <div className="flex w-[80%] mx-auto">
-        <div>
-          <div className="border-r-[1px] border-main-teal h-[85.3%] mr-3 sm:mr-20 relative">
-            <div className="w-4 h-4 rounded-full border-[1.5px] bg-main-primary border-main-teal absolute top-0 -left-2"></div>
-            <div className="w-4 h-4 rounded-full border-[1.5px] bg-main-primary border-main-teal absolute top-[45%] -left-2"></div>
-            <div className="w-4 h-4 rounded-full border-[1.5px] bg-main-primary border-main-teal absolute bottom-0 -left-2"></div>
-          </div>
-        </div>
         <Formik
           validationSchema={collabrationPageSchima}
           onSubmit={handleSubmitForm}
           initialValues={initialValues}
+          validateOnBlur={false}
+          validateOnChange={false}
+          // validateOnMount={true}
         >
           {({ handleChange, handleSubmit, handleBlur, errors, values }) => (
             <div className="w-full">
@@ -155,6 +151,10 @@ const Collabrate = () => {
                     value={values.company}
                   />
                 </div>
+                <div className="w-[100%] lg:w-[50%]"></div>
+              </div>
+              <Divider className="mt-4" />
+              <div className="flex gap-4 flex-col lg:flex-row">
                 <div className="w-[100%] lg:w-[50%]">
                   <SelectBox
                     handleSelect={(obj: any) => {
@@ -168,9 +168,6 @@ const Collabrate = () => {
                     value={values.companySize}
                   />
                 </div>
-              </div>
-              <Divider className="mt-4" />
-              <div className="flex gap-4 flex-col lg:flex-row">
                 <div className="w-[100%] lg:w-[50%]">
                   <InputBox
                     onBlur={handleBlur}
@@ -182,6 +179,9 @@ const Collabrate = () => {
                     value={values.location}
                   />
                 </div>
+              </div>
+              <Divider className="mt-8" />
+              <div className="flex gap-4 flex-col lg:flex-row">
                 <div className="w-[100%] lg:w-[50%]">
                   <InputBox
                     onBlur={handleBlur}
@@ -193,9 +193,6 @@ const Collabrate = () => {
                     value={values.websiteURL}
                   />
                 </div>
-              </div>
-              <Divider className="mt-8" />
-              <div className="flex gap-4 flex-col lg:flex-row">
                 <div className="w-[100%] lg:w-[50%]">
                   <InputBox
                     onBlur={handleBlur}
@@ -207,7 +204,6 @@ const Collabrate = () => {
                     value={values.jobTitle}
                   />
                 </div>
-                <div className="w-[100%] lg:w-[50%]"></div>
               </div>
               <Divider className="h-16" />
               <TextArea

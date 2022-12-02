@@ -2,21 +2,21 @@ import React from "react";
 import { offersData } from "../../../helper/constant";
 import Divider from "../../Divider";
 import GradientText from "../../GradientText";
-import Tile from "./Tile";
 import Timeline from "./Timeline";
+import Tile from "./Tile";
 
 const Hiring = () => {
   return (
     <div>
       <div className=" border-b-2 border-main-teal"></div>
-      <Divider className="h-10" />
+      <Divider className="h-12" />
       <GradientText
         className="w-[90%] sm:w-fit mx-auto text-[1.6rem] sm:text-[2.6rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
         text="Hiring Process"
       />
-      <Divider className="h-20" />
+      <Divider className="h-28" />
       <Timeline />
-      <Divider className="h-32" />
+      <Divider className="h-36" />
       <GradientText
         className="w-[90%] sm:w-fit mx-auto text-[1.6rem] sm:text-[2.6rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
         text="What we Offer"
@@ -29,11 +29,11 @@ const Hiring = () => {
         live, not live to work’. Gen Z and Millenials vibe with each other like
         ‘peanut butter and jelly’ on a sandwich to kreate perfection.
       </p>
-      <div className="w-[70%] flex-wrap gap-5  mx-auto mt-16 flex justify-between ">
+      <div className="w-full sm:w-[70%] flex-wrap gap-5  mx-auto mt-16 flex justify-between ">
         {[...offersData[0], ...offersData[1]].map((item, i) => {
           return (
             <Tile
-              classes="gap-8 py-9"
+              classes="py-9 sm:py-12 "
               key={i}
               icon={item.icon}
               text={item.text}
@@ -42,11 +42,6 @@ const Hiring = () => {
           );
         })}
       </div>
-      {/* <div className="w-[70%] mx-auto mt-10 flex justify-between ">
-        {offersData[1].map((item, i) => {
-          return <Tile key={i} icon={item.icon} text={item.text} />;
-        })}
-      </div> */}
       <Divider className="h-16" />
     </div>
   );

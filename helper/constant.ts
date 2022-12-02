@@ -10,6 +10,12 @@ import {
   issue,
   linkedinWhite,
   performance,
+  tealAwards,
+  tealBenefits,
+  tealImpact,
+  tealIssue,
+  tealWorkers,
+  tealWorkspace,
   twitterWhite,
   workers,
   workspace,
@@ -293,7 +299,7 @@ export const timelinePoints: Array<TypeOfPiont> = [
     type: "bottom",
   },
   {
-    text: "Group Discussion",
+    text: "Screening Round",
     position: "top-[-31px]",
     type: "top",
   },
@@ -316,14 +322,14 @@ export const timelinePoints: Array<TypeOfPiont> = [
 
 export const offersData = [
   [
-    { icon: issue, text: "0 boss issues" },
-    { icon: impact, text: "Real Impact" },
-    { icon: benefits, text: "Benefits" },
+    { icon: tealIssue, text: "0 boss issues" },
+    { icon: tealImpact, text: "Real Impact" },
+    { icon: tealBenefits, text: "Benefits" },
   ],
   [
-    { icon: workers, text: "Great <br/> Co-Workers" },
-    { icon: performance, text: "Performance <br/> Awards" },
-    { icon: workspace, text: "Dynamic <br/> Workspaces" },
+    { icon: tealWorkers, text: "Great <br/> Co-Workers" },
+    { icon: tealAwards, text: "Performance <br/> Awards" },
+    { icon: tealWorkspace, text: "Dynamic <br/> Workspaces" },
   ],
 ];
 
@@ -480,4 +486,96 @@ export const discordReviews = [
     rating: 5,
     link: "",
   },
+];
+
+export const dataOfMapAnimation = [
+  {
+    line: "line-1",
+    location: "location-7",
+    base: "base-7",
+  },
+  {
+    line: "line-2",
+    location: "location-4",
+    base: "base-4",
+  },
+  {
+    line: "line-3",
+    location: "location-1",
+    base: "base-1",
+  },
+  {
+    line: "line-4",
+    location: "location-2",
+    base: "base-2",
+  },
+  {
+    line: "line-5",
+    location: "location-9",
+    base: "base-9",
+  },
+  {
+    line: "line-6",
+    location: "location-6",
+    base: "base-6",
+  },
+  {
+    line: "line-7",
+    location: "location-8",
+    base: "base-8",
+  },
+  {
+    line: "line-8",
+    location: "location-3",
+    base: "base-3",
+  },
+  {
+    line: "line-9",
+    location: "location-10",
+    base: "base-10",
+  },
+  {
+    line: "line-10",
+    location: "location-5",
+    base: "base-5",
+  },
+];
+
+export const arrayOfLineID = [
+  "line-1",
+  "line-2",
+  "line-3",
+  "line-4",
+  "line-5",
+  "line-6",
+  "line-7",
+  "line-8",
+  "line-9",
+  "line-10",
+];
+
+export const arrayOfLocationID = [
+  "location-7",
+  "location-4",
+  "location-1",
+  "location-2",
+  "location-9",
+  "location-6",
+  "location-8",
+  "location-3",
+  "location-10",
+  "location-5",
+];
+
+export const arrayOfBaseID = [
+  "base-7",
+  "base-4",
+  "base-1",
+  "base-2",
+  "base-9",
+  "base-6",
+  "base-8",
+  "base-3",
+  "base-10",
+  "base-5",
 ];

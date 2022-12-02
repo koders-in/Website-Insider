@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 import { aeroDown } from "../assets";
+import Divider from "./Divider";
 
 interface Props {
   placeholder: string;
@@ -79,18 +80,21 @@ const SelectBox = ({
             : "w-full z-50 rounded-md absolute top-10 sm:top-12 transition-all duration-500 bg-main-secondary text-main-light_white overflow-hidden"
         } ${show ? "max-h-[300px]" : "max-h-0"}`}
       >
+        <Divider className="mt-1" />
         {list.map((item, i) => (
-          <li
-            key={i}
-            onClick={() => {
-              setShow(!show);
-              handleSelect({ name: name, value: item });
-            }}
-            className="items m-3 z-30 hover:text-white cursor-pointer hover:bg-gray-600 px-3 py-2"
-          >
-            {item}
-          </li>
+          <React.Fragment key={i}>
+            <li
+              onClick={() => {
+                setShow(!show);
+                handleSelect({ name: name, value: item });
+              }}
+              className="items mx-3 z-30 hover:text-white cursor-pointer hover:bg-gray-600 px-3 py-2 border-b-[1px] border-gray-600"
+            >
+              {item}
+            </li>
+          </React.Fragment>
         ))}
+        <Divider className="mt-3" />
       </ul>
     </div>
   );

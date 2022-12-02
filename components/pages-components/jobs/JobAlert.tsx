@@ -30,7 +30,7 @@ const JobAlert = () => {
   };
   return (
     <div>
-      <Divider className="mt-8" />
+      <Divider className="mt-10" />
       <GradientText
         className="w-[90%] sm:w-fit mx-auto text-[1.6rem] sm:text-[2.6rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
         text="Get Job Alerts!"

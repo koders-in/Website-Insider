@@ -6,22 +6,11 @@ import { FormState } from "../../../pages/StartProject";
 
 interface Props {
   technologies: Array<string>;
-  setTechnologies: (data: any) => void;
+  handleClick: (data: string) => void;
   buttonsArray: Array<string>;
 }
 
-const ButtonsGroup = ({
-  buttonsArray,
-  technologies,
-  setTechnologies,
-}: Props) => {
-  const handleClick = (item: string) => {
-    if (technologies?.find((elm) => elm === item)) {
-      setTechnologies(technologies.filter((elm) => elm !== item));
-    } else {
-      setTechnologies((prev: Array<string>) => [...prev, item]);
-    }
-  };
+const ButtonsGroup = ({ buttonsArray, technologies, handleClick }: Props) => {
   return (
     <div className="flex flex-wrap gap-3 md:gap-8 items-center font-miligramMedium md:pl-4">
       {buttonsArray.map((item, i) => (

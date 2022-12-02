@@ -31,11 +31,16 @@ export default function Home() {
   React.useEffect(() => {
     if (!isRender.current) {
       isRender.current = true;
-      axios.get("http://localhost:3000/api", {
-        headers: {
-          home: true,
-        },
-      });
+      axios
+        .get("http://localhost:3000/api", {
+          headers: {
+            home: true,
+          },
+        })
+        .then((data) => console.log("data", data))
+        .catch((e) => {
+          console.log("error is:- ", e);
+        });
     }
   }, []);
   return (

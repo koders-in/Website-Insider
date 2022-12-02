@@ -9,6 +9,7 @@ import { Formik } from "formik";
 import { projectDataSchema } from "../../../helper/validate";
 import Button from "../../Button";
 import { PropagateLoader } from "react-spinners";
+import TextArea from "../jobs/TextArea";
 
 interface Form {
   [key: string]: string;
@@ -59,22 +60,19 @@ const Form = ({ handleSubmitData }: Props) => {
       validationSchema={projectDataSchema}
       onSubmit={handleSubmitForm}
       initialValues={initialValues}
+      validateOnChange={false}
+      validateOnBlur={false}
     >
       {({ handleChange, handleSubmit, handleBlur, errors, values }) => (
         <div className="relative">
-          <span
-            className={`text-red-600 text-xs absolute -top-6 ${
-              errors.aboutProject ? "opacity-100" : "opacity-0"
-            } `}
-          >
-            {errors.aboutProject || "none"}
-          </span>
-          <textarea
-            onChange={handleChange}
-            value={values.aboutProject}
+          <TextArea
+            handleChange={handleChange}
             name="aboutProject"
-            placeholder="Please tell us a bit about your project *"
-            className="mt-6 h-20 text-[0.9rem] md:text-[1.2rem] bg-transparent outline-none border-b-2 border-main-light_white block w-full text-main-light_white placeholder:tracking-[1px] md:placeholder:tracking-[2px] placeholder:text-main-light_white"
+            placeholder=""
+            title="Please tell us a bit about your project *"
+            errorText={errors.aboutProject}
+            value={values.aboutProject}
+            textareaStyle="bg-main-primary"
           />
           <Divider className="mt-8" />
           <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">

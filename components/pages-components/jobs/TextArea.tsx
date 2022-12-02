@@ -22,7 +22,7 @@ const TextArea = ({
   textareaStyle,
 }: Props) => {
   return (
-    <div className="border-2 text-[0.9rem] md:text-[1.2rem] border-main-light_white pr-1 relative  py-4  pl-2">
+    <div className="border-b-2 text-[0.9rem] md:text-[1.2rem] border-main-light_white pr-1 relative  py-4  pl-2">
       <div className="text-main-light_white pb-4">{title}</div>
       {errorText && (
         <span
@@ -41,7 +41,7 @@ const TextArea = ({
         }`}
         name={name}
         cols={30}
-        rows={4}
+        rows={2}
         onChange={handleChange}
         value={value}
       ></textarea>
