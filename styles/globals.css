@@ -232,29 +232,29 @@
 /*  ----------------- */
 #location-7 {
   fill: transparent;
-  animation: show 1s 0.3s forwards;
+  animation: show 2s forwards;
 }
 #base-7 {
   fill: transparent;
-  animation: show-base 1s 0.3s forwards;
+  animation: show-base 2s forwards;
 }
 
 #location-4 {
   fill: transparent;
-  animation: show 1s 1.7s forwards;
+  animation: show 1s 2s forwards;
 }
 #base-4 {
   fill: transparent;
-  animation: show-base 1s 1.7s forwards;
+  animation: show-base 1s 2s forwards;
 }
 
 #location-1 {
   fill: transparent;
-  animation: show 1s 3.7s forwards;
+  animation: show 1s 4s forwards;
 }
 #base-1 {
   fill: transparent;
-  animation: show-base 1s 3.7s forwards;
+  animation: show-base 1s 4s forwards;
 }
 
 #location-2 {
@@ -285,19 +285,19 @@
 
 #location-8 {
   fill: transparent;
-  animation: show 1s 1.7s forwards;
+  animation: show 1s 2s forwards;
 }
 #base-8 {
   fill: transparent;
-  animation: show-base 1s 1.7s forwards;
+  animation: show-base 1s 2s forwards;
 }
 #location-3 {
   fill: transparent;
-  animation: show 1s 5s forwards;
+  animation: show 1s 5.5s forwards;
 }
 #base-3 {
   fill: transparent;
-  animation: show-base 1s 5s forwards;
+  animation: show-base 1s 5.5s forwards;
 }
 
 #location-10 {
@@ -327,5 +327,20 @@
 @keyframes show {
   to {
     fill: #00a99d;
+  }
+}
+
+/* -------------Modal----------- */
+
+.ReactModal__Overlay {
+  background-color: transparent !important;
+  font-family: "MILIGRAM MEDIUM";
+}
+
+@media screen and (max-width: 768px) {
+  .ReactModal__Content {
+    width: 90% !important;
+    margin: 0 auto;
+    inset: 10% 17px 40px !important;
   }
 }

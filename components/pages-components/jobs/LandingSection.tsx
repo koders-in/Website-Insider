@@ -173,6 +173,7 @@ const LandingSection = ({
       </div>
       <Divider className="h-8" />
       <ButtonsGroup
+        containerStyle="w-fit mx-auto"
         buttonsArray={jobTypes}
         handleClick={handleClick}
         technologies={department}

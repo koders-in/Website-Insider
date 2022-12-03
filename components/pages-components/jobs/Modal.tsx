@@ -87,9 +87,6 @@ const Modal = ({
                     {duration}
                   </div>
                 </div>
-                {/* <p className="text-[0.8rem] text-main-whiteVar1">
-                  Posted 2 weeks ago
-                </p> */}
               </div>
               <div className="w-full mt-7 lg:mt-0 lg:w-[20%]">
                 <Button

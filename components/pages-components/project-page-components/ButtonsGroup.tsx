@@ -8,11 +8,19 @@ interface Props {
   technologies: Array<string>;
   handleClick: (data: string) => void;
   buttonsArray: Array<string>;
+  containerStyle?: string;
 }
 
-const ButtonsGroup = ({ buttonsArray, technologies, handleClick }: Props) => {
+const ButtonsGroup = ({
+  buttonsArray,
+  technologies,
+  handleClick,
+  containerStyle,
+}: Props) => {
   return (
-    <div className="flex flex-wrap gap-3 md:gap-8 items-center font-miligramMedium md:pl-4">
+    <div
+      className={`flex flex-wrap gap-3 md:gap-8 items-center font-miligramMedium md:pl-4 ${containerStyle}`}
+    >
       {buttonsArray.map((item, i) => (
         <Button
           key={i}

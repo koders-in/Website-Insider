@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Router, { useRouter } from "next/router";
 import React, { useEffect, useState, useRef } from "react";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+// import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { PropagateLoader } from "react-spinners";
 import AOS from "aos";
 
@@ -14,17 +14,6 @@ import { Button, Divider, GradientText, ReviewBox } from "../components";
 let timer = 0;
 let index = 0;
 const Testmonials = () => {
-  const [loading, setLoading] = useState(false);
-
-  Router.events.on("routeChangeStart", () => {
-    setLoading(true);
-    disableBodyScroll(document);
-  });
-  Router.events.on("routeChangeComplete", () => {
-    setLoading(false);
-    enableBodyScroll(document);
-  });
-
   const isRunning = useRef(false);
   const [currentItem, setCurrentItem] = useState<TestmonialData>(
     testmonialLogo[0]

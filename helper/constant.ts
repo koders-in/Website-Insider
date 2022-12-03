@@ -61,6 +61,7 @@ export const footerButtons = [
       { title: "About", route: "/About", target: false },
       { title: "Jobs", route: "/Jobs", target: false },
       { title: "Collaborate", route: "/Collaborate", target: false },
+      { title: "Contact", route: "/Contact", target: false },
     ],
   },
   {
@@ -89,7 +90,7 @@ export const footerButtons = [
     title: "Support",
     buttons: [
       { title: "Join Discord", route: "https://dsc.gg/koders", target: true },
-      { title: "Help", route: "", target: false },
+      { title: "Help", route: "/Contact", target: false },
       { title: "GitHub", route: "https://github.com/koders-in", target: true },
     ],
   },

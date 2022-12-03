@@ -25,6 +25,7 @@
     "puppeteer": "^19.2.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-modal": "^3.16.1",
     "react-spinners": "^0.13.6",
     "uuid": "^9.0.0",
     "yup": "^0.32.11"

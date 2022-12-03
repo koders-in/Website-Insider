@@ -117,7 +117,7 @@ const Jobs = () => {
             <FadeLoader color="#00A99D" loading={true} />
           </div>
         ) : (
-          <div>
+          <div className="z-30">
             {pinJobs?.map((item: any, i: number) => {
               return (
                 <Job

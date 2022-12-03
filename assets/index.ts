@@ -65,6 +65,7 @@ import tealBenefits from "../public/images/teal-benefits.svg";
 import tealWorkers from "../public/images/teal-workers.svg";
 import tealAwards from "../public/images/teal-awards.svg";
 import tealWorkspace from "../public/images/teal-workspace.svg";
+import okay from "../public/images/okay.svg";
 
 // Assets for technologies components
 
@@ -235,4 +236,5 @@ export {
   tealWorkers,
   tealAwards,
   tealWorkspace,
+  okay,
 };

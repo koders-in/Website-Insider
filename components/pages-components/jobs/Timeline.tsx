@@ -54,7 +54,7 @@ const Timeline = () => {
   return (
     <div
       id="timeline"
-      className="flex h-[600px] w-[250px] md:w-[85%] md:h-[100px] xxl:w-[70%] mx-auto  justify-between items-center relative flex-col md:flex-row"
+      className="z-0 flex h-[600px] w-[250px] md:w-[85%] md:h-[100px] xxl:w-[70%] mx-auto  justify-between items-center relative flex-col md:flex-row"
     >
       <div
         id="line"
