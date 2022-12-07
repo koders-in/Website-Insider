@@ -1,3 +1,4 @@
+import Os from "os";
 const puppeteer = require("puppeteer");
 
 const placeUrl =
@@ -92,11 +93,17 @@ async function getLocalPlaceReviews() {
     const isDev = process.env.NODE_ENV === "development";
     let browser: any;
     if (isDev) {
-      browser = await puppeteer.launch({
-        ...commonProps,
-        executablePath:
-          "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-      });
+      if (Os.platform() === "darwin") {
+        browser = await puppeteer.launch({
+          ...commonProps,
+          executablePath:
+            "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+        });
+      } else {
+        browser = await puppeteer.launch({
+          ...commonProps,
+        });
+      }
     } else {
       browser = await puppeteer.launch({
         ...commonProps,

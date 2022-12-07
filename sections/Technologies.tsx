@@ -5,7 +5,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 
 import { toolsAndtechLogo } from "../assets";
-import { getRandomInt, sleep } from "../helper";
+import { getRandomInt } from "../helper";
 import { CombCell, GradientText } from "../components";
 
 let arrOfIds: any = [];
@@ -33,43 +33,43 @@ const Technologies = () => {
     }
   }, []);
 
-  useEffect(() => {
-    const startAnimation = async () => {
-      const parallelAnimatedComb = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-      let tempArrOne: Array<any> = [];
-      parallelAnimatedComb.forEach(() => {
-        tempArrOne.push(getRandomInt(0, arrOfIds?.length));
-      });
+  // useEffect(() => {
+  //   const startAnimation = async () => {
+  //     const parallelAnimatedComb = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+  //     let tempArrOne: Array<any> = [];
+  //     parallelAnimatedComb.forEach(() => {
+  //       tempArrOne.push(getRandomInt(0, arrOfIds?.length));
+  //     });
 
-      for (let i = 0; i < tempArrOne.length; i++) {
-        const comb = document.getElementById(arrOfIds[tempArrOne[i]]);
-        if (comb) {
-          comb.style.animation = `fading 3s ease-in-out`;
-        }
-        await sleep(getRandomInt(100, 200));
-      }
-      for (let i = 0; i < tempArrOne.length; i++) {
-        const comb = document.getElementById(arrOfIds[tempArrOne[i]]);
-        if (comb) {
-          comb.style.animation = `none`;
-          await sleep(getRandomInt(100, 200));
-        }
-      }
+  //     for (let i = 0; i < tempArrOne.length; i++) {
+  //       const comb = document.getElementById(arrOfIds[tempArrOne[i]]);
+  //       if (comb) {
+  //         comb.style.animation = `fading 3s ease-in-out`;
+  //       }
+  //       await sleep(getRandomInt(100, 200));
+  //     }
+  //     for (let i = 0; i < tempArrOne.length; i++) {
+  //       const comb = document.getElementById(arrOfIds[tempArrOne[i]]);
+  //       if (comb) {
+  //         comb.style.animation = `none`;
+  //         await sleep(getRandomInt(100, 200));
+  //       }
+  //     }
 
-      let tempArrTwo: Array<any> = [];
-      parallelAnimatedComb.forEach(() => {
-        tempArrTwo.push(getRandomInt(0, arrOfIds?.length));
-      });
-      await sleep(getRandomInt(500, 800));
-      startAnimation();
-    };
-    if (!isAnimationStart.current) {
-      isAnimationStart.current = true;
-      for (let i = 0; i < 50; i++) {
-        startAnimation();
-      }
-    }
-  });
+  //     let tempArrTwo: Array<any> = [];
+  //     parallelAnimatedComb.forEach(() => {
+  //       tempArrTwo.push(getRandomInt(0, arrOfIds?.length));
+  //     });
+  //     await sleep(getRandomInt(500, 800));
+  //     startAnimation();
+  //   };
+  //   if (!isAnimationStart.current) {
+  //     isAnimationStart.current = true;
+  //     for (let i = 0; i < 50; i++) {
+  //       startAnimation();
+  //     }
+  //   }
+  // });
 
   useEffect(() => {
     AOS.init({
@@ -90,7 +90,7 @@ const Technologies = () => {
           />
           <p
             data-aos="slide-right"
-            className="text-[0.8rem] sm:text-[1.3rem] mx-auto text-center text-main-light_white font-miligramText400"
+            className="leading-none text-[0.8rem] sm:text-[1.3rem] mx-auto text-center text-main-light_white font-miligramText400 sm:w-[60%]"
           >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
             dolor sit amet, consectetur adipiscing elit.

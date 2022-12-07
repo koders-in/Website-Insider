@@ -13,6 +13,8 @@ import {
   Navbar,
 } from "../../components";
 
+const MAIL_TO = `mailto:info@koders.in?subject=Blog Request&body=${""}`;
+
 const Blog = () => {
   React.useEffect(() => {
     window.scrollTo({
@@ -45,7 +47,7 @@ const Blog = () => {
             <Card key={item} />
           ))}
         </div>
-        <Divider className="h-20" />
+        <Divider className="h-20 py-10" />
         <GradientText
           aos="slide-left"
           className="w-fit mx-auto text-[2.2rem] leading-none mb-3 md:mb-0 md:leading-normal  sm:text-[2.8rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold xxl:pt-10"
@@ -58,9 +60,7 @@ const Blog = () => {
           Submit your blog. Write to us at&nbsp;
           <span
             onClick={() => {
-              window.open(
-                "https://mail.google.com/mail/u/0/#inbox?compose=jrjtXLDgXxQqzSJgBmrwVVkhDBcWFpLbCkzfJjdmvhSclngzmRZMGfkrGBMXRJQqzpWgLTdG"
-              );
+              window.open(MAIL_TO);
             }}
             className="text-main-teal cursor-pointer hover:border-main-teal hover:border-b-2"
           >

@@ -4,7 +4,13 @@ import React, { useEffect, useState } from "react";
 import Modal from "react-modal";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
-import { add, locationTeal, work } from "../../../assets";
+import {
+  add,
+  duration,
+  experienceIcon,
+  locationTeal,
+  work,
+} from "../../../assets";
 import { useSetDataOnServer } from "../../../helper/careerHooks";
 import { jobValidationSchema } from "../../../helper/validate";
 import { sendCandidateDetails } from "../../../helper/webhook";
@@ -49,6 +55,7 @@ const customStyles = {
     marginLeft: "auto",
     zIndex: "10",
     border: "2px solid #00A99D",
+    padding: "2rem 3rem",
   },
 };
 
@@ -61,6 +68,8 @@ interface Props {
   toogleDetailModal: () => void;
   toogleApplyModal: () => void;
   toogleThankModal: () => void;
+  experience: string;
+  viewDetails: any;
 }
 
 const ApplyModal = ({
@@ -69,6 +78,8 @@ const ApplyModal = ({
   toogleDetailModal,
   toogleApplyModal,
   toogleThankModal,
+  experience,
+  viewDetails,
 }: Props) => {
   const [resume, setResume] = useState<any>(null);
   const [isShowLoader, setIsShowLoader] = useState(false);
@@ -99,12 +110,6 @@ const ApplyModal = ({
       );
       const data = await response.text();
       const { result } = JSON.parse(data);
-      //   TODO=> Remove in Production
-      if (result) {
-        console.log(result);
-        closeModal();
-        toogleThankModal();
-      }
       await sendCandidateDetails({
         ...value,
         downloadLink: result,
@@ -117,7 +122,7 @@ const ApplyModal = ({
         resume: result,
         job_applied: 1,
         hiring_reason: value?.hiringReason,
-        // joining_preference: value?.joiningReason,
+        joining_preference: value?.joiningReason,
         joining_reason: value?.joiningReason,
         linkedin_url: value?.linkedIn,
         portfolio_url: value?.portfolioURL,
@@ -125,6 +130,7 @@ const ApplyModal = ({
       if (res.status === 200) {
         // window.alert("Successfully applied!");
         closeModal();
+        enableBodyScroll(document);
         toogleThankModal();
       }
       setResume(null);
@@ -178,6 +184,8 @@ const ApplyModal = ({
         validationSchema={jobValidationSchema}
         onSubmit={handleSubmit}
         initialValues={initialValue}
+        validateOnBlur={false}
+        validateOnChange={false}
       >
         {({ handleChange, handleSubmit, handleBlur, errors, values }) => (
           <React.Fragment>
@@ -187,8 +195,8 @@ const ApplyModal = ({
                   className="w-fit text-[1.6rem] bg-gradient-to-r from-white to-main-teal font-miligrambold"
                   text="Fresher UI/UX Designer"
                 />
-                <div className="flex text-white">
-                  <div className="flex items-center justify-between text-[0.8rem] mr-3">
+                <div className="flex text-white flex-wrap gap-2">
+                  <div className="flex items-center justify-between text-[0.8rem]">
                     <Image src={locationTeal} alt="" className="mr-2 h-3" />
                     Dehradun, Uttrakhand
                   </div>
@@ -196,16 +204,21 @@ const ApplyModal = ({
                     <Image src={work} alt="" className="mr-2 h-3" />
                     Full Time
                   </div>
+                  <div className="flex items-center justify-between text-[0.8rem]">
+                    <Image src={experienceIcon} alt="" className="mr-2 h-3" />
+                    Exp {experience}
+                  </div>
                 </div>
-                <p className="text-[0.8rem] text-main-whiteVar1">
-                  Posted 2 weeks ago
-                </p>
+                <div className="text-white flex items-center text-[0.8rem] pl-[4px] sm:pl-[2px] mt-[8px] sm:mt-[2px]">
+                  <Image src={duration} alt="" className="mr-2 h-3" />
+                  Duration- {viewDetails?.jobs_job_listings[0]?.job?.duration}
+                </div>
               </div>
-              <div className="w-full mt-7 lg:mt-0 lg:w-[20%]">
+              <div className="w-full  lg:w-[21%] mt-3 lg:mt-0">
                 <Button
                   OnClick={handleViewDetails}
                   text="View Details"
-                  className=" bg-main-greenOpt-200  font-miligramMedium w-fit text-main-lightTeal py-[10px] px-12 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+                  className=" bg-main-greenOpt-200  font-miligramMedium w-auto text-main-lightTeal text-[0.8rem] xl:text-[1rem] py-[8px] sm:py-[10px] px-6 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
                 />
               </div>
 
@@ -327,23 +340,21 @@ const ApplyModal = ({
             </div>
             <Divider className="mt-8" />
             <TextArea
-              placeholder=""
+              placeholder="Why should you be hired for this role?"
               name="hiringReason"
               onBlur={handleBlur}
               value={values.hiringReason}
               handleChange={handleChange}
               errorText={errors.hiringReason}
-              title="Why should you be hired for this role?"
             />
             <Divider className="mt-8" />
             <TextArea
-              placeholder=""
+              placeholder="Why do you want to Work at Koders?"
               name="joiningReason"
               onBlur={handleBlur}
               value={values.joiningReason}
               handleChange={handleChange}
               errorText={errors.joiningReason}
-              title="Why do you want to Work at Koders?"
             />
             <Divider className="mt-5" />
             <div className="text-center">

@@ -66,6 +66,16 @@ import tealWorkers from "../public/images/teal-workers.svg";
 import tealAwards from "../public/images/teal-awards.svg";
 import tealWorkspace from "../public/images/teal-workspace.svg";
 import okay from "../public/images/okay.svg";
+import duration from "../public/images/duration.svg";
+import linkedInTeal from "../public/images/linkedinTeal.svg";
+import githubTeal from "../public/images/githubTeal.svg";
+import twitterTeal from "../public/images/twitterTeal.svg";
+import discordTeal from "../public/images/discordTeal.svg";
+import crossTeal from "../public/images/crossTeal.svg";
+import locationTealCont from "../public/images/locationTealCont.svg";
+import tealMobileCont from "../public/images/tealMobileCont.svg";
+import mailTealCont from "../public/images/mailTealCont.svg";
+import mail from "../public/images/mail.svg";
 
 // Assets for technologies components
 
@@ -237,4 +247,14 @@ export {
   tealAwards,
   tealWorkspace,
   okay,
+  duration,
+  linkedInTeal,
+  githubTeal,
+  twitterTeal,
+  discordTeal,
+  crossTeal,
+  locationTealCont,
+  tealMobileCont,
+  mailTealCont,
+  mail,
 };

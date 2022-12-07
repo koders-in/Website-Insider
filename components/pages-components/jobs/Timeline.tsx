@@ -62,54 +62,58 @@ const Timeline = () => {
       ></div>
       <div
         id="top40"
-        className="w-5 h-5 rounded-full border-2 border-main-teal bg-main-primary z-10"
-      ></div>
+        className="w-5 h-5 rounded-full border-2 border-main-teal bg-main-primary z-10 relative"
+      >
+        <div
+          id="textContainer0"
+          className="text-white whitespace-pre-wrap font-miligramText400 absolute text-[0.9em] opacity-0  md:text-center top-[-10px] left-[-100px] w-[85px] md:w-[137px]  text-right md:top-[-23px] md:left-[-70px]"
+        >
+          Resume Submission
+        </div>
+      </div>
       <div
         id="bottom41"
-        className="w-5 h-5 rounded-full border-2 border-main-teal bg-main-primary z-10"
-      ></div>
+        className="w-5 h-5 rounded-full border-2 border-main-teal bg-main-primary z-10 relative"
+      >
+        <div
+          id="textContainer1"
+          className="text-white font-miligramText400 absolute text-[0.9em] opacity-0 w-[90px] md:w-[117px] top-[-10px] left-[30px]  md:top-[20px] md:left-[-45px]"
+        >
+          Screening Round
+        </div>
+      </div>
       <div
         id="top42"
-        className="w-5 h-5 rounded-full border-2 border-main-teal bg-main-primary z-10"
-      ></div>
+        className="w-5 h-5 rounded-full border-2 border-main-teal bg-main-primary z-10 relative"
+      >
+        <div
+          id="textContainer2"
+          className="text-white font-miligramText400 absolute text-[0.9em] opacity-0 top-[-10px] left-[-100px] w-[85px] md:w-[130px]  text-right  md:top-[-23px] md:left-[-65px]"
+        >
+          Technical Interview
+        </div>
+      </div>
       <div
         id="bottom43"
-        className="w-5 h-5 rounded-full border-2 border-main-teal bg-main-primary z-10"
-      ></div>
+        className="w-5 h-5 rounded-full border-2 border-main-teal bg-main-primary z-10 relative"
+      >
+        <div
+          id="textContainer3"
+          className="text-white  font-miligramText400 absolute text-[0.9em] opacity-0 top-[-10px] left-[30px] w-[60px] md:w-[85px]  md:top-[23px] md:left-[-35px]"
+        >
+          HR Interview
+        </div>
+      </div>
       <div
         id="top44"
-        className="w-5 h-5 rounded-full border-2 border-main-teal bg-main-primary z-10"
-      ></div>
-
-      <div
-        id="textContainer0"
-        className="text-white font-miligramText400 absolute text-[0.9em] opacity-0 top-[-2%] left-[1%] w-[100px] md:w-fit text-right md:top-[13%] md:left-[-6%]"
+        className="w-5 h-5 rounded-full border-2 border-main-teal bg-main-primary z-10 relative"
       >
-        Resume Submission
-      </div>
-      <div
-        id="textContainer1"
-        className="text-white font-miligramText400 absolute text-[0.9em] opacity-0 top-[22%] left-[60%]  md:top-[61.5%] md:left-[19.7%]"
-      >
-        Screening Round
-      </div>
-      <div
-        id="textContainer2"
-        className="text-white font-miligramText400 absolute text-[0.9em] opacity-0 top-[47%] left-[15%] w-[65px] md:w-fit text-right  md:top-[16.5%] md:left-[43%]"
-      >
-        Technical Interview
-      </div>
-      <div
-        id="textContainer3"
-        className="text-white  font-miligramText400 absolute text-[0.9em] opacity-0 top-[71%] left-[60%] w-[80px] md:w-fit md:top-[61.5%] md:left-[70%]"
-      >
-        HR Interview
-      </div>
-      <div
-        id="textContainer4"
-        className="text-white  font-miligrambold absolute text-[0.9em] opacity-0 top-[101%] left-[35%]  md:top-[39%] md:left-[101%]"
-      >
-        Onboarding
+        <div
+          id="textContainer4"
+          className="text-white  font-miligrambold absolute text-[0.9em] opacity-0 top-[110%] left-[-30px]  md:top-[-2px] md:left-[30px]"
+        >
+          Onboarding
+        </div>
       </div>
     </div>
   );

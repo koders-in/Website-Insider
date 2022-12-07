@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FormikHelpers } from "formik";
 
 import Divider from "../../Divider";
@@ -54,6 +54,11 @@ const Form = ({ handleSubmitData }: Props) => {
     if (res) helper.resetForm();
     setShowLoader(false);
   };
+
+  useEffect(() => {
+    const elm = document.getElementById("abproject");
+    elm.focus();
+  }, []);
   return (
     <Formik
       className="w-[97%] mx-auto mt-10 font-miligramMedium"
@@ -67,9 +72,9 @@ const Form = ({ handleSubmitData }: Props) => {
         <div className="relative">
           <TextArea
             handleChange={handleChange}
+            id="abproject"
             name="aboutProject"
-            placeholder=""
-            title="Please tell us a bit about your project *"
+            placeholder="Please tell us a bit about your project *"
             errorText={errors.aboutProject}
             value={values.aboutProject}
             textareaStyle="bg-main-primary"

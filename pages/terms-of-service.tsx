@@ -23,7 +23,7 @@ const TermsOfServic = () => {
       <div className="py-28 w-[95%] sm:w-[90%] mx-auto">
         <GradientText
           aos="fade-up"
-          className="text-[1.8rem] sm:text-[2.5rem] md:text-[2.8rem] mx-auto w-fit bg-gradient-to-r from-white to-main-teal font-miligrambold mt-16"
+          className="text-[1.8rem] sm:text-[2.5rem] md:text-[2.8rem] mx-auto w-fit bg-gradient-to-r from-white to-main-teal font-miligrambold mt-9"
           text="Terms Of Services"
         />
         <Divider className="mt-8" />

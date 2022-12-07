@@ -10,13 +10,17 @@ interface Props {
 const Tile = ({ icon, text, classes, index }: Props) => {
   return (
     <div
-      className={` mt-2 sm:mt-0  w-[45%] xl:w-[31.5%] border-2 border-main-teal rounded-xl bg-main-secondary flex flex-col gap-2 sm:gap-3 items-center justify-center ${
+      className={` mt-2 sm:mt-0  w-[45%] xl:w-[31.5%] border-2 border-main-teal rounded-2xl bg-main-secondary flex flex-col gap-2 sm:gap-3 items-center justify-center ${
         index < 3 ? classes : "py-6 sm:py-8"
       }`}
     >
-      <Image src={icon} alt={icon} width={40} height={40} />
+      <Image
+        src={icon}
+        alt={icon}
+        className="h-[40px] w-[40px] md:h-[70px] md:w-[70px]"
+      />
       <p
-        className="text-main-whiteVar1 font-miligramLight text-[1em] sm:text-[1.3em] text-center m-0 p-0 leading-none"
+        className="text-white font-miligramLight text-[1em] sm:text-[1.4em] text-center m-0 p-0 leading-none"
         dangerouslySetInnerHTML={{ __html: text }}
       ></p>
     </div>

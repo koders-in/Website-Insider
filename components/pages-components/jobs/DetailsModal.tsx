@@ -3,7 +3,13 @@ import React, { useEffect } from "react";
 import Modal from "react-modal";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
-import { add, locationTeal, work } from "../../../assets";
+import {
+  add,
+  duration,
+  experienceIcon,
+  locationTeal,
+  work,
+} from "../../../assets";
 import Button from "../../Button";
 import GradientText from "../../GradientText";
 
@@ -16,6 +22,7 @@ const customStyles = {
     marginLeft: "auto",
     zIndex: "100",
     border: "2px solid #00A99D",
+    padding: "2rem 3rem",
   },
 };
 
@@ -29,7 +36,6 @@ interface Props {
   location: string;
   type: string;
   experience: string;
-  duration: string;
   toogleDetailModal: () => void;
   toogleApplyModal: () => void;
 }
@@ -42,7 +48,6 @@ const DetailsModal = ({
   location,
   type,
   experience,
-  duration,
   toogleDetailModal,
   toogleApplyModal,
 }: Props) => {
@@ -93,20 +98,22 @@ const DetailsModal = ({
                 {type}
               </div>
               <div className="flex items-center justify-between text-[0.8rem]">
-                <Image src={work} alt="" className="mr-2 h-3" />
-                {experience}
-              </div>
-              <div className="flex items-center justify-between text-[0.8rem]">
-                <Image src={work} alt="" className="mr-2 h-3" />
-                {duration}
+                <Image src={experienceIcon} alt="" className="mr-2 h-3" />
+                Exp {experience}
               </div>
             </div>
+            {viewDetails?.jobs_job_listings[0]?.job?.duration && (
+              <div className="text-white flex items-center text-[0.8rem] pl-[4px] sm:pl-[2px] mt-[8px] sm:mt-[2px]">
+                <Image src={duration} alt="" className="mr-2 h-3" />
+                Duration- {viewDetails?.jobs_job_listings[0]?.job?.duration}
+              </div>
+            )}
           </div>
-          <div className="w-full mt-7 lg:mt-0 lg:w-[20%]">
+          <div className="w-full mt-3  lg:mt-0 lg:w-[20%]">
             <Button
               OnClick={handleApply}
               text="Apply"
-              className=" bg-main-greenOpt-200  font-miligramMedium w-fit text-main-lightTeal py-[10px] px-12 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+              className=" bg-main-greenOpt-200  font-miligramMedium w-fit text-main-lightTeal text-[0.8rem] xl:text-[1rem] py-[8px] sm:py-[10px] px-12 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
             />
           </div>
           <Image
@@ -118,8 +125,10 @@ const DetailsModal = ({
         </div>
         <div className="h-[2px] bg-white w-ful my-8"></div>
       </>
-      <h5 className="text-white text-[1.1rem]">About the Company</h5>
-      <p className="text-white text-[0.85rem] mt-3">
+      <h5 className="font-miligrambold text-white text-[1.1rem]">
+        About the Company
+      </h5>
+      <p className="font-miligramLight text-white text-[0.85rem] mt-3">
         Koders isn't your normal software development firm. Koders provides a
         platform where people can engage themselves in various tech-related
         activities, be it keeping themselves updated with the latest technology
@@ -129,48 +138,53 @@ const DetailsModal = ({
         just customer relations here, we're building a family of technological
         cognizance.
       </p>
-      <h5 className="text-white text-[1.1rem] mt-4 mb-3">
-        Role and Responsibility
+      <h5 className="font-miligrambold text-white text-[1.1rem] mt-4 mb-3">
+        Role and Responsibilities
       </h5>
-      <p className="text-white text-[0.85rem] mt-3">
+      <p className="font-miligramLight text-white text-[0.85rem] mt-3">
         Selected intern's day-to-day responsibilities include:
       </p>
-      <ul className="list-decimal ml-4 text-white text-[0.85rem]">
-        {viewDetails?.job_listings[0]?.job?.roles_responsibility?.map(
+      <ul className="font-miligramLight list-decimal ml-4 text-white text-[0.85rem]">
+        {viewDetails?.jobs_job_listings[0]?.job?.roles_responsibility?.map(
           (item, i) => (
             <li key={i}>{item}</li>
           )
         )}
       </ul>
-      <h5 className="text-white text-[1.1rem] mt-4 mb-3">Skills Required</h5>
+      <h5 className="font-miligrambold text-white text-[1.1rem] mt-4 mb-3">
+        Skills Required
+      </h5>
       <div className="text-white text-[0.85rem] mt-3 flex gap-2 flex-wrap">
-        {viewDetails?.job_listings[0]?.job?.skills.map((item) => {
+        {viewDetails?.jobs_job_listings[0]?.job?.skills.map((item) => {
           return (
             <div className="font-miligramText400 text-white py-[4px] sm:py-[6px] px-4  sm:px-6 border-2 border-main-teal rounded-lg">
               {item}
             </div>
           );
         })}
-        {/* TODO=> REMOVE IN PRODUCTION  */}
-        {[1, 2, 3, 4, 5, 6].map((item, i) => {
-          return (
-            <div
-              key={i}
-              className="font-miligramText400 text-white py-[4px] sm:py-[6px] px-4  sm:px-6 border-2 border-main-teal rounded-lg"
-            >
-              HTML
-            </div>
-          );
-        })}
       </div>
-      <h5 className="text-white text-[1.1rem] mt-4 mb-3">Perks and Benefits</h5>
-      <ul className="list-decimal ml-4 text-white text-[0.85rem]">
-        {viewDetails?.job_listings[0]?.job?.perks_and_benefits?.map(
+      <h5 className="font-miligrambold text-white text-[1.1rem] mt-4 mb-3">
+        Perks and Benefits
+      </h5>
+      <ul className="font-miligramLight list-decimal ml-4 text-white text-[0.85rem]">
+        {viewDetails?.jobs_job_listings[0]?.job?.perks_and_benefits?.map(
           (item, i) => (
             <li key={i}>{item}</li>
           )
         )}
       </ul>
+      <h5 className="font-miligrambold text-white text-[1.1rem] mt-4 mb-3">
+        No of Openings -&nbsp;
+        <span className="text-main-whiteVar1">
+          {viewDetails?.jobs_job_listings[0]?.no_of_openings}
+        </span>
+      </h5>
+      <Button
+        type="submit"
+        OnClick={handleApply}
+        text="Apply"
+        className="mt-10 block mx-auto bg-main-greenOpt-200  font-miligramMedium w-fit text-main-lightTeal text-[0.8rem] xl:text-[1rem] py-[8px] sm:py-[10px] px-12 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+      />
     </Modal>
   );
 };

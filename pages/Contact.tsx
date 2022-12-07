@@ -1,17 +1,24 @@
+import React, { useEffect, useState } from "react";
 import { Formik, FormikHelpers } from "formik";
 import Head from "next/head";
 import Image from "next/image";
-import React from "react";
 import {
   discordWhite,
   githubWhite,
   linkedinWhite,
+  location,
+  locationTeal,
+  locationTealCont,
+  mail,
+  phone,
   tealLocation,
   tealMessage,
   tealMobile,
+  tealMobileCont,
   twitterWhite,
 } from "../assets";
 import {
+  AnimatedBorder,
   Button,
   Divider,
   Footer,
@@ -19,7 +26,9 @@ import {
   InputBox,
   Navbar,
 } from "../components";
+import TextArea from "../components/pages-components/jobs/TextArea";
 import { contactValidationSchima } from "../helper/validate";
+import { socialMediaHandles, socialMediaTealIcons } from "../helper/constant";
 
 interface initialValues {
   name: string;
@@ -33,7 +42,13 @@ const initialValues: initialValues = {
   message: "",
 };
 
+const MAIL_TO = `mailto:info@koders.in?subject=Query&body=${""}`;
 const Contact = () => {
+  const [hoverOnLocation, setHoverOnLocation] = useState<boolean>(false);
+  const [hoverOnMob, setHoverOnMob] = useState<boolean>(false);
+  const [hoverOnMail, setHoverOnMail] = useState<boolean>(false);
+  const [hoverOnSocialMedia, setHoverOnSocialMedia] = useState<any>(false);
+
   const handleSubmitForm = async (
     value: initialValues,
     helper: FormikHelpers<initialValues>
@@ -41,62 +56,109 @@ const Contact = () => {
     console.log(value);
     helper.resetForm();
   };
+
+  useEffect(() => {
+    const elm = document.getElementById("namecont");
+    elm.focus();
+  });
   return (
     <div className="bg-main-primary overflow-hidden relative">
       <Head>
-        <title>Privacy Policy</title>
+        <title>Contact Us</title>
       </Head>
       <Navbar />
       <div className="pb-10 pt-28 w-[95%] sm:w-[90%] mx-auto">
         <GradientText
           aos="fade-up"
-          className="text-[2.2rem] leading-none mb-3 md:mb-0 md:leading-normal  sm:text-[2.5rem] md:text-[2.8rem] mx-auto w-fit bg-gradient-to-r from-white to-main-teal font-miligrambold mt-16"
-          text="Contact US"
+          className="text-[2.2rem] leading-none mb-3 md:mb-0 md:leading-normal  sm:text-[2.5rem] md:text-[2.8rem] mx-auto w-fit bg-gradient-to-r from-white to-main-teal font-miligrambold mt-9"
+          text="Contact Us"
         />
         <Divider className="h-10" />
         <div className="w-[90%] mx-auto md:w-[80%] lg:w-[70%] xl:w-[60%] flex flex-col sm:flex-row justify-center items-center">
-          <div className="w-[50%] hidden sm:block">
-            <div className="flex gap-5">
+          <div className="  w-[50%] hidden sm:flex flex-col gap-9">
+            <div className="flex justify-start items-start gap-6 text-[0.9rem] sm:text-[1rem] w-fit">
               <Image
-                src={tealLocation}
-                alt={tealLocation}
+                src={hoverOnLocation ? locationTealCont : location}
+                alt="location"
                 width={15}
                 height={15}
+                className="mt-[5px]"
               />
-              <div className="text-white font-miligramText400">
-                <p>111, New Mohanpur Colony,</p>
-                <p>Prem Nagar, Dehradun,</p>
-                <p>Uttarakhand - 248007</p>
+              <div
+                className={` m-0 cursor-pointer transition-all duration-300 group font-miligramText400 ${
+                  hoverOnLocation ? "text-main-lightTeal" : "text-white"
+                }`}
+                onMouseEnter={() => setHoverOnLocation(true)}
+                onMouseLeave={() => setHoverOnLocation(false)}
+                onClick={() =>
+                  window.open("https://goo.gl/maps/H91YctE1VjYX7p9J9", "_blank")
+                }
+              >
+                <p className="inline sm:block">111, New Mohanpur Colony,</p>
+                <p className="inline sm:block"> Prem Nagar, Dehradun, </p>
+                <p className="inline sm:block"> Uttarakhand - 248007 </p>
               </div>
             </div>
-            <div className="flex  gap-5 my-8">
-              <Image src={tealMobile} alt={tealMobile} width={15} height={15} />
-              <p className="text-white font-miligramText400">0135-3504103</p>
-            </div>
-            <div className="flex  gap-5">
+            <div
+              className="flex justify-start gap-4 w-fit"
+              onMouseEnter={() => setHoverOnMob(true)}
+              onMouseLeave={() => setHoverOnMob(false)}
+            >
               <Image
-                src={tealMessage}
-                alt={tealMessage}
-                width={15}
-                height={15}
+                src={hoverOnMob ? tealMobileCont : phone}
+                alt="phone"
+                width={20}
+                height={20}
               />
-              <p className="text-white font-miligramText400">info@koders.com</p>
+              <a
+                href="tel:01353504103"
+                className={`group relative m-0 ml-1 text-[0.9rem] sm:text-[1rem] mt-[4px] ${
+                  hoverOnMob ? "text-main-lightTeal" : "text-white"
+                }`}
+              >
+                0135-3504103
+              </a>
             </div>
-            <div className="flex gap-9 mt-8">
-              {[linkedinWhite, githubWhite, twitterWhite, discordWhite].map(
-                (item, i) => {
-                  return (
-                    <Image
-                      className="cursor-pointer transition-all duration-100 hover:scale-110"
-                      key={i}
-                      src={item}
-                      alt={item}
-                      width={30}
-                      height={30}
-                    />
-                  );
-                }
-              )}
+            <div
+              onMouseEnter={() => setHoverOnMail(true)}
+              onMouseLeave={() => setHoverOnMail(false)}
+              className="flex  gap-5 cursor-pointer w-fit"
+              onClick={() => window.open(MAIL_TO, "_blank")}
+            >
+              <Image
+                src={hoverOnMail ? tealMessage : mail}
+                alt={tealMessage}
+                width={20}
+                height={20}
+              />
+              <p
+                className={`font-miligramText400 ${
+                  hoverOnMail ? "text-main-lightTeal" : "text-white"
+                }`}
+              >
+                info@koders.com
+              </p>
+            </div>
+            <div className="flex gap-9">
+              {socialMediaHandles.map((item, i) => {
+                return (
+                  <Image
+                    className="cursor-pointer transition-all duration-100"
+                    key={i}
+                    src={
+                      hoverOnSocialMedia === i
+                        ? socialMediaTealIcons[i]
+                        : item.src
+                    }
+                    alt={item.src}
+                    width={30}
+                    height={30}
+                    onMouseEnter={() => setHoverOnSocialMedia(i)}
+                    onMouseLeave={() => setHoverOnSocialMedia(false)}
+                    onClick={() => window.open(item.url, "_blank")}
+                  />
+                );
+              })}
             </div>
           </div>
           <div className="w-full sm:w-[50%]">
@@ -110,6 +172,7 @@ const Contact = () => {
               {({ handleBlur, handleChange, errors, values, handleSubmit }) => (
                 <>
                   <InputBox
+                    id="namecont"
                     handleChange={handleChange}
                     name="name"
                     placeholder="Name *"
@@ -129,14 +192,14 @@ const Contact = () => {
                     value={values.email}
                   />
                   <Divider className="mt-2" />
-                  <InputBox
+                  <TextArea
                     handleChange={handleChange}
                     name="message"
                     placeholder="Message *"
-                    type="text"
                     errorText={errors.message}
                     onBlur={handleBlur}
                     value={values.message}
+                    textareaStyle="bg-transparent"
                   />
                   <Button
                     type="submit"
@@ -158,9 +221,9 @@ const Contact = () => {
                 height={15}
               />
               <div className="text-white font-miligramText400">
-                <p>111, New Mohanpur Colony,</p>
-                <p>Prem Nagar, Dehradun,</p>
-                <p>Uttarakhand - 248007</p>
+                <p className="inline sm:block">111, New Mohanpur Colony,</p>
+                <p className="inline sm:block"> Prem Nagar, Dehradun, </p>
+                <p className="inline sm:block"> Uttarakhand - 248007 </p>
               </div>
             </div>
             <div className="flex  gap-5 my-8">
@@ -176,7 +239,7 @@ const Contact = () => {
               />
               <p className="text-white font-miligramText400">info@koders.com</p>
             </div>
-            <div className="flex gap-9 mt-8">
+            <div className="flex gap-9 mt-8 w-fit mx-auto">
               {[linkedinWhite, githubWhite, twitterWhite, discordWhite].map(
                 (item, i) => {
                   return (

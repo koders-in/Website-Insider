@@ -42,6 +42,15 @@
   src: url("../assets/font/Milligram/MilligramText-Medium.ttf");
 }
 
+@font-face {
+  font-family: "MILIGRAM TEXT ITALIC";
+  src: url("../assets/font/Milligram/MilligramText-Italic.ttf");
+}
+@font-face {
+  font-family: "MILIGRAM TEXT BOLD";
+  src: url("../assets/font/Milligram/MilligramText-Bold.ttf");
+}
+
 /* div{
   animation: name duration timing-function delay iteration-count direction fill-mode;
   animation: hide 1s ease-in-out 1s forwards;
@@ -161,71 +170,108 @@
   }
 }
 
+/* stroke-dasharray: 10;
+stroke-dashoffset: 279;
+stroke: white;
+animation: draw-line 2s forwards;
+stroke-dashoffset: 0; */
+
 /* map css */
 #line-1 {
-  stroke-dasharray: 933;
-  stroke-dashoffset: 933;
+  stroke-dasharray: 279;
+  stroke-dashoffset: 279;
   stroke: white;
   animation: draw-line 2s forwards;
 }
 #line-2 {
+  stroke-dasharray: 308;
+  stroke-dashoffset: 308;
+  stroke: white;
+  animation: draw-line 2s 1s forwards;
+}
+#line-3 {
+  stroke-dasharray: 289;
+  stroke-dashoffset: 289;
+  stroke: white;
+  animation: draw-line 2s 3s forwards;
+}
+#line-4 {
+  stroke-dasharray: 313;
+  stroke-dashoffset: 313;
+  stroke: white;
+  animation: draw-line 2s 1s forwards;
+}
+#line-5 {
+  stroke-dasharray: 520;
+  stroke-dashoffset: 520;
+  stroke: white;
+  animation: draw-line 2s 4s forwards;
+}
+#line-6 {
+  stroke-dasharray: 680;
+  stroke-dashoffset: 680;
+  stroke: white;
+  animation: draw-line 2s 2s forwards;
+}
+#line-7 {
+  stroke-dasharray: 720;
+  stroke-dashoffset: 720;
+  stroke: white;
+  animation: draw-line 2s 1s forwards;
+}
+#line-8 {
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  stroke: white;
+  animation: draw-line 2s 4s forwards;
+}
+#line-9 {
+  stroke-dasharray: 340;
+  stroke-dashoffset: 340;
+  stroke: white;
+  animation: draw-line 2s 1s forwards;
+}
+#line-10 {
+  stroke-dasharray: 250;
+  stroke-dashoffset: 250;
+  stroke: white;
+  animation: draw-line 2s forwards;
+}
+#line-11 {
   stroke-dasharray: 280;
   stroke-dashoffset: 280;
   stroke: white;
   animation: draw-line 2s 1s forwards;
 }
-#line-3 {
-  stroke-dasharray: 345;
-  stroke-dashoffset: 345;
-  stroke: white;
-  animation: draw-line 2s 3s forwards;
-}
-#line-4 {
-  stroke-dasharray: 310;
-  stroke-dashoffset: 310;
-  stroke: white;
-  animation: draw-line 2s 1s forwards;
-}
-#line-5 {
-  stroke-dasharray: 340;
-  stroke-dashoffset: 340;
+#line-12 {
+  stroke-dasharray: 330;
+  stroke-dashoffset: 330;
   stroke: white;
   animation: draw-line 2s 4s forwards;
 }
-#line-6 {
-  stroke-dasharray: 310;
-  stroke-dashoffset: 310;
-  stroke: white;
-  animation: draw-line 2s 2s forwards;
-}
-#line-7 {
-  stroke-dasharray: 690;
-  stroke-dashoffset: 690;
-  stroke: white;
-  animation: draw-line 2s 1s forwards;
-}
-#line-8 {
-  stroke-dasharray: 800;
-  stroke-dashoffset: 800;
-  stroke: white;
-  animation: draw-line 2s 4s forwards;
-}
-#line-9 {
-  stroke-dasharray: 580;
-  stroke-dashoffset: 580;
-  stroke: white;
-  animation: draw-line 2s 1s forwards;
-}
-#line-10 {
+#line-13 {
   stroke-dasharray: 400;
   stroke-dashoffset: 400;
+  stroke: white;
+  animation: draw-line 2s 1s forwards;
+}
+#line-14 {
+  stroke-dasharray: 320;
+  stroke-dashoffset: 320;
+  stroke: white;
+  animation: draw-line 2s forwards;
+}
+#line-15 {
+  stroke-dasharray: 113;
+  stroke-dashoffset: 113;
   stroke: white;
   animation: draw-line 2s forwards;
 }
 
 @keyframes draw-line {
   to {
-    stroke-dashoffset: 10;
+    stroke-dashoffset: 0;
+    /* stroke-dasharray: 10; */
   }
 }
 
@@ -335,6 +381,27 @@
 .ReactModal__Overlay {
   background-color: transparent !important;
   font-family: "MILIGRAM MEDIUM";
+  backdrop-filter: blur(10px);
+}
+
+.ReactModal__Content {
+  overflow: hidden !important;
+  width: calc(100%-10px) !important;
+}
+.ReactModal__Content:hover {
+  overflow-x: hidden !important;
+  overflow-y: scroll !important;
+}
+
+/* width */
+.ReactModal__Content::-webkit-scrollbar {
+  width: 0 !important;
+  opacity: 0;
+}
+
+/* Track */
+.ReactModal__Content::-webkit-scrollbar-track {
+  background: #0a0a0a;
 }
 
 @media screen and (max-width: 768px) {
@@ -342,5 +409,52 @@
     width: 90% !important;
     margin: 0 auto;
     inset: 10% 17px 40px !important;
+    padding: 10px 15px !important;
   }
+}
+
+/* -----------------Customize scrollbar ----------------- */
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  border-radius: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #0a0a0a;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* --------------- */
+input:-webkit-autofill {
+  background-color: transparent !important;
+}
+
+/* -----------------change border color on focus-------------------- */
+input:focus {
+  outline: none !important;
+  border-color: #00a99d !important;
+}
+textarea:focus {
+  outline: none !important;
+  border-color: #00a99d !important;
+}
+
+#selctBox {
+  outline: none !important;
+}
+#selectBox:focus {
+  border-color: #00a99d !important;
 }

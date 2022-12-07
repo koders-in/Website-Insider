@@ -45,7 +45,10 @@ const Info = ({
         {title}
       </p>
       <Divider className="mt-3 md:hidden" />
-      <div className="mt-2" dangerouslySetInnerHTML={{ __html: html }}></div>
+      <div
+        className="mt-2 xl:mt-5 font-miligramText400 text-[1.03rem] md:text-[1.15rem] text-main-light_white"
+        dangerouslySetInnerHTML={{ __html: html }}
+      ></div>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import AOS from "aos";
+import Fuse from "fuse.js";
 
 import "aos/dist/aos.css";
 
@@ -18,24 +19,15 @@ import { greenArrow } from "../assets";
 import { useFetchDataFromServer } from "../helper/careerHooks";
 import { FadeLoader } from "react-spinners";
 
-const sampleJob = [
-  {
-    id: 2,
-    location: "Dehradun, Uttrakhand",
-    job: {
-      job_level: { experience: "Exp- 1-3 yrs", level: "Intern" },
-      title: "UI/UX Designer",
-    },
-  },
-];
-
 const Jobs = () => {
   const [jobs, setJobs] = useState<any>(null);
   const [viewMore, setViewMore] = useState<boolean>(true);
   const [pinJobs, setPinJobs] = useState<any>(null);
   const [tempData, setTempData] = useState<any>(null);
   const [noMatch, setNoMatch] = useState<boolean>(false);
+  const [department, setDepartment] = useState<Array<string>>(["All"]);
   const fetchData = useFetchDataFromServer();
+
   useEffect(() => {
     AOS.init({
       easing: "ease-out",
@@ -45,47 +37,66 @@ const Jobs = () => {
   }, []);
 
   useEffect(() => {
-    // TODO=>Uncomment below code
-    // if (jobs === null || jobs === undefined)
-    //   fetchData("open-job-listings", setJobs);
-
-    // if (jobs && tempData === null) {
-    //   if (jobs?.job_listings?.length / 3 > 0) {
-    //     setPinJobs(jobs?.job_listings?.slice(0, 2));
-    //     setTempData(jobs?.job_listings?.slice(0, 2));
-    //   } else {
-    //     setPinJobs(jobs?.job_listings);
-    //     setTempData(jobs?.job_listings);
-    //   }
-    // }
-
-    if (jobs === null || jobs === undefined) setJobs(sampleJob);
+    if (jobs === null || jobs === undefined)
+      fetchData("open-job-listings", setJobs);
 
     if (jobs && tempData === null) {
-      if (jobs.length / 3 > 0) {
-        setPinJobs(sampleJob);
-        setTempData(sampleJob);
+      if (jobs?.jobs_job_listings?.length / 3 > 0) {
+        setPinJobs(jobs?.jobs_job_listings?.slice(0, 2));
+        setTempData(jobs?.jobs_job_listings?.slice(0, 2));
       } else {
-        setPinJobs(sampleJob);
-        setTempData(sampleJob);
+        setPinJobs(jobs?.jobs_job_listings);
+        setTempData(jobs?.jobs_job_listings);
       }
     }
-  }, [jobs]);
+  }, [jobs, pinJobs]);
 
   const handleTryAgain = async () => {
     setPinJobs(false);
     let res = await fetchData("open-job-listings", setJobs);
-    if (res?.job_listings?.length / 3 > 0) {
-      setPinJobs(res?.job_listings?.slice(0, 3));
+    if (res?.jobs_job_listings?.length / 3 > 0) {
+      setPinJobs(res?.jobs_job_listings?.slice(0, 3));
     } else {
-      setPinJobs(res?.job_listings);
+      setPinJobs(res?.jobs_job_listings);
     }
   };
 
   const handleViewMore = () => {
-    setPinJobs([...jobs?.job_listings]);
-    setTempData([...jobs?.job_listings]);
+    let filteredJobs = [];
+    if (department.length === 1 && department[0] === "All") {
+      setPinJobs([...jobs?.jobs_job_listings]);
+    } else {
+      department.forEach((item) => {
+        const tempJobs = getFilteredData(
+          jobs?.jobs_job_listings,
+          ["job.department"],
+          item
+        );
+        filteredJobs = [...filteredJobs, ...tempJobs];
+      });
+      setPinJobs(filteredJobs);
+    }
+
+    setTempData([...jobs?.jobs_job_listings]);
     setViewMore(false);
+  };
+
+  const getFilteredData = (
+    list: Array<any>,
+    keys: Array<string>,
+    pattern: string
+  ) => {
+    const fuse = new Fuse(list, {
+      location: 4,
+      shouldSort: true,
+      keys: keys,
+    });
+    const res: any = fuse.search(pattern);
+    if (res.length) {
+      return res?.map(({ item }) => {
+        return item;
+      });
+    } else return [];
   };
 
   return (
@@ -96,7 +107,16 @@ const Jobs = () => {
       <Navbar />
       <div className="py-28 w-[85%] mx-auto">
         <Divider className="mt-9" />
-        <LandingSection {...{ pinJobs, setPinJobs, setNoMatch, tempData }} />
+        <LandingSection
+          {...{
+            pinJobs,
+            setPinJobs,
+            setNoMatch,
+            tempData,
+            department,
+            setDepartment,
+          }}
+        />
         <Divider className="mt-12" />
         {noMatch ? (
           <div className="text-main-teal w-fit mx-auto text-[1.5em]">

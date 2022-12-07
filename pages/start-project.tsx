@@ -50,10 +50,15 @@ const StartProject = () => {
   };
 
   const handleClick = (item: string) => {
+    let temp: Array<any> = [];
     if (technologies?.find((elm) => elm === item)) {
-      setTechnologies(technologies.filter((elm) => elm !== item));
+      temp = technologies.filter((elm) => elm !== item);
     } else {
-      setTechnologies((prev: Array<string>) => [...prev, item]);
+      temp = [...technologies, item];
+    }
+    setTechnologies(temp);
+    if (temp.length === 0) {
+      setTechnologies(["Other"]);
     }
   };
 

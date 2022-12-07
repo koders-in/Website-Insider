@@ -70,7 +70,7 @@ const ThankModal = ({ isShow, toogleThankModal }: Props) => {
 
         <GradientText
           className="w-[90%] sm:w-fit mx-auto text-[1.6rem] sm:text-[2.6rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
-          text="What we Offer"
+          text="Thank You!"
         />
         <div>
           <p className="text-white font-miligramLight text-center m-0 p-0">
@@ -82,7 +82,7 @@ const ThankModal = ({ isShow, toogleThankModal }: Props) => {
         </div>
         <div className="flex items-center justify-center gap-3">
           <Button
-            OnClick={toogleThankModal}
+            OnClick={closeModal}
             text="Back to Jobs"
             className="font-miligramMedium text-[0.8rem] xxl:text-[1rem] bg-main-greenOpt-200 border-[1px] border-main-lightTeal text-main-lightTeal px-4 py-[0.4rem] sm:py-[0.55rem] sm:px-8 rounded-lg hover:bg-main-lightTeal hover:text-white"
           />

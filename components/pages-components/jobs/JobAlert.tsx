@@ -7,7 +7,6 @@ import GradientText from "../../GradientText";
 import { useSetDataOnServer } from "../../../helper/careerHooks";
 
 const JobAlert = () => {
-  const [isHover, setIsHover] = useState(false);
   const [email, setEmail] = useState("");
   const getJobAlert = useSetDataOnServer();
 
@@ -35,7 +34,7 @@ const JobAlert = () => {
         className="w-[90%] sm:w-fit mx-auto text-[1.6rem] sm:text-[2.6rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
         text="Get Job Alerts!"
       />
-      <p className="mt-2 text-[0.8rem] sm:text-[1.3rem] w-[80%] sm:w-1/2 lg:w-[40%] mx-auto text-center text-main-light_white pb-2 font-miligramText400 leading-none">
+      <p className="mt-2 text-[0.8rem] sm:text-[1.2rem] w-[80%] sm:w-1/2 lg:w-[40%] mx-auto text-center text-main-light_white pb-2 font-miligramText400 leading-none">
         Subscribe to our Newsletter and stay updated about the latest job
         postings.
       </p>
@@ -44,20 +43,14 @@ const JobAlert = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           type="text"
-          className="w-full px-4 py-1 outline-none border-none text-main-light_white placeholder:tracking-[2px] bg-transparent placeholder:text-main-light_white lett font-miligramMedium"
+          className="w-full px-4 py-1 outline-none border-none text-main-light_white placeholder:tracking-[2px] bg-transparent placeholder:text-main-light_white lett font-miligramLight"
           placeholder="Your Email Address"
         />
         <div
-          onMouseEnter={() => setIsHover(true)}
-          onMouseLeave={() => setIsHover(false)}
           className="w-14 h-10 bg-main-teal flex justify-center items-center p-4 cursor-pointer"
           onClick={handleClick}
         >
-          <Image
-            src={aeroUp}
-            alt="aero"
-            className={`${isHover ? "scale-110" : "scale-90"}`}
-          />
+          <Image src={aeroUp} alt="aero" />
         </div>
       </div>
     </div>

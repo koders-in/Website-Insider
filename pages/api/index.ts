@@ -33,17 +33,14 @@ const handler = async (
 ): Promise<void> => {
   if (req.method.toLowerCase() === "get") {
     const isMemorizesReviews = await readFromFile();
-    console.log("isMemorizesReviews", isMemorizesReviews);
     if (req.headers.home) {
       if (isMemorizesReviews === null) startInterval();
     }
-    if (isMemorizesReviews === null) {
+    if (
+      isMemorizesReviews === null ||
+      Object.keys(isMemorizesReviews).length < 2
+    ) {
       const reviewList = await getReview();
-      console.log(
-        "reviewList",
-        reviewList,
-        Object.keys(JSON.parse(reviewList)).length
-      );
       writeInFile(reviewList);
       res.status(201).json(reviewList);
     } else res.status(201).json(isMemorizesReviews);

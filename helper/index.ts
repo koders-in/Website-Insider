@@ -1,3 +1,4 @@
+import { listOfPrefferedUserReviewList } from "./constant";
 import { getReviewList } from "./scrapper";
 
 /**
@@ -139,5 +140,44 @@ export const testMain = async () => {
       console.log("testMain", running);
       // getReviewList();
     }, 5000);
+  }
+};
+
+export const sortReviewsList = (list: Array<any>) => {
+  let topReviews = [],
+    reviews = [];
+  list.forEach((item) => {
+    if (listOfPrefferedUserReviewList.includes(item?.user?.name)) {
+      topReviews.push(item);
+    } else {
+      reviews.push(item);
+    }
+  });
+  return { topReviews, reviews };
+};
+
+export const getSlicedArray = (columns: number, data: Array<any>) => {
+  if (data.length >= columns) {
+    const itemsInColumn = Math.ceil(data?.length / columns);
+    let columnsData = [];
+    let temp = [];
+    data.forEach((item, i) => {
+      if (temp.length < itemsInColumn - 1) {
+        temp.push(item);
+      } else {
+        columnsData.push([...temp, item]);
+        temp = [];
+      }
+      if (i === data.length - 1) {
+        columnsData.push([...temp]);
+      }
+    });
+    return columnsData;
+  } else {
+    let temp = [];
+    for (let i = 0; i < columns; i++) {
+      temp.push([]);
+    }
+    return temp;
   }
 };

@@ -1,13 +1,16 @@
 import {
   benefits,
+  discordTeal,
   discordWhiteLogo,
   githubLogo,
+  githubTeal,
   githubWhite,
   googleLogo,
   impact,
   indianFlag,
   instaLogo,
   issue,
+  linkedInTeal,
   linkedinWhite,
   performance,
   tealAwards,
@@ -16,6 +19,7 @@ import {
   tealIssue,
   tealWorkers,
   tealWorkspace,
+  twitterTeal,
   twitterWhite,
   workers,
   workspace,
@@ -58,16 +62,15 @@ export const footerButtons = [
   {
     title: "Resources",
     buttons: [
-      { title: "About", route: "/About", target: false },
-      { title: "Jobs", route: "/Jobs", target: false },
-      { title: "Collaborate", route: "/Collaborate", target: false },
-      { title: "Contact", route: "/Contact", target: false },
+      { title: "About", route: "/about", target: false },
+      { title: "Jobs", route: "/career", target: false },
+      { title: "Collaborate", route: "/collaborate", target: false },
     ],
   },
   {
     title: "Quick Links",
     buttons: [
-      { title: "Blogs", route: "/Blogs", target: false },
+      { title: "Blogs", route: "/blogs", target: false },
       {
         title: "Portfolio",
         route: "https://portfolio.koders.in/",
@@ -80,17 +83,17 @@ export const footerButtons = [
   {
     title: "Legal",
     buttons: [
-      { title: "Cancellation", route: "/Cancellation", target: false },
-      { title: "Refund", route: "/Cancellation", target: false },
-      { title: "Privacy Policy", route: "/PrivacyPolicy", target: false },
-      { title: "Terms of Services", route: "/TermsOfServic", target: false },
+      { title: "Cancellation", route: "/cancellation", target: false },
+      { title: "Refund", route: "/cancellation", target: false },
+      { title: "Privacy Policy", route: "/privacy-policy", target: false },
+      { title: "Terms of Services", route: "/terms-of-service", target: false },
     ],
   },
   {
     title: "Support",
     buttons: [
       { title: "Join Discord", route: "https://dsc.gg/koders", target: true },
-      { title: "Help", route: "/Contact", target: false },
+      { title: "Contact Us", route: "/contact", target: false },
       { title: "GitHub", route: "https://github.com/koders-in", target: true },
     ],
   },
@@ -118,6 +121,7 @@ export const typeOfProjects = [
   "Backend Development",
   "Web Scraper",
   "Discord Bots",
+  "Other",
 ];
 
 export interface CardObject {
@@ -190,25 +194,25 @@ export const whyWe = [
     class: "text-center  border-main-teal border-r-4",
     title: "Company",
     state: "01",
-    html: '<p class="font-miligramText400 px-2 mt-2 text-main-light_white text-[1.03rem] leading-none xl:text-[1.2rem] lg:leading-[1.3rem] md:px-3 lg:px-6">Rest assured. Unlike freelancers,<span class="text-main-lightTeal">  we are sticking till completion</span>.</p>',
+    html: '<p class="px-2 mt-2 leading-none lg:leading-[1.3rem] md:px-3 lg:px-6">Rest assured. Unlike freelancers,<span class="text-main-lightTeal">  we are sticking till completion</span>.</p>',
   },
   {
     class: "text-center  border-main-teal border-r-4",
     title: "One Stop Solution",
     state: "02",
-    html: ' <p class="font-miligramText400 px-2 mt-2 text-main-light_white text-[1.03rem] leading-none xl:text-[1.2rem] lg:leading-[1.3rem] md:px-3 lg:px-6">Design+Frontend+Backend +Testing+QnA+Docs?<span class="text-main-lightTeal"> We do it all.</span></p>',
+    html: ' <p class="px-2 mt-2 leading-none lg:leading-[1.3rem] md:px-3 lg:px-6">Design+Frontend+Backend +Testing+QnA+Docs?<span class="text-main-lightTeal"> We do it all.</span></p>',
   },
   {
     class: "text-center  border-main-teal border-r-4",
     title: "Quality + Satisfaction",
     state: "03",
-    html: '<p class="font-miligramText400 px-2 mt-2 text-main-light_white text-[1.03rem] leading-none xl:text-[1.2rem] lg:leading-[1.3rem] md:px-3 lg:px-6"><span class="text-main-lightTeal">Quality </span>delivery with 100%<span class="text-main-lightTeal"> Satisfaction </span>or 100% refund.</p>',
+    html: '<p class="px-2 mt-2 leading-none lg:leading-[1.3rem] md:px-3 lg:px-6"><span class="text-main-lightTeal">Quality </span>delivery with 100%<span class="text-main-lightTeal"> Satisfaction </span>or 100% refund.</p>',
   },
   {
     class: "text-center",
     title: "Your Code, Not Ours",
     state: "04",
-    html: ' <p class="font-miligramText400 px-2 mt-2 text-main-light_white text-[1.03rem] leading-none xl:text-[1.2rem] lg:leading-[1.3rem] md:px-3 lg:px-6">We’re giving <span class="text-main-lightTeal">IPR rights</span>, not just the source code.</p>',
+    html: ' <p class="px-2 mt-2 leading-none lg:leading-[1.3rem] md:px-3 lg:px-6">We’re giving <span class="text-main-lightTeal">IPR rights</span>, not just the source code.</p>',
   },
 ];
 
@@ -270,7 +274,7 @@ export const socialMediaHandles = [
   },
   {
     src: twitterWhite,
-    url: "https://twitter.com/KodersHQ",
+    url: "https://twitter.com/KodersKorp",
   },
   {
     src: discordWhiteLogo,
@@ -540,6 +544,31 @@ export const dataOfMapAnimation = [
     location: "location-5",
     base: "base-5",
   },
+  {
+    line: "line-11",
+    location: "location-7",
+    base: "base-7",
+  },
+  {
+    line: "line-12",
+    location: "location-4",
+    base: "base-4",
+  },
+  {
+    line: "line-13",
+    location: "location-1",
+    base: "base-1",
+  },
+  {
+    line: "line-14",
+    location: "location-2",
+    base: "base-2",
+  },
+  {
+    line: "line-15",
+    location: "location-2",
+    base: "base-2",
+  },
 ];
 
 export const arrayOfLineID = [
@@ -579,4 +608,23 @@ export const arrayOfBaseID = [
   "base-3",
   "base-10",
   "base-5",
+];
+
+export const listOfPrefferedUserReviewList: Array<string> = [
+  "Bolt",
+  "asudev Tyagi",
+  "Rahul Chamoli",
+  "Nikhil Yadav",
+];
+
+interface departmentJob {
+  department: string;
+  job: string;
+}
+
+export const socialMediaTealIcons = [
+  linkedInTeal,
+  githubTeal,
+  twitterTeal,
+  discordTeal,
 ];

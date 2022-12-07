@@ -62,7 +62,7 @@ const Testmonials = () => {
       />
       <p
         data-aos="slide-left"
-        className="text-[0.8rem] leading-none m-1 sm:text-[1.3rem] w-[80%] sm:w-1/2  lg:w-1/3 mx-auto text-center text-main-light_white font-miligramText400"
+        className="text-[0.8rem] leading-none m-1 sm:text-[1.3rem] w-[80%] sm:w-1/2   mx-auto text-center text-main-light_white font-miligramText400"
       >
         Take a look at what a few of our most successful customers have to say
         about Koders.
@@ -105,7 +105,7 @@ const Testmonials = () => {
         ))}
       </div>
       <Button
-        OnClick={() => handleNavigate("Testmonials/#footer")}
+        OnClick={() => handleNavigate("reviews/#footer")}
         text="Read More"
         className="text-[0.8rem] xxl:text-[1rem] mx-auto block mt-8 sm:mt-12 bg-main-greenOpt-200 font-miligramMedium text-main-lightTeal py-[8px] sm:py-[10px] px-6 sm:px-9 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
       />

@@ -48,7 +48,6 @@ const Clients = () => {
     <div className="py-16 overflow-hidden xxl:py-[10rem]">
       <Divider className="mt-5 xl:my-10" />
       <GradientText
-        aos="fade-up"
         text="Trusted by the"
         className="text-[2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[3rem] w-fit mx-auto text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
       />

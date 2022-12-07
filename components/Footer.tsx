@@ -5,11 +5,16 @@ import { useRouter } from "next/router";
 
 import { location, logo, phone } from "../assets";
 import AnimatedBorder from "./AnimatedBorder";
-import { footerButtons, socialMediaHandles } from "../helper/constant";
+import {
+  footerButtons,
+  socialMediaHandles,
+  socialMediaTealIcons,
+} from "../helper/constant";
 
 const Footer = () => {
   const [onHover, setOnHover] = useState(false);
   const [hoverOnMob, setHoverOnMob] = useState(false);
+  const [hoverOnSocialMedia, setHoverOnSocialMedia] = useState<any>(false);
 
   const router = useRouter();
   const handleNavigate = (href: string) => {
@@ -44,17 +49,21 @@ const Footer = () => {
           <div className="flex items-center my-3 gap-2">
             {socialMediaHandles.map((item, i) => (
               <Image
-                src={item.src}
+                src={
+                  hoverOnSocialMedia === i ? socialMediaTealIcons[i] : item.src
+                }
                 alt={item.src}
                 key={i}
                 className="h-7 cursor-pointer brightness-50 hover:brightness-100"
                 onClick={() => {
                   window.open(item.url, "_blank");
                 }}
+                onMouseEnter={() => setHoverOnSocialMedia(i)}
+                onMouseLeave={() => setHoverOnSocialMedia(false)}
               />
             ))}
           </div>
-          <div className="flex justify-start items-center  mt-4 text-[0.9rem] sm:text-[1rem] ml-2">
+          <div className="flex justify-start items-start  mt-4 text-[0.9rem] sm:text-[1rem] ml-2">
             <Image
               src={location}
               alt="location"
@@ -139,7 +148,7 @@ const Footer = () => {
           })}
         </div>
       </div>
-      <p className="py-5 px-2 text-main-light_white text-[0.85rem] sm:text-[1.2rem] text-center font-miligramMedium">
+      <p className="py-5 px-2 text-main-light_white text-[0.85rem] sm:text-[1.2rem] text-center font-miligramText400">
         Copyright ©2022 | Koders. All rights reserved.
       </p>
     </>

@@ -4,7 +4,7 @@ import Fuse from "fuse.js";
 
 import Divider from "../../Divider";
 import GradientText from "../../GradientText";
-import { search, work } from "../../../assets";
+import { crossTeal, search, work } from "../../../assets";
 import Toogler from "../../Toogler";
 import { jobTypes } from "../../../helper/constant";
 import ButtonsGroup from "../project-page-components/ButtonsGroup";
@@ -14,19 +14,23 @@ interface Props {
   pinJobs: any;
   tempData: any;
   setNoMatch: (data: boolean) => void;
+  department: Array<string>;
+  setDepartment: (data: any) => void;
 }
 const LandingSection = ({
   pinJobs,
   setPinJobs,
   setNoMatch,
   tempData,
+  department,
+  setDepartment,
 }: Props) => {
-  const [isHover, setIsHover] = useState(false);
   const [isRemote, setIsRemote] = useState(true);
-  const [department, setDepartment] = useState(["All"]);
+  const [searchValue, setSearchValue] = useState("");
 
   const handleChange = async (e: any) => {
     const { value } = e.target;
+    setSearchValue(value);
     if (!value) {
       setPinJobs(tempData);
       setNoMatch(false);
@@ -63,66 +67,106 @@ const LandingSection = ({
         shouldSort: true,
         keys: ["location"],
       });
-      const pattern = data ? "Remote" : "";
-      const res: any = fuse.search(pattern);
-      if (res?.length === 0) {
-        setPinJobs([]);
-        setNoMatch(true);
-        return;
-      }
-      if (res?.length) {
+      if (!data) {
+        const res: any = fuse.search("Remote");
+        if (res?.length === 0) {
+          setPinJobs([]);
+          setNoMatch(true);
+          return;
+        }
+        if (res?.length) {
+          setNoMatch(false);
+          const temp = res?.map(({ item }) => {
+            return item;
+          });
+          setPinJobs(temp);
+        }
+      } else {
         setNoMatch(false);
-        const temp = res?.map(({ item }) => {
-          return item;
-        });
-        setPinJobs(temp);
+        setPinJobs(tempData);
       }
     }
   };
-
-  // const handleClick = (data: string) => {
-  //   if (tempData?.length) {
-  //     const fuse = new Fuse(tempData, {
-  //       location: 0,
-  //       shouldSort: true,
-  //       keys: ["job.department"],
-  //     });
-
-  //     const pattern = data;
-  //     const res: any = fuse.search(pattern);
-  //     if (res?.length === 0) {
-  //       setPinJobs([]);
-  //       setNoMatch(true);
-  //       return;
-  //     }
-  //     if (res?.length) {
-  //       setNoMatch(false);
-  //       const temp = res?.map(({ item }) => {
-  //         return item;
-  //       });
-  //       setPinJobs(temp);
-  //     }
-  //   }
-  // };
 
   const handleClick = (item: string) => {
     if (department.includes(item)) {
       if (item === "All") {
         setDepartment(["All"]);
+        setNoMatch(false);
+        setPinJobs(tempData);
         return;
       }
-      setDepartment((p) => {
-        return department.filter((temp) => temp !== item);
+
+      const updateedDep = department.filter((temp) => temp !== item);
+      if (updateedDep.length === 0) {
+        setDepartment(["All"]);
+        setNoMatch(false);
+        setPinJobs(tempData);
+        return;
+      }
+      setDepartment((p) => updateedDep);
+      let filteredJobs = [];
+      updateedDep.forEach((item) => {
+        const tempJobs = getFilteredData(tempData, ["job.department"], item);
+        filteredJobs = [...filteredJobs, ...tempJobs];
       });
+      if (filteredJobs.length <= 0) {
+        setNoMatch(true);
+      } else {
+        setNoMatch(false);
+      }
+      setPinJobs(filteredJobs);
     } else {
       if (department.length >= 4 || item === "All") {
         setDepartment(["All"]);
+        setNoMatch(false);
+        setPinJobs(tempData);
         return;
       }
-      setDepartment((p) => {
-        return [...department.filter((temp) => temp !== "All"), item];
+      const updateedDep = [
+        ...department.filter((temp) => temp !== "All"),
+        item,
+      ];
+      setDepartment((p) => updateedDep);
+
+      let filteredJobs = [];
+      updateedDep.forEach((item) => {
+        const tempJobs = getFilteredData(tempData, ["job.department"], item);
+        filteredJobs = [...filteredJobs, ...tempJobs];
       });
+      if (filteredJobs.length <= 0) {
+        setNoMatch(true);
+      } else {
+        setNoMatch(false);
+      }
+      setPinJobs(filteredJobs);
     }
+  };
+
+  const getFilteredData = (
+    list: Array<any>,
+    keys: Array<string>,
+    pattern: string
+  ) => {
+    const fuse = new Fuse(list, {
+      location: 4,
+      shouldSort: true,
+      keys: keys,
+    });
+    const res: any = fuse.search(pattern);
+    if (res.length) {
+      return res?.map(({ item }) => {
+        return item;
+      });
+    } else return [];
+  };
+
+  const handleClickOnSearch = () => {
+    if (searchValue) {
+      setSearchValue("");
+      setNoMatch(false);
+      setPinJobs(tempData);
+    } else return;
   };
 
   return (
@@ -141,7 +185,7 @@ const LandingSection = ({
       </p>
       <Divider className="mt-14" />
 
-      <div className="flex-wrap sm:flex-nowrap justify-center w-[90%] md:w-[75%] lg:w-[65%] xl:w-[50%] mt-6 xxl:mt-14 flex mx-auto gap-8 items-center sm:justify-between">
+      <div className="flex-wrap sm:flex-nowrap justify-center w-[90%] md:w-[75%] lg:w-[65%] xl:w-[60%] mt-6 xxl:mt-14 flex mx-auto gap-8 items-center sm:justify-between">
         <div className="w-full border-[1.5px] border-main-teal mx-auto rounded-lg overflow-hidden flex">
           <div className="flex items-center w-full border-r-[1.5px] border-main-teal">
             <Image src={work} alt="aero" className="ml-5" />
@@ -151,18 +195,17 @@ const LandingSection = ({
               placeholder="Job Title"
               name="jobTitle"
               onChange={handleChange}
-              // value={filterDetails?.jobTitle}
+              value={searchValue}
             />
           </div>
           <div
+            onClick={handleClickOnSearch}
             className="w-14 h-10 bg-main-greenOpt-200 flex justify-center items-center p-4 cursor-pointer"
-            onMouseEnter={() => setIsHover(true)}
-            onMouseLeave={() => setIsHover(false)}
           >
             <Image
-              src={search}
+              src={searchValue ? crossTeal : search}
               alt="aero"
-              className={`${isHover ? "scale-110" : "scale-90"}`}
+              className=""
             />
           </div>
         </div>

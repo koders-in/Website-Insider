@@ -12,7 +12,7 @@ export { default as SelectBox } from "./SelectBox";
 export { default as ReviewBox } from "./ReviewBox";
 export { default as GradientText } from "./GradientText";
 export { default as TestmonialCard } from "./TestmonialCard";
-export { default as AnimatedBorder } from "./TestmonialCard";
+export { default as AnimatedBorder } from "./AnimatedBorder";
 export { default as Loader } from "./Loader";
 
 // ********** ---| PAGES COMPONENTS |--- *********

@@ -49,7 +49,7 @@ const Job = ({ experience, location, title, type, id }: ObjectOfJob) => {
   return (
     <div
       id="jobBox"
-      className="z-40 px-7 py-4 xl:w-[90%] mx-auto border-2 rounded-xl mt-8 border-main-teal bg-main-secondary flex flex-col md:flex-row gap-4 xl:gap-0 justify-between items-center"
+      className="z-40 px-7 xxl:w-[90%] py-4 mx-auto border-2 rounded-lg mt-8 border-main-teal bg-main-secondary flex flex-col md:flex-row gap-4 xl:gap-0 justify-between items-center"
     >
       <div className="text-main-light_white w-[100%] md:w-[65%] lg:w-[60%]">
         <h1 className="text-white ml-1 sm:ml-0 text-[1.2rem] text-left sm:text-center md:text-left font-miligrambold">
@@ -66,7 +66,7 @@ const Job = ({ experience, location, title, type, id }: ObjectOfJob) => {
           </div>
           <div className="flex items-center justify-start sm:justify-between text-[0.85rem]">
             <Image src={experienceIcon} alt="" className="mr-1 h-3" />
-            {experience}
+            Exp {experience}
           </div>
         </div>
       </div>
@@ -91,7 +91,6 @@ const Job = ({ experience, location, title, type, id }: ObjectOfJob) => {
           location,
           type,
           experience,
-          duration: "",
           toogleDetailModal,
           toogleApplyModal,
         }}
@@ -99,10 +98,12 @@ const Job = ({ experience, location, title, type, id }: ObjectOfJob) => {
       <ApplyModal
         {...{
           setShowModal,
+          experience,
           showModal,
           toogleDetailModal,
           toogleApplyModal,
           toogleThankModal,
+          viewDetails,
         }}
       />
       <ThankModal {...{ isShow: showModal.thank, toogleThankModal }} />

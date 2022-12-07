@@ -8,8 +8,6 @@ import { aeroUp } from "../assets";
 import { Divider, GradientText } from "../components";
 
 const Newsletter = () => {
-  const [isHover, setIsHover] = useState(false);
-
   React.useEffect(() => {
     AOS.init({
       easing: "ease-out",
@@ -27,7 +25,7 @@ const Newsletter = () => {
       />
       <p
         data-aos="slide-left"
-        className="mt-2 text-[0.8rem] sm:text-[1.3rem] w-[80%] sm:w-1/2 lg:w-1/3 mx-auto text-center text-main-light_white pb-2 font-miligramText400 leading-none"
+        className="mt-2 text-[0.8rem] sm:text-[1.3rem] w-[80%] sm:w-1/2 mx-auto text-center text-main-light_white pb-2 font-miligramText400 leading-none"
       >
         Stay updated about the latest offers, insights, blogs, “technical” stuff
         and much more.
@@ -38,19 +36,11 @@ const Newsletter = () => {
       >
         <input
           type="text"
-          className="w-full px-4 py-1 outline-none border-none text-main-light_white placeholder:tracking-[2px] bg-transparent placeholder:text-main-light_white lett font-miligramMedium"
+          className="w-full px-4 py-1 outline-none border-none text-main-light_white placeholder:tracking-[2px] bg-transparent placeholder:text-main-light_white lett font-miligramLight"
           placeholder="Your Email Address"
         />
-        <div
-          className="w-14 h-10 bg-main-teal flex justify-center items-center p-4 cursor-pointer"
-          onMouseEnter={() => setIsHover(true)}
-          onMouseLeave={() => setIsHover(false)}
-        >
-          <Image
-            src={aeroUp}
-            alt="aero"
-            className={`${isHover ? "scale-110" : "scale-90"}`}
-          />
+        <div className="w-14 h-10 bg-main-teal flex justify-center items-center p-4 cursor-pointer">
+          <Image src={aeroUp} alt="aero" />
         </div>
       </div>
     </div>

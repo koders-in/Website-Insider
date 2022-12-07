@@ -51,7 +51,9 @@ const SelectBox = ({
       className={`select relative ${
         mainStyle
           ? mainStyle
-          : " flex gap-2 cursor-pointer items-center border-b-2 border-main-light_white w-full pb-1 sm:pb-3 text-[0.9rem] md:text-[1.2rem] sm:mt-5 relative"
+          : `flex gap-2 cursor-pointer items-center border-b-2 w-full pb-1 sm:pb-3 text-[0.9rem] md:text-[1.2rem] sm:mt-5 relative ${
+              show ? "border-main-teal" : "border-main-light_white"
+            }`
       } `}
     >
       <span
@@ -62,7 +64,7 @@ const SelectBox = ({
         {errorText}
       </span>
       <div
-        className={`relative select-label px-1 text-main-light_white bg-transparent border-none outline-none tracking-[1px] sm:tracking-[2px] placeholder:text-main-light_white w-full ${innelStyle}`}
+        className={`font-miligramLight relative select-label px-1 text-main-light_white bg-transparent border-none outline-none tracking-[1px] sm:tracking-[2px] placeholder:text-main-light_white w-full ${innelStyle}`}
       >
         {value ? value : placeholder}
       </div>
