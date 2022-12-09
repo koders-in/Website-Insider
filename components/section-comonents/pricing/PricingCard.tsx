@@ -32,7 +32,7 @@ const PricingCard = ({
       <div className="w-[80%] text-center text-[13px] sm:text-[0.9rem] xl:text-[1rem] font-miligrambold mx-auto  py-[8px] text-black bg-main-teal rounded-lg -translate-y-8">
         {title}
       </div>
-      <p className="text-center text-[0.8rem] xl:text-[1rem] lg:mx-auto text-white font-miligramLight">
+      <p className="text-center text-[0.8rem] xl:text-[0.9rem] leading-none lg:mx-auto text-white font-miligramTextBook font-light">
         {description}
       </p>
       <div className="py-2 lg:py-3 text-main-light_white text-center font-miligramLight text-[0.8rem] xl:text-[0.9rem] border-b-[1px] border-main-teal">

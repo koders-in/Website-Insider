@@ -1,5 +1,6 @@
 import { listOfPrefferedUserReviewList } from "./constant";
 import { getReviewList } from "./scrapper";
+import { emailValidation } from "./validate";
 
 /**
  * This function stop the flow of code for the given time.
@@ -25,8 +26,8 @@ export const handleSlider = (
 ) => {
   const pricing = document.getElementById(id);
 
-  pricing.addEventListener("touchstart", handleTouchStart, false);
-  pricing.addEventListener("touchmove", handleTouchMove, false);
+  pricing.addEventListener("touchstart", handleTouchStart, { passive: true });
+  pricing.addEventListener("touchmove", handleTouchMove, { passive: true });
 
   let xDown: any = null;
   let yDown: any = null;
@@ -143,41 +144,66 @@ export const testMain = async () => {
   }
 };
 
-export const sortReviewsList = (list: Array<any>) => {
-  let topReviews = [],
-    reviews = [];
-  list.forEach((item) => {
-    if (listOfPrefferedUserReviewList.includes(item?.user?.name)) {
-      topReviews.push(item);
-    } else {
-      reviews.push(item);
-    }
+// ------------------Validate email----------------------
+export const isEmailValid = async (email: string) => {
+  const res = await emailValidation.isValid({
+    email,
   });
-  return { topReviews, reviews };
+  return res;
 };
 
-export const getSlicedArray = (columns: number, data: Array<any>) => {
-  if (data.length >= columns) {
-    const itemsInColumn = Math.ceil(data?.length / columns);
-    let columnsData = [];
-    let temp = [];
-    data.forEach((item, i) => {
-      if (temp.length < itemsInColumn - 1) {
-        temp.push(item);
-      } else {
-        columnsData.push([...temp, item]);
-        temp = [];
+// ------------------Short Array on the bases of list----------------------
+
+export const shortReviewArray = (
+  reviewList: Array<any>,
+  userNameList: Array<string>
+) => {
+  let topArray = [];
+  let bottomArray = [];
+  let tempThumbnail = [];
+  for (let i = 0; i < userNameList?.length; i++) {
+    for (let j = 0; j < reviewList?.length; j++) {
+      if (
+        userNameList[i] === reviewList[j]?.user?.name &&
+        !tempThumbnail?.includes(j)
+      ) {
+        topArray?.push(reviewList[j]);
+        tempThumbnail?.push(j);
+        break;
       }
-      if (i === data.length - 1) {
-        columnsData.push([...temp]);
-      }
-    });
-    return columnsData;
-  } else {
-    let temp = [];
-    for (let i = 0; i < columns; i++) {
-      temp.push([]);
     }
-    return temp;
+  }
+  for (let j = 0; j < reviewList?.length; j++) {
+    if (!tempThumbnail?.includes(j)) {
+      bottomArray?.push(reviewList[j]);
+    }
+  }
+
+  const topLen = topArray?.length;
+  const topby3 = Math.round(topLen / 3);
+  const bottomLen = bottomArray?.length;
+
+  if (topLen && bottomLen) {
+    const bottomby3 = Math.round(topLen / 3);
+    const columnOne = [
+      ...topArray?.slice(0, topby3),
+      ...bottomArray?.slice(0, bottomby3 - 2),
+    ];
+    const columnTwo = [
+      ...topArray?.slice(topby3, topby3 * 2),
+      ...bottomArray?.slice(bottomby3 - 2, bottomby3 * 2 - 4),
+    ];
+    const columnThree = [
+      ...topArray?.slice(topby3 * 2, topLen),
+      ...bottomArray?.slice(bottomby3 * 2 - 4, bottomLen),
+    ];
+    return [columnOne, columnTwo, columnThree];
+  } else {
+    if (topLen) {
+      const columnOne = [...topArray?.slice(0, topby3)];
+      const columnTwo = [...topArray?.slice(topby3, topby3 * 2)];
+      const columnThree = [...topArray?.slice(topby3 * 2, topLen)];
+      return [columnOne, columnTwo, columnThree];
+    }
   }
 };

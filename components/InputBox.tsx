@@ -1,4 +1,6 @@
+import Image from "next/image";
 import React from "react";
+import { error } from "../assets";
 
 interface Props {
   placeholder: string;
@@ -26,10 +28,17 @@ const InputBox = ({
   return (
     <div className="w-full relative">
       <span
-        className={`absolute text-red-600 text-xs -top-3 sm:top-0 left-0 ${
+        className={`absolute text-red-600 text-xs bottom-[-20px] left-0 flex justify-center items-center font-miligramTextMedium ${
           errorText ? "opacity-100" : "opacity-0"
         } `}
       >
+        <Image
+          src={error}
+          alt={error}
+          width={17}
+          height={17}
+          className="mr-1"
+        />
         {errorText}
       </span>
       <input

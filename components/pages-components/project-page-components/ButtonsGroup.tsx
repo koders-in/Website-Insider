@@ -19,7 +19,7 @@ const ButtonsGroup = ({
 }: Props) => {
   return (
     <div
-      className={`flex flex-wrap gap-3 md:gap-7 items-center font-miligramMedium md:pl-4 ${containerStyle}`}
+      className={`flex flex-wrap gap-3 md:gap-6 items-center font-miligramTextMedium font-medium md:pl-4 ${containerStyle}`}
     >
       {buttonsArray.map((item, i) => (
         <Button
@@ -31,7 +31,7 @@ const ButtonsGroup = ({
           hoveLogoStyle="h-[8px] md:w-[18px] md:h-[18px]"
           logoStyle="h-[8px] md:w-[18px] md:h-[18px]"
           isSelect={technologies?.find((elm) => elm === item)}
-          className="border-[1px] sm:border-2 text-[0.8rem] sm:text-[1.1rem] text-white border-main-teal rounded-lg px-2 py-1 sm:px-[0.9rem] sm:py-[0.6rem] hover:bg-main-teal hover:text-black"
+          className="border-[1px] sm:border-2 text-[0.8rem] sm:text-[1.1rem] text-white border-main-lightTeal rounded-lg px-2 py-1 sm:px-[0.5rem] sm:py-[0.6rem] md:hover:bg-main-lightTeal md:hover:text-black"
         />
       ))}
     </div>

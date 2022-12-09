@@ -155,9 +155,12 @@ const DetailsModal = ({
         Skills Required
       </h5>
       <div className="text-white text-[0.85rem] mt-3 flex gap-2 flex-wrap">
-        {viewDetails?.jobs_job_listings[0]?.job?.skills.map((item) => {
+        {viewDetails?.jobs_job_listings[0]?.job?.skills.map((item, i) => {
           return (
-            <div className="font-miligramText400 text-white py-[4px] sm:py-[6px] px-4  sm:px-6 border-2 border-main-teal rounded-lg">
+            <div
+              key={i}
+              className="font-miligramText400 text-white py-[4px] sm:py-[6px] px-4  sm:px-6 border-2 border-main-teal rounded-lg"
+            >
               {item}
             </div>
           );

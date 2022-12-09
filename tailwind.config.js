@@ -153,6 +153,8 @@ module.exports = {
         miligramTextItalic: ["MILIGRAM TEXT ITALIC"],
         miligramTextBold: ["MILIGRAM TEXT BOLD"],
         miligramTextRegular: ["MILIGRAM TEXT REGULAR"],
+        miligramTextBookItalic: ["MILIGRAM TEXT BOOK ITALIC"],
+        miligramThin: ["MILIGRAM THIN"],
       },
       boxShadow: {
         client: "-1px 0px 73px -20px #00a99d",

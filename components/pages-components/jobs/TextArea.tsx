@@ -1,4 +1,6 @@
+import Image from "next/image";
 import React from "react";
+import { error } from "../../../assets";
 
 interface Props {
   placeholder: string;
@@ -10,6 +12,7 @@ interface Props {
   title?: string;
   textareaStyle?: string;
   id?: string;
+  row?: number;
 }
 
 const TextArea = ({
@@ -22,9 +25,10 @@ const TextArea = ({
   onBlur,
   textareaStyle,
   id,
+  row,
 }: Props) => {
   return (
-    <div className=" text-[0.9rem] md:text-[1.2rem] relative  py-4">
+    <div className=" text-[0.9rem] md:text-[1.2rem] relative">
       {title && (
         <div className="text-main-light_white tracking-[1px] sm:tracking-[2px] pb-3 font-miligramLight text-[0.9rem] md:text-[1.2rem] ">
           {title}
@@ -32,10 +36,17 @@ const TextArea = ({
       )}
       {errorText && (
         <span
-          className={`absolute text-red-600 text-xs top-0 left-3${
+          className={`absolute text-red-600 text-xs bottom-[-13.5px] flex justify-center items-center font-miligramTextMedium ${
             errorText ? "opacity-100" : "opacity-0"
           } `}
         >
+          <Image
+            src={error}
+            alt={error}
+            width={17}
+            height={17}
+            className="mr-1"
+          />
           {errorText}
         </span>
       )}
@@ -48,7 +59,7 @@ const TextArea = ({
         }`}
         name={name}
         cols={30}
-        rows={2}
+        rows={row ? row : 4}
         onChange={handleChange}
         value={value}
       ></textarea>

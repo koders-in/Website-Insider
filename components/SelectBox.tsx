@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
-import { aeroDown } from "../assets";
+import { aeroDown, error } from "../assets";
 import Divider from "./Divider";
+import InputBox from "./InputBox";
 
 interface Props {
   placeholder: string;
@@ -14,6 +15,8 @@ interface Props {
   innelStyle?: string;
   dropdownStyle?: string;
   errorText?: string;
+  secondPlaceholder?: string;
+  inputID?: string;
 }
 
 const SelectBox = ({
@@ -26,8 +29,11 @@ const SelectBox = ({
   innelStyle,
   dropdownStyle,
   errorText,
+  secondPlaceholder,
+  inputID,
 }: Props) => {
   const [show, setShow] = useState(false);
+  const [selectedItem, setSelectedItem] = useState("");
 
   useEffect(() => {
     window.onclick = function (event) {
@@ -43,9 +49,34 @@ const SelectBox = ({
         setShow(false);
       }
     };
+
+    try {
+      const elm = document.getElementById(inputID);
+      if (elm) {
+        elm.focus();
+      }
+    } catch (error) {
+      console.log(error);
+    }
   });
 
-  return (
+  const changeField = (e) => {
+    handleSelect({ name: name, value: e.target.value });
+  };
+  return selectedItem === "Other" ? (
+    <>
+      <InputBox
+        id={inputID}
+        onBlur={() => {}}
+        handleChange={changeField}
+        name={name}
+        placeholder={secondPlaceholder}
+        type="text"
+        errorText={errorText}
+        value={value}
+      />
+    </>
+  ) : (
     <div
       onClick={() => setShow(!show)}
       className={`select relative ${
@@ -57,17 +88,26 @@ const SelectBox = ({
       } `}
     >
       <span
-        className={`absolute text-red-600 text-xs -top-6 left-0 ${
+        className={`absolute text-red-600 text-xs bottom-[-23px] left-0 flex justify-center items-center font-miligramTextMedium ${
           errorText ? "opacity-100" : "opacity-0"
         } `}
       >
+        <Image
+          src={error}
+          alt={error}
+          width={17}
+          height={17}
+          className="mr-1"
+        />
         {errorText}
       </span>
+
       <div
         className={`font-miligramLight relative select-label px-1 text-main-light_white bg-transparent border-none outline-none tracking-[1px] sm:tracking-[2px] placeholder:text-main-light_white w-full ${innelStyle}`}
       >
         {value ? value : placeholder}
       </div>
+
       <Image
         src={aeroDown}
         alt="show"
@@ -88,6 +128,11 @@ const SelectBox = ({
             <li
               onClick={() => {
                 setShow(!show);
+                setSelectedItem(item);
+                if (item === "Other") {
+                  handleSelect({ name: name, value: "Other: " });
+                  return;
+                }
                 handleSelect({ name: name, value: item });
               }}
               className="items mx-3 z-30 hover:text-white cursor-pointer hover:bg-gray-600 px-3 py-2 border-b-[1px] border-gray-600"

@@ -108,7 +108,7 @@ const ReadMoreBlog = () => {
         )}
         <div
           className={`text-main-light_white font-miligramTextBook overflow-hidden mt-3 max-h-0 transition-all duration-500 ${
-            showMore ? "max-h-[250px] md:max-h-[230px]" : ""
+            showMore ? "max-h-[280px] md:max-h-[230px]" : ""
           }`}
         >
           Vel cras ipsum commodo, nunc sed posuere mattis tristique massa. Ut

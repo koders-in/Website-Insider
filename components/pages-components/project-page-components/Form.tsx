@@ -16,7 +16,12 @@ interface Form {
 }
 
 interface Props {
-  handleSubmitData: (data: any) => Promise<boolean>;
+  handleSubmitForm: (
+    value: initialState,
+    helper: FormikHelpers<initialState>
+  ) => void;
+  showLoader: boolean;
+  setShowLoader: (data: boolean) => void;
 }
 
 interface initialState {
@@ -43,18 +48,7 @@ const initialValues: initialState = {
   role: "",
 };
 
-const Form = ({ handleSubmitData }: Props) => {
-  const [showLoader, setShowLoader] = useState(false);
-  const handleSubmitForm = async (
-    value: initialState,
-    helper: FormikHelpers<initialState>
-  ) => {
-    setShowLoader(true);
-    const res = await handleSubmitData(value);
-    if (res) helper.resetForm();
-    setShowLoader(false);
-  };
-
+const Form = ({ handleSubmitForm, showLoader, setShowLoader }: Props) => {
   useEffect(() => {
     const elm = document.getElementById("abproject");
     elm.focus();
@@ -139,7 +133,7 @@ const Form = ({ handleSubmitData }: Props) => {
             <InputBox
               type="text"
               value={values.mobile}
-              placeholder="Mobile *"
+              placeholder="Phone Number *"
               name="mobile"
               handleChange={handleChange}
               onBlur={handleBlur}
@@ -176,6 +170,8 @@ const Form = ({ handleSubmitData }: Props) => {
             data-testid="loader"
           />
           <Button
+            disabled={showLoader}
+            styleObj={showLoader ? { pointerEvents: "none" } : {}}
             type="submit"
             OnClick={handleSubmit}
             className="mx-auto text-[0.8rem] xxl:text-[1rem] py-[0.4rem] sm:py-[0.6rem] w-[7.3rem] sm:w-[9.5rem] block mt-16 bg-main-greenOpt-200 font-miligramMedium text-main-lightTeal  rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"

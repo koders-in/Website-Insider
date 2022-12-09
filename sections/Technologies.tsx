@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, Suspense } from "react";
+import dynamic from "next/dynamic";
 const { v4 } = require("uuid");
 import AOS from "aos";
 
@@ -6,7 +7,14 @@ import "aos/dist/aos.css";
 
 import { toolsAndtechLogo } from "../assets";
 import { getRandomInt } from "../helper";
-import { CombCell, GradientText } from "../components";
+
+const CombCell = dynamic(() => import("../components/CombCell"), {
+  suspense: true,
+});
+
+const GradientText = dynamic(() => import("../components/GradientText"), {
+  suspense: true,
+});
 
 let arrOfIds: any = [];
 const Technologies = () => {
@@ -83,11 +91,13 @@ const Technologies = () => {
     <div className="bg-main-secondary overflow-hidden h-[90vh] md:h-[60vh] lg:h-[90vh] xl:h-[90vh] xxl:h-[90vh]  relative flex justify-center items-center">
       <div className="absolute w-full h-full flex justify-center items-center">
         <div className="p-10 z-10 bg-main-secondary w-full mt-4">
-          <GradientText
-            aos="slide-left"
-            className="w-[90%] leading-none mb-3 md:mb-0 md:leading-normal mx-auto sm:w-fit text-[2rem] sm:text-[3rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
-            text="Technologies that make sense"
-          />
+          <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+            <GradientText
+              aos="slide-left"
+              className="w-[90%] leading-none mb-3 md:mb-0 md:leading-normal mx-auto sm:w-fit text-[2.2rem] sm:text-[3rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
+              text="Technologies that make sense"
+            />
+          </Suspense>
           <p
             data-aos="slide-right"
             className="leading-none text-[0.8rem] sm:text-[1.3rem] mx-auto text-center text-main-light_white font-miligramText400 sm:w-[60%]"
@@ -97,25 +107,27 @@ const Technologies = () => {
           </p>
         </div>
       </div>
-      {combStats?.map((item, i) => {
-        const top = 65 * i - 43;
-        return item.map((item2: any, j: any) => {
-          let left = 0;
-          if (i % 2 === 0) left = 76 * j - 30;
-          else left = 76 * j - 68;
-          const ii = v4();
-          arrOfIds.push(ii);
-          return (
-            <CombCell
-              key={i + j}
-              logo={item2.src}
-              x={top.toString()}
-              y={left.toString()}
-              id={ii}
-            />
-          );
-        });
-      })}
+      <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+        {combStats?.map((item, i) => {
+          const top = 65 * i - 43;
+          return item.map((item2: any, j: any) => {
+            let left = 0;
+            if (i % 2 === 0) left = 76 * j - 30;
+            else left = 76 * j - 68;
+            const ii = v4();
+            arrOfIds.push(ii);
+            return (
+              <CombCell
+                key={i + j}
+                logo={item2.src}
+                x={top.toString()}
+                y={left.toString()}
+                id={ii}
+              />
+            );
+          });
+        })}
+      </Suspense>
     </div>
   );
 };

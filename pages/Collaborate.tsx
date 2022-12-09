@@ -2,6 +2,7 @@ import { Formik, FormikHelpers } from "formik";
 import Head from "next/head";
 import React, { useEffect } from "react";
 import {
+  Button,
   Divider,
   Footer,
   GradientText,
@@ -10,6 +11,7 @@ import {
   SelectBox,
 } from "../components";
 import TextArea from "../components/pages-components/jobs/TextArea";
+import { useSetDataOnServer } from "../helper/careerHooks";
 import { collabrationPageSchima } from "../helper/validate";
 
 interface initialState {
@@ -23,6 +25,7 @@ interface initialState {
   jobTitle: string;
   questionOne: string;
   questionTwo: string;
+  hearAboutUS: string;
 }
 
 const initialValues: initialState = {
@@ -36,33 +39,38 @@ const initialValues: initialState = {
   jobTitle: "",
   questionOne: "",
   questionTwo: "",
+  hearAboutUS: "",
 };
 
 const Collabrate = () => {
-  const handleSubmitForm = (
+  const sendData = useSetDataOnServer();
+
+  const handleSubmitForm = async (
     value: initialState,
     helper: FormikHelpers<initialState>
   ) => {
-    const body = `
-    Name:${value.name}
-    Email:${value.email}
-    Mobile No:${value.mobile}
-    Company Name:${value.company}
-    Company Size:${value.companySize}
-    Location:${value.location}
-    Website URL: ${value.websiteURL}
-    Job Title: ${value.jobTitle}\n
-    Q.Describe what your company seeks to benefit from this Collaboration.
-    Ans:- ${value.questionOne}\n
-    Q.Describe what your company will bring to us in this collaboration.
-    Ans:- ${value.questionTwo}\n
-
-    Thank you
-    `;
-    const MAIL_TO = `mailto:info@koders.in?subject=Collabrate Query&body=${encodeURIComponent(
-      body
-    )}`;
-    window.open(MAIL_TO, "_blank");
+    // -----------send data to server------------
+    try {
+      const res = await sendData("collaboration", {
+        email: value.email,
+        phone_number: value.mobile,
+        name: value.name,
+        company_url: value.websiteURL,
+        company_size: value.companySize,
+        company_name: value.company,
+        company_location: value.location,
+        collaborator_job_role: value.jobTitle,
+        collaboration_seeks: value.questionOne,
+        collaboration_brings: value.questionTwo,
+      });
+      if (res.status === 200) {
+        window.alert("Your response has been recorded.");
+      } else {
+        window.alert("Unable to record your response. Try again later.");
+      }
+    } catch (error) {
+      window.alert("Unable to record your response. Try again later.");
+    }
     helper.resetForm();
   };
 
@@ -80,15 +88,14 @@ const Collabrate = () => {
       <div className="pt-28 w-[95%] sm:w-[90%] mx-auto">
         <Divider className="mt-9" />
         <GradientText
-          aos="fade-up"
-          className="text-[1.8rem] sm:text-[2.5rem] md:text-[2.8rem] mx-auto w-fit bg-gradient-to-r from-white to-main-teal font-miligrambold"
+          aos="slide-left"
+          className="w-[90%] leading-none mb-3 md:mb-0 md:leading-normal mx-auto sm:w-fit text-[2rem] sm:text-[2.8rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
           text="Collaborate with us"
         />
-        <Divider className="mt-8" />
-        <h5 className="w-fit mx-auto text-white text-[1.2em] md:text-[1.4em] lg:text-[1.6em] font-miligrambold">
-          Our Passion. Your Solution.
-        </h5>
-        <p className="text-main-light_white my-5 font-miligramText400 text-center w-[90%] sm:w-[80%] md:w-[70%] lg:w-[65%] mx-auto text-[1em] md:text-[1.2em] lg:text-[1.25em]">
+        <p
+          data-aos="slide-right"
+          className="text-[0.8rem] sm:text-[1.3rem] leading-none w-[90%] sm:w-[80%] md:w-[70%] lg:w-[65%] mx-auto text-center text-main-light_white pb-5 mt-2 font-miligramText400"
+        >
           Dummy The interest of developing and creating apps for fun drove
           towards a path of Dummy exploring new Dummy opportunities.
         </p>
@@ -117,10 +124,9 @@ const Collabrate = () => {
                     errorText={errors.name}
                   />
                 </div>
-                {/* <div></div> */}
               </div>
-              <Divider className="mt-4" />
-              <div className="flex gap-4 flex-col lg:flex-row">
+              <Divider className="mt-8 lg:mt-4" />
+              <div className="flex gap-8 lg:gap-4 flex-col lg:flex-row">
                 <div className="w-[100%] lg:w-[50%]">
                   <InputBox
                     onBlur={handleBlur}
@@ -144,8 +150,9 @@ const Collabrate = () => {
                   />
                 </div>
               </div>
-              <Divider className="mt-10" />
-              <div className="flex gap-4 flex-col lg:flex-row">
+
+              <Divider className="mt-14 lg:mt-10" />
+              <div className="flex gap-8 lg:gap-4 flex-col lg:flex-row">
                 <div className="w-[100%] lg:w-[50%]">
                   <InputBox
                     onBlur={handleBlur}
@@ -157,10 +164,10 @@ const Collabrate = () => {
                     value={values.company}
                   />
                 </div>
-                <div className="w-[100%] lg:w-[50%]"></div>
+                <div className="w-[100%] lg:w-[50%]"> </div>
               </div>
-              <Divider className="mt-4" />
-              <div className="flex gap-4 flex-col lg:flex-row">
+              <Divider className=" lg:mt-4" />
+              <div className="flex gap-8 lg:gap-4 flex-col lg:flex-row">
                 <div className="w-[100%] lg:w-[50%]">
                   <SelectBox
                     handleSelect={(obj: any) => {
@@ -186,8 +193,8 @@ const Collabrate = () => {
                   />
                 </div>
               </div>
-              <Divider className="mt-8" />
-              <div className="flex gap-4 flex-col lg:flex-row">
+              <Divider className="mt-8 lg:mt-4" />
+              <div className="flex gap-8 lg:gap-4 flex-col lg:flex-row">
                 <div className="w-[100%] lg:w-[50%]">
                   <InputBox
                     onBlur={handleBlur}
@@ -211,7 +218,7 @@ const Collabrate = () => {
                   />
                 </div>
               </div>
-              <Divider className="h-10" />
+              <Divider className="mt-16" />
               <TextArea
                 handleChange={handleChange}
                 name="questionOne"
@@ -221,7 +228,7 @@ const Collabrate = () => {
                 errorText={errors.questionOne}
                 onBlur={handleBlur}
               />
-              <Divider className="h-4" />
+              <Divider className="mt-8 lg:mt-4" />
               <TextArea
                 handleChange={handleChange}
                 name="questionTwo"
@@ -231,15 +238,29 @@ const Collabrate = () => {
                 errorText={errors.questionTwo}
                 onBlur={handleBlur}
               />
+              <Divider className="mt-8 lg:mt-4" />
+              <div className="w-[100%] lg:w-[50%]">
+                <SelectBox
+                  handleSelect={(obj: any) => {
+                    const { name, value } = obj;
+                    handleChange("hearAboutUS")(value);
+                  }}
+                  name="hearAboutUS"
+                  placeholder="How did you hear about this opportunity? *"
+                  errorText={errors.hearAboutUS}
+                  list={["1-10", "10-20", "20-30", "Other"]}
+                  value={values.hearAboutUS}
+                  inputID="hearAboutUS"
+                />
+              </div>
               <Divider className="h-12" />
-              <button
+              <Button
                 type="submit"
-                onClick={() => handleSubmit()}
-                className="text-[0.8em] font-miligramText400 bg-main-greenOpt-200 border-2 border-main-teal text-main-teal block w-fit mx-auto py-[8px] sm:py-[10px] px-8 rounded-md hover:text-white hover:bg-main-teal"
-              >
-                Submit
-              </button>
-              <Divider className="h-16" />
+                OnClick={handleSubmit}
+                className="mx-auto text-[0.8rem] xxl:text-[1rem] py-[0.4rem] sm:py-[0.6rem] w-[7.3rem] sm:w-[9.5rem] block bg-main-greenOpt-200 font-miligramMedium text-main-lightTeal  rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+                text="Submit"
+              />
+              <Divider className="h-24" />
             </div>
           )}
         </Formik>

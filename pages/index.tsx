@@ -1,21 +1,45 @@
-import React, { useRef } from "react";
+import React, { useRef, Suspense } from "react";
+import dynamic from "next/dynamic";
 import AOS from "aos";
 import Head from "next/head";
 
 import "aos/dist/aos.css";
-
-import { Footer, Navbar } from "../components";
-import {
-  Clients,
-  Hero,
-  Newsletter,
-  Pricing,
-  Technologies,
-  Testmonials,
-  WhyKoders,
-} from "../sections";
 import axios from "axios";
-// import { testMain } from "../helper";
+
+const Footer = dynamic(() => import("../components/Footer"), {
+  suspense: true,
+});
+
+const Navbar = dynamic(() => import("../components/Navbar"), {
+  suspense: true,
+});
+
+const Hero = dynamic(() => import("../sections/Hero"), {
+  suspense: true,
+});
+
+const Clients = dynamic(() => import("../sections/Clients"), {
+  suspense: true,
+});
+
+const Newsletter = dynamic(() => import("../sections/Newsletter"), {
+  suspense: true,
+});
+
+const Pricing = dynamic(() => import("../sections/Pricing"), {
+  suspense: true,
+});
+
+const Technologies = dynamic(() => import("../sections/Technologies"), {
+  suspense: true,
+});
+const Testmonials = dynamic(() => import("../sections/Testmonials"), {
+  suspense: true,
+});
+
+const WhyKoders = dynamic(() => import("../sections/WhyKoders"), {
+  suspense: true,
+});
 
 export default function Home() {
   const isRender = useRef(false);
@@ -48,15 +72,17 @@ export default function Home() {
       <Head>
         <title>Koders</title>
       </Head>
-      <Navbar />
-      <Hero />
-      <WhyKoders />
-      <Clients />
-      <Technologies />
-      <Testmonials />
-      <Pricing />
-      <Newsletter />
-      <Footer />
+      <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+        <Navbar />
+        <Hero />
+        <WhyKoders />
+        <Clients />
+        <Technologies />
+        <Testmonials />
+        <Pricing />
+        <Newsletter />
+        <Footer />
+      </Suspense>
     </div>
   );
 }

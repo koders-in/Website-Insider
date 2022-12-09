@@ -1,6 +1,7 @@
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { handleSlider } from ".";
+import { JobClient } from "./api";
 
 export const useUpdateSlide = () => {
   const [translatePosition, setTranslatePosition] = useState([
@@ -83,4 +84,16 @@ export const useRedirectToPricing = () => {
     }
   };
   return redirectOnPricingSection;
+};
+
+// ------------------send data to server--------------------------
+export const usePostRequestToServer = () => {
+  const setData = async (endpoint: string, payload: Object) => {
+    try {
+      return await JobClient.post(endpoint, { ...payload });
+    } catch (error) {
+      return null;
+    }
+  };
+  return setData;
 };

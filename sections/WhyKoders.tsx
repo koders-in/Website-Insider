@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Suspense } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import AOS from "aos";
 
@@ -6,8 +7,18 @@ import "aos/dist/aos.css";
 
 import { rightAero } from "../assets";
 import { whyWe } from "../helper/constant";
-import { Divider, Info } from "../components";
 import { useUpdateSlide } from "../helper/hook";
+
+const Divider = dynamic(() => import("../components/Divider"), {
+  suspense: true,
+});
+
+const Info = dynamic(
+  () => import("../components/section-comonents/why-koders/Info"),
+  {
+    suspense: true,
+  }
+);
 
 const WhyKoders = () => {
   const handleSliding = useUpdateSlide();
@@ -25,10 +36,12 @@ const WhyKoders = () => {
 
   return (
     <div className="py-16 bg-main-secondary sm:h-auto lg:h-auto xxl:py-[10rem]">
-      <Divider className="mt-5 xl:my-10" />
+      <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+        <Divider className="mt-5 xl:my-10" />
+      </Suspense>
       <h1
         data-aos="fade-up"
-        className="leading-none w-[90%] mx-auto sm:w-full text-[2rem] sm:text-[3rem] text-center font-medium text-white font-miligrambold"
+        className="leading-none font-bold w-[90%] mx-auto sm:w-full text-[2.2rem] sm:text-[3rem] text-center text-white font-miligrambold"
       >
         Why trust&nbsp;
         <span className="bg-gradient-to-r from-white to-main-teal bg-clip-text text-transparent">
@@ -42,21 +55,24 @@ const WhyKoders = () => {
         your business?
       </h1>
 
-      <div className="hidden lg:flex gap-2 mt-16 w-[95%] xxl:w-[90%] mx-auto">
-        {whyWe.map((item, i) => {
-          const css = i < 3 ? " border-r-2" : "";
-          const aos = i === 0 ? "fade-right" : i < 3 ? "fade-up" : "fade-left";
-          return (
-            <Info
-              className={item.class + css}
-              stat={item.state}
-              title={item.title}
-              html={item.html}
-              key={i}
-              aos={aos}
-            />
-          );
-        })}
+      <div className="hidden lg:flex gap-2 mt-16 w-[93%] xxl:w-[90%] mx-auto">
+        <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+          {whyWe.map((item, i) => {
+            const css = i < 3 ? " border-r-2" : "";
+            const aos =
+              i === 0 ? "fade-right" : i < 3 ? "fade-up" : "fade-left";
+            return (
+              <Info
+                key={i}
+                className={item.class + css}
+                stat={item.state}
+                title={item.title}
+                html={item.html}
+                aos={aos}
+              />
+            );
+          })}
+        </Suspense>
       </div>
       <div
         className="flex bg-main-white-500 py-4 md:px-3 rounded-xl w-[90%] lg:hidden relative mt-10 justify-center items-center mx-auto overflow-x-clip h-[300px]"
@@ -87,17 +103,22 @@ const WhyKoders = () => {
           </div>
         )}
         {whyWe.map((item, i) => (
-          <Info
-            className={
-              "text-center absolute w-[230px] md:w-[80%] transition-all duration-500"
-            }
-            stat={item.state}
-            title={item.title}
-            html={item.html}
+          <Suspense
+            fallback={<div className="text-main-teal">Loading...</div>}
             key={i}
-            translateX={handleSliding.translatePosition[i]}
-            isMobile={true}
-          />
+          >
+            <Info
+              className={
+                "text-center absolute w-[230px] md:w-[80%] transition-all duration-500"
+              }
+              stat={item.state}
+              title={item.title}
+              html={item.html}
+              key={i}
+              translateX={handleSliding.translatePosition[i]}
+              isMobile={true}
+            />
+          </Suspense>
         ))}
       </div>
       <div className="flex md:hidden justify-center items-center gap-2 mt-9 md:mt-5">
@@ -112,7 +133,9 @@ const WhyKoders = () => {
           );
         })}
       </div>
-      <Divider className="xl:my-10" />
+      <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+        <Divider className="xl:my-10" />
+      </Suspense>
     </div>
   );
 };

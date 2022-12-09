@@ -28,7 +28,7 @@ const PrivacyPolicy = () => {
       <div className="pb-10 pt-28 w-[95%] sm:w-[90%] mx-auto">
         <GradientText
           aos="fade-up"
-          className="text-[2.2rem] leading-none mb-3 md:mb-0 md:leading-normal  sm:text-[2.5rem] md:text-[2.8rem] mx-auto w-fit bg-gradient-to-r from-white to-main-teal font-miligrambold mt-9"
+          className="w-[100%] mx-auto sm:w-fit text-[2.2rem] leading-none mb-3 md:mb-0 md:leading-normal  sm:text-[2.8rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold mt-9"
           text="Privacy Policy"
         />
         <br />

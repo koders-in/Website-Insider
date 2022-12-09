@@ -15,39 +15,86 @@ import {
 } from "../components";
 import { faq, typeOfProjects } from "../helper/constant";
 import { sendClientDetails } from "../helper/webhook";
+import { FormikHelpers } from "formik";
+import { useSetDataOnServer } from "../helper/careerHooks";
 
 export interface FormState {
   technologies: Array<string>;
 }
 
+interface initialState {
+  aboutProject: string;
+  budget: string;
+  timeline: string;
+  email: string;
+  mobile: string;
+  fName: string;
+  lName: string;
+  company: string;
+  role: string;
+}
 const StartProject = () => {
+  const [showLoader, setShowLoader] = useState(false);
   const [technologies, setTechnologies] = useState<Array<string>>([
     "Web Development",
     "UI/UX",
   ]);
   const [isExpand, setIsExpand] = useState("");
 
+  const sendData = useSetDataOnServer();
+
   const handleExpand = (question: string) => {
     if (isExpand === question) setIsExpand("");
     else setIsExpand(question);
   };
 
-  const handleSubmitData = async (data) => {
-    if (technologies.length === 0) {
-      window.alert("You need to select technologies");
-      return false;
-    } else {
-      try {
-        const res = await sendClientDetails({
-          ...data,
-          technologies: technologies,
-        });
-        return true;
-      } catch (error) {
-        return false;
+  const handleSubmitForm = async (
+    value: initialState,
+    helper: FormikHelpers<initialState>
+  ) => {
+    setShowLoader(true);
+    try {
+      const res = await sendData("project-request", {
+        company_name: value.company,
+        email: value.email,
+        estimated_budget: value.budget,
+        estimated_timeline: value.timeline,
+        first_name: value.fName,
+        last_name: value.lName,
+        person_job_role: value.role,
+        phone_number: value.mobile,
+        project_description: value.aboutProject,
+        project_tags: technologies,
+      });
+      setShowLoader(false);
+      if (res.status === 200) {
+        window.alert("Your response has been recorded.");
+        helper.resetForm();
+      } else {
+        window.alert("Unable to record your response. Try again later.");
       }
-    }
+    } catch (error) {}
+    setShowLoader(false);
+    window.alert("Unable to record your response. Try again later.");
   };
+
+  // const handleSubmitData = async (data) => {
+  //   if (technologies.length === 0) {
+  //     window.alert("You need to pick technologies");
+  //     return false;
+  //   } else {
+  //     try {
+  //       // Send data on discord webhook
+  //       // const res = await sendClientDetails({
+  //       //   ...data,
+  //       //   technologies: technologies,
+  //       // });
+  //       return true;
+  //     } catch (error) {
+  //       return false;
+  //     }
+  //   }
+  // };
 
   const handleClick = (item: string) => {
     let temp: Array<any> = [];
@@ -99,7 +146,7 @@ const StartProject = () => {
           }}
         />
         <Divider className="mt-16" />
-        <Form {...{ handleSubmitData }} />
+        <Form {...{ handleSubmitForm, showLoader, setShowLoader }} />
         <Divider className="mt-12 xxl:mt-16" />
         <GradientText
           aos="fade-up"

@@ -185,8 +185,8 @@ const LandingSection = ({
       </p>
       <Divider className="mt-14" />
 
-      <div className="flex-wrap sm:flex-nowrap justify-center w-[90%] md:w-[75%] lg:w-[65%] xl:w-[60%] mt-6 xxl:mt-14 flex mx-auto gap-8 items-center sm:justify-between">
-        <div className="w-full border-[1.5px] border-main-teal mx-auto rounded-lg overflow-hidden flex">
+      <div className="flex-wrap sm:flex-nowrap justify-center w-[100%] md:w-[75%] lg:w-[65%] xl:w-[60%] mt-6 xxl:mt-14 flex mx-auto gap-5 sm:gap-8 items-center sm:justify-between">
+        <div className="w-full lg:w-[80%] border-[1.5px] border-main-teal mx-auto rounded-lg overflow-hidden flex">
           <div className="flex items-center w-full border-r-[1.5px] border-main-teal">
             <Image src={work} alt="aero" className="ml-5" />
             <input
@@ -209,35 +209,18 @@ const LandingSection = ({
             />
           </div>
         </div>
-        <div className="sm:w-48 flex sm:items-center gap-3">
+        <div className="w-[100%] sm:w-48 flex sm:items-center gap-2">
           <span className="text-white font-miligramText400">Remote</span>
           <Toogler handleToogle={handleToogle} />
         </div>
       </div>
-      <Divider className="h-8" />
+      <Divider className="h-6 sm:h-8" />
       <ButtonsGroup
         containerStyle="w-fit mx-auto"
         buttonsArray={jobTypes}
         handleClick={handleClick}
         technologies={department}
       />
-      {/* <div className="flex w-full lg:w-[90%]  xl:w-[80%] mx-auto flex-wrap gap-2 sm:gap-3 justify-center items-center">
-        {jobTypes.map((item, i) => {
-          return (
-            <button
-              onClick={() => handleClick(item)}
-              className={`border-2 border-main-teal font-miligramText400 px-4 py-1 sm:px-6 sm:py-2 rounded-md hover:text-black hover:bg-main-teal ${
-                department.includes(item)
-                  ? "bg-main-teal text-black"
-                  : "text-white"
-              } `}
-              key={i}
-            >
-              {item}
-            </button>
-          );
-        })}
-      </div> */}
       <Divider className="h-12" />
       <div className=" border-b-2 border-main-teal"></div>
     </div>

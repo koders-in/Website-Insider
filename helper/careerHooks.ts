@@ -6,7 +6,7 @@ export const useFetchDataFromServer = () => {
       const res = await JobClient.get(endpoint);
       console.log(res);
       setJobs(res?.data);
-      return res?.data;
+      return res;
     } catch (error) {
       setJobs(null);
     }

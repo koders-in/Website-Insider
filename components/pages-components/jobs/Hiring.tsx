@@ -9,16 +9,16 @@ const Hiring = () => {
   return (
     <div>
       <div className=" border-b-2 border-main-teal"></div>
-      <Divider className="h-12" />
+      <Divider className="h-24" />
       <GradientText
-        className="w-[90%] sm:w-fit mx-auto text-[1.6rem] sm:text-[2.6rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
+        className="w-[100%] mx-auto sm:w-fit text-[2.2rem] leading-none mb-3 md:mb-0 md:leading-normal  sm:text-[2.8rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
         text="Hiring Process"
       />
-      <Divider className="h-28" />
+      <Divider className="h-16 sm:h-20" />
       <Timeline />
       <Divider className="h-36" />
       <GradientText
-        className="w-[90%] sm:w-fit mx-auto text-[1.6rem] sm:text-[2.6rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
+        className="w-[100%] mx-auto sm:w-fit text-[2.2rem] leading-none mb-3 md:mb-0 md:leading-normal  sm:text-[2.8rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
         text="What we Offer"
       />
       <p
@@ -28,7 +28,7 @@ const Hiring = () => {
         A real visualisation of Dunder-Mifflin with the Gen Z quoting- ‘work to
         live, not live to work’. Gen Z and Millenials vibe with each other
       </p>
-      <div className="w-full sm:w-[70%] flex-wrap gap-5  mx-auto mt-16 flex justify-between ">
+      <div className="w-full sm:w-[70%] flex-wrap gap-5  mx-auto mt-8 sm:mt-16 flex justify-between ">
         {[...offersData[0], ...offersData[1]].map((item, i) => {
           return (
             <Tile

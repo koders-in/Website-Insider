@@ -66,7 +66,7 @@ const Timeline = () => {
       >
         <div
           id="textContainer0"
-          className="text-white whitespace-pre-wrap font-miligramText400 absolute text-[0.9em] opacity-0  md:text-center top-[-10px] left-[-100px] w-[85px] md:w-[137px]  text-right md:top-[-23px] md:left-[-70px]"
+          className="text-white whitespace-pre-wrap font-miligramLight absolute text-[0.9em] opacity-0  md:text-center top-[-10px] left-[-100px] w-[85px] md:w-[137px]  text-right md:top-[-23px] md:left-[-70px]"
         >
           Resume Submission
         </div>
@@ -77,7 +77,7 @@ const Timeline = () => {
       >
         <div
           id="textContainer1"
-          className="text-white font-miligramText400 absolute text-[0.9em] opacity-0 w-[90px] md:w-[117px] top-[-10px] left-[30px]  md:top-[20px] md:left-[-45px]"
+          className="text-white font-miligramLight absolute text-[0.9em] opacity-0 w-[90px] md:w-[117px] top-[-10px] left-[30px]  md:top-[20px] md:left-[-45px]"
         >
           Screening Round
         </div>
@@ -88,7 +88,7 @@ const Timeline = () => {
       >
         <div
           id="textContainer2"
-          className="text-white font-miligramText400 absolute text-[0.9em] opacity-0 top-[-10px] left-[-100px] w-[85px] md:w-[130px]  text-right  md:top-[-23px] md:left-[-65px]"
+          className="text-white font-miligramLight absolute text-[0.9em] opacity-0 top-[-10px] left-[-100px] w-[85px] md:w-[130px]  text-right  md:top-[-23px] md:left-[-65px]"
         >
           Technical Interview
         </div>
@@ -99,7 +99,7 @@ const Timeline = () => {
       >
         <div
           id="textContainer3"
-          className="text-white  font-miligramText400 absolute text-[0.9em] opacity-0 top-[-10px] left-[30px] w-[60px] md:w-[85px]  md:top-[23px] md:left-[-35px]"
+          className="text-white  font-miligramLight absolute text-[0.9em] opacity-0 top-[-10px] left-[30px] w-[60px] md:w-[85px]  md:top-[23px] md:left-[-35px]"
         >
           HR Interview
         </div>

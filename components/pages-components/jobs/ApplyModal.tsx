@@ -70,6 +70,9 @@ interface Props {
   toogleThankModal: () => void;
   experience: string;
   viewDetails: any;
+  title: string;
+  location: string;
+  type: string;
 }
 
 const ApplyModal = ({
@@ -80,6 +83,9 @@ const ApplyModal = ({
   toogleThankModal,
   experience,
   viewDetails,
+  title,
+  location,
+  type,
 }: Props) => {
   const [resume, setResume] = useState<any>(null);
   const [isShowLoader, setIsShowLoader] = useState(false);
@@ -90,7 +96,7 @@ const ApplyModal = ({
     helper: FormikHelpers<initialState>
   ) => {
     if (resume == null) {
-      window.alert("Please upload resume");
+      window.alert("Upload your resume.");
       return;
     }
     setIsShowLoader(true);
@@ -128,14 +134,13 @@ const ApplyModal = ({
         portfolio_url: value?.portfolioURL,
       });
       if (res.status === 200) {
-        // window.alert("Successfully applied!");
         closeModal();
         enableBodyScroll(document);
         toogleThankModal();
       }
       setResume(null);
       setIsShowLoader(false);
-      //   toogleApplyModal();
+      helper.resetForm();
     } catch (error: any) {
       setIsShowLoader(false);
       console.warn(error.message);
@@ -193,16 +198,16 @@ const ApplyModal = ({
               <div className="w-full lg:w-[80%]">
                 <GradientText
                   className="w-fit text-[1.6rem] bg-gradient-to-r from-white to-main-teal font-miligrambold"
-                  text="Fresher UI/UX Designer"
+                  text={title}
                 />
                 <div className="flex text-white flex-wrap gap-2">
                   <div className="flex items-center justify-between text-[0.8rem]">
                     <Image src={locationTeal} alt="" className="mr-2 h-3" />
-                    Dehradun, Uttrakhand
+                    {location}
                   </div>
                   <div className="flex items-center justify-between text-[0.8rem]">
                     <Image src={work} alt="" className="mr-2 h-3" />
-                    Full Time
+                    {type}
                   </div>
                   <div className="flex items-center justify-between text-[0.8rem]">
                     <Image src={experienceIcon} alt="" className="mr-2 h-3" />
@@ -286,7 +291,7 @@ const ApplyModal = ({
               <div className="w-full md:w-[50%]">
                 <InputBox
                   type="text"
-                  placeholder="Mobile *"
+                  placeholder="Phone Number *"
                   name="mobile"
                   onBlur={handleBlur}
                   value={values.mobile}

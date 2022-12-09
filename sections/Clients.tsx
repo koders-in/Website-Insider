@@ -1,12 +1,28 @@
-import React from "react";
+import React, { Suspense } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
 import AOS from "aos";
 
 import "aos/dist/aos.css";
 
 import { sleep } from "../helper";
-import { Divider, GradientText } from "../components";
-import { img1, img2, img3, projectOne } from "../assets";
+import {
+  img1,
+  img2,
+  img3,
+  indianArmy,
+  instaride,
+  projectOne,
+  theBest,
+} from "../assets";
+
+const Divider = dynamic(() => import("../components/Divider"), {
+  suspense: true,
+});
+
+const GradientText = dynamic(() => import("../components/GradientText"), {
+  suspense: true,
+});
 
 let TEMP_COUNT = 0;
 
@@ -20,14 +36,14 @@ const Clients = () => {
     const updateAnimation = async () => {
       setLeftOutStyle("");
       setRightOutStyle("");
-      if (TEMP_COUNT < 3) {
+      if (TEMP_COUNT < 2) {
         TEMP_COUNT = TEMP_COUNT + 1;
       } else TEMP_COUNT = 0;
       setCount(TEMP_COUNT);
-      await sleep(2000);
+      await sleep(1000 * 4);
       setLeftOutStyle("animate-leftOut");
       setRightOutStyle("animate-rightOut");
-      await sleep(100);
+      await sleep(1000);
       updateAnimation();
     };
     if (!isRunning.current) {
@@ -46,35 +62,37 @@ const Clients = () => {
 
   return (
     <div className="py-16 overflow-hidden xxl:py-[10rem]">
-      <Divider className="mt-5 xl:my-10" />
-      <GradientText
-        text="Trusted by the"
-        className="text-[2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[3rem] w-fit mx-auto text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
-      />
+      <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+        <Divider className="mt-5 xl:my-10" />
+        <GradientText
+          text="Trusted by the"
+          className="text-[2.2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[3rem] w-fit mx-auto text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
+        />
+      </Suspense>
       {count === 0 && (
         <h2
-          className={`text-center text-[2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[3rem]  font-miligrambold text-white font-medium animate-leftIn ${leftOutStyle}`}
+          className={`text-center text-[2.2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[3rem]  font-miligrambold text-white font-medium animate-leftIn ${leftOutStyle}`}
         >
-          Google
+          The Best
         </h2>
       )}
       {count === 1 && (
         <h2
-          className={`text-center text-[2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[3rem]  font-miligrambold text-white font-medium animate-rightIn ${rightOutStyle}`}
+          className={`text-center text-[2.2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[3rem]  font-miligrambold text-white font-medium animate-rightIn ${rightOutStyle}`}
         >
-          Microsoft
+          Germany Government
         </h2>
       )}
       {count === 2 && (
         <h2
-          className={`text-center text-[2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[3rem]  font-miligrambold text-white font-medium animate-leftIn ${leftOutStyle}`}
+          className={`text-center text-[2.2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[3rem]  font-miligrambold text-white font-medium animate-leftIn ${leftOutStyle}`}
         >
-          Facebook
+          Indian Army
         </h2>
       )}
       {count === 3 && (
         <h2
-          className={`text-center text-[2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[3rem]  font-miligrambold text-white font-medium animate-rightIn ${rightOutStyle}`}
+          className={`text-center text-[2.2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[3rem]  font-miligrambold text-white font-medium animate-rightIn ${rightOutStyle}`}
         >
           Amazon
         </h2>
@@ -84,19 +102,21 @@ const Clients = () => {
         className="w-[85%] h-[43vh] xl:h-[60vh] overflow-hidden sm:w-[55%] mt-10 mx-auto shadow-client shadow-main-teal border-2 border-main-light_white"
       >
         {count === 0 && (
-          <Image src={projectOne} alt="project" className="w-full h-full" />
+          <Image src={theBest} alt="project" className="w-full h-full" />
         )}
         {count === 1 && (
-          <Image src={img1} alt="project" className="w-full h-full" />
+          <Image src={instaride} alt="project" className="w-full h-full" />
         )}
         {count === 2 && (
-          <Image src={img2} alt="project" className="w-full h-full" />
+          <Image src={indianArmy} alt="project" className="w-full h-full" />
         )}
         {count === 3 && (
           <Image src={img3} alt="project" className="w-full h-full" />
         )}
       </div>
-      <Divider className="xl:my-10" />
+      <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+        <Divider className="xl:my-10" />
+      </Suspense>
     </div>
   );
 };

@@ -59,52 +59,58 @@ const about = () => {
       </Head>
       <Navbar />
       <div className="w-[90%] mx-auto">
-        <Divider className="h-20 lg:h-40" />
-        <div className="z-10 text-center text-[1em] sm:text-[1.2em] md:text-[2.2em] text-white w-[80%] md:w-[70%] lg:w-[60%]  mx-auto leading-none relative">
-          <Image
-            src={quoteUp}
-            alt={quoteUp}
-            className="absolute top-[-32%] left-[-8%] w-[10%] z-0"
-          />
-          <Image
-            src={quoteDown}
-            alt={quoteDown}
-            className="absolute bottom-[-30%] right-[-8%] w-[10%] z-0"
-          />
-          <p className="relative z-20 px-3">
-            To build the best and invent a better tomorrow with the help of
-            Technology.
-          </p>
+        <div className="sm:h-[90vh]">
+          <Divider className=" h-[15vh] md:h-[14vh]" />
+          <div className="z-10 text-center text-[1.8em] md:text-[2.15em] text-white w-[100%] sm:w-[80%] lg:w-[80%] xl:w-[65%]  mx-auto leading-none relative">
+            <p className="relative z-20 px-3 font-miligramTextBold">
+              <Image
+                src={quoteUp}
+                alt={quoteUp}
+                className="mb-3 top-[-40px] left-[-10px] md:top-[-68%] md:left-[-6%] w-[13%] md:w-[10%] xxl:w-[5%] z-0"
+              />
+              To build the best and invent a better tomorrow with the help of
+              Technology.
+              <Image
+                src={quoteDown}
+                alt={quoteDown}
+                className="block mt-3 ml-auto bottom-[-20px] right-[-20px] md:bottom-[-65%] md:right-[-5%] w-[13%] md:w-[10%] xxl:w-[5%] z-0"
+              />
+            </p>
+          </div>
+          <Divider className="h-14 sm:h-20" />
+          <div className="text-center text-[1.25em] text-main-light_white w-[90%] sm:w-[55%] md:w-[45%] lg:w-[58%] mx-auto leading-none font-miligramTextMedium font-medium">
+            At Koders we build softwares with new dimensions by utilizing the
+            full potential of our team to bring out the best for our customers.
+          </div>
         </div>
-        <Divider className="h-14 sm:h-28" />
-        <div className="text-center text-[0.8em] sm:text-[1.3em] text-main-light_white w-[90%] sm:w-[55%] md:w-[45%] lg:w-[60%] mx-auto leading-none font-miligramText400">
-          At Koders we build softwares with new dimensions by utilizing the full
-          potential of our team to bring out the best for our customers.
-        </div>
-        <Divider className="h-24 sm:h-28" />
+        <Divider className="h-20 sm:h-0" />
         <GradientText
-          className="text-[1.2rem] leading-none mb-3 md:mb-0 md:leading-normal  sm:text-[1.5rem] md:text-[1.8rem] w-fit mx-auto text-center bg-gradient-to-r from-white to-main-teal"
+          aos="slide-right"
+          className="w-[90%] sm:w-fit mx-auto leading-none mb-3 md:mb-0 md:leading-normal text-[2rem] sm:text-[2.8rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
           text="MEET KODERS"
         />
-        <p className="text-main-light_white my-5 leading-none text-center w-[90%] sm:w-[60%] mx-auto text-[0.8rem] sm:text-[1.3rem] font-miligramText400">
+        <p
+          data-aos="slide-left"
+          className="mt-2 text-[0.8rem] sm:text-[1.3rem] w-[80%] sm:w-[55%] mx-auto text-center text-main-light_white pb-2 font-miligramText400 leading-none"
+        >
           We are a group of like-minded people who are striving their best to
           provide real world solutions to your ideas. We are here to bring your
           dreams to reality by providing high quality service.
         </p>
-        <Divider className="h-10" />
+        <Divider className="h-20" />
         <Image
           src={founder}
           alt={founder}
-          width={600}
-          height={600}
+          width={700}
+          height={700}
           className="mx-auto"
         />
-        <p className="text-center font-miligramTextItalic text-main-light_white text-[0.8em] sm:text-[1.2rem] py-2">
+        <p className="text-center font-miligramTextBookItalic font-light text-main-light_white text-[0.8em] sm:text-[1.2rem] py-2">
           Our founders Kartikey and Shaloni
         </p>
         <Divider className="h-10" />
         <GradientText
-          className="text-[1.2rem] leading-none mb-3 md:mb-0 md:leading-normal  sm:text-[1.5rem] md:text-[1.8rem] mt-10 w-fit mx-auto text-center bg-gradient-to-r from-white to-main-teal"
+          className="text-[2rem] font-miligrambold leading-none mb-3 md:mb-0 md:leading-normal sm:text-[2.8rem] mt-10 w-fit mx-auto text-center bg-gradient-to-r from-white to-main-teal"
           text="Our Mission"
         />
         <Divider className="h-12" />
@@ -118,7 +124,7 @@ const about = () => {
               height={100}
             />
             <Divider className="h-5" />
-            <p className="text-main-light_white_eight text-center w-[80%] mx-auto text-[0.8rem] md:text-[1.3rem] leading-none font-miligramTextBold">
+            <p className="text-main-light_white_eight text-center w-[80%] mx-auto text-[1.25em] md:text-[1.3rem] leading-none font-miligramTextBold">
               Our mission is to Kreate simple solutions for complex problems.
             </p>
           </div>
@@ -132,25 +138,29 @@ const about = () => {
               height={100}
             />
             <Divider className="h-5" />
-            <p className="text-main-light_white_eight text-center w-[80%] mx-auto text-[0.8rem] md:text-[1.3rem] leading-none font-miligramTextBold">
+            <p className="text-main-light_white_eight text-center w-[80%] mx-auto text-[1.25em] md:text-[1.3rem] leading-none font-miligramTextBold">
               The aim is to foster technological innovation and to embellish the
               lives of people.
             </p>
           </div>
         </div>
-        <Divider className="h-16" />
+        <Divider className="h-32" />
         <GradientText
-          className="text-[1.2rem] leading-none md:mb-0 md:leading-normal  sm:text-[1.5rem] md:text-[1.8rem] mt-10 w-fit mx-auto text-center bg-gradient-to-r from-white to-main-teal"
+          aos="slide-right"
+          className="w-[90%] sm:w-fit mx-auto leading-none mb-3 md:mb-0 md:leading-normal text-[2rem] sm:text-[2.8rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
           text="Work and Grow with us"
         />
         <p
           id="map"
-          className="text-main-light_white mt-7 mb-2 leading-none text-center w-[90%] sm:w-[42%] mx-auto text-[0.8rem] sm:text-[1.3rem] font-miligramText400"
+          data-aos="slide-left"
+          className="mt-2 text-[0.8rem] sm:text-[1.3rem] w-[80%] sm:w-[45%] mx-auto text-center text-main-light_white pb-2 font-miligramText400 leading-none"
         >
           Launched in 2018, Koders has worked with clients in more than 10
           Countries
         </p>
+        <Divider className="h-12 sm:h-0" />
         <WorldMap />
+        <Divider className="h-12 sm:h-0" />
         <div className="w-[90%] justify-center mx-auto flex flex-wrap">
           {stats.map((item, i) => {
             return (
@@ -158,11 +168,11 @@ const about = () => {
                 key={i}
                 className={`flex w-[50%] sm:w-[49%] md:w-[32%] flex-col justify-center items-center px-4 py-3 md:px-3 md:py-5 lg:px-8 xl:px-16 lg:py-10 text-white ${item.classes}`}
               >
-                <div className="flex text-[3rem] justify-center items-center font-miligramLight">
+                <div className="flex text-[2rem] sm:text-[3rem] justify-center items-center font-miligramLight">
                   {item.stat}
                   <span className="text-[2rem] text-white">+</span>
                 </div>
-                <p className="text-main-light_white w-[9rem] text-center text-[1.6rem] font-miligramLight">
+                <p className="text-white w-[9rem] text-center text-[1rem] sm:text-[1.6rem] font-miligramLight font-extralight">
                   {item.title}
                 </p>
               </div>

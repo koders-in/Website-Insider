@@ -29,6 +29,7 @@ import {
 import TextArea from "../components/pages-components/jobs/TextArea";
 import { contactValidationSchima } from "../helper/validate";
 import { socialMediaHandles, socialMediaTealIcons } from "../helper/constant";
+import axios from "axios";
 
 interface initialValues {
   name: string;
@@ -53,7 +54,11 @@ const Contact = () => {
     value: initialValues,
     helper: FormikHelpers<initialValues>
   ) => {
-    console.log(value);
+    const body = `Hi there,\n\n${value.message}\n\nThank you,\n${value.name}`;
+    const MAIL_TO = `mailto:info@koders.in?subject=Query via Website&body=${encodeURIComponent(
+      body
+    )}`;
+    window.open(MAIL_TO, "_blank");
     helper.resetForm();
   };
 
@@ -181,7 +186,7 @@ const Contact = () => {
                     onBlur={handleBlur}
                     value={values.name}
                   />
-                  <Divider className="mt-2" />
+                  <Divider className="mt-8 sm:mt-2" />
                   <InputBox
                     handleChange={handleChange}
                     name="email"
@@ -191,7 +196,7 @@ const Contact = () => {
                     onBlur={handleBlur}
                     value={values.email}
                   />
-                  <Divider className="mt-2" />
+                  <Divider className="mt-6" />
                   <TextArea
                     handleChange={handleChange}
                     name="message"
@@ -204,7 +209,7 @@ const Contact = () => {
                   <Button
                     type="submit"
                     OnClick={handleSubmit}
-                    className="mx-auto sm:mx-0 text-[0.8rem] xxl:text-[1rem] py-[0.4rem] sm:py-[0.6rem] w-[7.3rem] sm:w-[9.5rem] block mt-8 bg-main-greenOpt-200 font-miligramMedium text-main-lightTeal  rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+                    className="mt-8 text-[0.8rem] xxl:text-[1rem] py-[0.4rem] sm:py-[0.6rem] w-[7.3rem] sm:w-[9.5rem] block bg-main-greenOpt-200 font-miligramMedium text-main-lightTeal  rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
                     text="Submit"
                   />
                 </>

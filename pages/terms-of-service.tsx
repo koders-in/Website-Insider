@@ -20,16 +20,16 @@ const TermsOfServic = () => {
         <title>Terms of Services</title>
       </Head>
       <Navbar />
-      <div className="py-28 w-[95%] sm:w-[90%] mx-auto">
+      <div className="py-28 w-[90%] mx-auto">
         <GradientText
           aos="fade-up"
-          className="text-[1.8rem] sm:text-[2.5rem] md:text-[2.8rem] mx-auto w-fit bg-gradient-to-r from-white to-main-teal font-miligrambold mt-9"
+          className="w-[100%] mx-auto sm:w-fit text-[2.2rem] leading-none mb-3 md:mb-0 md:leading-normal  sm:text-[2.8rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold mt-9"
           text="Terms Of Services"
         />
         <Divider className="mt-8" />
         <h3
           data-aos="fade-up"
-          className="font-miligrambold text-[2rem] text-white"
+          className="font-miligrambold text-[1.5rem] sm:text-[2rem] text-white"
         >
           Acceptance of Terms
         </h3>
@@ -57,7 +57,7 @@ const TermsOfServic = () => {
         <Divider className="mt-10" />
         <h3
           data-aos="fade-up"
-          className="font-miligrambold text-[2rem] text-white"
+          className="font-miligrambold text-[1.5rem] sm:text-[2rem] text-white"
         >
           Conditions to use
         </h3>
@@ -73,7 +73,7 @@ const TermsOfServic = () => {
         <Divider className="mt-10" />
         <h3
           data-aos="fade-up"
-          className="font-miligrambold text-[2rem] text-white"
+          className="font-miligrambold text-[1.5rem] sm:text-[2rem] text-white"
         >
           License Grants
         </h3>
@@ -91,7 +91,7 @@ const TermsOfServic = () => {
         <Divider className="mt-10" />
         <h3
           data-aos="fade-up"
-          className="font-miligrambold text-[2rem] text-white"
+          className="font-miligrambold text-[1.5rem] sm:text-[2rem] text-white"
         >
           Lawful and / or prohibited use of the website
         </h3>
@@ -120,7 +120,7 @@ const TermsOfServic = () => {
         <Divider className="mt-10" />
         <h3
           data-aos="fade-up"
-          className="font-miligrambold text-[2rem] text-white"
+          className="font-miligrambold text-[1.5rem] sm:text-[2rem] text-white"
         >
           Termination
         </h3>
@@ -149,7 +149,7 @@ const TermsOfServic = () => {
         <Divider className="mt-10" />
         <h3
           data-aos="fade-up"
-          className="font-miligrambold text-[2rem] text-white"
+          className="font-miligrambold text-[1.5rem] sm:text-[2rem] text-white"
         >
           Trademark Information
         </h3>
@@ -171,7 +171,7 @@ const TermsOfServic = () => {
         <Divider className="mt-10" />
         <h3
           data-aos="fade-up"
-          className="font-miligrambold text-[2rem] text-white"
+          className="font-miligrambold text-[1.5rem] sm:text-[2rem] text-white"
         >
           Notices
         </h3>
@@ -190,7 +190,7 @@ const TermsOfServic = () => {
         <Divider className="mt-10" />
         <h3
           data-aos="fade-up"
-          className="font-miligrambold text-[2rem] text-white"
+          className="font-miligrambold text-[1.5rem] sm:text-[2rem] text-white"
         >
           Legal disputes
         </h3>
@@ -212,7 +212,7 @@ const TermsOfServic = () => {
 
         <div data-aos="fade-up" className="ml-10">
           <Divider className="mt-6" />
-          <h4 className="font-miligrambold text-[1.6rem] text-white">
+          <h4 className="font-miligrambold text-[1.3rem]  sm:text-[1.6rem] text-white">
             Agreement to Arbitrate
           </h4>
           <p className="font-miligramLight text-[1.05rem] text-main-white-700 text-justify">
@@ -230,7 +230,7 @@ const TermsOfServic = () => {
           </p>
 
           <Divider className="mt-6" />
-          <h4 className="font-miligrambold text-[1.6rem] text-white">
+          <h4 className="font-miligrambold text-[1.3rem]  sm:text-[1.6rem] text-white">
             Costs of Arbitration
           </h4>
           <p className="font-miligramLight text-[1.05rem] text-main-white-700 text-justify">
@@ -239,7 +239,7 @@ const TermsOfServic = () => {
             agreement.
           </p>
           <Divider className="mt-6" />
-          <h4 className="font-miligrambold text-[1.6rem] text-white">
+          <h4 className="font-miligrambold text-[1.3rem]  sm:text-[1.6rem] text-white">
             Judicial Forum for Legal Disputes
           </h4>
           <p className="font-miligramLight text-[1.05rem] text-main-white-700 text-justify">
@@ -259,12 +259,12 @@ const TermsOfServic = () => {
         <Divider className="mt-10" />
         <h3
           data-aos="fade-up"
-          className="font-miligrambold text-[2rem] text-white"
+          className="font-miligrambold text-[1.5rem] sm:text-[2rem] text-white"
         >
           Acceptance of Terms
         </h3>
         <div data-aos="fade-up" className="ml-10">
-          <h4 className="font-miligrambold text-[1.6rem] text-white mt-6">
+          <h4 className="font-miligrambold text-[1.3rem]  sm:text-[1.6rem] text-white mt-6">
             Entire Agreement
           </h4>
           <p className="font-miligramLight text-[1.05rem] text-main-white-700 text-justify">
@@ -277,14 +277,16 @@ const TermsOfServic = () => {
             third-party software, or the services in a manner other than as
             governed by this TOS.
           </p>
-          <h4 className="font-miligrambold text-[1.6rem] text-white">Waiver</h4>
+          <h4 className="font-miligrambold text-[1.3rem]  sm:text-[1.6rem] text-white">
+            Waiver
+          </h4>
           <p className="font-miligramLight text-[1.05rem] text-main-white-700 text-justify">
             The failure or delay of Koders to exercise or enforce any right or
             provision of this TOS shall not constitute a waiver of such right or
             provision. No oral waiver, amendment, or modification shall be
             effective under any circumstance whatsoever.
           </p>
-          <h4 className="font-miligrambold text-[1.6rem] text-white">
+          <h4 className="font-miligrambold text-[1.3rem]  sm:text-[1.6rem] text-white">
             Severability
           </h4>
           <p className="font-miligramLight text-[1.05rem] text-main-white-700 text-justify">

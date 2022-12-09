@@ -125,7 +125,7 @@ const Footer = () => {
                   <p
                     id={item.title}
                     key={i}
-                    className="relative group text-[0.9rem] md:text-[1.2rem] text-main-light_white mt-3 cursor-pointer font-miligramText400  hover:text-white w-fit"
+                    className="relative group text-[0.9rem] md:text-[1.2rem] text-main-light_white mt-3 cursor-pointer font-miligramTextBook font-light  hover:text-white w-fit"
                     onClick={() => {
                       handleNavigteTo(item);
                     }}

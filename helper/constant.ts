@@ -1,7 +1,10 @@
 import {
   benefits,
+  bolt,
+  camelJuno,
   discordTeal,
   discordWhiteLogo,
+  germanGov,
   githubLogo,
   githubTeal,
   githubWhite,
@@ -39,22 +42,22 @@ export const testmonialLogo: Array<TestmonialData> = [
     title: "Indian Army",
   },
   {
-    logo: googleLogo,
+    logo: germanGov,
     description:
-      "“We choose Koders because of their ability to adapt with feedback, ultimatley leading to the best experience for our members and team.” Google Logo",
-    title: "Google",
+      "“Very good team. Not only from a technical perspective but also from the human perspective. Helped us a lot even in difficult situations!”",
+    title: "German govt",
   },
   {
-    logo: instaLogo,
+    logo: camelJuno,
     description:
-      "“We choose Koders because of their ability to adapt with feedback, ultimatley leading to the best experience for our members and team.” Insta Logo",
-    title: "Instagram",
+      "“My second project with Koders and again, a smooth and professional experience. I always appreciate their patience with my requirements and how understanding they are. Thanks guys and here's to more future work together 🍻”",
+    title: "Camel Juno",
   },
   {
-    logo: githubLogo,
+    logo: bolt,
     description:
-      "“We choose Koders because of their ability to adapt with feedback, ultimatley leading to the best experience for our members and team.” Github Logo",
-    title: "Github",
+      "“Amazing quality product delivered. The team is very professional. Even though it was a one of the most complicated projects, the results was great. Would definitely want to continue working with this team.”",
+    title: "Bolt",
   },
 ];
 
@@ -92,7 +95,11 @@ export const footerButtons = [
   {
     title: "Support",
     buttons: [
-      { title: "Join Discord", route: "https://dsc.gg/koders", target: true },
+      {
+        title: "Join Discord",
+        route: "https://discord.gg/jjTgNpWFvM",
+        target: true,
+      },
       { title: "Contact Us", route: "/contact", target: false },
       { title: "GitHub", route: "https://github.com/koders-in", target: true },
     ],
@@ -496,28 +503,28 @@ export const discordReviews = [
 export const dataOfMapAnimation = [
   {
     line: "line-1",
-    location: "location-7",
-    base: "base-7",
-  },
-  {
-    line: "line-2",
-    location: "location-4",
-    base: "base-4",
-  },
-  {
-    line: "line-3",
     location: "location-1",
     base: "base-1",
   },
   {
-    line: "line-4",
+    line: "line-2",
     location: "location-2",
     base: "base-2",
   },
   {
+    line: "line-3",
+    location: "location-3",
+    base: "base-3",
+  },
+  {
+    line: "line-4",
+    location: "location-4",
+    base: "base-4",
+  },
+  {
     line: "line-5",
-    location: "location-9",
-    base: "base-9",
+    location: "location-5",
+    base: "base-5",
   },
   {
     line: "line-6",
@@ -526,48 +533,48 @@ export const dataOfMapAnimation = [
   },
   {
     line: "line-7",
-    location: "location-8",
-    base: "base-8",
-  },
-  {
-    line: "line-8",
-    location: "location-3",
-    base: "base-3",
-  },
-  {
-    line: "line-9",
-    location: "location-10",
-    base: "base-10",
-  },
-  {
-    line: "line-10",
-    location: "location-5",
-    base: "base-5",
-  },
-  {
-    line: "line-11",
     location: "location-7",
     base: "base-7",
   },
   {
+    line: "line-8",
+    location: "location-8",
+    base: "base-8",
+  },
+  {
+    line: "line-9",
+    location: "location-9",
+    base: "base-9",
+  },
+  {
+    line: "line-10",
+    location: "location-10",
+    base: "base-10",
+  },
+  {
+    line: "line-11",
+    location: "location-11",
+    base: "base-11",
+  },
+  {
     line: "line-12",
-    location: "location-4",
-    base: "base-4",
+    location: "location-12",
+    base: "base-12",
   },
   {
     line: "line-13",
-    location: "location-1",
-    base: "base-1",
+    location: "location-13",
+    base: "base-13",
   },
   {
     line: "line-14",
-    location: "location-2",
-    base: "base-2",
+    location: "location-14",
+    base: "base-14",
   },
   {
     line: "line-15",
-    location: "location-2",
-    base: "base-2",
+    location: "location-15",
+    base: "base-15",
   },
 ];
 
@@ -627,4 +634,29 @@ export const socialMediaTealIcons = [
   githubTeal,
   twitterTeal,
   discordTeal,
+];
+
+export const listOfBestReviewsUsers = [
+  "Camel Juno",
+  "Enz",
+  "Camel Juno",
+  "GeorgePitlock",
+  "Tarun",
+  "David Jung",
+  "Nikhil Yadav",
+  "Bolt",
+  "Neo",
+  "Neo",
+  "Troy",
+  "Kelly Morena",
+  "ow ow",
+  "MONISHA YADAV",
+  "Bilrd",
+  "Ak456",
+  "SupremeCook",
+  "DiegoTod",
+  "Rohit bisht",
+  "Akash Das",
+  "Isha Ahuja",
+  "Bolt",
 ];

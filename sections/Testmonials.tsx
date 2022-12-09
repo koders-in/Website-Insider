@@ -1,15 +1,29 @@
+import React, { useEffect, useState, useRef, Suspense } from "react";
+import dynamic from "next/dynamic";
 import Image from "next/image";
-import Router, { useRouter } from "next/router";
-import React, { useEffect, useState, useRef } from "react";
-// import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
-import { PropagateLoader } from "react-spinners";
+import { useRouter } from "next/router";
 import AOS from "aos";
 
 import "aos/dist/aos.css";
 
 import { sleep } from "../helper";
 import { TestmonialData, testmonialLogo } from "../helper/constant";
-import { Button, Divider, GradientText, ReviewBox } from "../components";
+
+const Button = dynamic(() => import("../components/Button"), {
+  suspense: true,
+});
+
+const Divider = dynamic(() => import("../components/Divider"), {
+  suspense: true,
+});
+
+const GradientText = dynamic(() => import("../components/GradientText"), {
+  suspense: true,
+});
+
+const ReviewBox = dynamic(() => import("../components/ReviewBox"), {
+  suspense: true,
+});
 
 let timer = 0;
 let index = 0;
@@ -54,12 +68,14 @@ const Testmonials = () => {
 
   return (
     <div className="py-16 xxl:py-[10rem] relative">
-      <Divider className="mt-5 xl:my-10" />
-      <GradientText
-        aos="slide-right"
-        className="w-[90%]  leading-none mb-3 md:mb-0 md:leading-normal mx-auto sm:w-fit text-[2rem] sm:text-[3rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
-        text="Don’t just take our word for it."
-      />
+      <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+        <Divider className="mt-5 xl:my-10" />
+        <GradientText
+          aos="slide-right"
+          className="w-[90%]  leading-none mb-3 md:mb-0 md:leading-normal mx-auto sm:w-fit text-[2.2rem] sm:text-[3rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
+          text="Don’t just take our word for it."
+        />
+      </Suspense>
       <p
         data-aos="slide-left"
         className="text-[0.8rem] leading-none m-1 sm:text-[1.3rem] w-[80%] sm:w-1/2   mx-auto text-center text-main-light_white font-miligramText400"
@@ -67,16 +83,19 @@ const Testmonials = () => {
         Take a look at what a few of our most successful customers have to say
         about Koders.
       </p>
-      <Divider className="mt-7 md:mt-0" />
-      <ReviewBox
-        {...{
-          logo: currentItem?.logo,
-          description: currentItem?.description,
-          title: currentItem?.title,
-          animationStyle: "animate-fadeOut",
-          testmonialLogo: testmonialLogo,
-        }}
-      />
+      <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+        <Divider className="mt-7 md:mt-0" />
+        <ReviewBox
+          {...{
+            logo: currentItem?.logo,
+            description: currentItem?.description,
+            title: currentItem?.title,
+            animationStyle: "animate-fadeOut",
+            testmonialLogo: testmonialLogo,
+          }}
+        />
+      </Suspense>
+
       <div className="w-[60%] sm:w-1/4 mx-auto flex items-center gap-4  sm:gap-7 xxl:gap-9 justify-center  mt-7 sm:mt-0">
         {testmonialLogo.map((item, i) => (
           <div
@@ -86,7 +105,7 @@ const Testmonials = () => {
               setCurrentItem(item);
             }}
             key={i}
-            className="w-8 sm:w-12 rounded-full cursor-pointer"
+            className="w-[20px] overflow-hidden mt-3 sm:w-12 rounded-full cursor-pointer"
             style={
               currentItem?.title === item.title
                 ? { boxShadow: "0px 0px 11px 2px #38D8CC" }
@@ -99,17 +118,19 @@ const Testmonials = () => {
               style={{
                 opacity: item.title === currentItem?.title ? "0,.5" : 1,
               }}
-              className={`w-full h-full`}
+              className={`w-full h-full rounded-full`}
             />
           </div>
         ))}
       </div>
-      <Button
-        OnClick={() => handleNavigate("reviews/#footer")}
-        text="Read More"
-        className="text-[0.8rem] xxl:text-[1rem] mx-auto block mt-8 sm:mt-12 bg-main-greenOpt-200 font-miligramMedium text-main-lightTeal py-[8px] sm:py-[10px] px-6 sm:px-9 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
-      />
-      <Divider className="xl:my-10" />
+      <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+        <Button
+          OnClick={() => handleNavigate("reviews/#footer")}
+          text="Read More"
+          className="text-[0.8rem] xxl:text-[1rem] mx-auto block mt-8 sm:mt-12 bg-main-greenOpt-200 font-miligramMedium text-main-lightTeal py-[8px] sm:py-[10px] px-6 sm:px-9 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+        />
+        <Divider className="xl:my-10" />
+      </Suspense>
     </div>
   );
 };

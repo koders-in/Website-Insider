@@ -6,6 +6,7 @@ import Fuse from "fuse.js";
 import "aos/dist/aos.css";
 
 import {
+  AnimatedBorder,
   Divider,
   Footer,
   Hiring,
@@ -105,7 +106,7 @@ const Jobs = () => {
         <title>Jobs</title>
       </Head>
       <Navbar />
-      <div className="py-28 w-[85%] mx-auto">
+      <div className="py-28 w-[90%] sm:w-[85%] mx-auto">
         <Divider className="mt-9" />
         <LandingSection
           {...{
@@ -120,16 +121,17 @@ const Jobs = () => {
         <Divider className="mt-12" />
         {noMatch ? (
           <div className="text-main-teal w-fit mx-auto text-[1.5em]">
-            No Match Found
+            No Match Found.
           </div>
         ) : pinJobs === null ? (
-          <div className="w-fit mx-auto text-white">
-            Something went wrong.
+          <div className="w-fit mx-auto text-white font-miligramTextBook">
+            Unable to fetch job listings.
             <button
               onClick={handleTryAgain}
-              className="block w-fit mx-auto cursor-pointer text-main-teal"
+              className="block w-fit mx-auto cursor-pointer text-main-teal group relative"
             >
               Try Again
+              <AnimatedBorder />
             </button>
           </div>
         ) : pinJobs === false ? (

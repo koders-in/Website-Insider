@@ -13,7 +13,7 @@ const TestmonialCard = ({ title, logo, description, rating, link }: Props) => {
   return (
     <div
       onClick={() => window.open(link, "_blank")}
-      className="border-2 border-main-teal rounded-lg p-5 bg-main-secondary mt-5 cursor-pointer"
+      className="border-2 border-main-teal rounded-md p-5 bg-main-secondary mt-5 cursor-pointer"
     >
       <div className="flex items-center mb-4">
         <Image

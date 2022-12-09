@@ -19,22 +19,57 @@ const Job = ({ experience, location, title, type, id }: ObjectOfJob) => {
   const fetchData = useFetchDataFromServer();
 
   const toogleDetailModal = async () => {
-    setShowModal((p) => {
-      return {
-        ...p,
-        viewDetails: !p.viewDetails,
-      };
-    });
-    if (viewDetails === null || viewDetails === undefined)
-      fetchData(`open-job-listings/${id}`, setViewDetails);
+    try {
+      if (viewDetails === null || viewDetails === undefined) {
+        const res = await fetchData(`open-job-listings/${id}`, setViewDetails);
+        if (res?.status === 200) {
+          setShowModal((p) => {
+            return {
+              ...p,
+              viewDetails: !p.viewDetails,
+            };
+          });
+        } else {
+          window.alert("Unable to fetch the job details. Try again later.");
+        }
+      } else {
+        setShowModal((p) => {
+          return {
+            ...p,
+            viewDetails: !p.viewDetails,
+          };
+        });
+      }
+    } catch (error) {
+      window.alert("Unable to fetch the job details. Try again later.");
+    }
   };
-  const toogleApplyModal = () => {
-    setShowModal((p) => {
-      return {
-        ...p,
-        apply: !p.apply,
-      };
-    });
+
+  const toogleApplyModal = async () => {
+    try {
+      if (viewDetails === null || viewDetails === undefined) {
+        const res = await fetchData(`open-job-listings/${id}`, setViewDetails);
+        if (res?.status === 200) {
+          setShowModal((p) => {
+            return {
+              ...p,
+              apply: !p.apply,
+            };
+          });
+        } else {
+          window.alert("Something went wrong. Try again later.");
+        }
+      } else {
+        setShowModal((p) => {
+          return {
+            ...p,
+            apply: !p.apply,
+          };
+        });
+      }
+    } catch (error) {
+      window.alert("Something went wrong. Try again later.");
+    }
   };
 
   const toogleThankModal = () => {
@@ -104,6 +139,9 @@ const Job = ({ experience, location, title, type, id }: ObjectOfJob) => {
           toogleApplyModal,
           toogleThankModal,
           viewDetails,
+          title,
+          location,
+          type,
         }}
       />
       <ThankModal {...{ isShow: showModal.thank, toogleThankModal }} />
