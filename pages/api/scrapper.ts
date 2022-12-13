@@ -102,11 +102,15 @@ async function getLocalPlaceReviews() {
       } else {
         browser = await puppeteer.launch({
           ...commonProps,
+          executablePath:
+            "node_modules/chromium/lib/chromium/chrome-win/chrome.exe",
         });
       }
     } else {
       browser = await puppeteer.launch({
         ...commonProps,
+        executablePath:
+          "node_modules/chromium/lib/chromium/chrome-win/chrome.exe",
       });
     }
 
