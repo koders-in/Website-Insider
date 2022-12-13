@@ -107,7 +107,7 @@ const about = () => {
           dreams to reality by providing high quality service.
         </p>
         <Divider className="h-10 sm:h-20" />
-        {/* <Image
+        <Image
           src={founder}
           alt={founder}
           width={700}
@@ -116,8 +116,8 @@ const about = () => {
         />
         <p className="text-center font-miligramTextBookItalic font-light text-main-light_white text-[0.8em] sm:text-[1.2rem] py-2">
           Our founders Kartikey and Shaloni
-        </p> */}
-        <OurFamily />
+        </p>
+        {/* <OurFamily /> */}
         <Divider className="h-10" />
         <GradientText
           className="text-[2rem] font-miligrambold leading-none mb-3 md:mb-0 md:leading-normal sm:text-[2.8rem] mt-10 w-fit mx-auto text-center bg-gradient-to-r from-white to-main-teal"
