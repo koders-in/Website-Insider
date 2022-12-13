@@ -24,7 +24,6 @@
     "next-optimized-images": "^2.6.2",
     "nodemailer": "^6.8.0",
     "npm": "^8.19.3",
-    "os": "^0.1.2",
     "puppeteer": "^19.2.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
