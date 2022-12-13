@@ -83,13 +83,25 @@ async function fillPlaceInfo(page) {
 }
 
 async function getLocalPlaceReviews() {
+  const commonProps = {
+    headless: true,
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  };
+
   try {
-    const browser = await puppeteer.launch({
-      headless: true,
-      executablePath:
-        "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
-      args: ["--no-sandbox", "--disable-setuid-sandbox"],
-    });
+    const isDev = process.env.NODE_ENV === "development";
+    let browser: any;
+    if (isDev) {
+      browser = await puppeteer.launch({
+        ...commonProps,
+        executablePath:
+          "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+      });
+    } else {
+      browser = await puppeteer.launch({
+        ...commonProps,
+      });
+    }
 
     const page = await browser.newPage();
 
@@ -98,7 +110,7 @@ async function getLocalPlaceReviews() {
     await page.waitForSelector(".DUwDvf");
 
     const placeInfo = await fillPlaceInfo(page);
-    await page.click(".DkEaL");
+    await page.click(".F7nice");
     await page.waitForTimeout(2000);
     await page.waitForSelector(".W1neJ");
     await scrollPage(

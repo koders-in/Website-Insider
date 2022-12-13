@@ -13,6 +13,7 @@ module.exports = {
           teal: "#00A99D",
           lightBg: "#151823",
           light_white: "rgba(255, 255, 255, 0.5)",
+          light_white_eight: "rgba(255, 255, 255, 0.8)",
           whiteVar1: "#D9D9D9",
           greenOpt: {
             200: "rgba(0, 169, 157, 0.2)",
@@ -22,7 +23,10 @@ module.exports = {
             1000: "#7289DA",
           },
           black: {
+            extraLight: "rgba(0,0,0,0)",
+            400: "rgba(0,0,0,0.4)",
             700: "rgb(10,10,10,0.7)",
+            dark: "rgba(0,0,0,1)",
           },
           white: {
             500: "rgba(255, 255, 255, 0.05)",
@@ -149,6 +153,11 @@ module.exports = {
         miligramText400: ["MILIGRAM TEXT NORMAL"],
         miligramTextBook: ["MILIGRAM TEXT BOOK"],
         miligramTextMedium: ["MILIGRAM TEXT MEDIUM"],
+        miligramTextItalic: ["MILIGRAM TEXT ITALIC"],
+        miligramTextBold: ["MILIGRAM TEXT BOLD"],
+        miligramTextRegular: ["MILIGRAM TEXT REGULAR"],
+        miligramTextBookItalic: ["MILIGRAM TEXT BOOK ITALIC"],
+        miligramThin: ["MILIGRAM THIN"],
       },
       boxShadow: {
         client: "-1px 0px 73px -20px #00a99d",

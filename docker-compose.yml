@@ -1,0 +1,42 @@
+version: "3.6"
+services:
+  postgres:
+    image: postgres:14.6
+    container_name: postgres
+    restart: always
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DBNAME=koders
+      - POSTGRES_USER=koders
+      - POSTGRES_PASSWORD=koders
+      - ALLOW_IP_RANGE=0.0.0.0/0
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    restart: always
+    depends_on:
+      - postgres
+    ports:
+      - 5050:80
+    ## you can change pgAdmin default username/password with below environment variables
+    environment:
+      PGADMIN_DEFAULT_EMAIL: docker@koders.in
+      PGADMIN_DEFAULT_PASSWORD: koders
+  graphql-engine:
+    image: hasura/graphql-engine
+    container_name: hasura
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    restart: always
+    environment:
+      HASURA_GRAPHQL_DATABASE_URL: postgres://postgres:5432/koders?user=koders&password=koders
+      HASURA_GRAPHQL_ENABLE_CONSOLE: "true" # set to "false" to disable console
+      HASURA_GRAPHQL_DEV_MODE: "true"
+      HASURA_GRAPHQL_ENABLED_LOG_TYPES: startup, http-log, webhook-log, websocket-log, query-log
+      ## uncomment next line to set an admin secret
+      # HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
+volumes:
+  db_data:

@@ -22,7 +22,7 @@ const MainCard = () => {
         className="w-full lg:w-[32%] mt-2 sm:mt-0 relative pb-14 lg:pb-0"
       >
         <h1
-          onClick={() => handleNavigate(`${currentPath}/ReadMoreBlog`)}
+          onClick={() => handleNavigate(`${currentPath}/read-more-blog`)}
           className="text-white text-[1.4rem] leading-[1.4rem] mt-2  cursor-pointer font-miligrambold"
         >
           Hacking Humans is easier than hacking Computers
@@ -45,7 +45,7 @@ const MainCard = () => {
           After jeopardizing NASA and the US Military, he was sentenced to
           prison for 70...
           <button
-            onClick={() => handleNavigate(`${currentPath}/ReadMoreBlog`)}
+            onClick={() => handleNavigate(`${currentPath}/read-more-blog`)}
             className="border-b-[1px] text-[1rem] border-transparent hover:border-main-lightTeal font-miligramTextBook hover:font-miligramTextMedium text-main-lightTeal cursor-pointer leading-[1rem]"
           >
             Read More

@@ -12,7 +12,7 @@ export { default as SelectBox } from "./SelectBox";
 export { default as ReviewBox } from "./ReviewBox";
 export { default as GradientText } from "./GradientText";
 export { default as TestmonialCard } from "./TestmonialCard";
-export { default as AnimatedBorder } from "./TestmonialCard";
+export { default as AnimatedBorder } from "./AnimatedBorder";
 export { default as Loader } from "./Loader";
 
 // ********** ---| PAGES COMPONENTS |--- *********
@@ -24,9 +24,14 @@ export { default as Form } from "./pages-components/project-page-components/Form
 export { default as ButtonsGroup } from "./pages-components/project-page-components/ButtonsGroup";
 // JOB PAGE COMPONENTS
 export { default as Job } from "./pages-components/jobs/Job";
+export { default as Hiring } from "./pages-components/jobs/Hiring";
 export { default as JobModal } from "./pages-components/jobs/Modal";
+export { default as Timeline } from "./pages-components/jobs/Timeline";
 export { default as JobAlert } from "./pages-components/jobs/JobAlert";
 export { default as LandingSection } from "./pages-components/jobs/LandingSection";
+// ABOUT PAGE COMPONENTS
+export { default as WorldMap } from "./pages-components/about/WorldMap";
+export { default as OurFamily } from "./pages-components/about/OurFamily";
 
 // ********** ---| SECTIONS COMPONENTS |--- *********
 // WHY KODERS SECTION COMPONENTS

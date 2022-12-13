@@ -23,13 +23,13 @@ const Card = ({ className }: { className?: string }) => {
         className="w-full msm:w-[25%] sm:w-full"
       />
       <div className="w-full msm:w-[75%] sm:w-full">
-        <span className=" text-main-light_white block sm:hidden  font-miligramMedium text-[11px]">
+        <span className=" text-main-light_white block sm:hidden  font-miligramMedium text-[0.8rem]">
           SEP 6, 2022
         </span>
         <Divider className="hidden sm:block mt-6" />
         <h1
-          onClick={() => handleNavigate(`${currentPath}/ReadMoreBlog`)}
-          className="text-white font-miligrambold text-[12px] sm:text-[1.3rem] leading-none cursor-pointer"
+          onClick={() => handleNavigate(`${currentPath}/read-more-blog`)}
+          className="text-white font-miligrambold text-[1rem] sm:text-[1.3rem] leading-none cursor-pointer"
         >
           What to know before taking your business online?
         </h1>
@@ -45,7 +45,7 @@ const Card = ({ className }: { className?: string }) => {
             create a loyal customer base.A website consists of web pages which
             are easy to share and most browsers have a...
             <button
-              onClick={() => handleNavigate(`${currentPath}/ReadMoreBlog`)}
+              onClick={() => handleNavigate(`${currentPath}/read-more-blog`)}
               className="border-b-2 border-transparent hover:border-main-lightTeal text-main-lightTeal cursor-pointer text-[1rem] leading-none font-miligramTextBook hover:font-miligramTextMedium"
             >
               Read More

@@ -1,41 +1,184 @@
 import React, { useState } from "react";
 import Image from "next/image";
+import Fuse from "fuse.js";
 
 import Divider from "../../Divider";
-import SelectBox from "../../SelectBox";
 import GradientText from "../../GradientText";
-import { search, work } from "../../../assets";
+import { crossTeal, search, work } from "../../../assets";
+import Toogler from "../../Toogler";
+import { jobTypes } from "../../../helper/constant";
+import ButtonsGroup from "../project-page-components/ButtonsGroup";
 
 interface Props {
-  filterDetaile: any;
-  setFilterDetaile: (data: any) => void;
+  setPinJobs: (data: any) => void;
+  pinJobs: any;
+  tempData: any;
+  setNoMatch: (data: boolean) => void;
+  department: Array<string>;
+  setDepartment: (data: any) => void;
 }
-const LandingSection = ({ filterDetaile, setFilterDetaile }: Props) => {
-  const [isHover, setIsHover] = useState(false);
-  const handleChange = (e: any) => {
-    const { name, value } = e.target;
-    setFilterDetaile((p) => {
-      return {
-        ...p,
-        [name]: value,
-      };
-    });
+const LandingSection = ({
+  pinJobs,
+  setPinJobs,
+  setNoMatch,
+  tempData,
+  department,
+  setDepartment,
+}: Props) => {
+  const [isRemote, setIsRemote] = useState(true);
+  const [searchValue, setSearchValue] = useState("");
+
+  const handleChange = async (e: any) => {
+    const { value } = e.target;
+    setSearchValue(value);
+    if (!value) {
+      setPinJobs(tempData);
+      setNoMatch(false);
+      return;
+    }
+    if (tempData?.length) {
+      const fuse = new Fuse(tempData, {
+        // location: 0,
+        // shouldSort: true,
+        minMatchCharLength: value.length - 1,
+        keys: ["job.title"],
+      });
+      let pattern = value;
+      const res: any = fuse.search(pattern);
+      if (res?.length === 0) {
+        setPinJobs([]);
+        setNoMatch(true);
+        return;
+      }
+      if (res?.length) {
+        setNoMatch(false);
+        const temp = res?.map(({ item }) => {
+          return item;
+        });
+        setPinJobs(temp);
+      }
+    }
   };
-  const handleSelect = (data: any) => {
-    const { name, value } = data;
-    setFilterDetaile((p) => {
-      return {
-        ...p,
-        [name]: value,
-      };
-    });
+
+  const handleToogle = (data: any) => {
+    setIsRemote(data);
+    if (tempData?.length) {
+      const fuse = new Fuse(tempData, {
+        location: 0,
+        shouldSort: true,
+        keys: ["location"],
+      });
+      if (!data) {
+        const res: any = fuse.search("Remote");
+        if (res?.length === 0) {
+          setPinJobs([]);
+          setNoMatch(true);
+          return;
+        }
+        if (res?.length) {
+          setNoMatch(false);
+          const temp = res?.map(({ item }) => {
+            return item;
+          });
+          setPinJobs(temp);
+        }
+      } else {
+        setNoMatch(false);
+        setPinJobs(tempData);
+      }
+    }
   };
+
+  const handleClick = (item: string) => {
+    if (department.includes(item)) {
+      if (item === "All") {
+        setDepartment(["All"]);
+        setNoMatch(false);
+        setPinJobs(tempData);
+        return;
+      }
+
+      const updateedDep = department.filter((temp) => temp !== item);
+      if (updateedDep.length === 0) {
+        setDepartment(["All"]);
+        setNoMatch(false);
+        setPinJobs(tempData);
+        return;
+      }
+      setDepartment((p) => updateedDep);
+      let filteredJobs = [];
+      updateedDep.forEach((item) => {
+        const tempJobs = getFilteredData(tempData, ["job.department"], item);
+        filteredJobs = [...filteredJobs, ...tempJobs];
+      });
+      if (filteredJobs.length <= 0) {
+        setNoMatch(true);
+      } else {
+        setNoMatch(false);
+      }
+      setPinJobs(filteredJobs);
+    } else {
+      if (department.length >= 4 || item === "All") {
+        setDepartment(["All"]);
+        setNoMatch(false);
+        setPinJobs(tempData);
+        return;
+      }
+      const updateedDep = [
+        ...department.filter((temp) => temp !== "All"),
+        item,
+      ];
+      setDepartment((p) => updateedDep);
+
+      let filteredJobs = [];
+      updateedDep.forEach((item) => {
+        const tempJobs = getFilteredData(tempData, ["job.department"], item);
+        filteredJobs = [...filteredJobs, ...tempJobs];
+      });
+      if (filteredJobs.length <= 0) {
+        setNoMatch(true);
+      } else {
+        setNoMatch(false);
+      }
+      setPinJobs(filteredJobs);
+    }
+  };
+
+  const getFilteredData = (
+    list: Array<any>,
+    keys: Array<string>,
+    pattern: string
+  ) => {
+    try {
+      const fuse = new Fuse(list, {
+        minMatchCharLength: pattern.length - 1,
+        keys: keys,
+      });
+      const res: any = fuse.search(pattern);
+      if (res.length) {
+        return res?.map(({ item }) => {
+          return item;
+        });
+      } else return [];
+    } catch (error) {
+      return [];
+    }
+  };
+
+  const handleClickOnSearch = () => {
+    if (searchValue) {
+      setSearchValue("");
+      setNoMatch(false);
+      setPinJobs(tempData);
+    } else return;
+  };
+
   return (
     <div className="">
       <GradientText
         aos="slide-left"
         text="Work at Koders"
-        className="w-[90%] mx-auto sm:w-fit text-[2.2rem] leading-none mb-3 md:mb-0 md:leading-normal  sm:text-[2.8rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
+        className="w-[100%] mx-auto sm:w-fit text-[2.2rem] leading-none mb-3 md:mb-0 md:leading-normal  sm:text-[2.8rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
       />
       <p
         data-aos="slide-right"
@@ -44,56 +187,46 @@ const LandingSection = ({ filterDetaile, setFilterDetaile }: Props) => {
         At Koders we build softwares with new dimensions by utilizing the full
         potential of our team to bring out the best for our customers.
       </p>
-      <Divider className="mt-8" />
-      <div className="w-[90%] sm:w-1/2 md:w-[60%] lg:w-[40%] xl:w-[35%] border-[1.5px] border-main-teal mx-auto rounded-lg overflow-hidden flex mt-6 xxl:mt-14">
-        <div className="flex items-center w-full border-r-[1.5px] border-main-teal">
-          <Image src={work} alt="aero" className="ml-5" />
-          <input
-            type="text"
-            className="w-full px-4 py-1 outline-none border-none text-main-light_white placeholder:tracking-[2px] bg-transparent placeholder:text-main-light_white lett font-miligramMedium"
-            placeholder="Job Title"
-            name="jobTitle"
-            onChange={handleChange}
-            value={filterDetaile?.jobTitle}
-          />
+      <Divider className="mt-14" />
+
+      <div className="flex-wrap sm:flex-nowrap justify-center w-[100%] md:w-[75%] lg:w-[65%] xl:w-[60%] mt-6 xxl:mt-14 flex mx-auto gap-5 sm:gap-8 items-center sm:justify-between">
+        <div className="w-full lg:w-[80%] border-[1.5px] border-main-teal mx-auto rounded-lg overflow-hidden flex">
+          <div className="flex items-center w-full border-r-[1.5px] border-main-teal">
+            <Image src={work} alt="aero" className="ml-5" />
+            <input
+              type="text"
+              className="w-full px-4 py-1 outline-none border-none text-main-light_white placeholder:tracking-[2px] bg-transparent placeholder:text-main-light_white lett font-miligramTextBook"
+              placeholder="Job Title"
+              name="jobTitle"
+              onChange={handleChange}
+              value={searchValue}
+            />
+          </div>
+          <div
+            onClick={handleClickOnSearch}
+            className="w-14 h-10 bg-main-greenOpt-200 flex justify-center items-center p-4 cursor-pointer"
+          >
+            <Image
+              src={searchValue ? crossTeal : search}
+              alt="aero"
+              className=""
+            />
+          </div>
         </div>
-        <div
-          className="w-14 h-10 bg-main-greenOpt-200 flex justify-center items-center p-4 cursor-pointer"
-          onMouseEnter={() => setIsHover(true)}
-          onMouseLeave={() => setIsHover(false)}
-        >
-          <Image
-            src={search}
-            alt="aero"
-            className={`${isHover ? "scale-110" : "scale-90"}`}
-          />
+        <div className="w-[100%] sm:w-48 flex sm:items-center gap-2">
+          <span className="text-white font-miligramText400">Remote</span>
+          <Toogler handleToogle={handleToogle} />
         </div>
       </div>
-      <div className="w-[90%] flex-wrap md:flex-nowrap md:w-[60%] lg:w-[40%] xl:w-[35%]  mx-auto gap-3 mt-8 flex items-center justify-between text-main-light_white">
-        <span className="text-[0.9rem] w-full block text-center text-main-filter md:inline md:w-[20%] mr-3 font-miligramMedium">
-          FILTER BY:
-        </span>
-        <SelectBox
-          handleSelect={handleSelect}
-          list={["UK", "UP", "BR", "HR", "MP", "RJ"]}
-          name="location"
-          placeholder="Location"
-          value={filterDetaile?.location}
-          innelStyle="p-0"
-          mainStyle="font-miligramTextMedium cursor-pointer bg-main-secondary w-full md:w-[40%] rounded-xl px-2 text-[0.9rem] z-30 flex items-center justify-between relative py-[3px]  text-main-filterDropDown"
-          dropdownStyle="font-miligramTextMedium w-full z-50 rounded-md absolute top-8 left-0 transition-all duration-500 bg-main-secondary text-main-light_white overflow-hidden"
-        />
-        <SelectBox
-          handleSelect={handleSelect}
-          list={["A", "B", "C", "D"]}
-          name="categories"
-          placeholder="Categories"
-          value={filterDetaile?.categories}
-          innelStyle="p-0"
-          mainStyle="font-miligramTextMedium cursor-pointer bg-main-secondary w-full md:w-[40%] rounded-xl px-2 text-[0.9rem] z-30 flex items-center justify-between relative py-[3px] text-main-filterDropDown"
-          dropdownStyle="font-miligramTextMedium w-full z-50 rounded-md absolute top-8 left-0 transition-all duration-500 bg-main-secondary text-main-light_white overflow-hidden"
-        />
-      </div>
+      <Divider className="h-6 sm:h-8" />
+      <ButtonsGroup
+        containerStyle="w-fit mx-auto"
+        buttonsArray={jobTypes}
+        handleClick={handleClick}
+        technologies={department}
+      />
+      <Divider className="h-12" />
+      <div className=" border-b-2 border-main-teal"></div>
     </div>
   );
 };

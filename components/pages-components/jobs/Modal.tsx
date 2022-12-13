@@ -12,6 +12,11 @@ interface Props {
   handleClick: () => void;
   isButtonHide?: boolean;
   showLoader?: boolean;
+  location?: string;
+  type?: string;
+  experience?: string;
+  duration?: string;
+  title?: string;
 }
 
 const Modal = ({
@@ -20,6 +25,11 @@ const Modal = ({
   children,
   isButtonHide = false,
   showLoader = false,
+  location,
+  type,
+  experience,
+  duration,
+  title,
 }: Props) => {
   return (
     <div
@@ -31,7 +41,7 @@ const Modal = ({
     >
       <div
         onClick={(e) => e.stopPropagation()}
-        className="w-[95vw] lg:w-[60vw] relative h-fit bg-main-secondary py-7 px-6 lg:py-16 lg:px-10 border-2 border-main-teal rounded-xl mt-[12%]"
+        className="w-[95vw] lg:w-[65vw] relative h-[95vh] overflow-scroll bg-main-secondary py-7 px-6 lg:py-16 lg:px-10 border-2 border-main-teal rounded-xl mt-[12%]"
       >
         {/* ------- Loader-------- */}
         {showLoader && (
@@ -39,8 +49,6 @@ const Modal = ({
             <FadeLoader
               color="#00A99D"
               loading={showLoader}
-              // cssOverride={override}
-              // size={100}
               aria-label="Loading Spinner"
               data-testid="loader"
             />
@@ -59,21 +67,26 @@ const Modal = ({
               <div className="w-full lg:w-[80%]">
                 <GradientText
                   className="w-fit text-[1.6rem] bg-gradient-to-r from-white to-main-teal font-miligrambold"
-                  text="Fresher UI/UX Designer"
+                  text={title}
                 />
-                <div className="flex text-white">
-                  <div className="flex items-center justify-between text-[0.8rem] mr-3">
+                <div className="flex text-white flex-wrap gap-2">
+                  <div className="flex items-center justify-between text-[0.8rem]">
                     <Image src={locationTeal} alt="" className="mr-2 h-3" />
-                    Dehradun, Uttrakhand
+                    {location}
                   </div>
                   <div className="flex items-center justify-between text-[0.8rem]">
                     <Image src={work} alt="" className="mr-2 h-3" />
-                    Full Time
+                    {type}
+                  </div>
+                  <div className="flex items-center justify-between text-[0.8rem]">
+                    <Image src={work} alt="" className="mr-2 h-3" />
+                    {experience}
+                  </div>
+                  <div className="flex items-center justify-between text-[0.8rem]">
+                    <Image src={work} alt="" className="mr-2 h-3" />
+                    {duration}
                   </div>
                 </div>
-                <p className="text-[0.8rem] text-main-whiteVar1">
-                  Posted 2 weeks ago
-                </p>
               </div>
               <div className="w-full mt-7 lg:mt-0 lg:w-[20%]">
                 <Button

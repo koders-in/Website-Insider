@@ -26,7 +26,7 @@ const Info = ({
     <div
       data-aos={aos}
       data-aos-anchor-placement="top-center"
-      className={`${className} w-full md:w-1/4`}
+      className={`${className} w-full md:w-1/2`}
       style={
         isMobile
           ? {
@@ -38,14 +38,17 @@ const Info = ({
       }
     >
       <GradientText
-        className="text-[10rem] leading-none xl:text-[14rem] text-center xl:leading-[14rem] bg-gradient-to-r from-white via-main-lightTeal to-main-teal font-battambangMedium"
+        className="text-[10rem] leading-none xl:text-[12.5rem] text-center xl:leading-[12.5rem] bg-gradient-to-r from-white via-main-lightTeal to-main-teal font-battambangMedium font-normal"
         text={stat}
       />
-      <p className="text-center text-white text-[1.5rem] leading-none xl:text-[1.8rem] my-1 lg:mt-5  font-miligramMedium">
+      <p className="text-center text-white text-[1.5rem] leading-none xl:text-[1.7rem] my-1 lg:mt-5  font-miligrambold font-bold">
         {title}
       </p>
       <Divider className="mt-3 md:hidden" />
-      <div className="mt-2" dangerouslySetInnerHTML={{ __html: html }}></div>
+      <div
+        className="mt-2 xl:mt-5 font-miligramText400 font-medium text-[1.03rem] md:text-[1.15rem] text-main-light_white"
+        dangerouslySetInnerHTML={{ __html: html }}
+      ></div>
     </div>
   );
 };

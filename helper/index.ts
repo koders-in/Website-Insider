@@ -1,3 +1,7 @@
+import { listOfPrefferedUserReviewList } from "./constant";
+import { getReviewList } from "./scrapper";
+import { emailValidation } from "./validate";
+
 /**
  * This function stop the flow of code for the given time.
  * @param time Take time as mili seconds, like:- 1000
@@ -22,8 +26,8 @@ export const handleSlider = (
 ) => {
   const pricing = document.getElementById(id);
 
-  pricing.addEventListener("touchstart", handleTouchStart, false);
-  pricing.addEventListener("touchmove", handleTouchMove, false);
+  pricing.addEventListener("touchstart", handleTouchStart, { passive: true });
+  pricing.addEventListener("touchmove", handleTouchMove, { passive: true });
 
   let xDown: any = null;
   let yDown: any = null;
@@ -124,4 +128,82 @@ export const disableScroll = () => {
 // Enable Scrolling
 export const enableScroll = () => {
   window.onscroll = function () {};
+};
+
+let running = null;
+
+export const testMain = async () => {
+  if (!running) {
+    running = true;
+    // getReviewList();
+    console.log("testMain");
+    running = setInterval(() => {
+      console.log("testMain", running);
+      // getReviewList();
+    }, 5000);
+  }
+};
+
+// ------------------Validate email----------------------
+export const isEmailValid = async (email: string) => {
+  const res = await emailValidation.isValid({
+    email,
+  });
+  return res;
+};
+
+// ------------------Short Array on the bases of list----------------------
+
+export const shortReviewArray = (
+  reviewList: Array<any>,
+  userNameList: Array<string>
+) => {
+  let topArray = [];
+  let bottomArray = [];
+  let tempThumbnail = [];
+  for (let i = 0; i < userNameList?.length; i++) {
+    for (let j = 0; j < reviewList?.length; j++) {
+      if (
+        userNameList[i] === reviewList[j]?.user?.name &&
+        !tempThumbnail?.includes(j)
+      ) {
+        topArray?.push(reviewList[j]);
+        tempThumbnail?.push(j);
+        break;
+      }
+    }
+  }
+  for (let j = 0; j < reviewList?.length; j++) {
+    if (!tempThumbnail?.includes(j)) {
+      bottomArray?.push(reviewList[j]);
+    }
+  }
+
+  const topLen = topArray?.length;
+  const topby3 = Math.round(topLen / 3);
+  const bottomLen = bottomArray?.length;
+
+  if (topLen && bottomLen) {
+    const bottomby3 = Math.round(topLen / 3);
+    const columnOne = [
+      ...topArray?.slice(0, topby3),
+      ...bottomArray?.slice(0, bottomby3 - 2),
+    ];
+    const columnTwo = [
+      ...topArray?.slice(topby3, topby3 * 2),
+      ...bottomArray?.slice(bottomby3 - 2, bottomby3 * 2 - 4),
+    ];
+    const columnThree = [
+      ...topArray?.slice(topby3 * 2, topLen),
+      ...bottomArray?.slice(bottomby3 * 2 - 4, bottomLen),
+    ];
+    return [columnOne, columnTwo, columnThree];
+  } else {
+    if (topLen) {
+      const columnOne = [...topArray?.slice(0, topby3)];
+      const columnTwo = [...topArray?.slice(topby3, topby3 * 2)];
+      const columnThree = [...topArray?.slice(topby3 * 2, topLen)];
+      return [columnOne, columnTwo, columnThree];
+    }
+  }
 };

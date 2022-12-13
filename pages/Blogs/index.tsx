@@ -13,6 +13,28 @@ import {
   Navbar,
 } from "../../components";
 
+const body = `INSTRUCTIONS FOR SUBMISSION:\n
+1. Attach your blog as a Word document.\n
+2. Attach a supporting Cover Image for your blog.\n
+3. Provide a blog summary and some suitable tags for your blog (e.g. Machine Learning, UI/UX, etc.).\n
+4. You may use the template given below to draft a submission mail.\n
+5. Delete any unnecessary text in this email (like these instrcution) \n\n
+Dear Team Koders,
+\n\n
+I am excited to submit my blog post for your consideration. Attached to this email, you will find my blog post titled "[Your Blog Title]" in a Word document along with a suitable cover image.
+\n\n
+[Your Blog Summary]
+\n\n
+I believe that your readers would find this information useful and would appreciate the opportunity to share it with them. Please let me know if you are interested in publishing my blog post on your website. I am available to make any necessary edits or revisions to ensure that the post meets your editorial standards.
+\n\n
+Thank you for considering my request.
+\n\n
+Best regards,\n
+[Your Name]`;
+const MAIL_TO = `mailto:info@koders.in?subject=Request to Publish My Blog Post&body=${encodeURIComponent(
+  body
+)}`;
+
 const Blog = () => {
   React.useEffect(() => {
     window.scrollTo({
@@ -45,7 +67,7 @@ const Blog = () => {
             <Card key={item} />
           ))}
         </div>
-        <Divider className="h-20" />
+        <Divider className="h-20 py-10" />
         <GradientText
           aos="slide-left"
           className="w-fit mx-auto text-[2.2rem] leading-none mb-3 md:mb-0 md:leading-normal  sm:text-[2.8rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold xxl:pt-10"
@@ -58,9 +80,7 @@ const Blog = () => {
           Submit your blog. Write to us at&nbsp;
           <span
             onClick={() => {
-              window.open(
-                "https://mail.google.com/mail/u/0/#inbox?compose=jrjtXLDgXxQqzSJgBmrwVVkhDBcWFpLbCkzfJjdmvhSclngzmRZMGfkrGBMXRJQqzpWgLTdG"
-              );
+              window.open(MAIL_TO);
             }}
             className="text-main-teal cursor-pointer hover:border-main-teal hover:border-b-2"
           >

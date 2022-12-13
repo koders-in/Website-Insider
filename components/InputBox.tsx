@@ -1,4 +1,6 @@
+import Image from "next/image";
 import React from "react";
+import { error } from "../assets";
 
 interface Props {
   placeholder: string;
@@ -7,8 +9,10 @@ interface Props {
   name: string;
   type: string;
   styling?: string;
-  errorText?: string;
+  errorText?: any;
   onBlur?: (props: any) => void;
+  id?: string;
+  fontSize?: string;
 }
 
 const InputBox = ({
@@ -20,24 +24,36 @@ const InputBox = ({
   type,
   errorText,
   onBlur,
+  id,
+  fontSize,
 }: Props) => {
   return (
     <div className="w-full relative">
       <span
-        className={`absolute text-red-600 text-xs top-0 left-0 ${
+        className={`absolute text-red-600 text-xs bottom-[-20px] left-0 flex justify-center items-center font-miligramTextMedium ${
           errorText ? "opacity-100" : "opacity-0"
         } `}
       >
+        <Image
+          src={error}
+          alt={error}
+          width={17}
+          height={17}
+          className="mr-1"
+        />
         {errorText}
       </span>
       <input
+        id={id}
         type={type}
         value={value}
         onBlur={onBlur}
         name={name}
         onChange={handleChange}
         placeholder={placeholder}
-        className={`px-1 text-[0.9rem] md:text-[1.2rem] text-main-light_white sm:mt-5 pb-1 sm:pb-3 bg-transparent tracking-[1px] sm:tracking-[2px] border-b-2 outline-none border-main-light_white placeholder:text-main-light_white w-full ${styling}`}
+        className={`font-miligramLight px-1 text-main-light_white sm:mt-5 pb-1 sm:pb-3 bg-transparent tracking-[1px] sm:tracking-[2px] border-b-2 outline-none border-main-light_white placeholder:text-main-light_white w-full ${styling} ${
+          fontSize ? fontSize : "text-[0.9rem] md:text-[1rem] lg:text-[1.2rem]"
+        }`}
       />
     </div>
   );

@@ -42,6 +42,53 @@ import twitterWhite from "../public/images/twitterWhite.svg";
 import discordWhiteLogo from "../public/images/discordWhiteLogo.svg";
 import startFill from "../public/images/star-fill.svg";
 import startBlank from "../public/images/star-blank.svg";
+import issue from "../public/images/issue.svg";
+import benefits from "../public/images/benefits.svg";
+import impact from "../public/images/impact.svg";
+import performance from "../public/images/performance.svg";
+import workers from "../public/images/workers.svg";
+import workspace from "../public/images/workspace.svg";
+import greenArrow from "../public/images/green-arrow.svg";
+import quoteUp from "../public/images/quots-up.svg";
+import quoteDown from "../public/images/quots-down.svg";
+import founder from "../public/images/founder.svg";
+import mission from "../public/images/mission.svg";
+import aim from "../public/images/aim.svg";
+import map from "../public/images/map.svg";
+import experienceIcon from "../public/images/experience.svg";
+import tealLocation from "../public/images/teal-location.svg";
+import tealMobile from "../public/images/teal-mobile.svg";
+import tealMessage from "../public/images/teal-message.svg";
+import tealIssue from "../public/images/teal-issue.svg";
+import tealImpact from "../public/images/teal-impact.svg";
+import tealBenefits from "../public/images/teal-benefits.svg";
+import tealWorkers from "../public/images/teal-workers.svg";
+import tealAwards from "../public/images/teal-awards.svg";
+import tealWorkspace from "../public/images/teal-workspace.svg";
+import okay from "../public/images/okay.svg";
+import duration from "../public/images/duration.svg";
+import linkedInTeal from "../public/images/linkedinTeal.svg";
+import githubTeal from "../public/images/githubTeal.svg";
+import twitterTeal from "../public/images/twitterTeal.svg";
+import discordTeal from "../public/images/discordTeal.svg";
+import crossTeal from "../public/images/crossTeal.svg";
+import locationTealCont from "../public/images/locationTealCont.svg";
+import tealMobileCont from "../public/images/tealMobileCont.svg";
+import mailTealCont from "../public/images/mailTealCont.svg";
+import mail from "../public/images/mail.svg";
+import error from "../public/images/error.svg";
+import theBest from "../public/images/trusted-thebest.webp";
+import instaride from "../public/images/trusted-instaride.webp";
+import indianArmy from "../public/images/trusted-indian-army.webp";
+import germanGov from "../public/images/german-gov.png";
+import camelJuno from "../public/images/camel-juno.webp";
+import bolt from "../public/images/bolt.webp";
+import ceo from "../public/images/ceo.webp";
+import cto from "../public/images/cto.webp";
+import abhishek from "../public/images/sm.webp";
+import basu from "../public/images/o&d.webp";
+import saksham from "../public/images/jd.webp";
+import groupImg from "../public/images/group-img.webp";
 
 // Assets for technologies components
 
@@ -189,4 +236,51 @@ export {
   discordWhiteLogo,
   startFill,
   startBlank,
+  issue,
+  benefits,
+  impact,
+  performance,
+  workspace,
+  workers,
+  greenArrow,
+  quoteUp,
+  quoteDown,
+  founder,
+  mission,
+  aim,
+  map,
+  experienceIcon,
+  tealLocation,
+  tealMobile,
+  tealMessage,
+  tealIssue,
+  tealImpact,
+  tealBenefits,
+  tealWorkers,
+  tealAwards,
+  tealWorkspace,
+  okay,
+  duration,
+  linkedInTeal,
+  githubTeal,
+  twitterTeal,
+  discordTeal,
+  crossTeal,
+  locationTealCont,
+  tealMobileCont,
+  mailTealCont,
+  mail,
+  error,
+  theBest,
+  instaride,
+  indianArmy,
+  germanGov,
+  camelJuno,
+  bolt,
+  abhishek,
+  basu,
+  saksham,
+  ceo,
+  cto,
+  groupImg,
 };

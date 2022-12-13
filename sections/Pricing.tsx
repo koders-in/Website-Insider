@@ -1,11 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, Suspense } from "react";
+import dynamic from "next/dynamic";
 import AOS from "aos";
 
 import "aos/dist/aos.css";
 
 import { useUpdateSlide } from "../helper/hook";
 import { pricingCardData } from "../helper/constant";
-import { Divider, GradientText, PricingCard, Toogler } from "../components";
+
+const Divider = dynamic(() => import("../components/Divider"), {
+  suspense: true,
+});
+
+const GradientText = dynamic(() => import("../components/GradientText"), {
+  suspense: true,
+});
+
+const PricingCard = dynamic(
+  () => import("../components/section-comonents/pricing/PricingCard"),
+  {
+    suspense: true,
+  }
+);
+
+const Toogler = dynamic(() => import("../components/Toogler"), {
+  suspense: true,
+});
 
 const Pricing = () => {
   const handleSliding = useUpdateSlide();
@@ -32,12 +51,14 @@ const Pricing = () => {
       id="pricing"
       className="py-16 bg-main-secondary xxl:py-[10rem] relative"
     >
-      <Divider className="mt-5 xl:my-10" />
-      <GradientText
-        aos="slide-left"
-        className="w-[90%] leading-none mb-3 md:mb-0 md:leading-normal mx-auto sm:w-fit text-[2rem] sm:text-[3rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
-        text="Pricing that suits your needs."
-      />
+      <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+        <Divider className="mt-5 xl:my-10" />
+        <GradientText
+          aos="slide-left"
+          className="w-[90%] leading-none mb-3 md:mb-0 md:leading-normal mx-auto sm:w-fit text-[2rem] sm:text-[3rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
+          text="Pricing that suits your needs."
+        />
+      </Suspense>
       <p
         data-aos="slide-right"
         className="text-[0.8rem] sm:text-[1.3rem] w-[80%] leading-none sm:w-1/2  lg:w-1/3 mx-auto text-center text-main-light_white pb-5 mt-2 font-miligramText400"
@@ -49,17 +70,25 @@ const Pricing = () => {
         <span className={`text-[0.9rem] ${toggle ? "text-white" : ""}`}>
           Billed Monthly
         </span>
-        <Toogler handleToogle={handleToogle} />
+        <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+          <Toogler handleToogle={handleToogle} />
+        </Suspense>
+
         <span className={`text-[0.9rem] ${!toggle ? "text-white" : ""}`}>
           Billed Yearly
         </span>
       </div>
-      <Divider className="mt-10 md:h-16" />
-      <div className="hidden justify-center items-center md:flex gap-7 xl:gap-12 w-[96%] lg:w-[90%] mx-auto">
-        {pricingCardData.map((item, i) => (
-          <PricingCard aos="fade-up" key={i} {...item} />
-        ))}
-      </div>
+      <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+        <Divider className="mt-10 md:h-16" />
+      </Suspense>
+
+      <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+        <div className="hidden justify-center items-center md:flex gap-7 xl:gap-12 w-[96%] lg:w-[90%] mx-auto">
+          {pricingCardData.map((item, i) => (
+            <PricingCard key={i} aos="fade-up" {...item} />
+          ))}
+        </div>
+      </Suspense>
       <div
         className="flex md:hidden gap-8 w-[100%] justify-center items-center overflow-hidden mx-auto relative h-[430px] overflow-x-clip"
         id="pricingSec"
@@ -72,17 +101,19 @@ const Pricing = () => {
           className="absolute h-full hidden xsm:block w-[15%] msm:w-[27%] md:w-[30%] right-0 z-20"
           onClick={handleSliding.handleLeftSlide}
         ></div>
-        {pricingCardData.map((item, i) => (
-          <PricingCard
-            translateX={handleSliding.translatePosition[i]}
-            className={`absolute top-10 w-[200px] transition-all duration-500 ${
-              handleSliding.translatePosition[i] === 0 ? "z-10" : ""
-            }`}
-            key={i}
-            isMobile={true}
-            {...item}
-          />
-        ))}
+        <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+          {pricingCardData.map((item, i) => (
+            <PricingCard
+              translateX={handleSliding.translatePosition[i]}
+              className={`absolute top-10 w-[200px] transition-all duration-500 ${
+                handleSliding.translatePosition[i] === 0 ? "z-10" : ""
+              }`}
+              key={i}
+              isMobile={true}
+              {...item}
+            />
+          ))}
+        </Suspense>
       </div>
       <div className="absolute md:hidden bottom-6  xl:bottom-14 flex justify-center w-full">
         <div className="flex justify-center items-center gap-2 mt-10 sm:mt-0">
@@ -98,7 +129,9 @@ const Pricing = () => {
           })}
         </div>
       </div>
-      <Divider className="xl:my-14" />
+      <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+        <Divider className="xl:my-14" />
+      </Suspense>
     </div>
   );
 };
