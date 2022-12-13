@@ -38,14 +38,14 @@ export const testmonialLogo: Array<TestmonialData> = [
   {
     logo: indianFlag,
     description:
-      "“We choose Koders because of their ability to adapt with feedback, ultimatley leading to the best experience for our members and team.” Indian Army",
+      "“We choose Koders because of their ability to adapt with feedback, ultimatley leading to the best experience for our members and team.”",
     title: "Indian Army",
   },
   {
     logo: germanGov,
     description:
       "“Very good team. Not only from a technical perspective but also from the human perspective. Helped us a lot even in difficult situations!”",
-    title: "German govt",
+    title: "Lars Behrendt",
   },
   {
     logo: camelJuno,
@@ -96,12 +96,12 @@ export const footerButtons = [
     title: "Support",
     buttons: [
       {
-        title: "Join Discord",
+        title: "Discord Server",
         route: "https://discord.gg/jjTgNpWFvM",
         target: true,
       },
       { title: "Contact Us", route: "/contact", target: false },
-      { title: "GitHub", route: "https://github.com/koders-in", target: true },
+      // { title: "GitHub", route: "https://github.com/koders-in", target: true },
     ],
   },
 ];
@@ -263,12 +263,7 @@ export const pricingList = [
   "62,000$",
   "70,000$",
 ];
-export const timeLineList = [
-  "Less than one week",
-  "Less than one month",
-  "Less than one year",
-  "More than one year",
-];
+export const timeLineList = ["< 1 week", "< 1 month", "< 1 year", "> 1 year"];
 
 export const socialMediaHandles = [
   {
@@ -660,3 +655,65 @@ export const listOfBestReviewsUsers = [
   "Isha Ahuja",
   "Bolt",
 ];
+
+// TODO=> Remove in production
+// ------------------------Sample Job data only for dev mode ----------------------
+export const tempJobData = {
+  jobs_job_listings: [
+    {
+      location: "Dehradun, Uttrakhand",
+      job: {
+        job_level: {
+          experience: "0-1 Yrs",
+          level: "Full Time",
+        },
+        title: "Developer",
+        department: "Tech & Development",
+      },
+    },
+    {
+      location: "Hybrid",
+      job: {
+        job_level: {
+          experience: "Freshers",
+          level: "Intern",
+        },
+        title: "Developer",
+        department: "Tech & Development",
+      },
+    },
+    {
+      location: "Dehradun, Uttrakhand",
+      job: {
+        job_level: {
+          experience: "Freshers",
+          level: "Intern",
+        },
+        title: "UI/UX Designer",
+        department: "Design",
+      },
+    },
+    {
+      location: "Remote",
+      job: {
+        job_level: {
+          experience: "1-2 Yrs",
+          level: "Full Time",
+        },
+        title: "UI/UX Designer",
+        department: "Design",
+      },
+    },
+    {
+      location: "Offline",
+      job: {
+        job_level: {
+          experience: "0-1 Yrs",
+          level: "Intern",
+        },
+        title: "Marketing Intern",
+        department: "Marketing",
+      },
+    },
+  ],
+};

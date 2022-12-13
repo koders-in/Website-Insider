@@ -77,12 +77,18 @@ import tealMobileCont from "../public/images/tealMobileCont.svg";
 import mailTealCont from "../public/images/mailTealCont.svg";
 import mail from "../public/images/mail.svg";
 import error from "../public/images/error.svg";
-import theBest from "../public/images/trusted-thebest.svg";
-import instaride from "../public/images/trusted-instaride.svg";
-import indianArmy from "../public/images/trusted-indian-army.svg";
+import theBest from "../public/images/trusted-thebest.webp";
+import instaride from "../public/images/trusted-instaride.webp";
+import indianArmy from "../public/images/trusted-indian-army.webp";
 import germanGov from "../public/images/german-gov.png";
 import camelJuno from "../public/images/camel-juno.webp";
 import bolt from "../public/images/bolt.webp";
+import ceo from "../public/images/ceo.webp";
+import cto from "../public/images/cto.webp";
+import abhishek from "../public/images/sm.webp";
+import basu from "../public/images/o&d.webp";
+import saksham from "../public/images/jd.webp";
+import groupImg from "../public/images/group-img.webp";
 
 // Assets for technologies components
 
@@ -271,4 +277,10 @@ export {
   germanGov,
   camelJuno,
   bolt,
+  abhishek,
+  basu,
+  saksham,
+  ceo,
+  cto,
+  groupImg,
 };

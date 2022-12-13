@@ -19,57 +19,69 @@ const Job = ({ experience, location, title, type, id }: ObjectOfJob) => {
   const fetchData = useFetchDataFromServer();
 
   const toogleDetailModal = async () => {
-    try {
-      if (viewDetails === null || viewDetails === undefined) {
-        const res = await fetchData(`open-job-listings/${id}`, setViewDetails);
-        if (res?.status === 200) {
-          setShowModal((p) => {
-            return {
-              ...p,
-              viewDetails: !p.viewDetails,
-            };
-          });
-        } else {
-          window.alert("Unable to fetch the job details. Try again later.");
-        }
-      } else {
-        setShowModal((p) => {
-          return {
-            ...p,
-            viewDetails: !p.viewDetails,
-          };
-        });
-      }
-    } catch (error) {
-      window.alert("Unable to fetch the job details. Try again later.");
-    }
+    setShowModal((p) => {
+      return {
+        ...p,
+        viewDetails: !p.viewDetails,
+      };
+    });
+    // try {
+    //   if (viewDetails === null || viewDetails === undefined) {
+    //     const res = await fetchData(`open-job-listings/${id}`, setViewDetails);
+    //     if (res?.status === 200) {
+    //       setShowModal((p) => {
+    //         return {
+    //           ...p,
+    //           viewDetails: !p.viewDetails,
+    //         };
+    //       });
+    //     } else {
+    //       window.alert("Unable to fetch the job details. Try again later.");
+    //     }
+    //   } else {
+    //     setShowModal((p) => {
+    //       return {
+    //         ...p,
+    //         viewDetails: !p.viewDetails,
+    //       };
+    //     });
+    //   }
+    // } catch (error) {
+    //   window.alert("Unable to fetch the job details. Try again later.");
+    // }
   };
 
   const toogleApplyModal = async () => {
-    try {
-      if (viewDetails === null || viewDetails === undefined) {
-        const res = await fetchData(`open-job-listings/${id}`, setViewDetails);
-        if (res?.status === 200) {
-          setShowModal((p) => {
-            return {
-              ...p,
-              apply: !p.apply,
-            };
-          });
-        } else {
-          window.alert("Something went wrong. Try again later.");
-        }
-      } else {
-        setShowModal((p) => {
-          return {
-            ...p,
-            apply: !p.apply,
-          };
-        });
-      }
-    } catch (error) {
-      window.alert("Something went wrong. Try again later.");
-    }
+    setShowModal((p) => {
+      return {
+        ...p,
+        apply: !p.apply,
+      };
+    });
+    // try {
+    //   if (viewDetails === null || viewDetails === undefined) {
+    //     const res = await fetchData(`open-job-listings/${id}`, setViewDetails);
+    //     if (res?.status === 200) {
+    //       setShowModal((p) => {
+    //         return {
+    //           ...p,
+    //           apply: !p.apply,
+    //         };
+    //       });
+    //     } else {
+    //       window.alert("Something went wrong. Try again later.");
+    //     }
+    //   } else {
+    //     setShowModal((p) => {
+    //       return {
+    //         ...p,
+    //         apply: !p.apply,
+    //       };
+    //     });
+    //   }
+    // } catch (error) {
+    //   window.alert("Something went wrong. Try again later.");
+    // }
   };
 
   const toogleThankModal = () => {
@@ -109,12 +121,12 @@ const Job = ({ experience, location, title, type, id }: ObjectOfJob) => {
         <Button
           OnClick={toogleDetailModal}
           text="View Details"
-          className=" bg-main-greenOpt-200 font-miligramMedium w-auto text-[0.8rem] lg:text-[0.9rem] text-main-lightTeal py-[4px] md:py-[10px] px-2 xxl:px-3 lg:px-7 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+          className=" bg-main-greenOpt-200 font-miligramMedium w-auto text-[0.8rem] text-main-lightTeal py-[4px] md:py-[0.55rem] px-2 xxl:px-3 lg:px-7 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
         />
         <Button
           OnClick={toogleApplyModal}
           text="Apply"
-          className=" bg-main-greenOpt-200  font-miligramMedium w-fit text-[0.8rem] lg:text-[0.9rem] text-main-lightTeal py-[4px] md:py-[10px] px-6 xxl:px-8 lg:px-14 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+          className=" bg-main-greenOpt-200  font-miligramMedium w-fit text-[0.8rem] text-main-lightTeal py-[4px] md:py-[0.55rem] px-6 xxl:px-8 lg:px-14 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
         />
       </div>
       <DetailsModal

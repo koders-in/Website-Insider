@@ -26,7 +26,7 @@ const Info = ({
     <div
       data-aos={aos}
       data-aos-anchor-placement="top-center"
-      className={`${className} w-full md:w-1/4`}
+      className={`${className} w-full md:w-1/2`}
       style={
         isMobile
           ? {

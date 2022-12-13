@@ -90,7 +90,7 @@ const Technologies = () => {
   return (
     <div className="bg-main-secondary overflow-hidden h-[90vh] md:h-[60vh] lg:h-[90vh] xl:h-[90vh] xxl:h-[90vh]  relative flex justify-center items-center">
       <div className="absolute w-full h-full flex justify-center items-center">
-        <div className="p-10 z-10 bg-main-secondary w-full mt-4">
+        <div className="px-[0.5rem] py-10 md:px-10 z-10 bg-main-secondary w-full mt-4">
           <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
             <GradientText
               aos="slide-left"
@@ -100,10 +100,11 @@ const Technologies = () => {
           </Suspense>
           <p
             data-aos="slide-right"
-            className="leading-none text-[0.8rem] sm:text-[1.3rem] mx-auto text-center text-main-light_white font-miligramText400 sm:w-[60%]"
+            className="leading-none text-[0.8rem] sm:text-[1.3rem] mx-auto text-center text-main-light_white font-miligramText400 sm:w-[80%]"
           >
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem ipsum
-            dolor sit amet, consectetur adipiscing elit.
+            The world around us is evolving every single day and we ensure to
+            keep ourselves updated with the latest technologies to deliver the
+            best software solutions to our customers.
           </p>
         </div>
       </div>

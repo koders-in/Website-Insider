@@ -23,7 +23,10 @@ module.exports = {
             1000: "#7289DA",
           },
           black: {
+            extraLight: "rgba(0,0,0,0)",
+            400: "rgba(0,0,0,0.4)",
             700: "rgb(10,10,10,0.7)",
+            dark: "rgba(0,0,0,1)",
           },
           white: {
             500: "rgba(255, 255, 255, 0.05)",

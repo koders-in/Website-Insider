@@ -19,15 +19,23 @@ import Image from "next/image";
 import { greenArrow } from "../assets";
 import { useFetchDataFromServer } from "../helper/careerHooks";
 import { FadeLoader } from "react-spinners";
+import { tempJobData } from "../helper/constant";
 
 const Jobs = () => {
-  const [jobs, setJobs] = useState<any>(null);
+  const [filter, setFilter] = useState({
+    title: "",
+    toggle: "",
+    departments: ["All"],
+  });
+  const [jobs, setJobs] = useState<any>(tempJobData);
   const [viewMore, setViewMore] = useState<boolean>(true);
-  const [pinJobs, setPinJobs] = useState<any>(null);
-  const [tempData, setTempData] = useState<any>(null);
+  const [pinJobs, setPinJobs] = useState<any>();
+  const [tempData, setTempData] = useState<any>();
   const [noMatch, setNoMatch] = useState<boolean>(false);
   const [department, setDepartment] = useState<Array<string>>(["All"]);
   const fetchData = useFetchDataFromServer();
+
+  const filterData = (pattern: string) => {};
 
   useEffect(() => {
     AOS.init({
@@ -55,7 +63,7 @@ const Jobs = () => {
   const handleTryAgain = async () => {
     setPinJobs(false);
     let res = await fetchData("open-job-listings", setJobs);
-    if (res?.jobs_job_listings?.length / 3 > 0) {
+    if (res?.jobs_job_listings?.length > 3) {
       setPinJobs(res?.jobs_job_listings?.slice(0, 3));
     } else {
       setPinJobs(res?.jobs_job_listings);
@@ -63,6 +71,7 @@ const Jobs = () => {
   };
 
   const handleViewMore = () => {
+    if (!jobs?.jobs_job_listings?.length) return;
     let filteredJobs = [];
     if (department.length === 1 && department[0] === "All") {
       setPinJobs([...jobs?.jobs_job_listings]);
@@ -88,8 +97,9 @@ const Jobs = () => {
     pattern: string
   ) => {
     const fuse = new Fuse(list, {
-      location: 4,
-      shouldSort: true,
+      // location: 4,
+      // shouldSort: true,
+      minMatchCharLength: pattern.length - 1,
       keys: keys,
     });
     const res: any = fuse.search(pattern);
@@ -119,7 +129,11 @@ const Jobs = () => {
           }}
         />
         <Divider className="mt-12" />
-        {noMatch ? (
+        {jobs === null && (pinJobs === null || !pinJobs?.length) ? (
+          <div className="text-main-teal w-fit mx-auto text-[1.5em]">
+            There are no jobs open now.
+          </div>
+        ) : noMatch ? (
           <div className="text-main-teal w-fit mx-auto text-[1.5em]">
             No Match Found.
           </div>

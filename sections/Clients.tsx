@@ -80,7 +80,7 @@ const Clients = () => {
         <h2
           className={`text-center text-[2.2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[3rem]  font-miligrambold text-white font-medium animate-rightIn ${rightOutStyle}`}
         >
-          Germany Government
+          German Gov
         </h2>
       )}
       {count === 2 && (

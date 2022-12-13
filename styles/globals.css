@@ -173,12 +173,12 @@
   -moz-clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
 }
 
-::selection {
-  background: #00a99d; /* WebKit/Blink Browsers */
+/* ::selection {
+  background: #00a99d;  WebKit/Blink Browsers 
 }
 ::-moz-selection {
-  background: #00a99d; /* Gecko Browsers */
-}
+  background: #00a99d;  Gecko Browsers 
+} */
 
 @keyframes fading {
   0% {
@@ -477,6 +477,7 @@ stroke-dashoffset: 0; */
 .ReactModal__Content {
   overflow: hidden !important;
   width: calc(100%-10px) !important;
+  overflow-y: auto !important;
 }
 .ReactModal__Content:hover {
   overflow-x: hidden !important;

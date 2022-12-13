@@ -51,6 +51,12 @@ const DetailsModal = ({
   toogleDetailModal,
   toogleApplyModal,
 }: Props) => {
+  useEffect(() => {
+    return () => {
+      enableBodyScroll(document);
+    };
+  });
+
   const closeModal = () => {
     enableBodyScroll(document);
     setShowModal((p: any) => {
@@ -85,7 +91,7 @@ const DetailsModal = ({
         <div className="lg:flex justify-between items-center">
           <div className="w-full lg:w-[80%]">
             <GradientText
-              className="w-fit text-[1.6rem] bg-gradient-to-r from-white to-main-teal font-miligrambold"
+              className="w-fit text-[2rem] bg-gradient-to-r from-white to-main-teal font-miligrambold"
               text={title}
             />
             <div className="flex text-white flex-wrap gap-2">
@@ -101,19 +107,19 @@ const DetailsModal = ({
                 <Image src={experienceIcon} alt="" className="mr-2 h-3" />
                 Exp {experience}
               </div>
+              {viewDetails?.jobs_job_listings[0]?.job?.duration && (
+                <div className="flex items-center justify-between text-[0.8rem]">
+                  <Image src={duration} alt="" className="mr-2 h-3" />
+                  Duration- {viewDetails?.jobs_job_listings[0]?.job?.duration}
+                </div>
+              )}
             </div>
-            {viewDetails?.jobs_job_listings[0]?.job?.duration && (
-              <div className="text-white flex items-center text-[0.8rem] pl-[4px] sm:pl-[2px] mt-[8px] sm:mt-[2px]">
-                <Image src={duration} alt="" className="mr-2 h-3" />
-                Duration- {viewDetails?.jobs_job_listings[0]?.job?.duration}
-              </div>
-            )}
           </div>
           <div className="w-full mt-3  lg:mt-0 lg:w-[20%]">
             <Button
               OnClick={handleApply}
               text="Apply"
-              className=" bg-main-greenOpt-200  font-miligramMedium w-fit text-main-lightTeal text-[0.8rem] xl:text-[1rem] py-[8px] sm:py-[10px] px-12 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+              className=" bg-main-greenOpt-200  font-miligramMedium w-fit text-main-lightTeal text-[0.8rem] py-[8px] sm:py-[0.55rem]  px-12 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
             />
           </div>
           <Image
@@ -123,7 +129,7 @@ const DetailsModal = ({
             onClick={closeModal}
           />
         </div>
-        <div className="h-[2px] bg-white w-ful my-8"></div>
+        <div className="h-[2px] bg-white w-ful my-4"></div>
       </>
       <h5 className="font-miligrambold text-white text-[1.1rem]">
         About the Company
@@ -186,7 +192,7 @@ const DetailsModal = ({
         type="submit"
         OnClick={handleApply}
         text="Apply"
-        className="mt-10 block mx-auto bg-main-greenOpt-200  font-miligramMedium w-fit text-main-lightTeal text-[0.8rem] xl:text-[1rem] py-[8px] sm:py-[10px] px-12 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+        className=" bg-main-greenOpt-200 mt-12 font-miligramMedium w-fit text-main-lightTeal text-[0.8rem] py-[8px] sm:py-[0.55rem]  px-12 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white block mx-auto"
       />
     </Modal>
   );

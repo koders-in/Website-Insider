@@ -7,6 +7,7 @@ import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import {
   add,
   duration,
+  error,
   experienceIcon,
   locationTeal,
   work,
@@ -32,6 +33,7 @@ interface initialState {
   portfolioURL?: string;
   hiringReason?: string;
   joiningReason?: string;
+  hearAboutUS: string;
 }
 
 const initialValue: initialState = {
@@ -44,6 +46,7 @@ const initialValue: initialState = {
   portfolioURL: "",
   hiringReason: "",
   joiningReason: "",
+  hearAboutUS: "",
 };
 
 const customStyles = {
@@ -88,8 +91,15 @@ const ApplyModal = ({
   type,
 }: Props) => {
   const [resume, setResume] = useState<any>(null);
+  const [resumeError, setResumeError] = useState<boolean>(false);
   const [isShowLoader, setIsShowLoader] = useState(false);
   const sendData = useSetDataOnServer();
+
+  useEffect(() => {
+    return () => {
+      enableBodyScroll(document);
+    };
+  });
 
   const handleSubmit = async (
     value: initialState,
@@ -137,12 +147,15 @@ const ApplyModal = ({
         closeModal();
         enableBodyScroll(document);
         toogleThankModal();
+      } else {
+        window.alert("Something went wrong. Try again later.");
       }
       setResume(null);
       setIsShowLoader(false);
       helper.resetForm();
     } catch (error: any) {
       setIsShowLoader(false);
+      window.alert("Something went wrong. Try again later.");
       console.warn(error.message);
     }
   };
@@ -151,10 +164,15 @@ const ApplyModal = ({
     const {
       target: { files },
     } = e;
-    setResume(files[0]);
+    // console.log(files[0].size);
+    const size = files[0]?.size / 1024;
+    if (size > 20) {
+      window.alert("File size should be less than 20KB.");
+    } else setResume(files[0]);
   };
 
   const closeModal = () => {
+    setResumeError(false);
     enableBodyScroll(document);
     setShowModal((p: any) => {
       return {
@@ -197,7 +215,7 @@ const ApplyModal = ({
             <div className="lg:flex justify-between items-center">
               <div className="w-full lg:w-[80%]">
                 <GradientText
-                  className="w-fit text-[1.6rem] bg-gradient-to-r from-white to-main-teal font-miligrambold"
+                  className="w-fit text-[2rem] bg-gradient-to-r from-white to-main-teal font-miligrambold"
                   text={title}
                 />
                 <div className="flex text-white flex-wrap gap-2">
@@ -213,20 +231,22 @@ const ApplyModal = ({
                     <Image src={experienceIcon} alt="" className="mr-2 h-3" />
                     Exp {experience}
                   </div>
-                </div>
-                <div className="text-white flex items-center text-[0.8rem] pl-[4px] sm:pl-[2px] mt-[8px] sm:mt-[2px]">
-                  <Image src={duration} alt="" className="mr-2 h-3" />
-                  Duration- {viewDetails?.jobs_job_listings[0]?.job?.duration}
+                  {viewDetails?.jobs_job_listings[0]?.job?.duration && (
+                    <div className="flex items-center justify-between text-[0.8rem]">
+                      <Image src={duration} alt="" className="mr-2 h-3" />
+                      Duration-{" "}
+                      {viewDetails?.jobs_job_listings[0]?.job?.duration}
+                    </div>
+                  )}
                 </div>
               </div>
               <div className="w-full  lg:w-[21%] mt-3 lg:mt-0">
                 <Button
                   OnClick={handleViewDetails}
                   text="View Details"
-                  className=" bg-main-greenOpt-200  font-miligramMedium w-auto text-main-lightTeal text-[0.8rem] xl:text-[1rem] py-[8px] sm:py-[10px] px-6 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+                  className=" bg-main-greenOpt-200  font-miligramMedium w-auto text-main-lightTeal text-[0.8rem] py-[8px] sm:py-[0.55rem] px-6 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
                 />
               </div>
-
               <Image
                 src={add}
                 alt=""
@@ -234,27 +254,45 @@ const ApplyModal = ({
                 onClick={closeModal}
               />
             </div>
-            <div className="h-[2px] bg-white w-ful my-8"></div>
-            <div className="p-8 border-dashed  border-2 border-main-teal rounded-xl relative">
+            <div className="h-[2px] bg-white w-ful my-4"></div>
+            <div className="p-8 border-dashed  border-2 border-main-teal rounded-xl relative ">
               <input
                 type="file"
-                accept="*.pdf"
+                accept=".pdf"
                 name="resume"
                 onChange={handleResumeChange}
-                className="absolute w-full h-full opacity-0"
+                className="absolute left-0 top-0 w-full h-full opacity-0 cursor-pointer"
               />
               <p className="text-main-teal text-[1rem] text-center">
                 {resume?.name ? resume?.name : "Upload Resume"}
               </p>
-              <p className="text-main-whiteVar1 text-[0.8rem] text-center">
-                Drop resume here or click to upload
+              <p className="hidden sm:block text-main-whiteVar1 text-[0.8rem] text-center">
+                Drop resume here or Click to upload
               </p>
+              <p className="text-main-whiteVar1 text-[0.8rem] text-center sm:hidden">
+                Click to upload
+              </p>
+              {resumeError && (
+                <span
+                  className={`absolute text-red-600 text-xs bottom-[-22px] left-0 flex justify-center items-center font-miligramTextMedium`}
+                >
+                  <Image
+                    src={error}
+                    alt={error}
+                    width={17}
+                    height={17}
+                    className="mr-1"
+                  />
+                  Resume is mandatory.
+                </span>
+              )}
             </div>
             <Divider className="mt-10" />
             <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-5 mt-2">
               <div className="w-full md:w-[50%]">
                 <InputBox
                   type="text"
+                  fontSize="text-[0.9rem] md:text-[1rem]"
                   placeholder="First Name *"
                   name="fName"
                   onBlur={handleBlur}
@@ -265,6 +303,7 @@ const ApplyModal = ({
               </div>
               <div className="w-full md:w-[50%]">
                 <InputBox
+                  fontSize="text-[0.9rem] md:text-[1rem]"
                   type="text"
                   placeholder="Last Name *"
                   name="lName"
@@ -279,6 +318,7 @@ const ApplyModal = ({
             <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-5 mt-2">
               <div className="w-full md:w-[50%]">
                 <InputBox
+                  fontSize="text-[0.9rem] md:text-[1rem]"
                   type="text"
                   placeholder="Email Address *"
                   name="email"
@@ -290,6 +330,7 @@ const ApplyModal = ({
               </div>
               <div className="w-full md:w-[50%]">
                 <InputBox
+                  fontSize="text-[0.9rem] md:text-[1rem]"
                   type="text"
                   placeholder="Phone Number *"
                   name="mobile"
@@ -303,7 +344,57 @@ const ApplyModal = ({
             <Divider className="mt-8" />
             <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-5 mt-2">
               <div className="w-full md:w-[50%]">
+                <InputBox
+                  fontSize="text-[0.9rem] md:text-[1rem]"
+                  type="text"
+                  placeholder="Website URL/Portfolio URL"
+                  name="portfolioURL"
+                  onBlur={handleBlur}
+                  value={values.portfolioURL}
+                  handleChange={handleChange}
+                  errorText={errors.portfolioURL}
+                />
+              </div>
+              <div className="w-full md:w-[50%]">
+                <InputBox
+                  fontSize="text-[0.9rem] md:text-[1rem]"
+                  type="text"
+                  placeholder="LinkedIn URL"
+                  name="linkedIn"
+                  onBlur={handleBlur}
+                  value={values.linkedIn}
+                  handleChange={handleChange}
+                  errorText={errors.linkedIn}
+                />
+              </div>
+            </div>
+            <Divider className="mt-8" />
+            <div></div>
+            <Divider className="mt-8" />
+            <TextArea
+              fontSize="text-[0.9rem] md:text-[1rem]"
+              placeholder="Why should you be hired for this role? *"
+              name="hiringReason"
+              onBlur={handleBlur}
+              value={values.hiringReason}
+              handleChange={handleChange}
+              errorText={errors.hiringReason}
+            />
+            <Divider className="mt-8" />
+            <TextArea
+              fontSize="text-[0.9rem] md:text-[1rem]"
+              placeholder="Why do you want to Work at Koders? *"
+              name="joiningReason"
+              onBlur={handleBlur}
+              value={values.joiningReason}
+              handleChange={handleChange}
+              errorText={errors.joiningReason}
+            />
+            <Divider className="mt-8" />
+            <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-5 mt-2">
+              <div className="w-full md:w-[50%]">
                 <SelectBox
+                  fontSize="text-[0.9rem] md:text-[1rem]"
                   value={values.joiningIn || ""}
                   placeholder="When can you start working? *"
                   list={[
@@ -320,47 +411,26 @@ const ApplyModal = ({
                 />
               </div>
               <div className="w-full md:w-[50%]">
-                <InputBox
-                  type="text"
-                  placeholder="LinkedIn URL"
-                  name="linkedIn"
-                  onBlur={handleBlur}
-                  value={values.linkedIn}
-                  handleChange={handleChange}
-                  errorText={errors.linkedIn}
+                <SelectBox
+                  fontSize="text-[0.9rem] md:text-[1rem]"
+                  value={values.hearAboutUS || ""}
+                  placeholder="Where did you learn of this opening? *"
+                  list={[
+                    "I can join immediately (within 15 days).",
+                    "I can join after a month.",
+                    "I can join after three months.",
+                    "Other",
+                  ]}
+                  name="hearAboutUS"
+                  handleSelect={(obj: any) => {
+                    const { name, value } = obj;
+                    handleChange("hearAboutUS")(value);
+                  }}
+                  errorText={errors.hearAboutUS}
+                  inputID="applyHear"
                 />
               </div>
             </div>
-            <Divider className="mt-8" />
-            <div>
-              <InputBox
-                type="text"
-                placeholder="Website URL/Portfolio URL"
-                name="portfolioURL"
-                onBlur={handleBlur}
-                value={values.portfolioURL}
-                handleChange={handleChange}
-                errorText={errors.portfolioURL}
-              />
-            </div>
-            <Divider className="mt-8" />
-            <TextArea
-              placeholder="Why should you be hired for this role?"
-              name="hiringReason"
-              onBlur={handleBlur}
-              value={values.hiringReason}
-              handleChange={handleChange}
-              errorText={errors.hiringReason}
-            />
-            <Divider className="mt-8" />
-            <TextArea
-              placeholder="Why do you want to Work at Koders?"
-              name="joiningReason"
-              onBlur={handleBlur}
-              value={values.joiningReason}
-              handleChange={handleChange}
-              errorText={errors.joiningReason}
-            />
             <Divider className="mt-5" />
             <div className="text-center">
               <PropagateLoader
@@ -374,9 +444,14 @@ const ApplyModal = ({
             {!isShowLoader && (
               <Button
                 type="submit"
-                OnClick={handleSubmit}
+                OnClick={() => {
+                  if (resume === null) {
+                    setResumeError(true);
+                  } else setResumeError(false);
+                  handleSubmit();
+                }}
                 text="Apply"
-                className="mt-10 block mx-auto bg-main-greenOpt-200  font-miligramMedium w-fit text-main-lightTeal py-[10px] px-12 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+                className=" bg-main-greenOpt-200 mt-12 font-miligramMedium w-fit text-main-lightTeal text-[0.8rem] py-[8px] sm:py-[0.55rem]  px-12 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white block mx-auto"
               />
             )}
           </React.Fragment>

@@ -31,6 +31,7 @@ export { default as JobAlert } from "./pages-components/jobs/JobAlert";
 export { default as LandingSection } from "./pages-components/jobs/LandingSection";
 // ABOUT PAGE COMPONENTS
 export { default as WorldMap } from "./pages-components/about/WorldMap";
+export { default as OurFamily } from "./pages-components/about/OurFamily";
 
 // ********** ---| SECTIONS COMPONENTS |--- *********
 // WHY KODERS SECTION COMPONENTS

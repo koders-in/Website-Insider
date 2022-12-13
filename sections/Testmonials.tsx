@@ -105,11 +105,11 @@ const Testmonials = () => {
               setCurrentItem(item);
             }}
             key={i}
-            className="w-[20px] overflow-hidden mt-3 sm:w-12 rounded-full cursor-pointer"
+            className="w-[45px] overflow-hidden mt-3 sm:w-12 rounded-full cursor-pointer"
             style={
               currentItem?.title === item.title
                 ? { boxShadow: "0px 0px 11px 2px #38D8CC" }
-                : {}
+                : { filter: "brightness(0.5)" }
             }
           >
             <Image

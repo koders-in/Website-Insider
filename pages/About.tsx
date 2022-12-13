@@ -2,7 +2,14 @@ import Head from "next/head";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import { aim, founder, mission, quoteDown, quoteUp } from "../assets";
-import { Divider, Footer, GradientText, Navbar, WorldMap } from "../components";
+import {
+  Divider,
+  Footer,
+  GradientText,
+  Navbar,
+  OurFamily,
+  WorldMap,
+} from "../components";
 import { dataOfMapAnimation } from "../helper/constant";
 
 const about = () => {
@@ -59,31 +66,33 @@ const about = () => {
       </Head>
       <Navbar />
       <div className="w-[90%] mx-auto">
-        <div className="sm:h-[90vh]">
+        <div className="sm:h-[80vh] xxl:h-auto">
           <Divider className=" h-[15vh] md:h-[14vh]" />
-          <div className="z-10 text-center text-[1.8em] md:text-[2.15em] text-white w-[100%] sm:w-[80%] lg:w-[80%] xl:w-[65%]  mx-auto leading-none relative">
-            <p className="relative z-20 px-3 font-miligramTextBold">
+          <div className="z-10 text-center text-[1.8em] md:text-[2.15em] xxl:text-[2.8em] text-white w-[100%]   mx-auto leading-none relative">
+            <p className="relative z-20 px-3 xl:w-fit mx-auto font-miligramTextBold">
               <Image
                 src={quoteUp}
                 alt={quoteUp}
-                className="mb-3 top-[-40px] left-[-10px] md:top-[-68%] md:left-[-6%] w-[13%] md:w-[10%] xxl:w-[5%] z-0"
+                className="mb-3 top-[-40px] left-[-10px] md:top-[-68%] md:left-[-6%] w-[13%] md:w-[10%] xxl:h-[10%] z-0"
               />
-              To build the best and invent a better tomorrow with the help of
+              To build the best and invent a better{" "}
+              <br className="hidden lg:block" /> tomorrow with the help of
               Technology.
               <Image
                 src={quoteDown}
                 alt={quoteDown}
-                className="block mt-3 ml-auto bottom-[-20px] right-[-20px] md:bottom-[-65%] md:right-[-5%] w-[13%] md:w-[10%] xxl:w-[5%] z-0"
+                className="block mt-3 ml-auto bottom-[-20px] right-[-20px] md:bottom-[-65%] md:right-[-5%] w-[13%] md:w-[10%] xxl:h-[10%] z-0"
               />
             </p>
           </div>
-          <Divider className="h-14 sm:h-20" />
+          <Divider className="h-14 sm:h-[12vh]" />
           <div className="text-center text-[1.25em] text-main-light_white w-[90%] sm:w-[55%] md:w-[45%] lg:w-[58%] mx-auto leading-none font-miligramTextMedium font-medium">
             At Koders we build softwares with new dimensions by utilizing the
+            <br className="hidden lg:block" />
             full potential of our team to bring out the best for our customers.
           </div>
         </div>
-        <Divider className="h-20 sm:h-0" />
+        <Divider className="h-20 sm:h-0 xxl:h-32" />
         <GradientText
           aos="slide-right"
           className="w-[90%] sm:w-fit mx-auto leading-none mb-3 md:mb-0 md:leading-normal text-[2rem] sm:text-[2.8rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
@@ -97,8 +106,8 @@ const about = () => {
           provide real world solutions to your ideas. We are here to bring your
           dreams to reality by providing high quality service.
         </p>
-        <Divider className="h-20" />
-        <Image
+        <Divider className="h-10 sm:h-20" />
+        {/* <Image
           src={founder}
           alt={founder}
           width={700}
@@ -107,7 +116,8 @@ const about = () => {
         />
         <p className="text-center font-miligramTextBookItalic font-light text-main-light_white text-[0.8em] sm:text-[1.2rem] py-2">
           Our founders Kartikey and Shaloni
-        </p>
+        </p> */}
+        <OurFamily />
         <Divider className="h-10" />
         <GradientText
           className="text-[2rem] font-miligrambold leading-none mb-3 md:mb-0 md:leading-normal sm:text-[2.8rem] mt-10 w-fit mx-auto text-center bg-gradient-to-r from-white to-main-teal"
@@ -179,7 +189,7 @@ const about = () => {
             );
           })}
         </div>
-        <Divider className="h-24" />
+        <Divider className="h-32" />
       </div>
       <Footer />
     </div>

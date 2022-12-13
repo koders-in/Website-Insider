@@ -17,6 +17,7 @@ interface Props {
   errorText?: string;
   secondPlaceholder?: string;
   inputID?: string;
+  fontSize?: string;
 }
 
 const SelectBox = ({
@@ -31,6 +32,7 @@ const SelectBox = ({
   errorText,
   secondPlaceholder,
   inputID,
+  fontSize,
 }: Props) => {
   const [show, setShow] = useState(false);
   const [selectedItem, setSelectedItem] = useState("");
@@ -74,6 +76,7 @@ const SelectBox = ({
         type="text"
         errorText={errorText}
         value={value}
+        fontSize={fontSize}
       />
     </>
   ) : (
@@ -103,7 +106,9 @@ const SelectBox = ({
       </span>
 
       <div
-        className={`font-miligramLight relative select-label px-1 text-main-light_white bg-transparent border-none outline-none tracking-[1px] sm:tracking-[2px] placeholder:text-main-light_white w-full ${innelStyle}`}
+        className={`font-miligramLight relative select-label px-1 text-main-light_white bg-transparent border-none outline-none tracking-[1px] sm:tracking-[2px] placeholder:text-main-light_white w-full ${innelStyle} ${
+          fontSize ? fontSize : ""
+        }`}
       >
         {value ? value : placeholder}
       </div>
@@ -116,11 +121,11 @@ const SelectBox = ({
         }`}
       />
       <ul
-        className={`down-list ${
+        className={`down-list font-miligramLight ${
           dropdownStyle
             ? dropdownStyle
             : "w-full z-50 rounded-md absolute top-10 sm:top-12 transition-all duration-500 bg-main-secondary text-main-light_white overflow-hidden"
-        } ${show ? "max-h-[300px]" : "max-h-0"}`}
+        } ${show ? "max-h-[300px]" : "max-h-0"} ${fontSize ? fontSize : ""}`}
       >
         <Divider className="mt-1" />
         {list.map((item, i) => (

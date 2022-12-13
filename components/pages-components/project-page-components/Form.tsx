@@ -159,6 +159,28 @@ const Form = ({ handleSubmitForm, showLoader, setShowLoader }: Props) => {
               onBlur={handleBlur}
             />
           </div>
+          <Divider className="mt-8" />
+          <div className="w-[46.4%]">
+            <SelectBox
+              value={values?.budget}
+              placeholder="Estimated Budget *"
+              list={[
+                "14,000$",
+                "28,000$",
+                "45,000$",
+                "62,000$",
+                "70,000$",
+                "Other",
+              ]}
+              name="budget"
+              handleSelect={(obj: any) => {
+                const { name, value } = obj;
+                handleChange("budget")(value);
+              }}
+              errorText={errors.budget}
+              inputID="startHear"
+            />
+          </div>
           <Divider className="mt-10" />
           <PropagateLoader
             color="#00A99D"

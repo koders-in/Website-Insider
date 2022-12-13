@@ -12,6 +12,7 @@ interface Props {
   errorText?: any;
   onBlur?: (props: any) => void;
   id?: string;
+  fontSize?: string;
 }
 
 const InputBox = ({
@@ -24,6 +25,7 @@ const InputBox = ({
   errorText,
   onBlur,
   id,
+  fontSize,
 }: Props) => {
   return (
     <div className="w-full relative">
@@ -49,7 +51,9 @@ const InputBox = ({
         name={name}
         onChange={handleChange}
         placeholder={placeholder}
-        className={`font-miligramLight px-1 text-[0.9rem] md:text-[1rem] lg:text-[1.2rem] text-main-light_white sm:mt-5 pb-1 sm:pb-3 bg-transparent tracking-[1px] sm:tracking-[2px] border-b-2 outline-none border-main-light_white placeholder:text-main-light_white w-full ${styling}`}
+        className={`font-miligramLight px-1 text-main-light_white sm:mt-5 pb-1 sm:pb-3 bg-transparent tracking-[1px] sm:tracking-[2px] border-b-2 outline-none border-main-light_white placeholder:text-main-light_white w-full ${styling} ${
+          fontSize ? fontSize : "text-[0.9rem] md:text-[1rem] lg:text-[1.2rem]"
+        }`}
       />
     </div>
   );

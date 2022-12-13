@@ -96,8 +96,8 @@ const Collabrate = () => {
           data-aos="slide-right"
           className="text-[0.8rem] sm:text-[1.3rem] leading-none w-[90%] sm:w-[80%] md:w-[70%] lg:w-[65%] mx-auto text-center text-main-light_white pb-5 mt-2 font-miligramText400"
         >
-          Dummy The interest of developing and creating apps for fun drove
-          towards a path of Dummy exploring new Dummy opportunities.
+          Koders isn't your normal software development firm. We're a group of
+          people who love to work with others to create and inspire.
         </p>
         <Divider className="h-8" />
       </div>

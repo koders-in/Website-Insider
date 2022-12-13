@@ -147,7 +147,7 @@ const StartProject = () => {
         />
         <Divider className="mt-16" />
         <Form {...{ handleSubmitForm, showLoader, setShowLoader }} />
-        <Divider className="mt-12 xxl:mt-16" />
+        <Divider className="mt-20" />
         <GradientText
           aos="fade-up"
           className="text-[2.2rem] leading-none mb-3 md:mb-0 md:leading-normal  sm:text-[2.8rem]  w-fit mx-auto text-center bg-gradient-to-r from-white to-main-teal font-miligrambold pt-"

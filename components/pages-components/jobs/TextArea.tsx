@@ -13,6 +13,7 @@ interface Props {
   textareaStyle?: string;
   id?: string;
   row?: number;
+  fontSize?: string;
 }
 
 const TextArea = ({
@@ -26,6 +27,7 @@ const TextArea = ({
   textareaStyle,
   id,
   row,
+  fontSize,
 }: Props) => {
   return (
     <div className=" text-[0.9rem] md:text-[1.2rem] relative">
@@ -56,7 +58,7 @@ const TextArea = ({
         onBlur={onBlur}
         className={`border-b-2 border-main-light_white font-miligramLight w-full outline-none text-main-light_white tracking-[1px] sm:tracking-[2px] placeholder:text-main-light_white  ${
           textareaStyle ? textareaStyle : "bg-main-secondary"
-        }`}
+        } ${fontSize}`}
         name={name}
         cols={30}
         rows={row ? row : 4}

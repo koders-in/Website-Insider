@@ -24,10 +24,14 @@ const ReviewBox = ({
             style={item.title === title ? {} : { display: "none" }}
           >
             <div className="items-center lg:hidden flex mb-4 transition-all  font-miligramTextMedium">
-              <Image src={logo} alt="logo" className="mr-2 h-9" />
+              <Image
+                src={logo}
+                alt="logo"
+                className="mr-2 h-9 w-9 rounded-full"
+              />
               <p className="text-white text-[18px]">{title}</p>
             </div>
-            <div className="font-miligramMedium text-[0.9rem] leading-none md:text-[1.2rem] lg:w-2/3 text-main-light_white sm:text-white lg:py-6 lg:px-9 transition-all">
+            <div className="font-miligramMedium text-[0.9rem] leading-none md:text-[1.2rem] lg:w-2/3 text-main-light_white sm:text-white lg:py-6 lg:px-9 transition-all h-[6rem] sm:h-[8rem]">
               {description}
             </div>
             <div className="items-center w-1/3 hidden lg:flex transition-all font-miligramTextMedium">

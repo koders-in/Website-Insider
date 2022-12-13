@@ -141,7 +141,7 @@ const Contact = () => {
                   hoverOnMail ? "text-main-lightTeal" : "text-white"
                 }`}
               >
-                info@koders.com
+                info@koders.in
               </p>
             </div>
             <div className="flex gap-9">
@@ -209,7 +209,7 @@ const Contact = () => {
                   <Button
                     type="submit"
                     OnClick={handleSubmit}
-                    className="mt-8 text-[0.8rem] xxl:text-[1rem] py-[0.4rem] sm:py-[0.6rem] w-[7.3rem] sm:w-[9.5rem] block bg-main-greenOpt-200 font-miligramMedium text-main-lightTeal  rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+                    className="mx-auto sm:mx-0 mt-8 text-[0.8rem] xxl:text-[1rem] py-[0.4rem] sm:py-[0.6rem] w-[7.3rem] sm:w-[9.5rem] block bg-main-greenOpt-200 font-miligramMedium text-main-lightTeal  rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
                     text="Submit"
                   />
                 </>

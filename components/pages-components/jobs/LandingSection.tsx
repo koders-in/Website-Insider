@@ -38,8 +38,9 @@ const LandingSection = ({
     }
     if (tempData?.length) {
       const fuse = new Fuse(tempData, {
-        location: 0,
-        shouldSort: true,
+        // location: 0,
+        // shouldSort: true,
+        minMatchCharLength: value.length - 1,
         keys: ["job.title"],
       });
       let pattern = value;
@@ -148,17 +149,20 @@ const LandingSection = ({
     keys: Array<string>,
     pattern: string
   ) => {
-    const fuse = new Fuse(list, {
-      location: 4,
-      shouldSort: true,
-      keys: keys,
-    });
-    const res: any = fuse.search(pattern);
-    if (res.length) {
-      return res?.map(({ item }) => {
-        return item;
+    try {
+      const fuse = new Fuse(list, {
+        minMatchCharLength: pattern.length - 1,
+        keys: keys,
       });
-    } else return [];
+      const res: any = fuse.search(pattern);
+      if (res.length) {
+        return res?.map(({ item }) => {
+          return item;
+        });
+      } else return [];
+    } catch (error) {
+      return [];
+    }
   };
 
   const handleClickOnSearch = () => {

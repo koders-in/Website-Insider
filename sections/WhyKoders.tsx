@@ -75,7 +75,7 @@ const WhyKoders = () => {
         </Suspense>
       </div>
       <div
-        className="flex bg-main-white-500 py-4 md:px-3 rounded-xl w-[90%] lg:hidden relative mt-10 justify-center items-center mx-auto overflow-x-clip h-[300px]"
+        className="flex bg-main-white-500 py-4 md:px-3 rounded-xl w-[90%] lg:hidden relative mt-10 justify-center items-center mx-auto overflow-x-clip h-[340px]"
         id="whyKoders"
       >
         {!(handleSliding.activeIndex <= 0) && (
