@@ -466,6 +466,32 @@ stroke-dashoffset: 0; */
   }
 }
 
+@keyframes moveLabelUp {
+  from {
+    left: 4px;
+    top: 20px;
+    transform: scale(1);
+  }
+  to {
+    left: -5px;
+    top: -10px;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes moveLabelDown {
+  from {
+    left: -5px;
+    top: -10px;
+    transform: scale(0.9);
+  }
+  to {
+    left: 4px;
+    top: 20px;
+    transform: scale(1);
+  }
+}
+
 /* -------------Modal----------- */
 
 .ReactModal__Overlay {
@@ -548,4 +574,25 @@ textarea:focus {
 }
 #selectBox:focus {
   border-color: #00a99d !important;
+}
+
+/* input */
+.koders-input input:not(:focus):valid ~ span,
+.koders-input textarea:not(:focus):valid ~ span,
+.koders-input textarea:focus ~ span,
+.koders-input input:focus ~ span {
+  transform: translate(-15px, -35px) scale(0.9);
+}
+.koders-input span {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  transition: 0.5s;
+  display: inline-block;
+}
+.koders-input input {
+  position: relative;
+  width: 100%;
+  background: transparent;
+  z-index: 2;
 }

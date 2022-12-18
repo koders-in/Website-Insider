@@ -49,11 +49,9 @@ export const sendClientDetails = async (data: any) => {
       {
         title: "Client request",
         description: `${data.fName} is requested for project`,
-        // url: data?.downloadLink,
         color: 3447003,
         author: {
           name: data?.fName,
-          //   icon_url: "user.profile_url",
         },
         fields: [
           {
@@ -89,6 +87,81 @@ export const sendClientDetails = async (data: any) => {
           {
             name: "Technologies",
             value: data?.technologies.toString(),
+            inline: true,
+          },
+        ],
+      },
+    ],
+  };
+  return await axios.post(webhook, embed);
+};
+
+export const sendCollaboratorDetails = async (data: any) => {
+  const embed = {
+    embeds: [
+      {
+        title: "Collaboration request",
+        description: `${data?.fName} wants to collaborate with us.`,
+        // url: data?.downloadLink,
+        color: 3447003,
+        author: {
+          name: data?.fName,
+          //   icon_url: "user.profile_url",
+        },
+        fields: [
+          {
+            name: "Name",
+            value: data?.name,
+            inline: true,
+          },
+          {
+            name: "Email",
+            value: data?.email,
+            inline: true,
+          },
+          {
+            name: "Mobile Number",
+            value: data?.mobile,
+            inline: true,
+          },
+          {
+            name: "Company",
+            value: data?.company || "None",
+            inline: true,
+          },
+          {
+            name: "Company Size",
+            value: data?.companySize || "None",
+            inline: true,
+          },
+          {
+            name: "Location",
+            value: data?.location,
+            inline: true,
+          },
+          {
+            name: "Website URL",
+            value: data?.websiteURL,
+            inline: true,
+          },
+          {
+            name: "Job Title",
+            value: data?.jobTitle,
+            inline: true,
+          },
+          {
+            name: "Seeks benefit",
+            value: data?.jobTitle,
+            inline: true,
+          },
+          {
+            name: "Collaboration will bring to us",
+            value: data?.questionTwo,
+            inline: true,
+          },
+          {
+            name: "Hear about us",
+            value: data?.hearAboutUS,
             inline: true,
           },
         ],

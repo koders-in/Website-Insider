@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
-import Fuse from "fuse.js";
 
 import Divider from "../../Divider";
 import GradientText from "../../GradientText";
@@ -8,6 +7,7 @@ import { crossTeal, search, work } from "../../../assets";
 import Toogler from "../../Toogler";
 import { jobTypes } from "../../../helper/constant";
 import ButtonsGroup from "../project-page-components/ButtonsGroup";
+import { useLandingComp } from "../../../helper/careerHooks";
 
 interface Props {
   setPinJobs: (data: any) => void;
@@ -16,8 +16,12 @@ interface Props {
   setNoMatch: (data: boolean) => void;
   department: Array<string>;
   setDepartment: (data: any) => void;
+  filter: any;
+  setFilter: (data: any) => void;
 }
 const LandingSection = ({
+  filter,
+  setFilter,
   pinJobs,
   setPinJobs,
   setNoMatch,
@@ -25,153 +29,13 @@ const LandingSection = ({
   department,
   setDepartment,
 }: Props) => {
-  const [isRemote, setIsRemote] = useState(true);
-  const [searchValue, setSearchValue] = useState("");
-
-  const handleChange = async (e: any) => {
-    const { value } = e.target;
-    setSearchValue(value);
-    if (!value) {
-      setPinJobs(tempData);
-      setNoMatch(false);
-      return;
-    }
-    if (tempData?.length) {
-      const fuse = new Fuse(tempData, {
-        // location: 0,
-        // shouldSort: true,
-        minMatchCharLength: value.length - 1,
-        keys: ["job.title"],
-      });
-      let pattern = value;
-      const res: any = fuse.search(pattern);
-      if (res?.length === 0) {
-        setPinJobs([]);
-        setNoMatch(true);
-        return;
-      }
-      if (res?.length) {
-        setNoMatch(false);
-        const temp = res?.map(({ item }) => {
-          return item;
-        });
-        setPinJobs(temp);
-      }
-    }
-  };
-
-  const handleToogle = (data: any) => {
-    setIsRemote(data);
-    if (tempData?.length) {
-      const fuse = new Fuse(tempData, {
-        location: 0,
-        shouldSort: true,
-        keys: ["location"],
-      });
-      if (!data) {
-        const res: any = fuse.search("Remote");
-        if (res?.length === 0) {
-          setPinJobs([]);
-          setNoMatch(true);
-          return;
-        }
-        if (res?.length) {
-          setNoMatch(false);
-          const temp = res?.map(({ item }) => {
-            return item;
-          });
-          setPinJobs(temp);
-        }
-      } else {
-        setNoMatch(false);
-        setPinJobs(tempData);
-      }
-    }
-  };
-
-  const handleClick = (item: string) => {
-    if (department.includes(item)) {
-      if (item === "All") {
-        setDepartment(["All"]);
-        setNoMatch(false);
-        setPinJobs(tempData);
-        return;
-      }
-
-      const updateedDep = department.filter((temp) => temp !== item);
-      if (updateedDep.length === 0) {
-        setDepartment(["All"]);
-        setNoMatch(false);
-        setPinJobs(tempData);
-        return;
-      }
-      setDepartment((p) => updateedDep);
-      let filteredJobs = [];
-      updateedDep.forEach((item) => {
-        const tempJobs = getFilteredData(tempData, ["job.department"], item);
-        filteredJobs = [...filteredJobs, ...tempJobs];
-      });
-      if (filteredJobs.length <= 0) {
-        setNoMatch(true);
-      } else {
-        setNoMatch(false);
-      }
-      setPinJobs(filteredJobs);
-    } else {
-      if (department.length >= 4 || item === "All") {
-        setDepartment(["All"]);
-        setNoMatch(false);
-        setPinJobs(tempData);
-        return;
-      }
-      const updateedDep = [
-        ...department.filter((temp) => temp !== "All"),
-        item,
-      ];
-      setDepartment((p) => updateedDep);
-
-      let filteredJobs = [];
-      updateedDep.forEach((item) => {
-        const tempJobs = getFilteredData(tempData, ["job.department"], item);
-        filteredJobs = [...filteredJobs, ...tempJobs];
-      });
-      if (filteredJobs.length <= 0) {
-        setNoMatch(true);
-      } else {
-        setNoMatch(false);
-      }
-      setPinJobs(filteredJobs);
-    }
-  };
-
-  const getFilteredData = (
-    list: Array<any>,
-    keys: Array<string>,
-    pattern: string
-  ) => {
-    try {
-      const fuse = new Fuse(list, {
-        minMatchCharLength: pattern.length - 1,
-        keys: keys,
-      });
-      const res: any = fuse.search(pattern);
-      if (res.length) {
-        return res?.map(({ item }) => {
-          return item;
-        });
-      } else return [];
-    } catch (error) {
-      return [];
-    }
-  };
-
-  const handleClickOnSearch = () => {
-    if (searchValue) {
-      setSearchValue("");
-      setNoMatch(false);
-      setPinJobs(tempData);
-    } else return;
-  };
+  const {
+    handleChange,
+    handleToogle,
+    handleClick,
+    handleClickOnSearch,
+    searchValue,
+  } = useLandingComp(tempData, setPinJobs, filter, setFilter, setNoMatch);
 
   return (
     <div className="">
@@ -199,7 +63,7 @@ const LandingSection = ({
               placeholder="Job Title"
               name="jobTitle"
               onChange={handleChange}
-              value={searchValue}
+              value={filter.title}
             />
           </div>
           <div
@@ -223,7 +87,7 @@ const LandingSection = ({
         containerStyle="w-fit mx-auto"
         buttonsArray={jobTypes}
         handleClick={handleClick}
-        technologies={department}
+        technologies={filter?.departments}
       />
       <Divider className="h-12" />
       <div className=" border-b-2 border-main-teal"></div>

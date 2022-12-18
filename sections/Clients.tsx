@@ -65,7 +65,7 @@ const Clients = () => {
       <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
         <Divider className="mt-5 xl:my-10" />
         <GradientText
-          text="Trusted by the"
+          text="Trusted by"
           className="text-[2.2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[3rem] w-fit mx-auto text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
         />
       </Suspense>
@@ -80,14 +80,14 @@ const Clients = () => {
         <h2
           className={`text-center text-[2.2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[3rem]  font-miligrambold text-white font-medium animate-rightIn ${rightOutStyle}`}
         >
-          German Gov
+          The German Govt.
         </h2>
       )}
       {count === 2 && (
         <h2
           className={`text-center text-[2.2rem]  leading-none mb-2 md:mb-0 md:leading-normal sm:text-[3rem]  font-miligrambold text-white font-medium animate-leftIn ${leftOutStyle}`}
         >
-          Indian Army
+          The Indian Army
         </h2>
       )}
       {count === 3 && (

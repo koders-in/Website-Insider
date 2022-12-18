@@ -18,7 +18,7 @@ export const jobValidationSchema = yup.object().shape({
   portfolioURL: yup.string().optional(),
   hiringReason: yup.string().required("This is a mandatory field."),
   joiningReason: yup.string().required("This is a mandatory field."),
-  hearAboutUS: yup.string().required("This is a mandatory field."),
+  hearAboutUs: yup.string().required("This is a mandatory field."),
 });
 
 export const projectDataSchema = yup.object().shape({
@@ -39,6 +39,7 @@ export const projectDataSchema = yup.object().shape({
   lName: yup.string().required("Last Name is a mandatory field."),
   company: yup.string().notRequired(),
   role: yup.string().notRequired(),
+  hearAboutUs: yup.string().required("This is a mandatory field."),
 });
 
 export const collabrationPageSchima = yup.object().shape({

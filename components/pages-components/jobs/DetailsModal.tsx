@@ -107,10 +107,10 @@ const DetailsModal = ({
                 <Image src={experienceIcon} alt="" className="mr-2 h-3" />
                 Exp {experience}
               </div>
-              {viewDetails?.jobs_job_listings[0]?.job?.duration && (
+              {viewDetails?.jobs_listing[0]?.job?.duration && (
                 <div className="flex items-center justify-between text-[0.8rem]">
                   <Image src={duration} alt="" className="mr-2 h-3" />
-                  Duration- {viewDetails?.jobs_job_listings[0]?.job?.duration}
+                  Duration- {viewDetails?.jobs_listing[0]?.job?.duration}
                 </div>
               )}
             </div>
@@ -151,7 +151,7 @@ const DetailsModal = ({
         Selected intern's day-to-day responsibilities include:
       </p>
       <ul className="font-miligramLight list-decimal ml-4 text-white text-[0.85rem]">
-        {viewDetails?.jobs_job_listings[0]?.job?.roles_responsibility?.map(
+        {viewDetails?.jobs_listing[0]?.job?.roles_responsibility?.map(
           (item, i) => (
             <li key={i}>{item}</li>
           )
@@ -161,7 +161,7 @@ const DetailsModal = ({
         Skills Required
       </h5>
       <div className="text-white text-[0.85rem] mt-3 flex gap-2 flex-wrap">
-        {viewDetails?.jobs_job_listings[0]?.job?.skills.map((item, i) => {
+        {viewDetails?.jobs_listing[0]?.job?.skills.map((item, i) => {
           return (
             <div
               key={i}
@@ -176,7 +176,7 @@ const DetailsModal = ({
         Perks and Benefits
       </h5>
       <ul className="font-miligramLight list-decimal ml-4 text-white text-[0.85rem]">
-        {viewDetails?.jobs_job_listings[0]?.job?.perks_and_benefits?.map(
+        {viewDetails?.jobs_listing[0]?.job?.perks_and_benefits?.map(
           (item, i) => (
             <li key={i}>{item}</li>
           )
@@ -185,7 +185,7 @@ const DetailsModal = ({
       <h5 className="font-miligrambold text-white text-[1.1rem] mt-4 mb-3">
         No of Openings -&nbsp;
         <span className="text-main-whiteVar1">
-          {viewDetails?.jobs_job_listings[0]?.no_of_openings}
+          {viewDetails?.jobs_listing[0]?.no_of_openings}
         </span>
       </h5>
       <Button

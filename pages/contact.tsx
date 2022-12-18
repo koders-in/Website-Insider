@@ -177,6 +177,7 @@ const Contact = () => {
               {({ handleBlur, handleChange, errors, values, handleSubmit }) => (
                 <>
                   <InputBox
+                    labelID="nameContact"
                     id="namecont"
                     handleChange={handleChange}
                     name="name"
@@ -186,8 +187,9 @@ const Contact = () => {
                     onBlur={handleBlur}
                     value={values.name}
                   />
-                  <Divider className="mt-8 sm:mt-2" />
+                  <Divider className="mt-10 sm:mt-4" />
                   <InputBox
+                    labelID="emailContact"
                     handleChange={handleChange}
                     name="email"
                     placeholder="Email Address *"
@@ -196,7 +198,7 @@ const Contact = () => {
                     onBlur={handleBlur}
                     value={values.email}
                   />
-                  <Divider className="mt-6" />
+                  <Divider className="mt-8" />
                   <TextArea
                     handleChange={handleChange}
                     name="message"

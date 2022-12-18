@@ -81,7 +81,7 @@ const handler = async (
 export default handler;
 
 const writeInFile = (data) => {
-  const filePath = path.join(__dirname, "reviews.json");
+  const filePath = path.join(__dirname, "review.json");
   return new Promise((resolve, reject) => {
     try {
       fs.writeFile(filePath, JSON.stringify(data), (err) => {
@@ -95,7 +95,7 @@ const writeInFile = (data) => {
 };
 
 const readFromFile = () => {
-  const filePath = path.join(__dirname, "reviews.json");
+  const filePath = path.join(__dirname, "review.json");
   return new Promise((resolve, reject) => {
     try {
       fs.readFile(filePath, "utf8", async (err, jsonString) => {

@@ -32,6 +32,7 @@ interface initialState {
   lName: string;
   company: string;
   role: string;
+  hearAboutUs: string;
 }
 const StartProject = () => {
   const [showLoader, setShowLoader] = useState(false);
@@ -55,14 +56,15 @@ const StartProject = () => {
     setShowLoader(true);
     try {
       const res = await sendData("project-request", {
-        company_name: value.company,
-        email: value.email,
-        estimated_budget: value.budget,
-        estimated_timeline: value.timeline,
-        first_name: value.fName,
-        last_name: value.lName,
-        person_job_role: value.role,
-        phone_number: value.mobile,
+        client_company_name: value.company,
+        client_email: value.email,
+        project_estimated_budget: value.budget,
+        project_estimated_timeline: value.timeline,
+        client_firstname: value.fName,
+        client_lastname: value.lName,
+        client_reference: value.hearAboutUs,
+        client_company_jobrole: value.role,
+        client_phone_number: value.mobile,
         project_description: value.aboutProject,
         project_tags: technologies,
       });
@@ -70,31 +72,13 @@ const StartProject = () => {
       if (res.status === 200) {
         window.alert("Your response has been recorded.");
         helper.resetForm();
+        sendClientDetails({ ...value, technologies });
       } else {
         window.alert("Unable to record your response. Try again later.");
       }
     } catch (error) {}
     setShowLoader(false);
-    window.alert("Unable to record your response. Try again later.");
   };
-
-  // const handleSubmitData = async (data) => {
-  //   if (technologies.length === 0) {
-  //     window.alert("You need to pick technologies");
-  //     return false;
-  //   } else {
-  //     try {
-  //       // Send data on discord webhook
-  //       // const res = await sendClientDetails({
-  //       //   ...data,
-  //       //   technologies: technologies,
-  //       // });
-  //       return true;
-  //     } catch (error) {
-  //       return false;
-  //     }
-  //   }
-  // };
 
   const handleClick = (item: string) => {
     let temp: Array<any> = [];

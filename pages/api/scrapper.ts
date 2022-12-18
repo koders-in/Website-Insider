@@ -119,7 +119,7 @@ async function getLocalPlaceReviews() {
     await page.goto(placeUrl);
     await page.waitForSelector(".DUwDvf");
 
-    const placeInfo = await fillPlaceInfo(page);
+    // const placeInfo = await fillPlaceInfo(page);
     await page.click(".F7nice");
     await page.waitForTimeout(2000);
     await page.waitForSelector(".W1neJ");
@@ -130,7 +130,7 @@ async function getLocalPlaceReviews() {
     const reviews = await getReviewsFromPage(page);
 
     await browser.close();
-    return { placeInfo, reviews };
+    return { placeInfo: {}, reviews };
   } catch (error) {
     console.warn(error);
   }

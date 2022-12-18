@@ -72,17 +72,35 @@ export default function Home() {
       <Head>
         <title>Koders</title>
       </Head>
-      <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
-        <Navbar />
-        <Hero />
-        <WhyKoders />
-        <Clients />
-        <Technologies />
-        <Testmonials />
-        <Pricing />
-        <Newsletter />
-        <Footer />
-      </Suspense>
+      <>
+        <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+          <Navbar />
+        </Suspense>
+        <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+          <Hero />
+        </Suspense>
+        <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+          <WhyKoders />
+        </Suspense>
+        <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+          <Clients />
+        </Suspense>
+        <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+          <Technologies />
+        </Suspense>
+        <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+          <Testmonials />
+        </Suspense>
+        <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+          <Pricing />
+        </Suspense>
+        <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+          <Newsletter />
+        </Suspense>
+        <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+          <Footer />
+        </Suspense>
+      </>
     </div>
   );
 }

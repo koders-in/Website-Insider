@@ -1,5 +1,5 @@
 const axios = require("axios");
 
 export const JobClient = axios.create({
-  baseURL: "http://192.168.29.129:8080/api/rest/",
+  baseURL: "http://161.97.112.22:9090/api/rest/",
 });

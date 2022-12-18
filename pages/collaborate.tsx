@@ -13,6 +13,7 @@ import {
 import TextArea from "../components/pages-components/jobs/TextArea";
 import { useSetDataOnServer } from "../helper/careerHooks";
 import { collabrationPageSchima } from "../helper/validate";
+import { sendCollaboratorDetails } from "../helper/webhook";
 
 interface initialState {
   name: string;
@@ -52,19 +53,21 @@ const Collabrate = () => {
     // -----------send data to server------------
     try {
       const res = await sendData("collaboration", {
-        email: value.email,
-        phone_number: value.mobile,
-        name: value.name,
-        company_url: value.websiteURL,
+        collaborator_email: value.email,
+        collaborator_phone_number: value.mobile,
+        collaborator_name: value.name,
+        company_website: value.websiteURL,
         company_size: value.companySize,
         company_name: value.company,
         company_location: value.location,
-        collaborator_job_role: value.jobTitle,
-        collaboration_seeks: value.questionOne,
-        collaboration_brings: value.questionTwo,
+        collaborator_company_jobrole: value.jobTitle,
+        collab_seeks: value.questionOne,
+        collab_brings: value.questionTwo,
+        collab_reference: value.hearAboutUS,
       });
       if (res.status === 200) {
         window.alert("Your response has been recorded.");
+        sendCollaboratorDetails(value);
       } else {
         window.alert("Unable to record your response. Try again later.");
       }
@@ -114,6 +117,7 @@ const Collabrate = () => {
               <div className="flex gap-4">
                 <div className="w-[100%] lg:w-[49%]">
                   <InputBox
+                    labelID="nameCon"
                     id="cbname"
                     onBlur={handleBlur}
                     handleChange={handleChange}
@@ -129,6 +133,7 @@ const Collabrate = () => {
               <div className="flex gap-8 lg:gap-4 flex-col lg:flex-row">
                 <div className="w-[100%] lg:w-[50%]">
                   <InputBox
+                    labelID="emailCon"
                     onBlur={handleBlur}
                     handleChange={handleChange}
                     name="email"
@@ -140,6 +145,7 @@ const Collabrate = () => {
                 </div>
                 <div className="w-[100%] lg:w-[50%]">
                   <InputBox
+                    labelID="phoneCon"
                     onBlur={handleBlur}
                     handleChange={handleChange}
                     name="mobile"
@@ -155,6 +161,7 @@ const Collabrate = () => {
               <div className="flex gap-8 lg:gap-4 flex-col lg:flex-row">
                 <div className="w-[100%] lg:w-[50%]">
                   <InputBox
+                    labelID="compCon"
                     onBlur={handleBlur}
                     handleChange={handleChange}
                     name="company"
@@ -170,6 +177,8 @@ const Collabrate = () => {
               <div className="flex gap-8 lg:gap-4 flex-col lg:flex-row">
                 <div className="w-[100%] lg:w-[50%]">
                   <SelectBox
+                    labelID="selectcompApp"
+                    onBlur={handleBlur}
                     handleSelect={(obj: any) => {
                       const { name, value } = obj;
                       handleChange("companySize")(value);
@@ -183,6 +192,7 @@ const Collabrate = () => {
                 </div>
                 <div className="w-[100%] lg:w-[50%]">
                   <InputBox
+                    labelID="locCon"
                     onBlur={handleBlur}
                     handleChange={handleChange}
                     name="location"
@@ -197,6 +207,7 @@ const Collabrate = () => {
               <div className="flex gap-8 lg:gap-4 flex-col lg:flex-row">
                 <div className="w-[100%] lg:w-[50%]">
                   <InputBox
+                    labelID="urlCon"
                     onBlur={handleBlur}
                     handleChange={handleChange}
                     name="websiteURL"
@@ -208,6 +219,7 @@ const Collabrate = () => {
                 </div>
                 <div className="w-[100%] lg:w-[50%]">
                   <InputBox
+                    labelID="jobCon"
                     onBlur={handleBlur}
                     handleChange={handleChange}
                     name="jobTitle"
@@ -228,7 +240,7 @@ const Collabrate = () => {
                 errorText={errors.questionOne}
                 onBlur={handleBlur}
               />
-              <Divider className="mt-8 lg:mt-4" />
+              <Divider className="mt-8 lg:mt-6" />
               <TextArea
                 handleChange={handleChange}
                 name="questionTwo"
@@ -241,6 +253,8 @@ const Collabrate = () => {
               <Divider className="mt-8 lg:mt-4" />
               <div className="w-[100%] lg:w-[50%]">
                 <SelectBox
+                  labelID="selectcollApp"
+                  onBlur={handleBlur}
                   handleSelect={(obj: any) => {
                     const { name, value } = obj;
                     handleChange("hearAboutUS")(value);
@@ -250,13 +264,15 @@ const Collabrate = () => {
                   errorText={errors.hearAboutUS}
                   list={["1-10", "10-20", "20-30", "Other"]}
                   value={values.hearAboutUS}
-                  inputID="hearAboutUS"
+                  inputID="hearAboutUSd"
                 />
               </div>
               <Divider className="h-12" />
               <Button
                 type="submit"
-                OnClick={handleSubmit}
+                OnClick={() => {
+                  handleSubmit();
+                }}
                 className="mx-auto text-[0.8rem] xxl:text-[1rem] py-[0.4rem] sm:py-[0.6rem] w-[7.3rem] sm:w-[9.5rem] block bg-main-greenOpt-200 font-miligramMedium text-main-lightTeal  rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
                 text="Submit"
               />

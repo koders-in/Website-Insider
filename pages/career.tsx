@@ -1,41 +1,70 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import AOS from "aos";
-import Fuse from "fuse.js";
 
 import "aos/dist/aos.css";
 
 import {
   AnimatedBorder,
-  Divider,
-  Footer,
-  Hiring,
-  Job,
-  JobAlert,
-  LandingSection,
-  Navbar,
+  // Divider,
+  // Footer,
+  // Hiring,
+  // Job,
+  // JobAlert,
+  // LandingSection,
+  // Navbar,
 } from "../components";
 import Image from "next/image";
 import { greenArrow } from "../assets";
-import { useFetchDataFromServer } from "../helper/careerHooks";
+import { useFetchDataFromServer, useFilter } from "../helper/careerHooks";
 import { FadeLoader } from "react-spinners";
-import { tempJobData } from "../helper/constant";
+
+const Divider = dynamic(() => import("../components/Divider"), {
+  suspense: true,
+});
+const Footer = dynamic(() => import("../components/Footer"), {
+  suspense: true,
+});
+const Hiring = dynamic(
+  () => import("../components/pages-components/jobs/Hiring"),
+  {
+    suspense: true,
+  }
+);
+const Job = dynamic(() => import("../components/pages-components/jobs/Job"), {
+  suspense: true,
+});
+const JobAlert = dynamic(
+  () => import("../components/pages-components/jobs/JobAlert"),
+  {
+    suspense: true,
+  }
+);
+const LandingSection = dynamic(
+  () => import("../components/pages-components/jobs/LandingSection"),
+  {
+    suspense: true,
+  }
+);
+const Navbar = dynamic(() => import("../components/Navbar"), {
+  suspense: true,
+});
 
 const Jobs = () => {
   const [filter, setFilter] = useState({
     title: "",
-    toggle: "",
+    isRemote: false,
     departments: ["All"],
   });
-  const [jobs, setJobs] = useState<any>(tempJobData);
+  const [jobs, setJobs] = useState<any>(null);
   const [viewMore, setViewMore] = useState<boolean>(true);
   const [pinJobs, setPinJobs] = useState<any>();
-  const [tempData, setTempData] = useState<any>();
+  const [tempData, setTempData] = useState<any>(null);
   const [noMatch, setNoMatch] = useState<boolean>(false);
   const [department, setDepartment] = useState<Array<string>>(["All"]);
   const fetchData = useFetchDataFromServer();
-
-  const filterData = (pattern: string) => {};
+  const filterData = useFilter();
 
   useEffect(() => {
     AOS.init({
@@ -50,12 +79,12 @@ const Jobs = () => {
       fetchData("open-job-listings", setJobs);
 
     if (jobs && tempData === null) {
-      if (jobs?.jobs_job_listings?.length / 3 > 0) {
-        setPinJobs(jobs?.jobs_job_listings?.slice(0, 2));
-        setTempData(jobs?.jobs_job_listings?.slice(0, 2));
+      if (jobs?.jobs_listing?.length / 3 > 0) {
+        setPinJobs(jobs?.jobs_listing?.slice(0, 2));
+        setTempData(jobs?.jobs_listing?.slice(0, 2));
       } else {
-        setPinJobs(jobs?.jobs_job_listings);
-        setTempData(jobs?.jobs_job_listings);
+        setPinJobs(jobs?.jobs_listing);
+        setTempData(jobs?.jobs_listing);
       }
     }
   }, [jobs, pinJobs]);
@@ -63,51 +92,20 @@ const Jobs = () => {
   const handleTryAgain = async () => {
     setPinJobs(false);
     let res = await fetchData("open-job-listings", setJobs);
-    if (res?.jobs_job_listings?.length > 3) {
-      setPinJobs(res?.jobs_job_listings?.slice(0, 3));
+    if (res?.jobs_listing?.length > 3) {
+      setPinJobs(res?.jobs_listing?.slice(0, 3));
     } else {
-      setPinJobs(res?.jobs_job_listings);
+      setPinJobs(res?.jobs_listing);
     }
   };
 
   const handleViewMore = () => {
-    if (!jobs?.jobs_job_listings?.length) return;
-    let filteredJobs = [];
-    if (department.length === 1 && department[0] === "All") {
-      setPinJobs([...jobs?.jobs_job_listings]);
-    } else {
-      department.forEach((item) => {
-        const tempJobs = getFilteredData(
-          jobs?.jobs_job_listings,
-          ["job.department"],
-          item
-        );
-        filteredJobs = [...filteredJobs, ...tempJobs];
-      });
-      setPinJobs(filteredJobs);
-    }
-
-    setTempData([...jobs?.jobs_job_listings]);
+    if (!jobs?.jobs_listing?.length) return;
+    const tempArr = [...jobs?.jobs_listing];
+    setPinJobs(tempArr);
+    setTempData(tempArr);
     setViewMore(false);
-  };
-
-  const getFilteredData = (
-    list: Array<any>,
-    keys: Array<string>,
-    pattern: string
-  ) => {
-    const fuse = new Fuse(list, {
-      // location: 4,
-      // shouldSort: true,
-      minMatchCharLength: pattern.length - 1,
-      keys: keys,
-    });
-    const res: any = fuse.search(pattern);
-    if (res.length) {
-      return res?.map(({ item }) => {
-        return item;
-      });
-    } else return [];
+    filterData(filter, tempArr, setPinJobs);
   };
 
   return (
@@ -115,27 +113,37 @@ const Jobs = () => {
       <Head>
         <title>Jobs</title>
       </Head>
-      <Navbar />
+      <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+        <Navbar />
+      </Suspense>
       <div className="py-28 w-[90%] sm:w-[85%] mx-auto">
-        <Divider className="mt-9" />
-        <LandingSection
-          {...{
-            pinJobs,
-            setPinJobs,
-            setNoMatch,
-            tempData,
-            department,
-            setDepartment,
-          }}
-        />
-        <Divider className="mt-12" />
+        <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+          <Divider className="mt-9" />
+        </Suspense>
+        <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+          <LandingSection
+            {...{
+              pinJobs,
+              setPinJobs,
+              setNoMatch,
+              tempData,
+              department,
+              setDepartment,
+              filter,
+              setFilter,
+            }}
+          />
+        </Suspense>
+        <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+          <Divider className="mt-12" />
+        </Suspense>
         {jobs === null && (pinJobs === null || !pinJobs?.length) ? (
           <div className="text-main-teal w-fit mx-auto text-[1.5em]">
             There are no jobs open now.
           </div>
         ) : noMatch ? (
           <div className="text-main-teal w-fit mx-auto text-[1.5em]">
-            No Match Found.
+            Could'nt found jobs related to your search.
           </div>
         ) : pinJobs === null ? (
           <div className="w-fit mx-auto text-white font-miligramTextBook">
@@ -154,23 +162,31 @@ const Jobs = () => {
           </div>
         ) : (
           <div className="z-30">
-            {pinJobs?.map((item: any, i: number) => {
-              return (
-                <Job
-                  location={item?.location}
-                  experience={item?.job?.job_level?.experience}
-                  title={item?.job?.title}
-                  type={
-                    item?.job?.job_level?.level === "Intern"
-                      ? "Internship"
-                      : "Full Time"
-                  }
-                  id={item?.id}
-                  key={i}
-                />
-              );
-            })}
-            <Divider className="h-10" />
+            <Suspense
+              fallback={<div className="text-main-teal">Loading...</div>}
+            >
+              {pinJobs?.map((item: any, i: number) => {
+                return (
+                  <Job
+                    location={item?.location}
+                    experience={item?.job?.exp_level?.experience_yrs}
+                    title={item?.job?.title}
+                    type={
+                      item?.job?.exp_level?.level === "Intern"
+                        ? "Internship"
+                        : "Full Time"
+                    }
+                    id={item?.id}
+                    key={i}
+                  />
+                );
+              })}
+            </Suspense>
+            <Suspense
+              fallback={<div className="text-main-teal">Loading...</div>}
+            >
+              <Divider className="h-10" />
+            </Suspense>
             {viewMore && (
               <button
                 onClick={handleViewMore}
@@ -181,11 +197,19 @@ const Jobs = () => {
             )}
           </div>
         )}
-        <Divider className="mt-20" />
-        <Hiring />
-        <JobAlert />
+        <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+          <Divider className="mt-20" />
+        </Suspense>
+        <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+          <Hiring />
+        </Suspense>
+        <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+          <JobAlert />
+        </Suspense>
       </div>
-      <Footer />
+      <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
+        <Footer />
+      </Suspense>
     </div>
   );
 };

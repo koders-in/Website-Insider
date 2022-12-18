@@ -34,6 +34,7 @@ interface initialState {
   lName: string;
   company: string;
   role: string;
+  hearAboutUs: string;
 }
 
 const initialValues: initialState = {
@@ -46,6 +47,7 @@ const initialValues: initialState = {
   lName: "",
   company: "",
   role: "",
+  hearAboutUs: "",
 };
 
 const Form = ({ handleSubmitForm, showLoader, setShowLoader }: Props) => {
@@ -76,6 +78,8 @@ const Form = ({ handleSubmitForm, showLoader, setShowLoader }: Props) => {
           <Divider className="mt-8" />
           <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">
             <SelectBox
+              labelID="selectbudgetApp"
+              onBlur={handleBlur}
               value={values?.budget}
               placeholder="Estimated Budget *"
               list={pricingList}
@@ -87,6 +91,8 @@ const Form = ({ handleSubmitForm, showLoader, setShowLoader }: Props) => {
               errorText={errors.budget}
             />
             <SelectBox
+              labelID="selecttimelineApp"
+              onBlur={handleBlur}
               value={values?.timeline}
               placeholder="Estimated Timeline *"
               list={timeLineList}
@@ -101,6 +107,7 @@ const Form = ({ handleSubmitForm, showLoader, setShowLoader }: Props) => {
           <Divider className="mt-8" />
           <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">
             <InputBox
+              labelID="fNameClient"
               type="text"
               value={values.fName}
               placeholder="First Name *"
@@ -110,6 +117,7 @@ const Form = ({ handleSubmitForm, showLoader, setShowLoader }: Props) => {
               errorText={errors.fName}
             />
             <InputBox
+              labelID="lNameClient"
               type="text"
               value={values.lName}
               placeholder="Last Name *"
@@ -122,6 +130,7 @@ const Form = ({ handleSubmitForm, showLoader, setShowLoader }: Props) => {
           <Divider className="mt-8" />
           <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">
             <InputBox
+              labelID="emailClient"
               type="text"
               value={values.email}
               placeholder="Email Address *"
@@ -131,6 +140,7 @@ const Form = ({ handleSubmitForm, showLoader, setShowLoader }: Props) => {
               errorText={errors?.email}
             />
             <InputBox
+              labelID="phoneClient"
               type="text"
               value={values.mobile}
               placeholder="Phone Number *"
@@ -143,6 +153,7 @@ const Form = ({ handleSubmitForm, showLoader, setShowLoader }: Props) => {
           <Divider className="mt-8" />
           <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">
             <InputBox
+              labelID="companyClient"
               type="text"
               value={values.company}
               placeholder="Company Name"
@@ -151,6 +162,7 @@ const Form = ({ handleSubmitForm, showLoader, setShowLoader }: Props) => {
               onBlur={handleBlur}
             />
             <InputBox
+              labelID="titleClient"
               type="text"
               value={values.role}
               placeholder="Your Title/Role"
@@ -162,22 +174,24 @@ const Form = ({ handleSubmitForm, showLoader, setShowLoader }: Props) => {
           <Divider className="mt-8" />
           <div className="w-[46.4%]">
             <SelectBox
-              value={values?.budget}
-              placeholder="Estimated Budget *"
+              labelID="selectaboutApp"
+              onBlur={handleBlur}
+              value={values?.hearAboutUs}
+              placeholder="How did you hear about us? *"
               list={[
-                "14,000$",
-                "28,000$",
-                "45,000$",
-                "62,000$",
-                "70,000$",
+                "LinkedIn",
+                "Facebook",
+                "You Tube",
+                "Twitter",
+                "Instagram",
                 "Other",
               ]}
-              name="budget"
+              name="hearAboutUs"
               handleSelect={(obj: any) => {
                 const { name, value } = obj;
-                handleChange("budget")(value);
+                handleChange("hearAboutUs")(value);
               }}
-              errorText={errors.budget}
+              errorText={errors.hearAboutUs}
               inputID="startHear"
             />
           </div>

@@ -33,7 +33,7 @@ interface initialState {
   portfolioURL?: string;
   hiringReason?: string;
   joiningReason?: string;
-  hearAboutUS: string;
+  hearAboutUs: string;
 }
 
 const initialValue: initialState = {
@@ -46,7 +46,7 @@ const initialValue: initialState = {
   portfolioURL: "",
   hiringReason: "",
   joiningReason: "",
-  hearAboutUS: "",
+  hearAboutUs: "",
 };
 
 const customStyles = {
@@ -76,6 +76,7 @@ interface Props {
   title: string;
   location: string;
   type: string;
+  id: number;
 }
 
 const ApplyModal = ({
@@ -89,6 +90,7 @@ const ApplyModal = ({
   title,
   location,
   type,
+  id,
 }: Props) => {
   const [resume, setResume] = useState<any>(null);
   const [resumeError, setResumeError] = useState<boolean>(false);
@@ -101,16 +103,17 @@ const ApplyModal = ({
     };
   });
 
-  const handleSubmit = async (
+  const handleSubmitForm = async (
     value: initialState,
     helper: FormikHelpers<initialState>
   ) => {
-    if (resume == null) {
-      window.alert("Upload your resume.");
+    if (resume === null) {
+      setResumeError(true);
+      setIsShowLoader(false);
       return;
-    }
-    setIsShowLoader(true);
+    } else setResumeError(false);
 
+    setIsShowLoader(true);
     const formdata = new FormData();
     formdata.append("file", resume);
 
@@ -124,6 +127,11 @@ const ApplyModal = ({
         "http://localhost:3000/api/",
         requestOptions
       );
+      if (response.status !== 201) {
+        window.alert("Unable to upload resume. Try again later.");
+        setIsShowLoader(false);
+        return;
+      }
       const data = await response.text();
       const { result } = JSON.parse(data);
       await sendCandidateDetails({
@@ -136,7 +144,7 @@ const ApplyModal = ({
         email: value?.email,
         phone_number: value?.mobile,
         resume: result,
-        job_applied: 1,
+        job_applied: id,
         hiring_reason: value?.hiringReason,
         joining_preference: value?.joiningReason,
         joining_reason: value?.joiningReason,
@@ -164,11 +172,13 @@ const ApplyModal = ({
     const {
       target: { files },
     } = e;
-    // console.log(files[0].size);
     const size = files[0]?.size / 1024;
-    if (size > 20) {
-      window.alert("File size should be less than 20KB.");
-    } else setResume(files[0]);
+    if (size > 2048) {
+      window.alert("File size should be less than 2MB.");
+    } else {
+      setResumeError(false);
+      setResume(files[0]);
+    }
   };
 
   const closeModal = () => {
@@ -205,7 +215,7 @@ const ApplyModal = ({
     >
       <Formik
         validationSchema={jobValidationSchema}
-        onSubmit={handleSubmit}
+        onSubmit={handleSubmitForm}
         initialValues={initialValue}
         validateOnBlur={false}
         validateOnChange={false}
@@ -231,11 +241,10 @@ const ApplyModal = ({
                     <Image src={experienceIcon} alt="" className="mr-2 h-3" />
                     Exp {experience}
                   </div>
-                  {viewDetails?.jobs_job_listings[0]?.job?.duration && (
+                  {viewDetails?.jobs_listing[0]?.job?.duration && (
                     <div className="flex items-center justify-between text-[0.8rem]">
                       <Image src={duration} alt="" className="mr-2 h-3" />
-                      Duration-{" "}
-                      {viewDetails?.jobs_job_listings[0]?.job?.duration}
+                      Duration- {viewDetails?.jobs_listing[0]?.job?.duration}
                     </div>
                   )}
                 </div>
@@ -291,6 +300,7 @@ const ApplyModal = ({
             <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-5 mt-2">
               <div className="w-full md:w-[50%]">
                 <InputBox
+                  labelID="fNameCandid"
                   type="text"
                   fontSize="text-[0.9rem] md:text-[1rem]"
                   placeholder="First Name *"
@@ -303,6 +313,7 @@ const ApplyModal = ({
               </div>
               <div className="w-full md:w-[50%]">
                 <InputBox
+                  labelID="lNameCandid"
                   fontSize="text-[0.9rem] md:text-[1rem]"
                   type="text"
                   placeholder="Last Name *"
@@ -318,6 +329,7 @@ const ApplyModal = ({
             <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-5 mt-2">
               <div className="w-full md:w-[50%]">
                 <InputBox
+                  labelID="emailCandid"
                   fontSize="text-[0.9rem] md:text-[1rem]"
                   type="text"
                   placeholder="Email Address *"
@@ -330,6 +342,7 @@ const ApplyModal = ({
               </div>
               <div className="w-full md:w-[50%]">
                 <InputBox
+                  labelID="phoneCandid"
                   fontSize="text-[0.9rem] md:text-[1rem]"
                   type="text"
                   placeholder="Phone Number *"
@@ -345,6 +358,7 @@ const ApplyModal = ({
             <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-5 mt-2">
               <div className="w-full md:w-[50%]">
                 <InputBox
+                  labelID="urlCandid"
                   fontSize="text-[0.9rem] md:text-[1rem]"
                   type="text"
                   placeholder="Website URL/Portfolio URL"
@@ -357,6 +371,7 @@ const ApplyModal = ({
               </div>
               <div className="w-full md:w-[50%]">
                 <InputBox
+                  labelID="inledCandid"
                   fontSize="text-[0.9rem] md:text-[1rem]"
                   type="text"
                   placeholder="LinkedIn URL"
@@ -394,6 +409,8 @@ const ApplyModal = ({
             <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-5 mt-2">
               <div className="w-full md:w-[50%]">
                 <SelectBox
+                  labelID="selectJoinApp"
+                  onBlur={handleBlur}
                   fontSize="text-[0.9rem] md:text-[1rem]"
                   value={values.joiningIn || ""}
                   placeholder="When can you start working? *"
@@ -412,8 +429,10 @@ const ApplyModal = ({
               </div>
               <div className="w-full md:w-[50%]">
                 <SelectBox
+                  labelID="selecthearApp"
+                  onBlur={handleBlur}
                   fontSize="text-[0.9rem] md:text-[1rem]"
-                  value={values.hearAboutUS || ""}
+                  value={values.hearAboutUs || ""}
                   placeholder="Where did you learn of this opening? *"
                   list={[
                     "I can join immediately (within 15 days).",
@@ -424,9 +443,9 @@ const ApplyModal = ({
                   name="hearAboutUS"
                   handleSelect={(obj: any) => {
                     const { name, value } = obj;
-                    handleChange("hearAboutUS")(value);
+                    handleChange("hearAboutUs")(value);
                   }}
-                  errorText={errors.hearAboutUS}
+                  errorText={errors.hearAboutUs}
                   inputID="applyHear"
                 />
               </div>
@@ -442,17 +461,15 @@ const ApplyModal = ({
             </div>
             <Divider className="mt-5" />
             {!isShowLoader && (
-              <Button
-                type="submit"
-                OnClick={() => {
-                  if (resume === null) {
-                    setResumeError(true);
-                  } else setResumeError(false);
+              <button
+                onClick={() => {
                   handleSubmit();
                 }}
-                text="Apply"
+                type="submit"
                 className=" bg-main-greenOpt-200 mt-12 font-miligramMedium w-fit text-main-lightTeal text-[0.8rem] py-[8px] sm:py-[0.55rem]  px-12 rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white block mx-auto"
-              />
+              >
+                Apply
+              </button>
             )}
           </React.Fragment>
         )}

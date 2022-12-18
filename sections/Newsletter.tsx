@@ -50,7 +50,7 @@ const Newsletter = () => {
         }
       }
     } catch (error) {
-      if (error.response.data.code === "constraint-violation") {
+      if (error?.response?.data?.code === "constraint-violation") {
         window.alert("You are already registered to our Newsletter.");
       } else {
         window.alert("Unable to record your response. Try again later.");
