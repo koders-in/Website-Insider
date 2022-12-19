@@ -325,7 +325,7 @@ const ApplyModal = ({
                 />
               </div>
             </div>
-            <Divider className="mt-8" />
+                <Divider className="mt-9 lg:mt-9" />
             <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-5 mt-2">
               <div className="w-full md:w-[50%]">
                 <InputBox
@@ -354,7 +354,7 @@ const ApplyModal = ({
                 />
               </div>
             </div>
-            <Divider className="mt-8" />
+                <Divider className="mt-9 lg:mt-9" />
             <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-5 mt-2">
               <div className="w-full md:w-[50%]">
                 <InputBox
@@ -383,9 +383,9 @@ const ApplyModal = ({
                 />
               </div>
             </div>
-            <Divider className="mt-8" />
+                <Divider className="mt-9 lg:mt-9" />
             <div></div>
-            <Divider className="mt-8" />
+                <Divider className="mt-9 lg:mt-9" />
             <TextArea
               fontSize="text-[0.9rem] md:text-[1rem]"
               placeholder="Why should you be hired for this role? *"
@@ -395,7 +395,7 @@ const ApplyModal = ({
               handleChange={handleChange}
               errorText={errors.hiringReason}
             />
-            <Divider className="mt-8" />
+                <Divider className="mt-9 lg:mt-9" />
             <TextArea
               fontSize="text-[0.9rem] md:text-[1rem]"
               placeholder="Why do you want to Work at Koders? *"
@@ -405,7 +405,7 @@ const ApplyModal = ({
               handleChange={handleChange}
               errorText={errors.joiningReason}
             />
-            <Divider className="mt-8" />
+                <Divider className="mt-9 lg:mt-9" />
             <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-5 mt-2">
               <div className="w-full md:w-[50%]">
                 <SelectBox

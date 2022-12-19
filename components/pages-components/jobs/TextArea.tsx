@@ -30,12 +30,12 @@ const TextArea = ({
   fontSize,
 }: Props) => {
   return (
-    <div className="koders-input text-[0.9rem] md:text-[1.2rem] relative">
-      {title && (
+    <div className="field-container text-[0.9rem] md:text-[1.2rem] mt-[1.3rem] relative">
+      {/* {title && (
         <div className="text-main-light_white tracking-[1px] sm:tracking-[2px] pb-3 font-miligramLight text-[0.9rem] md:text-[1.2rem] ">
           {title}
         </div>
-      )}
+      )} */}
       {errorText && (
         <p
           className={`absolute text-red-600 text-xs bottom-[-13.5px] flex justify-center items-center font-miligramTextMedium ${
@@ -58,18 +58,18 @@ const TextArea = ({
         required
         // placeholder={placeholder}
         onBlur={onBlur}
-        className={`border-b-2 border-main-light_white font-miligramLight w-full outline-none text-main-light_white tracking-[1px] sm:tracking-[2px] placeholder:text-main-light_white  ${
+        className={`border-b-2 border-main-light_white  font-miligramLight w-full outline-none text-main-light_white tracking-[1px] sm:tracking-[2px] placeholder:text-main-light_white  ${
           textareaStyle ? textareaStyle : "bg-main-secondary"
         } ${fontSize}`}
         name={name}
         cols={30}
-        rows={row ? row : 4}
+        rows={row ? row : 3}
         onChange={handleChange}
         value={value}
       ></textarea>
       {placeholder && (
         <span
-          className={`text-main-light_white tracking-[1px] font-miligramLight sm:tracking-[2px] ${fontSize}`}
+          className={`left-0 text-main-light_white tracking-[1px] font-miligramLight sm:tracking-[2px] ${fontSize}`}
         >
           {placeholder}
         </span>

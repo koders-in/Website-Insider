@@ -2,18 +2,14 @@ import {
   benefits,
   bolt,
   camelJuno,
-  discordTeal,
   discordWhiteLogo,
   germanGov,
-  githubLogo,
-  githubTeal,
   githubWhite,
   googleLogo,
   impact,
   indianFlag,
   instaLogo,
   issue,
-  linkedInTeal,
   linkedinWhite,
   performance,
   tealAwards,
@@ -625,10 +621,10 @@ interface departmentJob {
 }
 
 export const socialMediaTealIcons = [
-  linkedInTeal,
-  githubTeal,
-  twitterTeal,
-  discordTeal,
+  linkedinWhite,
+  githubWhite,
+  twitterWhite,
+  discordWhiteLogo,
 ];
 
 export const listOfBestReviewsUsers = [

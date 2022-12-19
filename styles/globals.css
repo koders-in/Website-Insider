@@ -576,23 +576,78 @@ textarea:focus {
   border-color: #00a99d !important;
 }
 
-/* input */
-.koders-input input:not(:focus):valid ~ span,
-.koders-input textarea:not(:focus):valid ~ span,
-.koders-input textarea:focus ~ span,
-.koders-input input:focus ~ span {
-  transform: translate(-15px, -35px) scale(0.9);
+/* ------------field title animation-------------- */
+.select-field-container input:not(:focus):valid ~ span,
+.select-field-container input:focus ~ span {
+  transform: translate(0, -28px);
+  left: 0;
+  font-size: 13px;
 }
-.koders-input span {
+.input-field-container input:not(:focus):valid ~ span,
+.input-field-container input:focus ~ span {
+  transform: translate(0, -28px);
+  left: 0;
+  font-size: 13px;
+}
+.field-container textarea:not(:focus):valid ~ span,
+.field-container textarea:focus ~ span{
+  transform: translate(0, -22px);
+  left: 0;
+  font-size: 13px;
+}
+.field-container span {
+  display: block;
+  width: 100%;
   position: absolute;
-  top: 5px;
+  bottom: 74%;
   left: 5px;
   transition: 0.5s;
   display: inline-block;
+  line-height: normal;
 }
-.koders-input input {
+.field-container textarea {
   position: relative;
   width: 100%;
   background: transparent;
   z-index: 2;
 }
+
+.input-field-container span {
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: 8px;
+  left: 5px;
+  transition: 0.5s;
+  display: inline-block;
+  line-height: normal;
+}
+.input-field-container input {
+  position: relative;
+  width: 100%;
+  background: transparent;
+  z-index: 2;
+}
+
+.select-field-container span {
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: 8px;
+  left: 5px;
+  transition: 0.5s;
+  display: inline-block;
+  line-height: normal;
+}
+.select-field-container input {
+  position: relative;
+  width: 100%;
+  background: transparent;
+  z-index: 2;
+}
+
+/* @media screen and (max-width: 410px){
+  .select-field-container span {
+    top: -21px;
+  }
+} */

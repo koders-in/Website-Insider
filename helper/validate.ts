@@ -10,7 +10,6 @@ export const jobValidationSchema = yup.object().shape({
     .typeError("Provided email address is invalid."),
   mobile: yup
     .number()
-    .min(10)
     .required("Phone Number is a mandatory field.")
     .typeError("Provided phone number is invalid."),
   joiningIn: yup.string().required("This is a mandatory field."),
@@ -32,7 +31,6 @@ export const projectDataSchema = yup.object().shape({
     .typeError("Provided email address is invalid."),
   mobile: yup
     .number()
-    .min(10)
     .required("Phone Number is a mandatory field.")
     .typeError("Provided phone number is invalid."),
   fName: yup.string().required("First Name is a mandatory field."),
@@ -51,7 +49,6 @@ export const collabrationPageSchima = yup.object().shape({
     .typeError("Provided email address is invalid."),
   mobile: yup
     .number()
-    .min(10)
     .required("Phone Number is a mandatory field.")
     .typeError("Provided phone number is invalid."),
   company: yup.string().required("Company Name is a mandatory field."),

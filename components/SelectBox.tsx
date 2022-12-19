@@ -75,15 +75,15 @@ const SelectBox = ({
     </>
   ) : (
     <div
-      className={`select relative pt-[1.07rem] ${
+      className={`select relative h-[2.5rem] ${
         mainStyle
           ? mainStyle
-          : `flex gap-2 cursor-pointer items-center border-b-2 w-full pb-1 sm:pb-3 text-[0.9rem] md:text-[1.2rem] sm:mt-5 relative ${
+          : `flex gap-2 cursor-pointer items-center border-b-2 w-full text-[0.9rem] md:text-[1.2rem] relative ${
               show ? "border-main-teal" : "border-main-light_white"
             }`
       } `}
     >
-      <p
+     {errorText&& <p
         className={`absolute text-red-600 text-xs bottom-[-23px] left-0 flex justify-center items-center font-miligramTextMedium ${
           errorText ? "opacity-100" : "opacity-0"
         } `}
@@ -96,18 +96,20 @@ const SelectBox = ({
           className="mr-1"
         />
         {errorText}
-      </p>
+      </p>}
 
       <div
-        className={`koders-input font-miligramLight relative select-label px-1 text-main-light_white bg-transparent border-none outline-none tracking-[1px] sm:tracking-[2px] placeholder:text-main-light_white w-full ${innelStyle} ${
+        className={`select-field-container h-full font-miligramLight relative select-label px-1 text-main-light_white bg-transparent border-none outline-none tracking-[1px] sm:tracking-[2px] placeholder:text-main-light_white w-full ${innelStyle} ${
           fontSize ? fontSize : ""
         }`}
-        onClick={() => {
-          console.log("first");
-          setShow(!show);
-        }}
+  
       >
         <input
+        onChange={()=>{}}
+        name={name}
+        onClick={() => {
+          setShow(!show);
+        }}
           onBlur={(e) => {
             onBlur(e);
             setShow(false);
@@ -115,14 +117,18 @@ const SelectBox = ({
           type="text"
           value={value || ""}
           required
+          className="tracking-[1px] h-full sm:tracking-[2px]"
         />
         {placeholder && <span id={labelID}>{placeholder}</span>}
       </div>
 
       <Image
+         onClick={() => {
+          setShow(!show);
+        }}
         src={aeroDown}
         alt="show"
-        className={`select-img h-2 mt-6 w-3 mr-2 hover:brightness-75 transition-all duration-300 ${
+        className={`select-img h-2 w-3 mr-2 hover:brightness-75 transition-all duration-300 ${
           show ? "rotate-180" : ""
         }`}
       />
@@ -130,7 +136,7 @@ const SelectBox = ({
         className={`down-list font-miligramLight ${
           dropdownStyle
             ? dropdownStyle
-            : "w-full z-50 rounded-md absolute top-10 sm:top-[5.5rem] transition-all duration-500 bg-main-secondary text-main-light_white overflow-hidden"
+            : "w-full z-50 rounded-md absolute top-10 sm:top-[42px] transition-all duration-500 bg-main-secondary text-main-light_white overflow-hidden"
         } ${show ? "max-h-[300px]" : "max-h-0"} ${fontSize ? fontSize : ""}`}
       >
         <Divider className="mt-1" />

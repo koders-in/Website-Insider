@@ -9,11 +9,6 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.5",
-    "@emotion/styled": "^11.10.5",
-    "@mui/material": "^5.11.0",
-    "@mui/styled-engine-sc": "^5.11.0",
-    "@mui/styles": "^5.11.0",
     "aos": "^2.3.4",
     "axios": "^1.2.1",
     "body-scroll-lock": "^4.0.0-beta.0",
@@ -27,14 +22,12 @@
     "next-compose-plugins": "^2.2.1",
     "next-connect": "^0.13.0",
     "next-optimized-images": "^2.6.2",
-    "nodemailer": "^6.8.0",
     "npm": "^8.19.3",
     "puppeteer": "^19.2.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-modal": "^3.16.1",
     "react-spinners": "^0.13.6",
-    "styled-components": "^5.3.6",
     "uuid": "^9.0.0",
     "yup": "^0.32.11"
   },

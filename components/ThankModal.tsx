@@ -45,11 +45,11 @@ const ThankModal = ({ isShow, toogleThankModal }: Props) => {
       style={customStyles}
       contentLabel="Example Modal"
     >
-      <div className="flex flex-col items-center justify-center gap-4">
+      <div className="flex flex-col items-center justify-center gap-4 h-full">
         {/* <Image src={okay} alt={okay} width={80} height={80} className="" /> */}
         <svg
-          width="127"
-          height="127"
+          width="70"
+          height="70"
           viewBox="0 0 127 127"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"

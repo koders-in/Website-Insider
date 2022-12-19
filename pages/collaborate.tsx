@@ -129,7 +129,7 @@ const Collabrate = () => {
                   />
                 </div>
               </div>
-              <Divider className="mt-8 lg:mt-4" />
+                         <Divider className="mt-9 lg:mt-9" />
               <div className="flex gap-8 lg:gap-4 flex-col lg:flex-row">
                 <div className="w-[100%] lg:w-[50%]">
                   <InputBox
@@ -156,8 +156,7 @@ const Collabrate = () => {
                   />
                 </div>
               </div>
-
-              <Divider className="mt-14 lg:mt-10" />
+              <Divider className="mt-14 lg:mt-12" />
               <div className="flex gap-8 lg:gap-4 flex-col lg:flex-row">
                 <div className="w-[100%] lg:w-[50%]">
                   <InputBox
@@ -173,7 +172,7 @@ const Collabrate = () => {
                 </div>
                 <div className="w-[100%] lg:w-[50%]"> </div>
               </div>
-              <Divider className=" lg:mt-4" />
+                         <Divider className="mt-9 lg:mt-9" />
               <div className="flex gap-8 lg:gap-4 flex-col lg:flex-row">
                 <div className="w-[100%] lg:w-[50%]">
                   <SelectBox
@@ -203,7 +202,7 @@ const Collabrate = () => {
                   />
                 </div>
               </div>
-              <Divider className="mt-8 lg:mt-4" />
+                         <Divider className="mt-9 lg:mt-9" />
               <div className="flex gap-8 lg:gap-4 flex-col lg:flex-row">
                 <div className="w-[100%] lg:w-[50%]">
                   <InputBox
@@ -230,7 +229,7 @@ const Collabrate = () => {
                   />
                 </div>
               </div>
-              <Divider className="mt-16" />
+              <Divider className="mt-14 lg:mt-12" />
               <TextArea
                 handleChange={handleChange}
                 name="questionOne"
@@ -240,7 +239,7 @@ const Collabrate = () => {
                 errorText={errors.questionOne}
                 onBlur={handleBlur}
               />
-              <Divider className="mt-8 lg:mt-6" />
+                                 <Divider className="mt-9 lg:mt-9" />
               <TextArea
                 handleChange={handleChange}
                 name="questionTwo"
@@ -250,7 +249,7 @@ const Collabrate = () => {
                 errorText={errors.questionTwo}
                 onBlur={handleBlur}
               />
-              <Divider className="mt-8 lg:mt-4" />
+                        <Divider className="mt-9 lg:mt-9" />
               <div className="w-[100%] lg:w-[50%]">
                 <SelectBox
                   labelID="selectcollApp"
