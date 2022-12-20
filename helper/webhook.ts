@@ -13,7 +13,6 @@ export const sendCandidateDetails = async (data) => {
         color: 3447003,
         author: {
           name: data?.fName,
-          //   icon_url: "user.profile_url",
         },
         fields: [
           {
@@ -35,6 +34,36 @@ export const sendCandidateDetails = async (data) => {
             name: "Mobile Number",
             value: data?.mobile,
             inline: true,
+          },
+          {
+            name: "Website URL/Portfolio URL",
+            value: data?.portfolioURL || "Not provided",
+            inline: true,
+          },
+          {
+            name: "LinkedIn URL",
+            value: data?.linkedIn || "Not provided",
+            inline: true,
+          },
+          {
+            name: "Why should you be hired for this role?",
+            value: data?.hiringReason,
+            inline: false,
+          },
+          {
+            name: "Why do you want to Work at Koders?",
+            value: data?.joiningReason,
+            inline: false,
+          },
+          {
+            name: "When can you start working?",
+            value: data?.joiningIn,
+            inline: false,
+          },
+          {
+            name: "Where did you learn of this opening?",
+            value: data?.hearAboutUs,
+            inline: false,
           },
         ],
       },
@@ -101,7 +130,7 @@ export const sendCollaboratorDetails = async (data: any) => {
     embeds: [
       {
         title: "Collaboration request",
-        description: `${data?.fName} wants to collaborate with us.`,
+        description: `${data?.name} wants to collaborate with us.`,
         // url: data?.downloadLink,
         color: 3447003,
         author: {
@@ -150,19 +179,19 @@ export const sendCollaboratorDetails = async (data: any) => {
             inline: true,
           },
           {
+            name: "Hear about us",
+            value: data?.hearAboutUS,
+            inline: true,
+          },
+          {
             name: "Seeks benefit",
             value: data?.jobTitle,
-            inline: true,
+            inline: false,
           },
           {
             name: "Collaboration will bring to us",
             value: data?.questionTwo,
-            inline: true,
-          },
-          {
-            name: "Hear about us",
-            value: data?.hearAboutUS,
-            inline: true,
+            inline: false,
           },
         ],
       },

@@ -7,13 +7,6 @@ import "aos/dist/aos.css";
 
 import {
   AnimatedBorder,
-  // Divider,
-  // Footer,
-  // Hiring,
-  // Job,
-  // JobAlert,
-  // LandingSection,
-  // Navbar,
 } from "../components";
 import Image from "next/image";
 import { greenArrow } from "../assets";

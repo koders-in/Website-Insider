@@ -173,12 +173,6 @@
   -moz-clip-path: polygon(0% 50%, 25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%);
 }
 
-/* ::selection {
-  background: #00a99d;  WebKit/Blink Browsers 
-}
-::-moz-selection {
-  background: #00a99d;  Gecko Browsers 
-} */
 
 @keyframes fading {
   0% {
@@ -305,11 +299,39 @@ stroke-dashoffset: 0; */
   stroke: white;
   animation: draw-line 2s forwards;
 }
+/* -----------thank modal sbg------------ */
+#circleID {
+  stroke-dasharray: 383;
+  stroke-dashoffset: 383;
+  stroke: #00a99d;
+  animation: draw-line 1.5s forwards;
+}
+#check {
+  stroke-dasharray: 185;
+  stroke-dashoffset: 185;
+  stroke: #00a99d;
+  transition: all 1s;
+  animation: fill-check 1.5s forwards;
+}
+/* -----------svg animation key frames----------- */
+@keyframes fill-check {
+  0% {
+    stroke-dashoffset: 185;
+    fill: none;
+  }
+  98%{
+    stroke-dashoffset: 0;
+    fill: none;
+  }
+  100% {
+    /* fill: #38D8CC; */
+    fill: #00a99d;;
+  }
+}
 
 @keyframes draw-line {
   to {
     stroke-dashoffset: 0;
-    /* stroke-dasharray: 10; */
   }
 }
 
@@ -430,7 +452,6 @@ stroke-dashoffset: 0; */
   fill: transparent;
   animation: show-base 1s 2s forwards;
 }
-/* ----------------------- */
 #location-15 {
   fill: transparent;
   animation: show 1s 2s forwards;
@@ -439,6 +460,7 @@ stroke-dashoffset: 0; */
   fill: transparent;
   animation: show-base 1s 2s forwards;
 }
+
 
 @keyframes show-base {
   0% {
@@ -651,3 +673,5 @@ textarea:focus {
     top: -21px;
   }
 } */
+
+

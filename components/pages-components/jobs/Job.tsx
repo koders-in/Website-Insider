@@ -19,30 +19,31 @@ const Job = ({ experience, location, title, type, id }: ObjectOfJob) => {
   const fetchData = useFetchDataFromServer();
 
   const toogleDetailModal = async () => {
-    try {
-      if (viewDetails === null || viewDetails === undefined) {
-        const res = await fetchData(`open-job-listings/${id}`, setViewDetails);
-        if (res?.status === 200) {
-          setShowModal((p) => {
-            return {
-              ...p,
-              viewDetails: !p.viewDetails,
-            };
-          });
-        } else {
-          window.alert("Unable to fetch the job details. Try again later.");
-        }
-      } else {
-        setShowModal((p) => {
-          return {
-            ...p,
-            viewDetails: !p.viewDetails,
-          };
-        });
-      }
-    } catch (error) {
-      window.alert("Unable to fetch the job details. Try again later.");
-    }
+    toogleThankModal();
+    // try {
+    //   if (viewDetails === null || viewDetails === undefined) {
+    //     const res = await fetchData(`open-job-listings/${id}`, setViewDetails);
+    //     if (res?.status === 200) {
+    //       setShowModal((p) => {
+    //         return {
+    //           ...p,
+    //           viewDetails: !p.viewDetails,
+    //         };
+    //       });
+    //     } else {
+    //       window.alert("Unable to fetch the job details. Try again later.");
+    //     }
+    //   } else {
+    //     setShowModal((p) => {
+    //       return {
+    //         ...p,
+    //         viewDetails: !p.viewDetails,
+    //       };
+    //     });
+    //   }
+    // } catch (error) {
+    //   window.alert("Unable to fetch the job details. Try again later.");
+    // }
   };
 
   const toogleApplyModal = async () => {

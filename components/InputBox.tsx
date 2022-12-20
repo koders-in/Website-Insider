@@ -29,27 +29,6 @@ const InputBox = ({
   fontSize,
   labelID,
 }: Props) => {
-  // const handleFocus = () => {
-  //   try {
-  //     const animatedLabel = document.getElementById(labelID);
-  //     animatedLabel.style.animation = "moveLabelUp 0.5s ease forwards";
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  // const handleBlur = () => {
-  //   try {
-  //     const animatedLabel = document.getElementById(labelID);
-  //     animatedLabel.style.animation = "moveLabelDown 0.5s ease forwards";
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  // React.useEffect(() => {
-  //   if (value) {
-  //     handleFocus();
-  //   }
-  // });
 
   return (
     <div className="input-field-container w-full relative h-[2.5rem]">
@@ -71,14 +50,9 @@ const InputBox = ({
         id={id}
         type={type}
         value={value}
-        onBlur={(e) => {
-          onBlur(e);
-          // if (!value) handleBlur();
-        }}
-        // onFocus={handleFocus}
+        onBlur={onBlur}
         name={name}
         onChange={handleChange}
-        // placeholder={placeholder}
         className={`z-10 h-full font-miligramLight relative px-1 text-main-light_white bg-transparent tracking-[1px] sm:tracking-[2px] border-b-2 outline-none border-main-light_white placeholder:text-main-light_white w-full ${styling} ${
           fontSize ? fontSize : "text-[0.9rem] md:text-[1rem] lg:text-[1.2rem]"
         }`}

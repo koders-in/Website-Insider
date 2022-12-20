@@ -55,7 +55,8 @@ const SelectBox = ({
   }, []);
 
   const changeField = (e) => {
-    handleSelect({ name: name, value: e.target.value });
+    const data = e.target.value
+    handleSelect({ name: name, value: data });
   };
 
   return selectedItem === "Other" ? (
