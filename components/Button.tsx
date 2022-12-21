@@ -56,7 +56,7 @@ const Button = ({
         (iconStyle && hoverLogo) || isSelect ? (
           <Image
             src={hoverLogo}
-            className={`w-fit h-5 mr-2 ${hoveLogoStyle}`}
+            className={`w-fit h-5 mr-2  ${hoveLogoStyle}`}
             alt="icon"
           />
         ) : (

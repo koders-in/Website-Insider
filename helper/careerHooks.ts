@@ -98,6 +98,8 @@ export const useLandingComp = (
         tempList = temp;
       }
     }
+    if(tempList.length===0) setNoMatch(true);
+    else setNoMatch(false);
     setPinJobs(tempList);
   };
 

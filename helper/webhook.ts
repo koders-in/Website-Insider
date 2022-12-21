@@ -1,7 +1,5 @@
 import axios from "axios";
 
-const webhook =
-  "https://discord.com/api/webhooks/1039098302643318854/dyTePnjCM6LRZ8SriL-AgCBZRe9qh70Eg7VaIF6pDKtMi3F0ohxtlHm5PnADIW7ORRwi";
 
 export const sendCandidateDetails = async (data) => {
   const embed = {
@@ -69,7 +67,7 @@ export const sendCandidateDetails = async (data) => {
       },
     ],
   };
-  return await axios.post(webhook, embed);
+  return await axios.post(process.env.NEXT_PUBLIC_JOB, embed);
 };
 
 export const sendClientDetails = async (data: any) => {
@@ -104,13 +102,13 @@ export const sendClientDetails = async (data: any) => {
             inline: true,
           },
           {
-            name: "Company",
-            value: data?.company || "None",
+            name: "Company Name",
+            value: data?.company || "Not Provided",
             inline: true,
           },
           {
             name: "Role",
-            value: data?.role || "None",
+            value: data?.role || "Not Provided",
             inline: true,
           },
           {
@@ -118,11 +116,26 @@ export const sendClientDetails = async (data: any) => {
             value: data?.technologies.toString(),
             inline: true,
           },
+          {
+            name: "About Project",
+            value: data?.aboutProject || "None",
+            inline: true,
+          },
+          {
+            name: "Client Budget",
+            value: data?.budget || "None",
+            inline: true,
+          },
+          {
+            name: "Timeline of Project",
+            value: data?.timeline,
+            inline: true,
+          },
         ],
       },
     ],
   };
-  return await axios.post(webhook, embed);
+  return await axios.post(process.env.NEXT_PUBLIC_PROJECT_REQUEST, embed);
 };
 
 export const sendCollaboratorDetails = async (data: any) => {
@@ -197,5 +210,5 @@ export const sendCollaboratorDetails = async (data: any) => {
       },
     ],
   };
-  return await axios.post(webhook, embed);
+  return await axios.post(process.env.NEXT_PUBLIC_COLLABORATE, embed);
 };
