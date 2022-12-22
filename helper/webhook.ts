@@ -131,6 +131,11 @@ export const sendClientDetails = async (data: any) => {
             value: data?.timeline,
             inline: true,
           },
+          {
+            name: "Pricing Plan",
+            value: data?.pricingPlan,
+            inline: true,
+          },
         ],
       },
     ],
