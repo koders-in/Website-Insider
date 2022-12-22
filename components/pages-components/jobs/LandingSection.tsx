@@ -46,10 +46,10 @@ const LandingSection = ({
       />
       <p
         data-aos="slide-right"
-        className="mx-auto text-[0.8rem] leading-none m-1 xl:w-[60%] sm:text-[1.3rem] text-center text-main-light_white font-miligramText400"
+        className="mx-auto text-[0.8rem] leading-none m-1 xl:w-[70%] sm:text-[1.3rem] text-center text-main-light_white font-miligramText400"
       >
-        At Koders we build softwares with new dimensions by utilizing the full
-        potential of our team to bring out the best for our customers.
+        At Koders, we are dedicated to providing our employees with a supportive and positive work
+        environment that fosters productivity, collaboration, and personal growth.
       </p>
       <Divider className="mt-14" />
 

@@ -98,10 +98,11 @@ const Collabrate = () => {
         />
         <p
           data-aos="slide-right"
-          className="text-[0.8rem] sm:text-[1.3rem] leading-none w-[90%] sm:w-[80%] md:w-[70%] lg:w-[65%] mx-auto text-center text-main-light_white pb-5 mt-2 font-miligramText400"
+          className="text-[0.8rem] sm:text-[1.3rem] leading-none w-[90%] sm:w-[85%] md:w-[75%] lg:w-[70%] mx-auto text-center text-main-light_white pb-5 mt-2 font-miligramText400"
         >
-          Koders isn't your normal software development firm. We're a group of
-          people who love to work with others to create and inspire.
+          We believe that collaboration is key to driving innovation and achieving success. We’re a team who
+          love to work with like-minded individuals and organizations to create meaningful and impactful
+          projects.
         </p>
         <Divider className="h-8" />
       </div>
@@ -130,7 +131,7 @@ const Collabrate = () => {
                   />
                 </div>
               </div>
-                         <Divider className="mt-9 lg:mt-9" />
+              <Divider className="mt-9 lg:mt-9" />
               <div className="flex gap-8 lg:gap-4 flex-col lg:flex-row">
                 <div className="w-[100%] lg:w-[50%]">
                   <InputBox
@@ -173,7 +174,7 @@ const Collabrate = () => {
                 </div>
                 <div className="w-[100%] lg:w-[50%]"> </div>
               </div>
-                         <Divider className="mt-9 lg:mt-9" />
+              <Divider className="mt-9 lg:mt-9" />
               <div className="flex gap-8 lg:gap-4 flex-col lg:flex-row">
                 <div className="w-[100%] lg:w-[50%]">
                   <SelectBox
@@ -186,7 +187,7 @@ const Collabrate = () => {
                     name="companySize"
                     placeholder="Company Size *"
                     errorText={errors.companySize}
-                    list={["1-10", "10-20", "20-30"]}
+                    list={["<10", "<100", "<500", ">500"]}
                     value={values.companySize}
                   />
                 </div>
@@ -203,7 +204,7 @@ const Collabrate = () => {
                   />
                 </div>
               </div>
-                         <Divider className="mt-9 lg:mt-9" />
+              <Divider className="mt-9 lg:mt-9" />
               <div className="flex gap-8 lg:gap-4 flex-col lg:flex-row">
                 <div className="w-[100%] lg:w-[50%]">
                   <InputBox
@@ -240,7 +241,7 @@ const Collabrate = () => {
                 errorText={errors.questionOne}
                 onBlur={handleBlur}
               />
-                                 <Divider className="mt-9 lg:mt-9" />
+              <Divider className="mt-9 lg:mt-9" />
               <TextArea
                 handleChange={handleChange}
                 name="questionTwo"
@@ -250,7 +251,7 @@ const Collabrate = () => {
                 errorText={errors.questionTwo}
                 onBlur={handleBlur}
               />
-                        <Divider className="mt-9 lg:mt-9" />
+              <Divider className="mt-9 lg:mt-9" />
               <div className="w-[100%] lg:w-[50%]">
                 <SelectBox
                   labelID="selectcollApp"
@@ -260,9 +261,11 @@ const Collabrate = () => {
                     handleChange("hearAboutUS")(value);
                   }}
                   name="hearAboutUS"
-                  placeholder="How did you hear about this opportunity? *"
+                  placeholder="How did you hear about us? *"
                   errorText={errors.hearAboutUS}
-                  list={["1-10", "10-20", "20-30", "Other"]}
+                  list={[
+                    "Social Media", "Friends/Family", "Hiring Portal", "Google", "Other"
+                  ]}
                   value={values.hearAboutUS}
                   inputID="hearAboutUSd"
                 />

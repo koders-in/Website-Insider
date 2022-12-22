@@ -32,7 +32,7 @@ interface initialState {
   linkedIn?: string;
   portfolioURL?: string;
   hiringReason?: string;
-  joiningReason?: string;
+  // joiningReason?: string;
   hearAboutUs: string;
 }
 
@@ -45,7 +45,7 @@ const initialValue: initialState = {
   linkedIn: "",
   portfolioURL: "",
   hiringReason: "",
-  joiningReason: "",
+  // joiningReason: "",
   hearAboutUs: "",
 };
 
@@ -146,8 +146,8 @@ const ApplyModal = ({
         resume: result,
         job_applied: id,
         hiring_reason: value?.hiringReason,
-        joining_preference: value?.joiningReason,
-        joining_reason: value?.joiningReason,
+        joining_preference: value?.joiningIn,
+        joining_reason: "",
         linkedin_url: value?.linkedIn,
         portfolio_url: value?.portfolioURL,
       });
@@ -325,7 +325,7 @@ const ApplyModal = ({
                 />
               </div>
             </div>
-                <Divider className="mt-9 lg:mt-9" />
+            <Divider className="mt-9 lg:mt-9" />
             <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-5 mt-2">
               <div className="w-full md:w-[50%]">
                 <InputBox
@@ -354,7 +354,7 @@ const ApplyModal = ({
                 />
               </div>
             </div>
-                <Divider className="mt-9 lg:mt-9" />
+            <Divider className="mt-9 lg:mt-9" />
             <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-5 mt-2">
               <div className="w-full md:w-[50%]">
                 <InputBox
@@ -383,9 +383,9 @@ const ApplyModal = ({
                 />
               </div>
             </div>
-                <Divider className="mt-9 lg:mt-9" />
+            <Divider className="mt-9 lg:mt-9" />
             <div></div>
-                <Divider className="mt-9 lg:mt-9" />
+            <Divider className="mt-9 lg:mt-9" />
             <TextArea
               fontSize="text-[0.9rem] md:text-[1rem]"
               placeholder="Why should you be hired for this role? *"
@@ -395,7 +395,7 @@ const ApplyModal = ({
               handleChange={handleChange}
               errorText={errors.hiringReason}
             />
-                <Divider className="mt-9 lg:mt-9" />
+            {/* <Divider className="mt-9 lg:mt-9" />
             <TextArea
               fontSize="text-[0.9rem] md:text-[1rem]"
               placeholder="Why do you want to Work at Koders? *"
@@ -404,8 +404,8 @@ const ApplyModal = ({
               value={values.joiningReason}
               handleChange={handleChange}
               errorText={errors.joiningReason}
-            />
-                <Divider className="mt-9 lg:mt-9" />
+            /> */}
+            <Divider className="mt-9 lg:mt-9" />
             <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-5 mt-2">
               <div className="w-full md:w-[50%]">
                 <SelectBox
@@ -415,9 +415,9 @@ const ApplyModal = ({
                   value={values.joiningIn || ""}
                   placeholder="When can you start working? *"
                   list={[
-                    "I can join immediately (within 15 days).",
-                    "I can join after a month.",
-                    "I can join after three months.",
+                    "I can join immediately (within 15 days)",
+                    "I can join within a month",
+                    "I can join after a month",
                   ]}
                   name="joiningIn"
                   handleSelect={(obj: any) => {
@@ -433,11 +433,12 @@ const ApplyModal = ({
                   onBlur={handleBlur}
                   fontSize="text-[0.9rem] md:text-[1rem]"
                   value={values.hearAboutUs || ""}
-                  placeholder="Where did you learn of this opening? *"
+                  placeholder="How did you hear about us? *"
                   list={[
-                    "I can join immediately (within 15 days).",
-                    "I can join after a month.",
-                    "I can join after three months.",
+                    "Social Media",
+                    "Friends/Family",
+                    "Hiring Portal",
+                    "Google",
                     "Other",
                   ]}
                   name="hearAboutUS"

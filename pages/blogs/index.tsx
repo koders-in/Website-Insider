@@ -12,6 +12,7 @@ import {
   MainCard,
   Navbar,
 } from "../../components";
+import { blogs } from "../../helper/constant";
 
 const body = `INSTRUCTIONS FOR SUBMISSION:\n
 1. Attach your blog as a Word document.\n
@@ -62,9 +63,9 @@ const Blog = () => {
           text="Blogs"
         />
         <MainCard />
-        <div className="flex flex-wrap md:flex-nowrap gap-5 sm:gap-9 mt-10">
-          {[1, 2, 3].map((item) => (
-            <Card key={item} />
+        <div className="flex justify-between flex-wrap  gap-5 sm:gap-9 mt-10">
+          {[...blogs.slice(1, blogs.length)].map((item) => (
+            <Card key={item.id} data={item} />
           ))}
         </div>
         <Divider className="h-20 py-10" />

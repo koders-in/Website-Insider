@@ -35,27 +35,27 @@ const WorldMap = dynamic(
 const about = () => {
   const [stats, setStats] = useState([
     {
-      stat: 10,
-      title: "Employees",
+      stat: 4,
+      title: "Years",
       classes: "border-main-teal border-r-2 border-b-2",
     },
     {
-      stat: 10,
-      title: "Years",
+      stat: 260,
+      title: "Projects",
       classes: "border-main-teal md:border-r-2 border-b-2",
     },
     {
-      stat: 10,
+      stat: 18,
       title: "Countries",
       classes: "border-main-teal border-b-2 border-r-2 sm:border-r-0",
     },
     {
-      stat: 10,
-      title: "Mobile Apps",
+      stat: 110,
+      title: "Clients",
       classes: "border-main-teal border-b-2 md:border-b-0 md:border-r-2",
     },
-    { stat: 10, title: "Web Apps", classes: "border-main-teal border-r-2" },
-    { stat: 10, title: "Bots", classes: "" },
+    { stat: 30, title: "Brands", classes: "border-main-teal border-r-2" },
+    { stat: 55, title: "Web Apps", classes: "" },
   ]);
 
   useEffect(() => {
@@ -88,7 +88,7 @@ const about = () => {
         <Navbar />
       </Suspense>
       <div className="w-[90%] mx-auto">
-        <div className="sm:h-[80vh] xxl:h-auto">
+        <div className="md:h-[80vh] xxl:h-auto">
           <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
             <Divider className=" h-[15vh] md:h-[14vh]" />
           </Suspense>
@@ -99,7 +99,7 @@ const about = () => {
                 alt={quoteUp}
                 className="mb-3 top-[-40px] left-[-10px] md:top-[-68%] md:left-[-6%] w-[13%] md:w-[10%] xxl:h-[10%] z-0"
               />
-              To build the best and invent a better{" "}
+              To build the best and invent a better
               <br className="hidden lg:block" /> tomorrow with the help of
               Technology.
               <Image
@@ -110,16 +110,17 @@ const about = () => {
             </p>
           </div>
           <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
-            <Divider className="h-14 sm:h-[12vh]" />
+            <Divider className="h-14 sm:h-[10vh]" />
           </Suspense>
-          <div className="text-center text-[1.25em] text-main-light_white w-[90%] sm:w-[55%] md:w-[45%] lg:w-[58%] mx-auto leading-none font-miligramTextMedium font-medium">
-            At Koders we build softwares with new dimensions by utilizing the
-            <br className="hidden lg:block" />
-            full potential of our team to bring out the best for our customers.
+          <div className="text-center text-[1.25em] text-main-light_white  w-[100%] sm:w-[75%] md:w-[60%] lg:w-[70%] mx-auto leading-none font-miligramTextMedium font-medium">
+            We are committed to building software solutions that are innovative and unparalleled in quality. We
+            believe that by leveraging the full potential of our team, we can create software products that truly
+            stand out in the market. At Koders, we are always striving to build software with new dimensions that
+            truly make a difference for our customers.
           </div>
         </div>
         <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
-          <Divider className="h-20 sm:h-0 xxl:h-32" />
+          <Divider className="h-20 sm:h-12 xxl:h-32" />
         </Suspense>
         <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
           <GradientText
@@ -130,11 +131,11 @@ const about = () => {
         </Suspense>
         <p
           data-aos="slide-left"
-          className="mt-2 text-[0.8rem] sm:text-[1.3rem] w-[80%] sm:w-[55%] mx-auto text-center text-main-light_white pb-2 font-miligramText400 leading-none"
+          className="mt-2 text-[0.8rem] sm:text-[1.3rem] w-[100%] sm:w-[70%] mx-auto text-center text-main-light_white pb-2 font-miligramText400 leading-none"
         >
-          We are a group of like-minded people who are striving their best to
-          provide real world solutions to your ideas. We are here to bring your
-          dreams to reality by providing high quality service.
+          We believe in fostering a positive and collaborative work environment where our team members can
+          grow and develop their skills. We offer opportunities for learning and professional development, as
+          well as a supportive and inclusive culture where everyone's contributions are valued.
         </p>
         <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
           <Divider className="h-10 sm:h-20" />
@@ -177,7 +178,7 @@ const about = () => {
               <Divider className="h-5" />
             </Suspense>
             <p className="text-main-light_white_eight text-center w-[80%] mx-auto text-[1.25em] md:text-[1.3rem] leading-none font-miligramTextBold">
-              Our mission is to Kreate simple solutions for complex problems.
+              Our mission is to help brands, particularly in the sneaker and E-commerce industries, fly to the moon.
             </p>
           </div>
           <div className="border-b-2 w-[60%] mx-auto md:w-auto md:border-b-0 md:border-r-2 border-main-teal"></div>
@@ -195,8 +196,8 @@ const about = () => {
               <Divider className="h-5" />
             </Suspense>
             <p className="text-main-light_white_eight text-center w-[80%] mx-auto text-[1.25em] md:text-[1.3rem] leading-none font-miligramTextBold">
-              The aim is to foster technological innovation and to embellish the
-              lives of people.
+              Our vision at Koders is to be the go-to software development company for businesses seeking
+              reliable, high quality solutions.
             </p>
           </div>
         </div>
@@ -215,8 +216,7 @@ const about = () => {
           data-aos="slide-left"
           className="mt-2 text-[0.8rem] sm:text-[1.3rem] w-[80%] sm:w-[45%] mx-auto text-center text-main-light_white pb-2 font-miligramText400 leading-none"
         >
-          Launched in 2018, Koders has worked with clients in more than 10
-          Countries
+          Since our launch in 2018, Koders has had the pleasure of working with clients across 10+ countries.
         </p>
         <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
           <Divider className="h-12 sm:h-0" />

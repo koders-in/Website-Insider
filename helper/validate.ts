@@ -16,7 +16,7 @@ export const jobValidationSchema = yup.object().shape({
   linkedIn: yup.string().optional(),
   portfolioURL: yup.string().optional(),
   hiringReason: yup.string().required("This is a mandatory field."),
-  joiningReason: yup.string().required("This is a mandatory field."),
+  // joiningReason: yup.string().required("This is a mandatory field."),
   hearAboutUs: yup.string().required("This is a mandatory field."),
 });
 

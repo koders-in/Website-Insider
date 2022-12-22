@@ -23,10 +23,9 @@ const Hiring = () => {
       />
       <p
         data-aos="slide-right"
-        className="mx-auto text-[0.8rem] leading-none m-1 xl:w-[60%] sm:text-[1.2rem] text-center text-main-light_white font-miligramText400"
+        className="mx-auto text-[0.8rem] leading-none m-1 w-[80%] lg:w-[50%] sm:text-[1.2rem] text-center text-main-light_white font-miligramText400"
       >
-        A real visualisation of Dunder-Mifflin with the Gen Z quoting- ‘work to
-        live, not live to work’. Gen Z and Millenials vibe with each other
+        We are committed to providing our employees with a fulfilling and rewarding work experience.
       </p>
       <div className="w-full sm:w-[70%] flex-wrap gap-5  mx-auto mt-8 sm:mt-16 flex justify-between ">
         {[...offersData[0], ...offersData[1]].map((item, i) => {

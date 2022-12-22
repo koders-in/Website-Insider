@@ -75,7 +75,7 @@ const Form = ({ handleSubmitForm, showLoader, setShowLoader }: Props) => {
             value={values.aboutProject}
             textareaStyle="bg-main-primary"
           />
-                   <Divider className="mt-9 lg:mt-9" />
+          <Divider className="mt-9 lg:mt-9" />
           <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">
             <SelectBox
               labelID="selectbudgetApp"
@@ -104,7 +104,7 @@ const Form = ({ handleSubmitForm, showLoader, setShowLoader }: Props) => {
               errorText={errors.timeline}
             />
           </div>
-                     <Divider className="mt-9 lg:mt-9" />
+          <Divider className="mt-9 lg:mt-9" />
           <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">
             <InputBox
               labelID="fNameClient"
@@ -127,7 +127,7 @@ const Form = ({ handleSubmitForm, showLoader, setShowLoader }: Props) => {
               errorText={errors?.lName}
             />
           </div>
-                     <Divider className="mt-9 lg:mt-9" />
+          <Divider className="mt-9 lg:mt-9" />
           <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">
             <InputBox
               labelID="emailClient"
@@ -150,7 +150,7 @@ const Form = ({ handleSubmitForm, showLoader, setShowLoader }: Props) => {
               errorText={errors?.mobile}
             />
           </div>
-                     <Divider className="mt-9 lg:mt-9" />
+          <Divider className="mt-9 lg:mt-9" />
           <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">
             <InputBox
               labelID="companyClient"
@@ -171,7 +171,7 @@ const Form = ({ handleSubmitForm, showLoader, setShowLoader }: Props) => {
               onBlur={handleBlur}
             />
           </div>
-                     <Divider className="mt-9 lg:mt-9" />
+          <Divider className="mt-9 lg:mt-9" />
           <div className="sm:w-[46.4%] mt-2">
             <SelectBox
               labelID="selectaboutApp"
@@ -179,11 +179,10 @@ const Form = ({ handleSubmitForm, showLoader, setShowLoader }: Props) => {
               value={values?.hearAboutUs}
               placeholder="How did you hear about us? *"
               list={[
-                "LinkedIn",
-                "Facebook",
-                "You Tube",
-                "Twitter",
-                "Instagram",
+                "Social Media",
+                "Friends/Family",
+                "Hiring Portal",
+                "Google",
                 "Other",
               ]}
               name="hearAboutUs"

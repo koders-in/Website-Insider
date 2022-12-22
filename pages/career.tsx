@@ -59,6 +59,7 @@ const Jobs = () => {
   const fetchData = useFetchDataFromServer();
   const filterData = useFilter();
 
+
   useEffect(() => {
     AOS.init({
       easing: "ease-out",

@@ -89,6 +89,12 @@ import abhishek from "../public/images/sm.webp";
 import basu from "../public/images/o&d.webp";
 import saksham from "../public/images/jd.webp";
 import groupImg from "../public/images/group-img.webp";
+import kodersProfile from "../public/images/koders-profile.svg";
+import blog1img from "../public/images/our-company-culture.jpg";
+import blog2img from "../public/images/how-to-plan.jpg";
+import blog3img from "../public/images/benefits-of-automating.jpg";
+import blog4img from "../public/images/developing-high-quality-software.jpg";
+import blog5img from "../public/images/partnering-with-a-software-company.jpg";
 
 // Assets for technologies components
 
@@ -283,4 +289,5 @@ export {
   ceo,
   cto,
   groupImg,
+  kodersProfile,blog1img,blog2img,blog3img,blog4img,blog5img
 };

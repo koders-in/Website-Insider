@@ -1,5 +1,10 @@
 import {
   benefits,
+  blog1img,
+  blog2img,
+  blog3img,
+  blog4img,
+  blog5img,
   bolt,
   camelJuno,
   discordWhiteLogo,
@@ -10,6 +15,7 @@ import {
   indianFlag,
   instaLogo,
   issue,
+  kodersProfile,
   linkedinWhite,
   performance,
   tealAwards,
@@ -253,13 +259,12 @@ export const faq = [
 ];
 
 export const pricingList = [
-  "14,000$",
-  "28,000$",
-  "45,000$",
-  "62,000$",
-  "70,000$",
+  "100-500$",
+  "500-1000$",
+  "1000-5000$",
+  ">5000$",
 ];
-export const timeLineList = ["< 1 week", "< 1 month", "< 1 year", "> 1 year"];
+export const timeLineList = ["<1 week", "<1 month", "<6 months", ">6 months"];
 
 export const socialMediaHandles = [
   {
@@ -651,3 +656,137 @@ export const listOfBestReviewsUsers = [
   "Isha Ahuja",
   "Bolt",
 ];
+
+// --------------------------Blogs content--------------------------------
+
+export const blogs = [
+  {
+    id: 1,
+    author:"Koders",
+    img:blog1img,
+    chips:[
+      "Software development", "Mobile Apps", "Web Apps", "Desktop Apps"
+    ],
+    profile:kodersProfile,
+    date: "AUG 6,2022",
+    title: "Top Considerations for Developing High-Quality Software",
+    mainPara: "Developing quality software is a complex and multifaceted process that requires careful planning and attention to detail. Here are a few key considerations when working on software development projects:",
+    all: {
+      type: "list",
+      content: [
+        "Establish clear and achievable goals to guide the development process and ensure that the final product meets the needs of the end user."
+        , "Thorough planning and design are crucial to the success of any software project. This includes creating detailed specifications, prototyping and testing designs, and identifying any potential challenges ahead of time."
+        , "Agile development methodologies, such as Scrum, can help with iterative development and continuous delivery of working software."
+        , "Testing is a vital part of the development process and helps ensure that the software is of high quality and free of bugs and other issues. This includes both manual and automated testing, as well as testing for different scenarios and edge cases."
+        , "User experience (UX) is a key factor in the success of a software product. Consider the user's perspective and design the software in a way that is intuitive, easy to use, and visually appealing."
+        , "Regularly updating and maintaining the software helps ensure that it remains relevant and useful to users over time."
+        , "Collaboration with team members and stakeholders is essential to the success of any software development project. Work closely with these groups to ensure that everyone is on the same page and that the final product meets everyone's needs and expectations."
+      ]
+    }
+  },
+  {
+    id: 2,
+    img:blog2img,
+    chips:["Software development", "IT"],
+    author:"Koders",
+    profile:kodersProfile,
+    date: "SEP 2,2022",
+    title: "Our Company Culture: A Behind-the-Scenes Look at Our Values and Philosophy",
+    mainPara: "At Koders, we understand that our company culture plays a significant role in our success. Our values and philosophy shape the way we approach software development and how we work together as a team. We pride ourselves on having a company culture that is friendly and welcoming. We believe that when our team members feel comfortable and at home, they are more productive and engaged.",
+    all: {
+      type: "para",
+      content: [
+        "At Koders, we understand that our company culture plays a significant role in our success. Our values and philosophy shape the way we approach software development and how we work together as a team. We pride ourselves on having a company culture that is friendly and welcoming. We believe that when our team members feel comfortable and at home, they are more productive and engaged.",
+        , "Collaboration, innovation, and excellence are at the core of our culture. We believe that by working together and sharing ideas, we can achieve better results and deliver top-quality software to our clients. We also place a strong emphasis on continuous learning and personal growth, encouraging our team members to continuously improve their skills and knowledge."
+        , "One of the things that sets our culture apart is the lack of boss issues. We believe in open and transparent communication and encourage our team members to speak up and share their ideas. This creates an environment where everyone feels heard and valued, which helps to foster collaboration and creativity."
+        , "We use agile development methodologies and prioritize transparency and open communication in our work. Regular check-ins, frequent feedback, and continuous iteration help us meet the needs of our clients and deliver the best possible results."
+        , "Creating a positive and inclusive work environment that values diversity is also important to us. We believe that by fostering a positive culture, we can drive creativity and success."
+        , "Overall, our friendly and welcoming company culture helps to create a positive work environment where team members feel comfortable and supported. We believe that this is a key part of what makes us successful and helps us deliver the best possible results for our clients."
+      ]
+    }
+  },
+  {
+    id: 3,
+    img:blog3img,
+    chips:["Software development", "Mobile Apps", "Web Apps", "Desktop Apps"],
+    author:"Koders",
+    profile:kodersProfile,
+    date: "OCT 8,2022",
+    title: "How to effectively plan and design high quality software projects",
+    mainPara: "Planning and designing software projects can be a complex and time-consuming process, but it is essential for ensuring that the project is delivered on time, within budget, and meets the needs of the stakeholders. Here are some tips for effectively planning and designing software projects:",
+    all: {
+      type: "list with heading",
+      headings: [
+        "Define the scope of the project",
+        "Create a project plan",
+        "Choose the right development method",
+        "Assemble the right team",
+        "Design the user interface",
+        "Test and iterate"
+      ],
+      content: [
+        "The first step in planning a software project is to clearly define the scope of the project. This includes identifying the specific goals and objectives of the project, as well as the key features and functionality that will be included. Defining the scope of the project helps to ensure that everyone is on the same page and that the project stays focused."
+        , "A project plan is a document that outlines the tasks, milestones, and resources needed to complete the project. It should include a timeline for each task, as well as any dependencies between tasks. A project plan helps to keep the project on track and ensures that everyone knows what needs to be done and when."
+        , "There are several different software development methodologies to choose from, including agile, waterfall, and hybrid approaches. The right development method will depend on the specific needs of the project. For example, agile methodologies are often used for projects with rapidly changing requirements, while waterfall methodologies are better suited for projects with more predictable requirements."
+        , " A software project is only as good as the team working on it. It is important to choose team members who have the necessary skills and expertise to complete the project successfully. In addition to technical skills, it is also important to consider communication skills and team dynamics when selecting team members."
+        , "The user interface (UI) is the face of the software and is the primary way that users interact with the application. It is important to design a user-friendly and intuitive UI that is easy to use and understand. This includes considering the layout, navigation, and overall look and feel of the application."
+        , "Testing and iteration are important throughout the development process to ensure that the software meets the needs of the users. This may include conducting user testing, gathering feedback from stakeholders, and making changes and improvements as needed."
+      ],
+      conclusion: ["By following these steps, you can help ensure that your software development projects are of high quality and meet the needs of your target audience. In addition to these steps, it's also important to consider other factors that can impact the quality of your software projects, such as collaboration with team members and stakeholders, the use of agile development methodologies, and the importance of cybersecurity. By considering these factors and incorporating best practices into your planning and design process, you can help ensure that your software projects are successful and deliver value to your users."]
+    }
+  },
+  {
+    id: 4,
+    img:blog4img,
+    chips:["Automation", "Business software", "E-commerce"],
+    author:"Koders",
+    profile:kodersProfile,
+    date: "NOV 1,2022",
+    title: "The benefits of automating business processes with custom software",
+    mainPara: "Custom software is an excellent tool for automating business processes and increasing efficiency within an organization. Some of the advantages of using custom software to automate business processes include:",
+    all: {
+      type: "list with heading",
+      headings: [
+        "Greater efficiency",
+        "Reduced errors",
+        "More accurate data",
+        "Better decision-making",
+        "Enhanced customer service",
+      ],
+      content: [
+        "Automating business processes with custom software can help to streamline operations and eliminate repetitive tasks, freeing up time for more important tasks. This can result in increased productivity and efficiency within the organization."
+        , " Manual processes are prone to errors, but custom software can help to reduce the number of errors that occur. This is because custom software is designed to handle tasks consistently and accurately, without the risk of human error."
+        , "Custom software can validate data input, ensuring that the information entered into the system is correct."
+        , "Custom software can also help to improve decision-making within an organization by providing real-time data and analytics. This can help managers to make informed decisions based on accurate and up-to-date information."
+        , "Automating business processes with custom software can also help to improve customer service by providing faster and more accurate responses to customer inquiries. This can help to build trust and loyalty with customers."
+      ],
+      conclusion: ["By automating business processes with custom software, organizations can improve efficiency, reduce errors, increase accuracy, improve decision-making, and enhance customer service. These benefits can lead to increased profitability and competitiveness."]
+    }
+  },
+  {
+    id: 5,
+    img:blog5img,
+    chips:["Software development", "IT"],
+    author:"Koders",
+    profile:kodersProfile,
+    date: "DEC 5,2022",
+    title: "Why Partnering with a Software Company is a Better Choice than Working with Freelancers?",
+    mainPara: "There are several reasons why choosing a software company as a partner may be a better option than working with freelancers, including the company's access to resources and the stability of the final product. Some additional benefits of partnering with a software company include:",
+    all: {
+      type: "list with heading",
+      headings: [
+        "Expertise and resources",
+        "Project management and communication",
+        "Scalability",
+        "Support and maintenance",
+      ],
+      content: [
+        "Software companies typically have a team of experienced professionals with a wide range of skills and expertise. This can be particularly beneficial for projects that require specialized knowledge or require the integration of multiple technologies. In contrast, freelancers may have limited expertise and may not have the resources to handle complex projects."
+        , "Software companies often have established project management processes and systems in place to ensure that projects are delivered on time and within budget. They also typically have dedicated project managers who can handle communication with clients and ensure that projects stay on track. Freelancers, on the other hand, may not have the same level of experience in project management and may not be as reliable when it comes to communication and meeting deadlines."
+        , "Software companies are typically able to scale up or down as needed to meet the needs of a project. This can be particularly beneficial for projects that may require additional resources at certain points in the development process. Freelancers, on the other hand, may not have the same level of flexibility or the ability to scale up as needed."
+        , "Software companies typically offer ongoing support and maintenance for the software they develop. This can be particularly beneficial for organizations that require ongoing support for their software systems. Freelancers may not offer the same level of support or may not be available for ongoing maintenance."
+      ],
+      conclusion: ["Overall, partnering with a software company can offer a number of advantages over working with freelancers, including expertise and resources, project management and communication, scalability, and support and maintenance."]
+    }
+  }
+]
