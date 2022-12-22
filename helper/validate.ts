@@ -38,6 +38,7 @@ export const projectDataSchema = yup.object().shape({
   company: yup.string().notRequired(),
   role: yup.string().notRequired(),
   hearAboutUs: yup.string().required("This is a mandatory field."),
+  pricingPlan:yup.string().required("This is a mandatory field."),
 });
 
 export const collabrationPageSchima = yup.object().shape({

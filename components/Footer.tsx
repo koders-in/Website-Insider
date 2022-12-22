@@ -140,6 +140,11 @@ const Footer = () => {
                     ) : (
                       item.title
                     )}
+                    {item.chip && (
+                      <span className="absolute w-auto right-[-340%] md:right-[-281%] xl:right-[-300%] bottom-[8%] font-miligramMedium text-[0.8rem] xxl:text-[1rem] bg-main-greenOpt-200 border-[1px] border-main-lightTeal text-main-lightTeal px-2 py-[2px] rounded-lg pointer-events-none">
+                        {item.chip}
+                      </span>
+                    )}
                     <AnimatedBorder />
                   </p>
                 ))}

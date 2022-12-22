@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Head from "next/head";
 import AOS from "aos";
 
 import "aos/dist/aos.css";
 
 import {
+  AppContext,
   ButtonsGroup,
   Divider,
   Faq,
@@ -33,6 +34,7 @@ interface initialState {
   company: string;
   role: string;
   hearAboutUs: string;
+  pricingPlan: string;
 }
 const StartProject = () => {
   const [showLoader, setShowLoader] = useState(false);
@@ -48,6 +50,8 @@ const StartProject = () => {
     if (isExpand === question) setIsExpand("");
     else setIsExpand(question);
   };
+
+  const { appContext, setAppContext }: any = useContext(AppContext);
 
   const handleSubmitForm = async (
     value: initialState,
@@ -67,6 +71,7 @@ const StartProject = () => {
         client_phone_number: value.mobile,
         project_description: value.aboutProject,
         project_tags: technologies,
+        pricing_plan: value.pricingPlan,
       });
       setShowLoader(false);
       if (res.status === 200) {
@@ -130,7 +135,15 @@ const StartProject = () => {
           }}
         />
         <Divider className="mt-16" />
-        <Form {...{ handleSubmitForm, showLoader, setShowLoader }} />
+        <Form
+          {...{
+            handleSubmitForm,
+            showLoader,
+            setShowLoader,
+            appContext,
+            setAppContext,
+          }}
+        />
         <Divider className="mt-20" />
         <GradientText
           aos="fade-up"

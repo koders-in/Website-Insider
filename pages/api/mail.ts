@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
-const nodemailer = require("nodemailer");
+// const nodemailer = require("nodemailer");
 
 const handler = async (
   req: NextApiRequest & { [key: string]: any },

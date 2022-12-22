@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from "react";
+import React, { useState, Suspense, useContext } from "react";
 import dynamic from "next/dynamic";
 import AOS from "aos";
 
@@ -6,6 +6,7 @@ import "aos/dist/aos.css";
 
 import { useUpdateSlide } from "../helper/hook";
 import { pricingCardData } from "../helper/constant";
+import { AppContext } from "../components";
 
 const Divider = dynamic(() => import("../components/Divider"), {
   suspense: true,
@@ -22,17 +23,19 @@ const PricingCard = dynamic(
   }
 );
 
-const Toogler = dynamic(() => import("../components/Toogler"), {
-  suspense: true,
-});
+// const Toogler = dynamic(() => import("../components/Toogler"), {
+//   suspense: true,
+// });
 
 const Pricing = () => {
   const handleSliding = useUpdateSlide();
-  const [toggle, setToggle] = useState(true);
+  // const [toggle, setToggle] = useState(true);
 
-  function handleToogle(data: boolean) {
-    setToggle(data);
-  }
+  const { appContext, setAppContext }: any = useContext(AppContext);
+
+  // function handleToogle(data: boolean) {
+  //   setToggle(data);
+  // }
 
   React.useEffect(() => {
     handleSliding.onSwipe("pricingSec");
@@ -63,10 +66,10 @@ const Pricing = () => {
         data-aos="slide-right"
         className="text-[0.8rem] sm:text-[1.3rem] w-[80%] leading-none sm:w-1/2  lg:w-1/3 mx-auto text-center text-main-light_white pb-5 mt-2 font-miligramText400"
       >
-        Choose your best plan, pay monthly or yearly and change or cancel any
-        time.
+        Choose the best pricing plan for your needs and budget to get the most
+        value from our software.
       </p>
-      <div className="flex items-center gap-4 w-fit mx-auto text-main-light_white font-miligramLight">
+      {/* <div className="flex items-center gap-4 w-fit mx-auto text-main-light_white font-miligramLight">
         <span className={`text-[0.9rem] ${toggle ? "text-white" : ""}`}>
           Billed Monthly
         </span>
@@ -77,15 +80,25 @@ const Pricing = () => {
         <span className={`text-[0.9rem] ${!toggle ? "text-white" : ""}`}>
           Billed Yearly
         </span>
-      </div>
+      </div> */}
       <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
         <Divider className="mt-10 md:h-16" />
       </Suspense>
 
       <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
-        <div className="hidden justify-center items-center md:flex gap-7 xl:gap-12 w-[96%] lg:w-[90%] mx-auto">
+        <div className="hidden justify-between md:flex gap-7 xl:gap-12 w-[96%] lg:w-[90%] mx-auto relative">
           {pricingCardData.map((item, i) => (
-            <PricingCard key={i} aos="fade-up" {...item} />
+            <PricingCard
+              {...{
+                setAppContext,
+                pricing: item.price,
+                index: i,
+                exactPrice: item.exactPrice,
+              }}
+              key={i}
+              aos="fade-up"
+              {...item}
+            />
           ))}
         </div>
       </Suspense>
@@ -104,6 +117,12 @@ const Pricing = () => {
         <Suspense fallback={<div className="text-main-teal">Loading...</div>}>
           {pricingCardData.map((item, i) => (
             <PricingCard
+              {...{
+                setAppContext,
+                pricing: item.price,
+                index: i,
+                exactPrice: item.exactPrice,
+              }}
               translateX={handleSliding.translatePosition[i]}
               className={`absolute top-10 w-[200px] transition-all duration-500 ${
                 handleSliding.translatePosition[i] === 0 ? "z-10" : ""

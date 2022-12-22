@@ -95,6 +95,7 @@ import blog2img from "../public/images/how-to-plan.jpg";
 import blog3img from "../public/images/benefits-of-automating.jpg";
 import blog4img from "../public/images/developing-high-quality-software.jpg";
 import blog5img from "../public/images/partnering-with-a-software-company.jpg";
+import mostPopular from "../public/images/mostPopular.svg";
 
 // Assets for technologies components
 
@@ -289,5 +290,11 @@ export {
   ceo,
   cto,
   groupImg,
-  kodersProfile,blog1img,blog2img,blog3img,blog4img,blog5img
+  kodersProfile,
+  blog1img,
+  blog2img,
+  blog3img,
+  blog4img,
+  blog5img,
+  mostPopular,
 };

@@ -1,355 +1,275 @@
-import React, { useState } from "react";
-import Image from "next/image";
-import Fuse from "fuse.js";
+import React, { useEffect, useState } from "react";
+import { FormikHelpers } from "formik";
 
 import Divider from "../../Divider";
-import GradientText from "../../GradientText";
-import { crossTeal, search, work } from "../../../assets";
-import Toogler from "../../Toogler";
-import { jobTypes } from "../../../helper/constant";
-import ButtonsGroup from "../project-page-components/ButtonsGroup";
+import InputBox from "../../InputBox";
+import SelectBox from "../../SelectBox";
+import { pricingList, timeLineList } from "../../../helper/constant";
+import { Formik } from "formik";
+import { projectDataSchema } from "../../../helper/validate";
+import Button from "../../Button";
+import { PropagateLoader } from "react-spinners";
+import TextArea from "../jobs/TextArea";
+
+interface Form {
+  [key: string]: string;
+}
 
 interface Props {
-  setPinJobs: (data: any) => void;
-  pinJobs: any;
-  tempData: any;
-  setNoMatch: (data: boolean) => void;
-  department: Array<string>;
-  setDepartment: (data: any) => void;
-  filter: any;
-  setFilter: (data: any) => void;
+  handleSubmitForm: (
+    value: initialState,
+    helper: FormikHelpers<initialState>
+  ) => void;
+  showLoader: boolean;
+  setShowLoader: (data: boolean) => void;
+  appContext: string;
+  setAppContext: (data: string) => void;
 }
-const LandingSection = ({
-  filter,
-  setFilter,
-  pinJobs,
-  setPinJobs,
-  setNoMatch,
-  tempData,
-  department,
-  setDepartment,
+
+interface initialState {
+  aboutProject: string;
+  budget: string;
+  timeline: string;
+  email: string;
+  mobile: string;
+  fName: string;
+  lName: string;
+  company: string;
+  role: string;
+  hearAboutUs: string;
+  pricingPlan: string;
+}
+
+const initialValues: initialState = {
+  aboutProject: "",
+  budget: "",
+  timeline: "",
+  email: "",
+  mobile: "",
+  fName: "",
+  lName: "",
+  company: "",
+  role: "",
+  hearAboutUs: "",
+  pricingPlan: "",
+};
+
+const Form = ({
+  handleSubmitForm,
+  showLoader,
+  setShowLoader,
+  appContext,
+  setAppContext,
 }: Props) => {
-  const [isRemote, setIsRemote] = useState(true);
-  const [searchValue, setSearchValue] = useState("");
-
-  const handleChange = async (e: any) => {
-    let tempList: Array<any> = tempData;
-    let toggleList = [];
-    let depList = [];
-    let titleList = [];
-    const { value } = e.target;
-    setFilter((prev) => {
-      return {
-        ...prev,
-        title: value,
-      };
-    });
-    if (filter.isRemote && tempList?.length) {
-      toggleList = getFilteredData(tempList, ["location"], "Remote");
-    }
-    if (filter?.departments?.length && tempList?.length) {
-      let filteredJobs = [];
-      filter?.departments?.forEach((item) => {
-        const tempJobs = getFilteredData(tempList, ["job.department"], item);
-        depList = [...filteredJobs, ...tempJobs];
-      });
-    }
-    if (tempList?.length) {
-      if (value) {
-        titleList = getFilteredData(tempList, ["job.title"], value);
-      } else {
-        titleList = tempList;
-      }
-    } else titleList = [];
-    console.log(toggleList, depList, titleList);
-
-    const getExacrtMatch = [...toggleList, ...depList, ...titleList].map(
-      (item) => {
-        [...toggleList, ...depList, ...titleList].find();
-        // if (
-        //   toggleList.includes(item) &&
-        //   depList.includes(item) &&
-        //   titleList.includes(item)
-        // ) {
-        //   return item;
-        // }
-      }
-    );
-
-    console.log("getExacrtMatch", getExacrtMatch);
-
-    // if (toggleList.length && depList.length && titleList.length) {
-    //   const longestArr = getSmallestArray(toggleList, depList, titleList);
-    //   console.log(longestArr);
-    // } else setPinJobs([]);
-    // setSearchValue(value);
-    // if (!value) {
-    //   setPinJobs(tempData);
-    //   setNoMatch(false);
-    //   return;
-    // }
-    // if (tempData?.length) {
-    //   const fuse = new Fuse(tempData, {
-    //     // location: 0,
-    //     // shouldSort: true,
-    //     minMatchCharLength: value.length - 1,
-    //     keys: ["job.title"],
-    //   });
-    //   let pattern = value;
-    //   const res: any = fuse.search(pattern);
-    //   if (res?.length === 0) {
-    //     setPinJobs([]);
-    //     setNoMatch(true);
-    //     return;
-    //   }
-    //   if (res?.length) {
-    //     setNoMatch(false);
-    //     const temp = res?.map(({ item }) => {
-    //       return item;
-    //     });
-    //     setPinJobs(temp);
-    //   }
-    // }
-  };
-
-  const handleToogle = (data: any) => {
-    let tempList: Array<any> = tempData;
-    setFilter((prev) => {
-      return {
-        ...prev,
-        isRemote: !data,
-      };
-    });
-
-    if (filter?.departments?.length && tempList?.length) {
-      filter?.departments?.forEach((item) => {
-        if (item === "All") return;
-        const temp = getFilteredData(tempList, ["job.department"], item);
-        tempList.push(...temp);
-      });
-    }
-    if (filter.title) {
-      const temp = getFilteredData(tempList, ["job.title"], filter.title);
-      tempList = temp;
-    }
-    if (!data) {
-      tempList = getFilteredData(tempList, ["location"], "Remote");
-      setPinJobs(tempList);
-    } else setPinJobs(tempList);
-    // setIsRemote(data);
-    // if (tempData?.length) {
-    //   const fuse = new Fuse(tempData, {
-    //     location: 0,
-    //     shouldSort: true,
-    //     keys: ["location"],
-    //   });
-    //   if (!data) {
-    //     const res: any = fuse.search("Remote");
-    //     if (res?.length === 0) {
-    //       setPinJobs([]);
-    //       setNoMatch(true);
-    //       return;
-    //     }
-    //     if (res?.length) {
-    //       setNoMatch(false);
-    //       const temp = res?.map(({ item }) => {
-    //         return item;
-    //       });
-    //       setPinJobs(temp);
-    //     }
-    //   } else {
-    //     setNoMatch(false);
-    //     setPinJobs(tempData);
-    //   }
-    // }
-  };
-
-  const handleClick = (item: string) => {
-    let tempList: Array<any> = tempData;
-
-    if (filter.isRemote && tempList?.length) {
-      tempList = getFilteredData(tempList, ["location"], "Remote");
-    }
-
-    if (filter.title) {
-      const temp = getFilteredData(tempList, ["job.title"], filter.title);
-      tempList = temp;
-    }
-
-    // ======================================
-    if (filter?.departments.includes(item)) {
-      if (item === "All") {
-        setFilter((prev) => {
-          return {
-            ...prev,
-            departments: ["All"],
-          };
-        });
-        setPinJobs(tempList);
-        return;
-      }
-      const updateedDep = filter?.departments.filter((temp) => temp !== item);
-      if (updateedDep.length === 0) {
-        setFilter((prev) => {
-          return {
-            ...prev,
-            departments: ["All"],
-          };
-        });
-        setPinJobs(tempList);
-      } else {
-        setFilter((prev) => {
-          return {
-            ...prev,
-            departments: updateedDep,
-          };
-        });
-        if (tempList?.length) {
-          // updateedDep.forEach((item) => {
-          //   const temp = getFilteredData(tempList, ["job.department"], item);
-          //   tempList.push(...temp);
-          // });
-          // setPinJobs(tempList);
-          // console.log("handleClick in dep", tempList);
-          let filteredJobs = [];
-          updateedDep.forEach((item) => {
-            const tempJobs = getFilteredData(
-              tempList,
-              ["job.department"],
-              item
-            );
-            filteredJobs = [...filteredJobs, ...tempJobs];
-          });
-          setPinJobs(filteredJobs);
-        }
-      }
-    } else {
-      if (filter?.departments.length >= 4 || item === "All") {
-        setFilter((prev) => {
-          return {
-            ...prev,
-            departments: ["All"],
-          };
-        });
-        setPinJobs(tempList);
-        return;
-      }
-      const updateedDep = [
-        ...filter?.departments.filter((temp) => temp !== "All"),
-        item,
-      ];
-      setFilter((prev) => {
-        return {
-          ...prev,
-          departments: updateedDep,
-        };
-      });
-      if (tempList?.length) {
-        let filteredJobs = [];
-        updateedDep.forEach((item) => {
-          const tempJobs = getFilteredData(tempList, ["job.department"], item);
-          filteredJobs = [...filteredJobs, ...tempJobs];
-        });
-        setPinJobs(filteredJobs);
-      }
-    }
-  };
-
-  const getFilteredData = (
-    list: Array<any>,
-    keys: Array<string>,
-    pattern: string
-  ) => {
-    try {
-      const fuse = new Fuse(list, {
-        // minMatchCharLength: pattern.length - 3,
-        useExtendedSearch: true,
-        // threshold: 0.0,
-        keys: keys,
-      });
-      const res: any = fuse.search(pattern);
-      if (res.length) {
-        return res?.map(({ item }) => {
-          return item;
-        });
-      } else return [];
-    } catch (error) {
-      return [];
-    }
-  };
-
-  const handleClickOnSearch = () => {
-    if (searchValue) {
-      setSearchValue("");
-      setNoMatch(false);
-      setPinJobs(tempData);
-    } else return;
-  };
-
-  const getSmallestArray = (one, two, three) => {
-    if (one?.length < two?.length && one?.length < three?.length) return one;
-    else if (two?.length < one?.length && two?.length < three?.length)
-      return two;
-    else if (three?.length < one?.length && three?.length < one?.length)
-      return three;
-  };
-
   return (
-    <div className="">
-      <GradientText
-        aos="slide-left"
-        text="Work at Koders"
-        className="w-[100%] mx-auto sm:w-fit text-[2.2rem] leading-none mb-3 md:mb-0 md:leading-normal  sm:text-[2.8rem] text-center bg-gradient-to-r from-white to-main-teal font-miligrambold"
-      />
-      <p
-        data-aos="slide-right"
-        className="mx-auto text-[0.8rem] leading-none m-1 xl:w-[60%] sm:text-[1.3rem] text-center text-main-light_white font-miligramText400"
-      >
-        At Koders we build softwares with new dimensions by utilizing the full
-        potential of our team to bring out the best for our customers.
-      </p>
-      <Divider className="mt-14" />
-
-      <div className="flex-wrap sm:flex-nowrap justify-center w-[100%] md:w-[75%] lg:w-[65%] xl:w-[60%] mt-6 xxl:mt-14 flex mx-auto gap-5 sm:gap-8 items-center sm:justify-between">
-        <div className="w-full lg:w-[80%] border-[1.5px] border-main-teal mx-auto rounded-lg overflow-hidden flex">
-          <div className="flex items-center w-full border-r-[1.5px] border-main-teal">
-            <Image src={work} alt="aero" className="ml-5" />
-            <input
-              type="text"
-              className="w-full px-4 py-1 outline-none border-none text-main-light_white placeholder:tracking-[2px] bg-transparent placeholder:text-main-light_white lett font-miligramTextBook"
-              placeholder="Job Title"
-              name="jobTitle"
-              onChange={handleChange}
-              value={filter.title}
+    <Formik
+      className="w-[97%] mx-auto mt-10 font-miligramMedium"
+      validationSchema={projectDataSchema}
+      onSubmit={handleSubmitForm}
+      initialValues={initialValues}
+      validateOnChange={false}
+      validateOnBlur={false}
+    >
+      {({
+        handleChange,
+        handleSubmit,
+        handleBlur,
+        errors,
+        values,
+        setFieldValue,
+      }) => {
+        useEffect(() => {
+          if (appContext) {
+            setFieldValue("pricingPlan", appContext);
+          }
+          return () => setAppContext("");
+        });
+        return (
+          <div className="relative">
+            <TextArea
+              handleChange={handleChange}
+              id="abproject"
+              name="aboutProject"
+              placeholder="Please tell us a bit about your project *"
+              errorText={errors.aboutProject}
+              value={values.aboutProject}
+              textareaStyle="bg-main-primary"
+            />
+            <Divider className="mt-9 lg:mt-9" />
+            <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">
+              <SelectBox
+                labelID="selectbudgetApp"
+                onBlur={handleBlur}
+                value={values?.budget}
+                placeholder="Estimated Budget *"
+                list={pricingList}
+                name="budget"
+                handleSelect={(obj: any) => {
+                  const { name, value } = obj;
+                  handleChange("budget")(value);
+                }}
+                errorText={errors.budget}
+              />
+              <SelectBox
+                labelID="selecttimelineApp"
+                onBlur={handleBlur}
+                value={values?.timeline}
+                placeholder="Estimated Timeline *"
+                list={timeLineList}
+                name="timeline"
+                handleSelect={(obj: any) => {
+                  const { name, value } = obj;
+                  handleChange("timeline")(value);
+                }}
+                errorText={errors.timeline}
+              />
+            </div>
+            <Divider className="mt-9 lg:mt-9" />
+            <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">
+              <InputBox
+                labelID="fNameClient"
+                type="text"
+                value={values.fName}
+                placeholder="First Name *"
+                name="fName"
+                handleChange={handleChange}
+                onBlur={handleBlur}
+                errorText={errors.fName}
+              />
+              <InputBox
+                labelID="lNameClient"
+                type="text"
+                value={values.lName}
+                placeholder="Last Name *"
+                name="lName"
+                handleChange={handleChange}
+                onBlur={handleBlur}
+                errorText={errors?.lName}
+              />
+            </div>
+            <Divider className="mt-9 lg:mt-9" />
+            <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">
+              <InputBox
+                labelID="emailClient"
+                type="text"
+                value={values.email}
+                placeholder="Email Address *"
+                name="email"
+                handleChange={handleChange}
+                onBlur={handleBlur}
+                errorText={errors?.email}
+              />
+              <InputBox
+                labelID="phoneClient"
+                type="text"
+                value={values.mobile}
+                placeholder="Phone Number *"
+                name="mobile"
+                handleChange={handleChange}
+                onBlur={handleBlur}
+                errorText={errors?.mobile}
+              />
+            </div>
+            <Divider className="mt-9 lg:mt-9" />
+            <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">
+              <InputBox
+                labelID="companyClient"
+                type="text"
+                value={values.company}
+                placeholder="Company Name"
+                name="company"
+                handleChange={handleChange}
+                onBlur={handleBlur}
+              />
+              <InputBox
+                labelID="titleClient"
+                type="text"
+                value={values.role}
+                placeholder="Your Title/Role"
+                name="role"
+                handleChange={handleChange}
+                onBlur={handleBlur}
+              />
+            </div>
+            <Divider className="mt-9 lg:mt-9" />
+            <div className="flex flex-wrap md:flex-nowrap gap-10 md:gap-20 mt-2">
+              <SelectBox
+                labelID="selectaboutApp"
+                onBlur={handleBlur}
+                value={values?.hearAboutUs}
+                placeholder="How did you hear about us? *"
+                list={[
+                  "Social Media",
+                  "Friends/Family",
+                  "Hiring Portal",
+                  "Google",
+                  "Other",
+                ]}
+                name="hearAboutUs"
+                handleSelect={(obj: any) => {
+                  const { name, value } = obj;
+                  handleChange("hearAboutUs")(value);
+                }}
+                errorText={errors.hearAboutUs}
+                inputID="startHear"
+              />
+              <SelectBox
+                labelID="selectaboutApp"
+                onBlur={handleBlur}
+                value={values?.pricingPlan}
+                placeholder="Select pricing plan *"
+                list={[
+                  "Basic plan ($12/hour)",
+                  "Basic plus plan ($15/hour)",
+                  "Premium plan ($20/hour)",
+                  "Enterprise plan ($30/hour)",
+                ]}
+                name="pricingPlan"
+                handleSelect={(obj: any) => {
+                  const { name, value } = obj;
+                  handleChange("pricingPlan")(value);
+                }}
+                errorText={errors.pricingPlan}
+                inputID="pricingPlanSelect"
+              />
+            </div>
+            <Divider className="mt-10" />
+            <PropagateLoader
+              color="#00A99D"
+              loading={showLoader}
+              className="w-fit block mx-auto"
+              // cssOverride={override}
+              // size={100}
+              aria-label="Loading Spinner"
+              data-testid="loader"
+            />
+            <Button
+              disabled={showLoader}
+              styleObj={showLoader ? { pointerEvents: "none" } : {}}
+              type="submit"
+              OnClick={handleSubmit}
+              className="mx-auto text-[0.8rem] xxl:text-[1rem] py-[0.4rem] sm:py-[0.6rem] w-[7.3rem] sm:w-[9.5rem] block mt-16 bg-main-greenOpt-200 font-miligramMedium text-main-lightTeal  rounded-lg border-[1px] border-main-lightTeal hover:bg-main-lightTeal hover:text-white"
+              text="Submit"
             />
           </div>
-          <div
-            onClick={handleClickOnSearch}
-            className="w-14 h-10 bg-main-greenOpt-200 flex justify-center items-center p-4 cursor-pointer"
-          >
-            <Image
-              src={searchValue ? crossTeal : search}
-              alt="aero"
-              className=""
-            />
-          </div>
-        </div>
-        <div className="w-[100%] sm:w-48 flex sm:items-center gap-2">
-          <span className="text-white font-miligramText400">Remote</span>
-          <Toogler handleToogle={handleToogle} />
-        </div>
-      </div>
-      <Divider className="h-6 sm:h-8" />
-      <ButtonsGroup
-        containerStyle="w-fit mx-auto"
-        buttonsArray={jobTypes}
-        handleClick={handleClick}
-        technologies={filter?.departments}
-      />
-      <Divider className="h-12" />
-      <div className=" border-b-2 border-main-teal"></div>
-    </div>
+        );
+      }}
+    </Formik>
   );
 };
 
-export default LandingSection;
+export default Form;
+
+
+
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     setContext(appContext);
+  //     setAppContext("");
+  //   }, 100);
+  //   const elm = document.getElementById("abproject");
+  //   elm.focus();
+  //   return () => {
+  //     setAppContext("");
+  //   };
+  // }, []);

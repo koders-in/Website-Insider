@@ -14,6 +14,7 @@ export { default as GradientText } from "./GradientText";
 export { default as TestmonialCard } from "./TestmonialCard";
 export { default as AnimatedBorder } from "./AnimatedBorder";
 export { default as Loader } from "./Loader";
+export { default as AppContext } from "./AppContext";
 
 // ********** ---| PAGES COMPONENTS |--- *********
 // BLLOG PAGE COMPONENTS
